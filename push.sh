@@ -1,4 +1,5 @@
 #!/bin/bash
+find ./lectures -name "*" -type d > list.txt
 clear
 echo git add .
 git add .
