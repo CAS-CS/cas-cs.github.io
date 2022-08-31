@@ -1,4 +1,3 @@
 ./lectures
 ./lectures/RM
-./lectures/RM/L01
 ./lectures/ACNC

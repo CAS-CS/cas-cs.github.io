@@ -1,5 +1,6 @@
 #!/bin/bash
-find ./lectures -name "*" -type d > list.txt
+#find ./lectures -name "*" -type d > list.txt
+./generateDirectoryList
 clear
 echo git add .
 git add .
