@@ -17,51 +17,8 @@
         window.$ = GeneratorJs()
         window.$$ = GeneratorWebHelper()
         $.init()
-        //your app logic
-        append(app, "", "over") /* reset app */
-        append(app, gen(header, "header", "", 'header'));
-        append(header, gen(h3, 'heading','Lecture Server'))
-        var loc = window.location.href
 
-        var printLocation = loc.replaceAll('https://', "").replaceAll('http://', "")
-        append(header, gen(div, 'location', printLocation))
-
-
-        append("#location", "", 'over')
-        var path = window.location.protocol + "//"
-        printLocation.split("/").forEach(l => {
-            if (l.length > 0) {
-                path = path +"/"+ l
-                append("#location", gen(a, '', l, 'pathNavigator', path + "/"))
-                append("#location", gen(span, '', "  ", 'spacer'))
-
-            }
-
-        })
-        append(app, gen(main, "appmain", gen(h1,'FileBrowser',"Topics"), 'appmain container'));
-        append(app, gen(footer, "appfooter", "", 'container'));
-        append(appmain, gen(section, "hero", "", "hero"))
-        // load(["./header.js", "./script.js", "./footer.js","./style.css"])// load js and css files
-        // append(hero, [gen(h1, "", "Hello GeneratorJs"), gen(p, "", "Yes, just Three functions for frontend."), gen(span, "", ["gen", "append", "load"]), gen(p, "", "And Three Optional functions."), gen(span, "", ["log", "getfile", "loadscss"])])        
-        var filelist=getfile(window.location.href + "list.txt")
-        
-        
-                filelist.split("\n").forEach(link => {
-                    var linkname = link.replaceAll("./", "").replaceAll("/", " / ")
-                    append(main, gen(a, "", linkname, 'folderLinks', link))
-                });
-
-
-
-                append(main,gen(button,"reload","Reload","reloadPage",{"onclick":"reloadPage()"}))
-
-function reloadPage(){
-    var url =window.location.href                
-    console.log(url)
-    window.location.href=url
-}
-
-
+        //STYLE
         var siteStyleSCSS = `
 //some temp style in nested css/ scss format
 //@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
@@ -69,6 +26,8 @@ function reloadPage(){
 --hue:200;
 --sat:50%;
 --light:15%;
+--hueAscent:180;
+--lightAscent:80%;
 --textColor:white;
 --ascentColor:hsl(var(--hueAscent),calc(var(--sat) * 1.5),calc(var(--light) * 2));
 --colorScheme:dark;
@@ -77,11 +36,14 @@ function reloadPage(){
 --fontScale:1;
 --fontFamily:"Finlandica","Poppins","Arial";
 }
+
 *{
     box-sizing:border-box;
-    margin:0;
-    padding:0;
-    }#app{
+    margin:0px;
+    padding:0px;
+}
+
+#app{
 --h:var(--hue,200);
 --s:var(--sat,50%);
 --l:calc(var(--light,15%) * var(--lightFactor,1));
@@ -105,7 +67,7 @@ top:0px;
 min-height:2rem;
 margin-bottom:5em;
 .pathNavigator{
-    color:var(--colorAscent,aqua);
+    color:var(--ascentColor,aqua);
     padding:10px;
     margin-inline:5px;
     text-decoration:none;
@@ -118,6 +80,8 @@ margin-bottom:5em;
 }
 main{
 min-height:60vh;
+font-family:var(--fontFamily);
+font-size:var(--fontSize);
 p{
 margin:1em;
 }
@@ -128,16 +92,17 @@ color:var(--ascentColor,aqua);
 text-transform:uppercase;
 }
 }
-footer{
-// background-color:hsl(160,50%,10%);
-}}.container{
+.footer{
+background-color:hsl(160,50%,10%);
+}
+}.container{
     padding-inline:3em;
 }.folderLinks{
     display:inline-block;
     padding:10px;
     margin:10px;
     text-transform:uppercase;
-    color:white;
+    color:var(--ascentColor, white);
 }
 
 
@@ -151,6 +116,52 @@ footer{
 
 `
         loadscss(siteStyleSCSS)
+        //your app logic
+        append(app, "", "over") /* reset app */
+        append(app, gen(header, "header", "", 'header'));
+        append(header, gen(h3, 'heading','Lecture Server'))
+        var loc = window.location.href
+
+        var printLocation = loc.replaceAll('https://', "").replaceAll('http://', "")
+        append(header, gen(div, 'location', printLocation))
+
+
+        append("#location", "", 'over')
+        var path = window.location.protocol + "//"
+        printLocation.split("/").forEach(l => {
+            if (l.length > 0) {
+                path = path +"/"+ l
+                append("#location", gen(a, '', l, 'pathNavigator', path + "/"))
+                append("#location", gen(span, '', "  ", 'spacer'))
+
+            }
+
+        })
+        append(app, gen(main, "appmain", gen(h1,'FileBrowser',"Topics"), 'appmain container'));
+        append(app, gen(footer, "appfooter", "", 'footer'));
+        append(appmain, gen(section, "hero", "", "hero"))
+        // load(["./header.js", "./script.js", "./footer.js","./style.css"])// load js and css files
+        // append(hero, [gen(h1, "", "Hello GeneratorJs"), gen(p, "", "Yes, just Three functions for frontend."), gen(span, "", ["gen", "append", "load"]), gen(p, "", "And Three Optional functions."), gen(span, "", ["log", "getfile", "loadscss"])])        
+        getfile(window.location.href + "list.txt",filelist=>{filelist.split("\n").forEach(link => {
+                    var linkname = link.replaceAll("./", "").replaceAll("/", " / ")
+                    append(main, gen(a, "", linkname, 'folderLinks', link))
+                });
+
+
+
+                append(main,gen(button,"reload","Reload","reloadPage",{"onclick":"reloadPage()"}))
+})
+        
+        
+                
+function reloadPage(){
+    var url =window.location.href                
+    console.log(url)
+    window.location.href=url
+}
+
+
+       
         $$.init()
     </script>
 </body>
