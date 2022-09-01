@@ -1,0 +1,111 @@
+//some temp style in nested css/ scss format
+//@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
+:root {
+    --hue: 200;
+    --sat: 50%;
+    --light: 15%;
+    --hueAscent: 180;
+    --lightAscent: 80%;
+    --textColor: white;
+    --ascentColor: hsl(var(--hueAscent), calc(var(--sat) * 1.5), calc(var(--light) * 2));
+    --colorScheme: dark;
+    --testShadow: black;
+    --lightFactor: 1;
+    --fontScale: 1;
+    --fontFamily: "Finlandica", "Poppins", "Arial";
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0px;
+    padding: 0px;
+}
+
+#app {
+    --h: var(--hue, 200);
+    --s: var(--sat, 50%);
+    --l: calc(var(--light, 15%) * var(--lightFactor, 1));
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--textColor, white);
+    background-color: hsl(var(--h), var(--s), var(--l));
+    font-size: calc(1rem * var(--fontScale, 1));
+    font-family: var(--fontFamily), "arial", "sans";
+
+    h1 {
+        padding-block: 1em;
+    }
+
+    header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        --s: calc(var(--sat, 50%) * var(--lightFactor, 1) * 1.5);
+        --l: calc(var(--light, 15%) * var(--lightFactor, 1) * .5);
+        background-color: hsl(var(--h), var(--s), var(--l));
+        position: sticky;
+        top: 0px;
+        min-height: 60px;
+        padding:5px;
+
+        .pathNavigator {
+            color: var(--ascentColor, aqua);
+            padding: 5px;
+            margin: 5px;
+            text-decoration: none;
+            text-transform: uppercase;
+            background-color: rgb(255, 255, 255);
+            
+
+            &:before {
+                content: "/  "
+            }
+
+            &:hover {
+                background-color: rgb(249, 255, 166);
+
+            }
+        }
+    }
+
+    main {
+        min-height: 90vh;
+        font-family: var(--fontFamily);
+        font-size: var(--fontSize);
+
+        p {
+            margin: 1em;
+        }
+
+        span {
+            padding: 2em;
+            margin-right: 2em;
+            color: var(--ascentColor, aqua);
+            text-transform: uppercase;
+        }
+    }
+
+    .footer {
+        background-color: hsl(160, 50%, 10%);
+    }
+}
+
+.container {
+    padding-inline: 3em;
+}
+
+.folderLinks {
+    display: inline-block;
+    padding: 10px;
+    margin: 10px;
+    text-transform: uppercase;
+    color: var(--ascentColor, white);
+}
+
+
+.reloadPage {
+    display: block;
+    padding: 5px;
+    cursor: pointer
+}
