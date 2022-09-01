@@ -7,7 +7,7 @@ getfile("/style.scss",(siteStyleSCSS)=>{loadscss(siteStyleSCSS)})
 //your app logic
 append(app, "", "over") /* reset app */
 append(app, gen(header, "header", "", 'header'));
-append(header, gen(h3, 'heading','Lecture Server'))
+append(header, gen(h3, 'heading','Lecture Server','title'))
 var loc = window.location.href
 
 var printLocation = loc.replaceAll('https://', "").replaceAll('http://', "")

@@ -19,6 +19,7 @@
     box-sizing: border-box;
     margin: 0px;
     padding: 0px;
+    font-size:var(--fontSize);
 }
 
 #app {
@@ -39,6 +40,7 @@
 
     header {
         display: flex;
+        flex-wrap: wrap;
         justify-content: space-between;
         align-items: center;
         --s: calc(var(--sat, 50%) * var(--lightFactor, 1) * 1.5);
@@ -49,6 +51,10 @@
         min-height: 60px;
         padding:5px;
 
+
+        .title{
+            padding:5px;
+        }
         .pathNavigator {
             color: var(--ascentColor, aqua);
             padding: 5px;
@@ -58,14 +64,18 @@
             background-color: rgb(255, 255, 255);
             
 
-            &:before {
-                content: "/  "
+            &:after {
+                content: " /"
             }
 
             &:hover {
                 background-color: rgb(249, 255, 166);
-
             }
+
+            &:first-of-type{
+                    content: "";
+            }
+ 
         }
     }
 
