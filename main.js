@@ -25,14 +25,19 @@ printLocation.split("/").forEach(l => {
     }
 
 })
-append(app, gen(main, "appmain", gen(h1,'FileBrowser',"Topics"), 'appmain container'));
+append(app, gen(main, "appmain", gen(h1,'FileBrowser',"Directory List"), 'appmain container'));
 append(app, gen(footer, "appfooter", "", 'footer'));
 append(appmain, gen(section, "hero", "", "hero"))
 // load(["./header.js", "./script.js", "./footer.js","./style.css"])// load js and css files
 // append(hero, [gen(h1, "", "Hello GeneratorJs"), gen(p, "", "Yes, just Three functions for frontend."), gen(span, "", ["gen", "append", "load"]), gen(p, "", "And Three Optional functions."), gen(span, "", ["log", "getfile", "loadscss"])])        
+
+append(main,gen(div,'directoryGrid',"","dirGrid"))
+
 getfile(window.location.href + "list.txt",filelist=>{filelist.split("\n").forEach(link => {
             var linkname = link.replaceAll("./", "").replaceAll("/", " / ")
-            append(main, gen(a, "", linkname, 'folderLinks', link))
+            if (link.length>0 && link!='./'){
+            append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
+            }
         });
 
 

@@ -20,6 +20,7 @@
     margin: 0px;
     padding: 0px;
     font-size:var(--fontSize);
+    transition: all 200ms ease-in-out;
 }
 
 #app {
@@ -105,17 +106,67 @@
     padding-inline: 3em;
 }
 
+.dirGrid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
+    padding:5px;
+    grid-gap:5px;
+}
 .folderLinks {
+
+    position:relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-self: flex-end;
     display: inline-block;
     padding: 10px;
     margin: 10px;
     text-transform: uppercase;
-    color: var(--ascentColor, white);
+    color: var(--textColor, white);
+    font-size: .7em;
+    border-radius: 3px;
+    text-decoration: none;
+    width:100px;
+    height: 120px;
+    margin-top: auto;
+    &:hover{
+        box-shadow: 1px 1px 2px white;
+        background-color: hsla(0, 0%, 100%, 0.404);
+  
+    }
+
+    &:before,&:after{
+        content:"";
+        width:55px;
+        height:55px;
+        border-radius:5px;
+        position:absolute;
+        bottom:0%;
+        left:0;
+        margin: 5px;
+    }
+
+    
+    &:before{
+        background-color: rgb(19, 179, 179);
+        transform:skewY(0deg);
+        width:60px;
+        
+    }
+     
+    &:after{
+        background-color: rgb(76, 236, 236);
+        transform:skewY(-20deg) translateY(-10px);
+
+    }
 }
 
 
 .reloadPage {
     display: block;
     padding: 5px;
+    margin: 10px;
     cursor: pointer
 }
