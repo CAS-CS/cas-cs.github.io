@@ -51,6 +51,7 @@
         top: 0px;
         min-height: 60px;
         padding:5px;
+        z-index: 100;
 
 
         .title{
@@ -111,6 +112,7 @@
     grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
     padding:5px;
     grid-gap:5px;
+    z-index: inherit;
 }
 .folderLinks {
 
@@ -131,6 +133,7 @@
     width:100px;
     height: 120px;
     margin-top: auto;
+    z-index: inherit;
     &:hover{
         box-shadow: 1px 1px 2px white;
         background-color: hsla(0, 0%, 100%, 0.404);

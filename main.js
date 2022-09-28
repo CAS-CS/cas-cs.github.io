@@ -48,6 +48,8 @@ getfile(window.location.href + "list.txt",filelist=>{filelist.split("\n").forEac
 
         
 function reloadPage(){
+sessionStorage.clear()
+localStorage.clear()    
 var url =window.location.href                
 console.log(url)
 window.location.href=url
