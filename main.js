@@ -33,12 +33,23 @@ append(appmain, gen(section, "hero", "", "hero"))
 
 append(main, gen(div, 'directoryGrid', "", "dirGrid"))
 
-getfile(window.location.href + "list.txt", filelist => {
+var currentLocation=window.location.href
+// fileListUrl=currentLocation+"/"+'list.txt'
+fileListUrl=currentLocation+'list.txt'
+// log(fileListUrl)
+getfile( fileListUrl, filelist => {
+    
     filelist.split("\n").sort().forEach(link => {
+        link=link.replaceAll("\t","").replaceAll(" ","")
+
         if (link[2] != '.') {
             var linkname = link.replaceAll("./", "").replaceAll("/", " / ")
             if (link.length > 0 && link != './') {
-                append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
+                var redirect=currentLocation+link.replaceAll('./','')+"/"
+                redirect=redirect.replaceAll(" ","")
+                // log(redirect)
+                // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
+                append(directoryGrid, gen(a, "", linkname, 'folderLinks', redirect))
             }
         }
     });
