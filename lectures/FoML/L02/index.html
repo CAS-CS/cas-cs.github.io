@@ -27,8 +27,8 @@
         }
         
         .inverse {
-            background: rgb(11, 24, 14);
-            color: hsla(0, 0%, 100%, 0.918);
+            background: hsl(163, 47%, 6%);
+            color: rgb(224, 224, 224);
         }
         
         img {
@@ -36,17 +36,16 @@
             max-height: 60vh;
             max-width: 80vw;
         }
-        
-        img:hover {
-            height: 50vmin;
-            position: absolute;
-            top: 1vmin;
-            left: 1vmin;
-        }
+        /* img:hover {
+      height: 50vmin;
+      position: absolute;
+      top: 1vmin;
+      left: 1vmin;
+    } */
         
         a {
             text-decoration: none;
-            color: hsl(189, 100%, 50%);
+            color: aqua;
         }
         
         a:hover {
@@ -64,317 +63,267 @@ layout: true
 
 class: center, middle
 
-# ADVANCED COMPUTER NETWORKS
-AND COMMUNICATION (**ACNC. 
-**Course code : MCSC-103 
-### Lecture 1
-**Introduction**
+#  Foundation of Machine Learning (FoML) 
+#### Course code : MMLC-202 
+### Lecture 2
+#### Introduction 
 
 by
 ### [Dr. Prateek Raj Gautam](mailto:prateekrajgautam@gmail.com)
----
-# Course Outlines
-
-1. Telecommunications history;
-2. Telecommunications media (conducted and radiated);
-3. Transmission characteristics (including an introduction to coding and modulation techniques);
-4. Error characteristics, detection, and correction;
-5. Local and wide area networking applications,
-hardware, and software; 
-6. The OSI model;
-7. Industry standards;
-8. Topologies;
-9. Protocols;
-10. Internetworking devices;
-11. Communications management;
-12. Security and recovery;
-13. Information system applications; and
-14. The selection of telecommunications and networking systems communication security, 
-
----
-# Other important topics
-
-* Digital signatures, authentication protocols. 
-
-* WLAN, Mobile IP. SNMP (V1 and V2)-Organizational model-System Overview, 
-
-* The information model, communication model-Functional model, 
-
-* SNMP proxy server. 
-
-* Broadband networks and services, ATM Technology, Configuration management, Fault management, performance management. 
-
-* Network Management Tools, Network Statistics Measurement Systems
-
-* WebBased Management, XML Based Network Management
-
----
-
-# LAB Sessions
-
-1. Programming protocol USING C/C++, PYTHON, and MATLAB and practicing theory.
-
-2. Cisco Packet Tracer / GNS3
-
-
----
-
-# What is communication ?
-
 
 
 
 
 ---
 
-# What is communication ?
+# What is Machine Learning ?
 
-## Difference between communication and Data Communication or Computer Network Communication
+![AI ML and DL](./01.png)
+---
+
+# Artificial Intelligence
+
+### Artificial Intelligence is basically the mechanism to incorporate human intelligence into machines through a set of rules(algorithm). 
+
+AI is a combination of two words: **“Artificial”** meaning something made by humans or non-natural things and **“Intelligence”** meaning the ability to understand or think accordingly. 
+
+> Another definition could be that “AI is basically the study of training your machine(computers) to mimic a human brain and it’s thinking capabilities”. 
+
+*AI focuses on 3 major aspects(skills): * **learning, reasoning and self-correction** * to obtain maximum efficiency possible.*
+
+---
+
+
+
+
+
+
+
+
+# Machine Learning
+
+Machine Learning is basically the study/process which provides the system(computer) to **learn automatically** on its own **through experiences** it had and improve accordingly **without being explicitly programmed**. 
+
+ML is an application or subset of AI. 
+
+ML focuses on the development of programs so that it can access data to use it for themselves. The entire process makes observations on data to identify the possible patterns being formed and make better future decisions as per the examples provided to them. 
+
+#### The major aim of ML is to allow the systems to learn by themselves through the experience without any kind of human intervention or assistance.
+---
+
+
+
+
+
+
+
+
+
+
+# Deep Learning
+
+Deep Learning is basically a sub-part of the broader family of Machine Learning which makes use of Neural Networks(similar to the neurons working in our brain) to mimic human brain-like behavior. 
+
+DL algorithms focus on information processing patterns mechanism to possibly **identify the patterns just like our human brain** does and classifies the information accordingly. 
+
+DL works on larger sets of data when compared to ML and **prediction mechanism is self-administered by machines**.
+---
+
+
+
+# What is Learning
+
+
+Any agent is said to learn from **experience** with respect to some class of tasks, and a performance measure *(P)*, 
+if [the learner's] performance at tasks in the class, as measured by *P*, improves with experience.
+
+## EXPERIENCE
+
+## PERFORMANCE
+
+## TASK
+
+
+---
+
+
+# What is ML? 
+
+
+### It is basically a process of training a piece of software called an algorithm or model, to make useful predictions from data. 
+
+
+---
+# Types of machine learning problems
+
+On basis of the nature of the learning **“signal”** or **“feedback”** available to a learning system
+
+### Supervised Learning
+
+### Unsupervised Learning
+
+##### Reinforcement Learning
+
+---
+#    ***Supervised learning***:
+
+The model or algorithm is presented with example inputs and their desired outputs and then finding patterns and connections between the input and the output. 
+The goal is to learn a general rule that maps inputs to outputs. 
+The training process continues until the model achieves the desired level of accuracy on the training data. 
+
+Some real-life examples are:
+#### Image Classification:
+You train with images/labels. Then in the future you give a new image expecting that the computer will recognize the new object.
+#### Market Prediction/Regression:
+You train the computer with historical market data and ask the computer to predict the new price in the future.
 
 
 
 ---
-# Components of Data Communication 
----
-# Components of Data Communication 
-**Message : ** 
-A message is a piece of information that is to be transmitted from one person to another. It could be a text file, an audio file, a video file, etc. In our case its commonly in binary format.
----
-# Components of Data Communication 
-**Message : ** 
-A message is a piece of information that is to be transmitted from one person to another. It could be a text file, an audio file, a video file, etc. In our case its commonly in binary format.
 
-**Sender : ** 
-It is simply a device that sends data messages. It can be a computer, mobile, telephone, laptop, video camera, or workstation, etc.
+# Unsupervised learning: 
 
----
-# Components of Data Communication 
-**Message : ** 
-A message is a piece of information that is to be transmitted from one person to another. It could be a text file, an audio file, a video file, etc. In our case its commonly in binary format.
+No labels are given to the learning algorithm, leaving it on its own to find structure in its input. 
+It is used for clustering population in different groups. 
+Unsupervised learning can be a goal in itself (discovering hidden patterns in data).
 
-**Sender : ** 
-It is simply a device that sends data messages. It can be a computer, mobile, telephone, laptop, video camera, or workstation, etc.
-
-**Receiver : ** 
-It is a device that receives messages. It can be a computer, telephone mobile, workstation, etc.
+#### Clustering:
+You ask the computer to separate similar data into clusters, this is essential in research and science.
+#### High Dimension Visualization:
+Use the computer to help us visualize high dimension data.
+### Generative Models:
+After a model captures the probability distribution of your input data, it will be able to generate more data. This can be very useful to make your classifier more robust.
 
 ---
-# Components of Data Communication 
-**Message : ** 
-A message is a piece of information that is to be transmitted from one person to another. It could be a text file, an audio file, a video file, etc. In our case its commonly in binary format.
+# Example
 
-**Sender : ** 
-It is simply a device that sends data messages. It can be a computer, mobile, telephone, laptop, video camera, or workstation, etc.
-
-**Receiver : ** 
-It is a device that receives messages. It can be a computer, telephone mobile, workstation, etc.
-
-**Transmission Medium / Communication Channels : ** 
-Communication channels are the medium that connect two or more workstations. Workstations can be connected by either wired media or wireless media.
+A simple diagram which clears the concept of supervised and unsupervised learning is shown below:  
+![](https://media.geeksforgeeks.org/wp-content/uploads/supervised_learning-.png)![](https://media.geeksforgeeks.org/wp-content/uploads/unsupervised_learning-.png)   
+the data in supervised learning is labelled, where as data in unsupervised learning is unlabelled.
 
 ---
-# Components of Data Communication 
-**Message : ** 
-A message is a piece of information that is to be transmitted from one person to another. It could be a text file, an audio file, a video file, etc. In our case its commonly in binary format.
+## Semi-supervised learning: 
 
-**Sender : ** 
-It is simply a device that sends data messages. It can be a computer, mobile, telephone, laptop, video camera, or workstation, etc.
+Problems where you have a large amount of input data and only some of the data is labeled, are called semi-supervised learning problems. 
 
-**Receiver : ** 
-It is a device that receives messages. It can be a computer, telephone mobile, workstation, etc.
+ These problems sit in between both supervised and unsupervised learning. 
+ > a photo archive where only some of the images are labeled, (e.g. dog, cat, person) and the majority are unlabeled.
 
-**Transmission Medium / Communication Channels : ** 
-Communication channels are the medium that connect two or more workstations. Workstations can be connected by either wired media or wireless media.
+---
+## Reinforcement learning: 
+A computer program interacts with a dynamic environment in which it must perform a certain goal (such as driving a vehicle or playing a game against an opponent). The program is provided feedback in terms of rewards and punishments as it navigates its problem space.
 
-**Protocol (Set of rules) : ** 
-When someone sends the data (The sender), it should be understandable to the receiver also otherwise it is meaningless. 
+![](https://media.geeksforgeeks.org/wp-content/uploads/20200212121948/reinforcement_learning-11.png) 
 
 
 ---
-# Two Important Protocols in Computer Networks (CN)
-
-###  TCP (Transmission Control Protocol): 
-1. Dividing messages into packets on the source computer and reassembling the received packet at the destination 
-1. It adds source and destination address to the packets.
-1. It adds sequence number in which the message data should be re-assembled
-1. It ensures correct data delivery (acknowledgements and error correction)
+# Supervised learning:
+Two most common use cases of supervised learning:
+## Classification
+## Regression
 
 ---
-# Two Important Protocols in Computer Networks (CN)
+# Classification: 
 
-###  TCP (Transmission Control Protocol): 
-1. Dividing messages into packets on the source computer and reassembling the received packet at the destination 
-1. It adds source and destination address to the packets.
-1. It adds sequence number in which the message data should be re-assembled
-1. It ensures correct data delivery (acknowledgements and error correction)
+Inputs are divided into two or more classes, and the learner must produce a model that assigns unseen inputs to one or more (multi-label classification) of these classes and predicting whether or not something belongs to a particular class. 
 
-### IP (Internet Protocol): 
-Well! IP is responsible for handling the address of the destination computer so that each packet is sent to its proper destination.  
+This is typically tackled in a supervised way. 
+
+Classification models can be categorized in two groups:
+> Binary classification and Multiclass Classification. 
+
+*Spam filtering is an example of binary classification, where the inputs are email (or other) messages and the classes are “spam” and “not spam”.*
+
 
 ---
 
-# Type of data communication
+# Regression: 
 
----
+It is also a **supervised** learning problem, that predicts a numeric value and outputs are continuous rather than discrete. 
 
-# Type of data communication
+For example, predicting the stock prices using historical data.
 
-1. **Simplex Communication:** 
-one-way communication, unidirectional communication 
-  
-  * one device only receives and another device only sends data and devices uses their entire capacity in transmission.  
-  > For example, IoT, entering data using a keyboard, listing music using a speaker, etc.
-
----
-
-# Type of data communication
-
-1. **Simplex Communication:** 
-one-way communication, unidirectional communication 
-  * one device only receives and another device only sends data and devices uses their entire capacity in transmission.  
-  > For example, IoT, entering data using a keyboard, listing music using a speaker, etc.
-
-1. **Half Duplex communication: ** 
-  * two-way communication, bidirectional communication 
-  * both the devices can send and receive data but not at the same time. 
-  * When one device is sending data then another device is only receiving and vice-versa. 
-  > For example, walkie-talkie. 
-
----
-
-# Type of data communication
-  
-  1. **Simplex Communication:** 
-  one-way communication, unidirectional communication 
-    * one device only receives and another device only sends data and devices uses their entire capacity in transmission.  
-    > For example, IoT, entering data using a keyboard, listing music using a speaker, etc.
-  
-  1. **Half Duplex communication: ** 
-    * two-way communication, bidirectional communication 
-    * both the devices can send and receive data but not at the same time. 
-    * When one device is sending data then another device is only receiving and vice-versa. 
-    > For example, walkie-talkie. 
-
-1. **Full-duplex communication:** 
-  * two-way communication, bidirectional communication
-  * both the devices can send and receive data at the same time. 
-  > For example, mobile phones, landlines, etc.
+Classification and regression on two different datasets : 
+![](https://media.geeksforgeeks.org/wp-content/uploads/classification_regression.png)
 
 
 ---
-# Communication Channels
+# Most common Unsupervised learning are:
 
-* Communication channels are the medium that connects two or more workstations. 
-
-* Workstations can be connected by either wired media or wireless media. 
-
-* It is also known as a transmission medium. 
-
-* The transmission medium or channel is a link that carries messages between two or more devices.
-
-* There are two types of Channels
-      1. Guided media transmission
-      1. Unguided media transmission
+### Clustering: 
+Here, a set of inputs is to be divided into groups. Unlike in classification, the groups are not known beforehand, making this typically an unsupervised task. 
+### Density estimation: 
+The task is to find the distribution of inputs in some space.
+### Dimensionality reduction: 
+It simplifies inputs by mapping them into a lower-dimensional space. *Topic modeling is a related problem, where a program is given a list of human language documents and is tasked to find out which documents cover similar topics.*
 
 ---
-## Guided media transmission
+# Some commonly used machine learning algorithms are 
 
-In this transmission medium, the physical link is created using wires or cables between two or more computers or devices, and then the data is transmitted using these cables in terms of signals.
-
-1. Twisted pair cable
-2. Coaxial Cable
-3. Optical fibers
+1. Linear Regression, 
+1. Logistic Regression, 
+1. Decision Tree, 
+1. SVM(Support vector machines), 
+1. Naive Bayes, 
+1. KNN(K nearest neighbors), 
+1. K-Means, 
+1. Random Forest, etc.
 ---
-## Guided media transmission
 
-1. Twisted pair cable
+# Terminologies of Machine Learning
 
-> In a twisted-pair cable, two identical wires are wrapped together in a double helix. 
-The twisting of the wire reduces the crosstalk (interferance from signal in different cable) which can cause errors in communication. 
-
-### Types 
-  1. Unshielded Twisted Pair (UTP)
-  1. Shielded Twisted Pair (STP)
-  > *Shielding protects from external interference however increases cost.*
-
-
+### 1 Model
+A model is a **specific representation** learned from data by applying some machine learning algorithm. A model is also called **hypothesis**.
 ---
-## Guided media transmission
 
-2. Coaxial Cable
-      * It consists of a solid wire core that is surrounded by one or more foil or wire shields. 
-
-      * The inner core of the coaxial cable carries the signal and the outer shield provides the ground. 
-
-      * television signals, security systems. 
-
-      * Data transmission of this cable is better but expensive as compared to twisted pair.
-
-
+# Terminologies of Machine Learning
+### 2 Feature
+A feature is an individual measurable property of our data. A set of numeric features can be conveniently described by a **feature vector**. Feature vectors are fed as input to the model. For example, in order to predict a fruit, there may be features like color, smell, taste, **etc.** **Note:** Choosing informative, discriminating and independent features is a crucial step for effective algorithms. We generally employ a **feature extractor** to extract the relevant features from the raw data.
 ---
-## Guided media transmission
 
-
-3. Optical fibers
-  1. Core: Core is the piece through which light travels. It is generally created using glass or plastic.
-
-  1. Cladding: It is the covering of the core and reflects the light back to the core.
-
-  1. Sheath: It is the protective covering that protects fiber cable from the environment.
-
-
+# Terminologies of Machine Learning
+### 3 Target (Label)
+A target variable or label is the value to be predicted by our model. For the fruit example discussed in the features section, the label with each set of input would be the name of the fruit like apple, orange, banana, etc.
 ---
-# Unguided Media
 
-The signals are propagated from one device to another device wirelessly
+# Terminologies of Machine Learning
+### 4 Training 
+The idea is to give a set of inputs(features) and it’s expected outputs(labels), so after training, we will have a model (hypothesis) that will then map new data to one of the categories trained on.
 ---
-# Unguided Media
 
-### 1. Microwave: 
-
-Microwave signals are just like radio and television signals. 
-
-It is used in long-distance communication. 
-
-Microwave transmission consists of a transmitter, receiver, and **atmosphere**. 
-
-In microwave communication, there are parabolic antennas that are mounted on the towers to send a beam to another antenna. The higher the tower, the greater the range.
+# Terminologies of Machine Learning
+### 5 Prediction
+Once our model is ready, it can be fed a set of inputs to which it will provide a predicted output(label). But make sure if the machine performs well on unseen data, then only we can say the machine performs well.
 ---
-# Unguided Media
+# ML Training and Prediction
 
-### 2. Radio wave: 
-When communication is carried out by radio frequencies, then it is termed radio waves transmission. 
+![](https://media.geeksforgeeks.org/wp-content/uploads/training.png)
 
-It offers mobility. It is consists of the transmitter and the receiver. 
 
-Both use antennas to radiate and capture the radio signal.
----
-# Unguided Media
 
-### 3. Infrared: 
-It is short-distance communication and can pass through any object. 
-> It is generally used in TV remotes, wireless mouse, etc.
 
----
-# Study Assignment:
 
-## Difference between Radio waves and Microwaves and their application ?
+
+
+
+
+
 
 ---
 # Reference
 
-1. [Data Communications and Networking by Forouzan]()
+1. [Machine Learning in Action  by Peter Harrington]()
 
 
 
 Do send feedback and corrections at 
 [prateek@cas.res.in](mailto:prateek@cas.res.in)
 .image[
-![https://t.me/+MFSNNgWeVd4yYzY1](./../telegramGroup.jpg)
+![https://t.me/+eWh-bLOgaGdkZTE9](../
+telegramGroup.png)
 ]
 
-[https://t.me/+MFSNNgWeVd4yYzY1](https://t.me/+MFSNNgWeVd4yYzY1)
-
+[https://t.me/+eWh-bLOgaGdkZTE9](https://t.me/+eWh-bLOgaGdkZTE9)
 
 
 
