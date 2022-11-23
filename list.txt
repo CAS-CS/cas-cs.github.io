@@ -1,0 +1,4 @@
+./lectures
+./lectures/ACNC
+./lectures/FoML
+./lectures/RM
