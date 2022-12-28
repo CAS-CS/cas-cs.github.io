@@ -1,4 +1,4 @@
 ./lectures
+./lectures/ACNC
 ./lectures/FoML
 ./lectures/RM
-./lectures/ACNC
