@@ -1,0 +1,17 @@
+# Table of contents
+# Learn more at https://jupyterbook.org/customize/toc.html
+
+format: jb-book
+root: intro
+chapters:
+- file: L01_L02-Lecture-1.md
+- file: L03-Lecture-3.md
+- file: L04-Lecture-4.md
+- file: L05-Lecture-5.md
+- file: L06-Introduction-to-LaTeX.md
+- file: L07-Introduction-to-LaTeX.md
+- file: L08-Introduction-to-LaTeX.md
+- file: L09_L10-Introduction-to-LaTeX.md
+- file: L13-Introduction-to-Research-Process.md
+- file: L15-Descriptive-Statistics.md
+- file: L18-Hypothesis-and-Hypothesis-testing.md
