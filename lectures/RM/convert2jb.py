@@ -18,7 +18,7 @@ titleSearch = re.compile(titlePattern)
 
 
 def createmd(path, filename, content):
-    filePath = os.path.join(path, filename)
+    filePath = os.path.join(path, filename + '.md')
 
     mainPattern = r"""(Dr\. Prateek Raj Gautam|Gautam)(.*)(\# References|Do send feedback)"""
     mainp = re.compile(mainPattern, flags=re.I | re.M | re.S)
@@ -58,7 +58,7 @@ for dir in dirList:
                         title = titleSearch.search(md).group(2)
                         chTitle = dir + " "+title
                         print(f"Title: {chTitle}")
-                        mdFilename = chTitle.replace(" ", "-")+'.md'
+                        mdFilename = chTitle.replace(" ", "-")
                         with open(indexFilePath, 'a') as f:
                             f.write(f"\n- file: {mdFilename}")
                         createmd(outputPath, mdFilename, md)
