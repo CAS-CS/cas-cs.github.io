@@ -9,10 +9,11 @@
         @import url(https://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
         @import url(https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic);
         @import url(https://fonts.googleapis.com/css?family=Ubuntu+Mono:400,700,400italic);
+
         body {
             font-family: 'Droid Serif';
         }
-        
+
         h1,
         h2,
         h3 {
@@ -20,35 +21,36 @@
             font-weight: normal;
             font-size: 1rem;
         }
-        
+
         .remark-code,
         .remark-inline-code {
             font-family: 'Ubuntu Mono';
         }
-        
+
         .inverse {
             background: hsl(163, 47%, 6%);
             color: rgb(224, 224, 224);
         }
-        
+
         img {
             /* max-height: 20vmin; */
             max-height: 60vh;
             max-width: 80vw;
             filter: drop-shadow(1px 1px 2px #FFFFFF);
         }
+
         /* img:hover {
       height: 50vmin;
       position: absolute;
       top: 1vmin;
       left: 1vmin;
     } */
-        
+
         a {
             text-decoration: none;
             color: aqua;
         }
-        
+
         a:hover {
             text-decoration: underline;
         }
@@ -206,7 +208,13 @@ Entropy(s)= -P(yes)log2 P(yes) - P(no) log2 P(no)
 *   Gini index can be calculated using the below formula:
 ```
 Gini Index= 1- sum(j*squr(Pj))
+
 ```
+
+
+$Gini Index= 1-\sum_j{P_j}^2)$
+
+One minus sum of squares of probabilities
 ---
 # Pruning: Getting an Optimal Decision tree
 -----------------------------------------
