@@ -3,7 +3,8 @@ window.$$ = GeneratorWebHelper()
 $.init()
 
 //STYLE
-getfile("/style.scss", (siteStyleSCSS) => { loadscss(siteStyleSCSS) })
+
+load('/style.scss')
 //your app logic
 append(app, "", "over") /* reset app */
 append(app, gen(header, "header", "", 'header'));
@@ -33,20 +34,20 @@ append(appmain, gen(section, "hero", "", "hero"))
 
 append(main, gen(div, 'directoryGrid', "", "dirGrid"))
 
-var currentLocation=window.location.href
+var currentLocation = window.location.href
 // fileListUrl=currentLocation+"/"+'list.txt'
-fileListUrl=currentLocation+'list.txt'
+fileListUrl = currentLocation + 'list.txt'
 // log(fileListUrl)
-getfile( fileListUrl, filelist => {
-    
+getfile(fileListUrl, filelist => {
+
     filelist.split("\n").sort().forEach(link => {
-        link=link.replaceAll("\t","").replaceAll(" ","")
+        link = link.replaceAll("\t", "").replaceAll(" ", "")
 
         if (link[2] != '.') {
             var linkname = link.replaceAll("./", "").replaceAll("/", " / ")
             if (link.length > 0 && link != './') {
-                var redirect=currentLocation+link.replaceAll('./','')+"/"
-                redirect=redirect.replaceAll(" ","")
+                var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                redirect = redirect.replaceAll(" ", "")
                 // log(redirect)
                 // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
                 append(directoryGrid, gen(a, "", linkname, 'folderLinks', redirect))
