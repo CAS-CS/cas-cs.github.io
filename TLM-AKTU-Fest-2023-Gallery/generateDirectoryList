@@ -1,0 +1,17 @@
+#!/bin/bash
+
+echo "" > listDir.txt
+listDir=$(find ./* -maxdepth 1 -name "*" -type d)
+#echo "$listDir"
+echo $listDir >> listDir.txt
+
+
+for folder in $(listDir);
+do
+echo "doing"
+done
+"echo "" > listFiles.txt
+find ./ | grep '**.png' >> listFiles.txt
+"
+
+find ./ -maxdepth 1 -name "*" -type d > list.txt

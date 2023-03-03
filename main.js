@@ -41,13 +41,13 @@ fileListUrl = currentLocation + 'list.txt'
 getfile(fileListUrl, filelist => {
 
     filelist.split("\n").sort().forEach(link => {
-        link = link.replaceAll("\t", "").replaceAll(" ", "")
+        link = link.replaceAll("\t", "")
 
         if (link[2] != '.') {
-            var linkname = link.replaceAll("./", "").replaceAll("/", " / ")
+            var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
             if (link.length > 0 && link != './') {
                 var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                redirect = redirect.replaceAll(" ", "")
+                // redirect = redirect.replaceAll(" ", "")
                 // log(redirect)
                 // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
                 append(directoryGrid, gen(a, "", linkname, 'folderLinks', redirect))
@@ -73,3 +73,9 @@ function reloadPage() {
 
 
 $$.init()
+if (window.location.href.includes("Gallery")) {
+    // log("gallery")
+    setTimeout(() => {
+        load("/gallery.js")
+    }, 1000)
+}

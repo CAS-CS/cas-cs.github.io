@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "" > listFiles.txt
+find ./ | grep '**.png' >> listFiles.txt
+find ./ | grep '**.jpg' >> listFiles.txt
+

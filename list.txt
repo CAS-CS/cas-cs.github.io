@@ -1,4 +1,7 @@
+./
+./Previous Question Papers
+./TLM-AKTU-Fest-2023-Gallery
 ./lectures
-./lectures/FoML
-./lectures/RM
-./lectures/ACNC
+./.dist
+./Syllabus
+./.git
