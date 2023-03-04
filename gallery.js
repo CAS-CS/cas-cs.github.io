@@ -33,25 +33,29 @@ getfile(subGalleryUrllist, f => {
             )
             var FileListURL = folderUrl + 'listFiles.txt'
             // log(FileListURL)
-            var fileNames = getfile(FileListURL).split("\n").sort()
-            fileNames.forEach(fileName => {
-                if (fileName.length > 3) {
-                    fileName = fileName.replaceAll("./", "")
-                    filenameUrl = folderUrl + fileName
-                    append(`#${sectionName}`,
-                        gen(a, '',
-                            gen(img, "", fileName, "gallery-img",
-                                {
-                                    "src": filenameUrl,
-                                    "loading": "lazy",
-                                    "title": fileName,
-                                    "onclick": "openImage(this)"
-                                }
-                            )
-                            , "imagelink", { "href": filenameUrl, "target": "_blank", "download": "" })
-                    )
-                }
+            getfile(FileListURL, f => {
+                var fileNames = f.split("\n").sort()
+                fileNames.forEach(fileName => {
+                    if (fileName.length > 3) {
+                        fileName = fileName.replaceAll("./", "")
+                        filenameUrl = folderUrl + fileName
+                        append(`#${sectionName}`,
+                            gen(a, '',
+                                gen(img, "", fileName, "gallery-img",
+                                    {
+                                        "src": filenameUrl,
+                                        "loading": "lazy",
+                                        "title": fileName,
+                                        "onclick": "openImage(this)"
+                                    }
+                                )
+                                , "imagelink", { "href": filenameUrl, "target": "_blank", "download": "" })
+                        )
+                    }
+                })
             })
+
+
 
         }
         // }
