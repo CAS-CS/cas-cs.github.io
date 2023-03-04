@@ -98,6 +98,10 @@ var imagestyle = `
     &:hover{
         overflow: visible;
     }
+    
+    &:focus{
+        overflow: visible;
+    }
 
 }
 
@@ -112,6 +116,11 @@ var imagestyle = `
 
         border:5px solid rgba(255,255,255,.5);
      }
+     &:focus{
+        filter: grayscale(0%) brightness(1.2);
+
+       border:5px solid rgba(255,255,255,.5);
+    }
      &:nth-of-type(1){
         overflow: visible;
      }
