@@ -1,58 +1,64 @@
 
 append(main, gen(div, 'gallery', gen(h1, "", "Gallery"), 'section,gallery'), "over")
+
+
 var currentLocation = window.location.href
 var subGalleryUrllist = currentLocation + 'listDir.txt'
 // log(subGalleryUrllist)
-var folders = getfile(subGalleryUrllist).split("\n").sort()
-
-folders.forEach(folder => {
-    // log(folder)
-    // if (folder.length > 2) {
-    folder = folder.replaceAll("\t", "")
-    var foldername = folder.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
-    var folderID = folder.replaceAll("./", "").replaceAll("/", " / ")
-    var folderUrl = currentLocation + folder.replaceAll('./', '') + "/"
-
-    if (folder.length > 0 && folder != './') {
-        var sectionName = folderID.replaceAll("./", "")
+getfile(subGalleryUrllist, f => {
+    folders = f.split("\n").sort()
+    folders.forEach(folder => {
+        // log(folder)
+        // if (folder.length > 2) {
+        folder = folder.replaceAll("\t", "")
+        var foldername = folder.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
+        var folderID = folder.replaceAll("./", "").replaceAll("/", " / ")
+        var folderUrl = currentLocation + folder.replaceAll('./', '') + "/"
 
         append(gallery,
-            gen(section,
-                sectionName,
-                gen(
-                    h1,
+            gen(
+                h1,
+                "",
+                foldername
+            ), 'over')
+        if (folder.length > 0 && folder != './') {
+            var sectionName = folderID.replaceAll("./", "")
+
+            append(gallery,
+                gen(section,
+                    sectionName,
                     "",
-                    foldername
-                ),
-                "sub-gallery"
-            )
-        )
-        var FileListURL = folderUrl + 'listFiles.txt'
-        // log(FileListURL)
-        var fileNames = getfile(FileListURL).split("\n").sort()
-        fileNames.forEach(fileName => {
-            if (fileName.length > 3) {
-                fileName = fileName.replaceAll("./", "")
-                filenameUrl = folderUrl + fileName
-                append(`#${sectionName}`,
-                    gen(a, '',
-                        gen(img, "", fileName, "gallery-img",
-                            {
-                                "src": filenameUrl,
-                                "loading": "lazy",
-                                "title": fileName,
-                                "onclick": "openImage(this)"
-                            }
-                        )
-                        , "imagelink", { "href": filenameUrl, "target": "_blank", "download": "" })
+                    "sub-gallery"
                 )
-            }
-        })
+            )
+            var FileListURL = folderUrl + 'listFiles.txt'
+            // log(FileListURL)
+            var fileNames = getfile(FileListURL).split("\n").sort()
+            fileNames.forEach(fileName => {
+                if (fileName.length > 3) {
+                    fileName = fileName.replaceAll("./", "")
+                    filenameUrl = folderUrl + fileName
+                    append(`#${sectionName}`,
+                        gen(a, '',
+                            gen(img, "", fileName, "gallery-img",
+                                {
+                                    "src": filenameUrl,
+                                    "loading": "lazy",
+                                    "title": fileName,
+                                    "onclick": "openImage(this)"
+                                }
+                            )
+                            , "imagelink", { "href": filenameUrl, "target": "_blank", "download": "" })
+                    )
+                }
+            })
 
-    }
-    // }
+        }
+        // }
 
+    })
 })
+
 
 
 function openImage(arg) {

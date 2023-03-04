@@ -1,7 +1,7 @@
 ./
-./Previous Question Papers
+./.Syllabus
 ./TLM-AKTU-Fest-2023-Gallery
+./.Previous Question Papers
 ./lectures
 ./.dist
-./Syllabus
 ./.git
