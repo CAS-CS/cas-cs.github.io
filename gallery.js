@@ -95,11 +95,7 @@ var imagestyle = `
     justify-content: start;
     align-items: center;
     overflow: hidden;
-    &:hover{
-        overflow: visible;
-    }
-    
-    &:focus{
+    &:hover,&:active,&:focus{
         overflow: visible;
     }
 
@@ -111,16 +107,13 @@ var imagestyle = `
     height: auto;
     object-fit: cover;
     border-radius: 5px;
-     &:hover{
-         filter: grayscale(0%) brightness(1.2);
 
-        border:5px solid rgba(255,255,255,.5);
-     }
-     &:focus{
+    &:hover,&:active,&:focus{
         filter: grayscale(0%) brightness(1.2);
 
        border:5px solid rgba(255,255,255,.5);
     }
+
      &:nth-of-type(1){
         overflow: visible;
      }
@@ -146,15 +139,11 @@ append("title", 'Gallery', "over")
 setTimeout(() => {
     var tempscss = `
     h1{
-        font-size: 4rem;
-        display:block;
-        color:var(--ascentColor);
-    }
-    h2{
         font-size: 3rem;
         display:block;
         color:var(--ascentColor);
     }
+
     `
     loadscss(tempscss)
     cssvar("--hue", "200")
