@@ -1,0 +1,13 @@
+CS First Year:
+  Faculty:
+    &F [
+      Dr. Prateek Raj Gautam,
+      Dr. Jagrati Singh,
+      Dr. Arun Kumar,
+      Guest Faculty,
+    ]
+
+  Subject:
+    - Name: CV
+      Code: MSCS
+      Faculty: ${CS First Year.F}

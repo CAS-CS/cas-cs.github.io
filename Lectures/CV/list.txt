@@ -1,0 +1,3 @@
+./
+./.dist
+./00 Syllabus.md
