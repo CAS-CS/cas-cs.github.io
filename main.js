@@ -104,6 +104,7 @@ function parseSlide(link) {
     }
     .slideroot{
         position:relative;
+        scroll-snap-type: y mandatory;
     }
     .slide{
         --padding:clamp(40px,15vw,300px);
@@ -116,7 +117,8 @@ function parseSlide(link) {
         background-color:hsla(0,0%,100%,.1);
         scroll-snap-align:start;
         scroll-padding-top:var(--headerHeight,20px);
-
+        scroll-snap-stop: always
+        scroll-behavior:smooth;
 
         h1,h2,h3,h4,h5,h6{
             color:hsl(var(--hueAscent,30),var(--satAscent,70%),var(--lightAscent,50%));)));
