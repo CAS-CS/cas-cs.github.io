@@ -98,9 +98,9 @@ We know that IoT relies heavily on sensors, especially in real-time. As these el
 
 ## There are two ways of building IoT:
 
-1.Form a separate internetwork including only physical objects.
+1. Form a separate internetwork including only physical objects.
 
-2.Make the Internet ever more expansive, but this requires hard-core technologies such as rigorous cloud computing and rapid big data storage (expensive).
+2. Make the Internet ever more expansive, but this requires hard-core technologies such as rigorous cloud computing and rapid big data storage (expensive).
 
 
 ---
@@ -233,22 +233,22 @@ IoT is currently found in four different popular domains:
 
 ## **Modern Applications:**
 
-1.Smart Grids and energy saving
-2.Smart cities
-3.Smart homes/Home automation
-4.Healthcare
-5.Earthquake detection
-6.Radiation detection/hazardous gas detection
-7.Smartphone detection
-8.Water flow monitoring
-9.Traffic monitoring
-10.Wearables
-11.Smart door lock protection system
-12.Robots and Drones
-13.Healthcare and Hospitals, Telemedicine applications
-14.Security
-15.Biochip Transponders(For animals in farms)
-16.Heart monitoring implants(Example Pacemaker, ECG real time tracking)
+1. Smart Grids and energy saving
+2. Smart cities
+3. Smart homes/Home automation
+4. Healthcare
+5. Earthquake detection
+6. Radiation detection/hazardous gas detection
+7. Smartphone detection
+8. Water flow monitoring
+9. Traffic monitoring
+10. Wearables
+11. Smart door lock protection system
+12. Robots and Drones
+13. Healthcare and Hospitals, Telemedicine applications
+14. Security
+15. Biochip Transponders(For animals in farms)
+16. Heart monitoring implants(Example Pacemaker, ECG real time tracking)
 
 ---
 
