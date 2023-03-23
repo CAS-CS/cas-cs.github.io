@@ -255,39 +255,39 @@ IoT is currently found in four different popular domains:
 
 ## Advantages of IoT :
 
-1.Improved efficiency and automation of tasks.
+1. Improved efficiency and automation of tasks.
 
-2.Increased convenience and accessibility of information.
+2. Increased convenience and accessibility of information.
 
-3.Better monitoring and control of devices and systems.
+3. Better monitoring and control of devices and systems.
 
-4.Greater ability to gather and analyze data.
+4. Greater ability to gather and analyze data.
 
-5.Improved decision-making.
+5. Improved decision-making.
 
-6.Cost savings.
+6. Cost savings.
 
 ---
 
 ## Disadvantages of IoT :
 
-1.Security concerns and potential for hacking or data breaches.
+1. Security concerns and potential for hacking or data breaches.
 
-2.Privacy issues related to the collection and use of personal data.
+2. Privacy issues related to the collection and use of personal data.
 
-3.Dependence on technology and potential for system failures.
+3. Dependence on technology and potential for system failures.
 
-4.Limited standardization and interoperability among devices.
+4. Limited standardization and interoperability among devices.
 
-5.Complexity and increased maintenance requirements.
+5. Complexity and increased maintenance requirements.
 
-6.High initial investment costs.
+6. High initial investment costs.
 
-7.Limited battery life on some devices.
+7. Limited battery life on some devices.
 
-8.Concerns about job displacement due to automation.
+8. Concerns about job displacement due to automation.
 
-9.Limited regulation and legal framework for IoT, which can lead to confusion and uncertainty.
+9. Limited regulation and legal framework for IoT, which can lead to confusion and uncertainty.
 
 
 ---

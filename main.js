@@ -80,15 +80,19 @@ function parseSlide(link) {
         append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
 
         append(appmain, gen(div, "slideroot", "", 'slideroot'), "replace")
+        append(slideroot, gen(aside, "slidenav", gen(h3, "", "Navigator"), 'slidenav'))
+        append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
+
         var html = md.split("---")
 
         for (var i = 0; i < html.length; i++) {
             var h = html[i]
             if (h.length > 0) {
                 parsemd(h, H => {
-                    append(slideroot, gen(section, "", H, "slide"))
+                    append(slideroot, gen(section, `slide${i}`, H, "slide"))
                     if (i != 0 && i != html.length - 1) {
                         append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
+                        append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", `#slide${i}`, { "onclick": `scrollToSlide(${i})` })))
                     }
                 })
             }
@@ -96,11 +100,13 @@ function parseSlide(link) {
 
     })
     loadscss(`
+    @import url('https://fonts.googleapis.com/css2?family=Cantarell@1&display=swap');
     :root{
         --hue:278;
         --light:10%;
         --sat:55%;
         --hueAscent:234;
+        --fontFamily:"Cantarell";
     }
     #app{
         position:relative;
@@ -123,6 +129,49 @@ function parseSlide(link) {
         overflow:scroll;
         padding:2em;
         background-color:hsla(0,0%,100%,.1);
+
+
+
+        .slidenav{
+            padding:10px;
+            margin-inline:auto;
+            z-index:1;
+            position:fixed;
+            left:0;
+            top:0;
+            min-width:10vw;
+            min-height:100vh;
+            
+            overflow:auto;
+            transition:opacity .1s ease-in-out;
+            opacity:0;
+            &:hover{   
+                background-color:hsla(0,0%,100%,.3);
+                display:block;
+            opacity:1;}
+
+            ul{
+                overflow-y:auto;
+            }
+            .slidenavlist{
+                
+                padding:10px;
+                list-style:none;
+                display:flex;
+                flex-direction:column;
+                overflow-y:auto;
+                .slideNavLink{
+                    display:inline-block;
+                    padding:10px;
+                    margin-block:10px;
+                    background:white;
+                    color:black;
+                    text-decoration:none;
+                    width:100%;
+                    box-shadow:0 0 10px 0 hsla(0,0%,0%,.2);
+                }
+            }
+        }
     }
     .slide{
         position:relative;
@@ -146,7 +195,7 @@ function parseSlide(link) {
             position:absolute;
             top:2em;
             right:5em;
-            font-size:calc(.5rem * var(--fontScale,1));
+            font-size:calc(.8rem * var(--fontScale,1));
             
 
         }
