@@ -31,4 +31,18 @@ $$E=mc^2$$
  
  \[E=mc^2\]
 
+---
+
+```python
+import os
+
+a=1
+print(a)
+```
+
+``` 
+some 
+othere language
+```
+
 
