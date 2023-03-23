@@ -29,10 +29,13 @@ It refers to the *interconnectedness* of physical devices, such as appliances an
 
 
 ---
+## Internet of Things (IoT)
 
 *Internet of Things (IoT)* is the networking of physical objects that contain electronics embedded within their architecture in order to communicate and sense interactions amongst each other or with respect to the external environment. 
 
-In the upcoming years, IoT-based technology will offer advanced levels of services and practically change the way people lead their daily lives. Advancements in medicine, power, gene therapies, agriculture, smart cities, and smart homes are just a very few of the categorical examples where IoT is strongly established.
+> In the upcoming years, IoT-based technology will offer advanced levels of services and practically change the way people lead their daily lives. 
+
+Advancements in medicine, power, gene therapies, agriculture, smart cities, and smart homes are just a very few of the categorical examples where IoT is strongly established.
 
 **IoT is network of interconnected computing devices which are embedded in everyday objects, enabling them to send and receive data.**
 
@@ -63,12 +66,15 @@ In the upcoming years, IoT-based technology will offer advanced levels of servic
 # Main components used in IoT:
 
 
-* **Control Units :** It is a unit of small computer on a single integrated circuit containing microprocessor or processing core, memory and programmable input/output devices/peripherals. 
+### Control Units :
+ It is a unit of small computer on a single integrated circuit containing microprocessor or processing core, memory and programmable input/output devices/peripherals. 
 
 > It is responsible for major processing work of IoT devices and all logical operations are carried out here.
 
 
-* **Cloud computing:** Data collected through IoT devices is massive and this data has to be stored on a reliable storage server. 
+### Cloud computing:
+
+Data collected through IoT devices is massive and this data has to be stored on a reliable storage server. 
 
 > This is where cloud computing comes into play. The data is processed and learned, giving more room for us to discover where things like electrical faults/errors are within the system.
 
@@ -76,10 +82,13 @@ In the upcoming years, IoT-based technology will offer advanced levels of servic
 
 # Main components used in IoT:
 
-* **Availability of big data:** We know that IoT relies heavily on sensors, especially in real-time. As these electronic devices spread throughout every field, their usage is going to trigger a massive flux of big data.
+### Availability of big data:
+We know that IoT relies heavily on sensors, especially in real-time. As these electronic devices spread throughout every field, their usage is going to trigger a massive flux of big data.
 
 
-* **Networking connection:** In order to communicate, internet connectivity is a must where each physical object is represented by an IP address. However, there are only a limited number of addresses available according to the IP naming. 
+### Networking connection:
+
+ In order to communicate, internet connectivity is a must where each physical object is represented by an IP address. However, there are only a limited number of addresses available according to the IP naming. 
 
 > Due to the growing number of devices, this naming system will not be feasible anymore. 
 
