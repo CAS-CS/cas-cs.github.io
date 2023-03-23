@@ -120,6 +120,7 @@ function parseSlide(link) {
         scroll-snap-stop: always
         scroll-behavior:smooth;
 
+
         h1,h2,h3,h4,h5,h6{
             color:hsl(var(--hueAscent,30),var(--satAscent,70%),var(--lightAscent,50%));)));
             padding-block:20px;
@@ -146,6 +147,13 @@ function parseSlide(link) {
 
             font-style:italic;
             text-shadow:2px 2px 0 hsla(0,0%,100%,.2);
+        }
+        p{
+            padding:0px;
+            padding-block:1em;
+            &:empty{
+                display:none;
+            }
         }
     }
 
