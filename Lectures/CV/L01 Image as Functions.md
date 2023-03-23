@@ -1,7 +1,6 @@
 # L01 
 ## Image as Functions
 
-$$I=f(x,y)$$
 ---
 # Guess the operation
 ![](img/L01/00.png)
@@ -20,5 +19,16 @@ $$I=f(x,y)$$
 
 # Guess the operation
 ![](img/L01/03.png)
+
+
+---
+# Testing
+
+$$E=mc^2$$
+ inline $E=mc^2$ eqn
+ 
+ inline \(eqn\)
+ 
+ \[E=mc^2\]
 
 
