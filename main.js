@@ -41,7 +41,7 @@ fileListUrl = currentLocation + 'list.txt'
 getfile(fileListUrl, filelist => {
 
     filelist.split("\n").sort().forEach(link => {
-        var url = currentLocation + "/" + link.replaceAll('./', '')
+        var url = currentLocation + link.replaceAll('./', '')
         link = link.replaceAll("\t", "")
 
         if (link[2] != '.' && !link.includes(".md")) {
@@ -63,7 +63,7 @@ getfile(fileListUrl, filelist => {
                 // redirect = redirect.replaceAll(" ", "")
                 // log(redirect)
                 // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
-                append(directoryGrid, gen(a, url, linkname, 'slideLinks', { "onclick": `parseSlide("${url}")` }))
+                append(directoryGrid, gen(a, url, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
             }
         }
     });
@@ -81,20 +81,33 @@ function parseSlide(link) {
 
         append(appmain, gen(div, "slideroot", "", 'slideroot'), "replace")
         var html = md.split("---")
-        html.forEach(h => {
+
+        for (var i = 0; i < html.length; i++) {
+            var h = html[i]
             if (h.length > 0) {
                 parsemd(h, H => {
                     append(slideroot, gen(section, "", H, "slide"))
-
+                    if (i != 0 && i != html.length - 1) {
+                        append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
+                    }
                 })
             }
-        })
+        }
+
     })
     loadscss(`
+    :root{
+        --hue:278;
+        --light:10%;
+        --sat:55%;
+        --hueAscent:234;
+    }
     #app{
         position:relative;
+        
     }
     #header{
+        position:relative;
         
         opacity:0;
         transition:opacity .5s ease-in-out;
@@ -103,27 +116,54 @@ function parseSlide(link) {
         }
     }
     .slideroot{
-        position:relative;
+        position:sticky;
+        top:0;
         scroll-snap-type: y mandatory;
+        height:100vh;
+        overflow:scroll;
+        padding:2em;
+        background-color:hsla(0,0%,100%,.1);
     }
     .slide{
+        position:relative;
         --padding:clamp(40px,15vw,300px);
         width:calc(100%);
-        min-height:100vh;
+        // min-height:100vh;
         padding-block:clamp(40px,10vh,100px);;
         padding-inline:var(--padding);
         box-sizing:border-box;
         font-size:calc(2rem * var(--fontScale,1));
-        background-color:hsla(0,0%,100%,.1);
+        // background-color:hsla(0,0%,100%,.1);
+        height:calc(100vh - 2em);
+        overflow-y:auto;
         scroll-snap-align:start;
-        scroll-padding-top:var(--headerHeight,20px);
+        scroll-padding:var(--headerHeight,60px);
         scroll-snap-stop: always
         scroll-behavior:smooth;
 
+        .slideCount{
+            display:inline-block;
+            position:absolute;
+            top:2em;
+            right:5em;
+            font-size:calc(.5rem * var(--fontScale,1));
+            
+
+        }
 
         h1,h2,h3,h4,h5,h6{
             color:hsl(var(--hueAscent,30),var(--satAscent,70%),var(--lightAscent,50%));)));
-            padding-block:20px;
+            padding-block:.4em;
+            
+        }
+        h1{
+            font-size:1.5em;
+            &:first-child{
+                padding-top:0px;
+            }
+        }
+        h2{
+            font-size:1.3em;
         }
         a{
             color:var(--linkColor,hsl(0,0%,100%));
@@ -132,10 +172,13 @@ function parseSlide(link) {
 
         &:nth-child(odd){
 
-        background-color:hsla(0,0%,100%,.2);
+        background-color:hsla(0,0%,100%,.05);
         }
         ol,ul,p,img{
-            padding:clamp(10px,5vw,100px);
+            padding:clamp(10px,5vw,20px);
+        }
+        li{
+            padding-block:.2em;
         }
         img{
             max-width:80vw;
