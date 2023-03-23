@@ -2,9 +2,10 @@
 //@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
 :root {
     --hue: 200;
-    --sat: 50%;
-    --light: 15%;
+    --sat: 60%;
+    --light: 10%;
     --hueAscent: 180;
+    --satAscent: 50%;
     --lightAscent: 80%;
     --textColor: white;
     --ascentColor: hsl(var(--hueAscent), calc(var(--sat) * 1.5), calc(var(--light) * 2));
@@ -21,6 +22,9 @@
     padding: 0px;
     font-size:var(--fontSize);
     transition: all 200ms ease-in-out;
+    &:empty{
+        display:none;
+    }
 }
 
 #app {
@@ -87,7 +91,7 @@
         font-size: var(--fontSize);
 
         p {
-            margin: 1em;
+            margin-block: 1em;
         }
 
         span {
@@ -193,17 +197,6 @@
         background-color: hsla(0, 0%, 100%, 0.404);
   
     }
-
-    // &:before,&:after{
-    //     content:"";
-    //     width:55px;
-    //     height:55px;
-    //     border-radius:5px;
-    //     position:absolute;
-    //     bottom:0%;
-    //     left:0;
-    //     margin: 5px;
-    // }
 
     
     &:before{
