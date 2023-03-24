@@ -80,7 +80,8 @@ function parseSlide(link) {
         append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
 
         append(appmain, gen(div, "slideroot", "", 'slideroot'), "replace")
-        append(slideroot, gen(aside, "slidenav", gen(h3, "", "Navigator"), 'slidenav'))
+        append(slideroot, gen("aside", "sideBar", ""))
+        append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
 
         var html = md.split("---")
@@ -127,12 +128,12 @@ function parseSlide(link) {
         scroll-snap-type: y mandatory;
         height:100vh;
         overflow:scroll;
-        padding:2em;
+        // padding:2em;
         background-color:hsla(0,0%,100%,.1);
 
 
 
-        .slidenav{
+        #sideBar{
             padding:10px;
             margin-inline:auto;
             z-index:1;
@@ -150,9 +151,17 @@ function parseSlide(link) {
                 display:block;
             opacity:1;}
 
-            ul{
-                overflow-y:auto;
+
+            #sidenav{
+                position:sticky;
+                top:0;
+                height:100%;
+                ul{
+                    height:100%;
+                    overflow-y:scroll;
+                }
             }
+            
             .slidenavlist{
                 
                 padding:10px;
@@ -173,6 +182,8 @@ function parseSlide(link) {
             }
         }
     }
+
+
     .slide{
         position:relative;
         --padding:clamp(40px,15vw,300px);
@@ -181,7 +192,7 @@ function parseSlide(link) {
         padding-block:clamp(40px,10vh,100px);;
         padding-inline:var(--padding);
         box-sizing:border-box;
-        font-size:calc(2rem * var(--fontScale,1));
+        font-size:clamp(calc(.8rem * var(--fontScale,1)),3vw,calc(2rem * var(--fontScale,1)));
         // background-color:hsla(0,0%,100%,.1);
         height:calc(100vh - 2em);
         overflow-y:auto;
@@ -189,7 +200,7 @@ function parseSlide(link) {
         scroll-padding:var(--headerHeight,60px);
         scroll-snap-stop: always
         scroll-behavior:smooth;
-
+        
         .slideCount{
             display:inline-block;
             position:absolute;
@@ -221,7 +232,7 @@ function parseSlide(link) {
 
         &:nth-child(odd){
 
-        background-color:hsla(0,0%,100%,.05);
+            background-color:hsla(0,0%,100%,.05);
         }
         ol,ul,p,img{
             padding:clamp(10px,5vw,20px);
@@ -238,7 +249,7 @@ function parseSlide(link) {
         blockquote{
 
             font-style:italic;
-            text-shadow:2px 2px 0 hsla(0,0%,100%,.2);
+            text-shadow:.1em .1em 0 hsla(0,0%,100%,.2);
         }
         p{
             padding:0px;
