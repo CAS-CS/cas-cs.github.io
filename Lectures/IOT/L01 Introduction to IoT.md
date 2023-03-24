@@ -45,21 +45,23 @@ Advancements in medicine, power, gene therapies, agriculture, smart cities, and 
 
 # Main components used in IoT:
 
-* **Low-power embedded systems:** Less battery consumption, high performance are the inverse factors that play a significant role during the design of electronic systems.
+### Low-power embedded systems:
+ Less battery consumption, high performance are the inverse factors that play a significant role during the design of electronic systems.
 
 
-* **Sensors :** Sensors are the major part of any IoT applications. It is a physical device that measures and detect certain physical quantity and convert it intosignal which can be provide as an input to processing or control unit for analysis purpose.
+### Sensors :
+ Sensors are the major part of any IoT applications. It is a physical device that measures and detect certain physical quantity and convert it intosignal which can be provide as an input to processing or control unit for analysis purpose.
 
-> 1.Different types of Sensors :
-2.Temperature Sensors
-3.Image Sensors
-4.Gyro Sensors
-5.Obstacle Sensors
-6.RF Sensor
-7.IR Sensor
-8.MQ-02/05 Gas Sensor
-9.LDR Sensor
-10.Ultrasonic Distance Sensor
+> Different types of Sensors :
+2. Temperature Sensors
+3. Image Sensors
+4. Gyro Sensors
+5. Obstacle Sensors
+6. RF Sensor
+7. IR Sensor
+8. MQ-02/05 Gas Sensor
+9. LDR Sensor
+10. Ultrasonic Distance Sensor
 
 ---
 
@@ -99,7 +101,6 @@ We know that IoT relies heavily on sensors, especially in real-time. As these el
 ## There are two ways of building IoT:
 
 1. Form a separate internetwork including only physical objects.
-
 2. Make the Internet ever more expansive, but this requires hard-core technologies such as rigorous cloud computing and rapid big data storage (expensive).
 
 
@@ -107,13 +108,17 @@ We know that IoT relies heavily on sensors, especially in real-time. As these el
 
 ## IoT Enablers:
 
-* **RFIDs:** uses radio waves in order to electronically track the tags attached to each physical object.
+### RFIDs:
+ uses radio waves in order to electronically track the tags attached to each physical object.
 
-* **Sensors:** devices that are able to detect changes in an environment (ex: motion detectors).
+### Sensors:
+ devices that are able to detect changes in an environment (ex: motion detectors).
 
-* **Nanotechnology:** as the name suggests, these are extremely small devices with dimensions usually less than a hundred nanometers.
+### Nanotechnology:
+ as the name suggests, these are extremely small devices with dimensions usually less than a hundred nanometers.
 
-* **Smart networks:** (ex: mesh topology).
+### Smart networks:
+ (ex: mesh topology).
 
 ---
 
@@ -143,74 +148,83 @@ We know that IoT relies heavily on sensors, especially in real-time. As these el
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
 
-> * **Interconnectivity**
-> 
+
+### Interconnectivity
+ 
 > It is the basic first requirement in any IoT infrastructure. Connectivity should be guaranteed from any devices on any network then only devices in a network can communicate with each other.
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
 
-> * **Heterogeneity**
-> 
+
+### Heterogeneity
+ 
 > There can be diversity in IoT enabled devices like different hardware and software configuration or different network topologies or connections but they should connect and interact with each other despite of so much heterogeneity.
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
 
-> * **Dynamic in nature**
-> 
+
+### Dynamic in nature
+ 
 > IoT devices should dynamically adapt themselves to the changing surroundings like different situation and different prefaces.
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
 
-> * **Self adapting and self configuring technology**
-> 
+
+### Self adapting and self configuring technology
+ 
 > For example surveillance camera. It should be flexible to work in different weather conditions and different light situations (morning, afternoon, or night).
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
 
-> * **Intelligence**
-> 
+
+### Intelligence
+ 
 > Just data collection is not enough in IoT, extraction of knowledge from the generated data is very important. For example, sensors generate data, but that data will only be useful if it is interpreted properly. So intelligence is one of the key characteristics in IoT. Because data interpretation is the major part in any IoT application because without data processing we can't make any insights from data . Hence big data is also one of the most enabling technology in IoT field.
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
 
-> * **Scalability**
-> 
+
+### Scalability
+ 
 > The number of elements (devices) connected to IoT zone is increasing day by day. Therefore, an IoT setup should be capable of handling the expansion. It can be either expand capability in terms of processing power, Storage, etc. as vertical scaling or horizontal scaling by multiplying with easy cloning
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
+
  
-> * **Identity**
-> 
+### Identity
+ 
 > Each IoT device has a unique identity (e.g., an IP address). This identity is helpful in communication, tracking and to know status of the things. If there is no identification then it will directly effect security and safety of any system because without discrimination we can't identify with whom one network is connected or with whom we have to communicate. So there should be clear and appropriate discrimination technology available between IoT networks and devices.
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
+
  
-> * **Safety**
-> 
+### Safety
+ 
 > Sensitive personal details of a user might be compromised when the devices are connected to the Internet. So data security is a major challenge. This could cause a loss to the user. Equipment in the huge IoT network may also be at risk. Therefore, equipment safety is also critical.
 
 ---
 
-# **Desired Quality of any IoT Application :**
+# Desired Quality of any IoT Application :
+
  
-> * **Architecture**
-> 
+### Architecture
+ 
 > It should be hybrid, supporting different manufacturer's products to function in the IoT network.
 
 As a quick note, IoT incorporates trillions of sensors, billions of smart systems, and millions of applications.
@@ -218,7 +232,8 @@ As a quick note, IoT incorporates trillions of sensors, billions of smart system
 ---
 
 
-## **Application Domains:** 
+## Application Domains:
+ 
 IoT is currently found in four different popular domains:
 
 
@@ -231,7 +246,8 @@ IoT is currently found in four different popular domains:
 ---
 
 
-## **Modern Applications:**
+## Modern Applications:
+
 
 1. Smart Grids and energy saving
 2. Smart cities
