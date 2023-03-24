@@ -93,7 +93,7 @@ function parseSlide(link) {
                     append(slideroot, gen(section, `slide${i}`, H, "slide"))
                     if (i != 0 && i != html.length - 1) {
                         append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
-                        append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", `#slide${i}`, { "onclick": `scrollToSlide(${i})` })))
+                        append(slidenavlist, gen(li, "", gen(a, "", `Slide${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
                     }
                 })
             }
