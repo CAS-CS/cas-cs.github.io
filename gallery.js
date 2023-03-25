@@ -1,4 +1,4 @@
-
+var galleryData = []
 append(main, gen(div, 'gallery', gen(h1, "", "Gallery"), 'section,gallery'), "over")
 
 
@@ -21,8 +21,10 @@ getfile(subGalleryUrllist, f => {
                 "",
                 foldername
             ), 'over')
-        if (folder.length > 0 && folder != './') {
+        if (folder.length > 0 && folder != './' && folder != '\n') {
+
             var sectionName = folderID.replaceAll("./", "")
+
 
             append(gallery,
                 gen(section,
@@ -34,25 +36,35 @@ getfile(subGalleryUrllist, f => {
             var FileListURL = folderUrl + 'listFiles.txt'
             // log(FileListURL)
             getfile(FileListURL, f => {
+
                 var fileNames = f.split("\n").sort()
-                fileNames.forEach(fileName => {
+
+                galleryData.push({ section: sectionName, fileNames: fileNames, folderUrl, folderUrl })
+                for (var i = 0; i < fileNames.length; i++) {
+                    var fileName = fileNames[i]
+                    // log(fileName)
                     if (fileName.length > 3) {
                         fileName = fileName.replaceAll("./", "")
                         filenameUrl = folderUrl + fileName
+
                         append(`#${sectionName}`,
+
                             gen(a, '',
-                                gen(img, "", fileName, "gallery-img",
+                                gen(img, "img" + i, fileName, "gallery-img",
                                     {
                                         "src": filenameUrl,
                                         "loading": "lazy",
                                         "title": fileName,
-                                        "onclick": "openImage(this)"
+                                        "onclick": `openImage(${i})`
                                     }
                                 )
-                                , "imagelink", { "href": filenameUrl, "target": "_blank", "download": "" })
+                                // , "imagelink", { "href": filenameUrl, "target": "_blank", "download": "" }
+                            )
                         )
                     }
-                })
+                }
+
+
             })
 
 
@@ -64,12 +76,65 @@ getfile(subGalleryUrllist, f => {
 })
 
 
+function openImage(i) {
+    var fileNames = galleryData[0].fileNames
+    if (i < 0) { i = fileNames.length - 1 }
+    if (i >= fileNames.length) { i = 0 }
+    var folderUrl = galleryData[0].folderUrl
+    var downloadurl = folderUrl + fileNames[i].replaceAll("./", "")
+    try { append(imageDialog, "", 'replace') }
+    catch { }
+    append(appmain, gen("dialog", 'imageDialog', gen(img, '', '', "modal-image", { "src": downloadurl, "data-seq": i }), 'imageDialog'
+        // , { "onclick": "closeModal()" }
+    ), "before")
+    get(imageDialog).classList.add("active")
+    append(imageDialog, gen(div, 'modalButtonGroup', '', 'modalButtonGroup'))
+    append(modalButtonGroup, gen(a, 'left', '<<', 'modalButton', { "onclick": "left()" }))
+    append(modalButtonGroup, gen(a, 'download', 'Download', 'modalButton', { "href": downloadurl, "download": "", target: "_blank" }))
+    append(modalButtonGroup, gen(a, 'closeDialog', 'close', 'modalButton', { "onclick": "closeModal()" }))
+    append(modalButtonGroup, gen(a, 'right', '>>', 'modalButton', { "onclick": "right()" }))
 
-function openImage(arg) {
-    var downloadurl = arg.src
+    // window.addEventListener("keypress", (e) => { e.preventDefault(); log(e.key); e.key == "Escape" ? closeModal() : "" })
+    window.addEventListener("keydown", checkKey
+    )
 }
 
+function checkKey(e) {
+    e.preventDefault();
+    // log(e.key)
+    if (e.key === "Escape") {
+        closeModal();
+    }
+    else if (e.key === "ArrowLeft") {
+        left()
+    }
+    else if (e.key === "ArrowRight") {
+        right()
+    }
+    else if (e.key === "ArrowDown") {
+        download()
+    }
+}
+const closeModal = () => {
+    append(imageDialog, "", 'replace')
+    window.removeEventListener("keydown", checkKey)
+}
 
+const download = () => {
+    get(imageDialog).children[1].children[1].click()
+
+}
+
+const left = () => {
+    var current = parseInt(get(imageDialog).children[0].getAttribute("data-seq"))
+    var next = current - 1
+    openImage(next)
+}
+const right = () => {
+    var current = parseInt(get(imageDialog).children[0].getAttribute("data-seq"))
+    var next = current + 1
+    openImage(next)
+}
 
 var imagestyle = `
 // img{
@@ -125,6 +190,67 @@ var imagestyle = `
     padding-bottom: 20vh;
     margin-bottom: 20vh;
 
+}
+
+.imageDialog{
+    position: fixed;
+    top: 0vh;
+    left: 0;
+    margin: auto;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,.8);
+    backdrop-filter: blur(5px);
+    border-radius: 2em;
+    display: flex;
+justify-content: center;
+align-items: center;
+
+transition:all .5sec ease-in-out;
+
+
+    .imageDialog + active{
+        top: 0vh;
+        opacity:1
+    }
+
+    .modal-image{
+        max-width:80%;
+        max-height:80%;
+        aspect-ratio: keep;
+        margin-inline: auto;
+        object-fit: cover;
+    }
+    
+    .modalButtonGroup{
+        position: absolute;
+        bottom: 10%;
+        margin-inline: auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        justify-items: center;
+        align-items: center;
+        width: 100%;
+        height: 4em;
+        .modalButton{
+            text-decoration:none;
+            font-weight:900;
+            text-align: center;
+            text-transform: uppercase;
+            min-width: 8em;
+            padding: 5px;
+            border-radius: 2px;
+            background-color: rgba(255,255,255,.5);
+            user-select:none;
+            opacity: .2;
+            &:hover{
+                opacity: .8;
+                background-color: rgba(255,255,255,.8);
+            }
+        }
+
+    }
 }
 
 `
