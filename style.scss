@@ -26,6 +26,25 @@
     
 }
 
+::-webkit-scrollbar {
+width: 2px;
+&:hover {
+    width: 8px;
+    }
+}
+
+::-webkit-scrollbar-track {
+background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+background: #888;
+&:hover {
+    background: #555;
+    }
+}
+  
+
 #app {
     --h: var(--hue, 200);
     --s: var(--sat, 50%);
@@ -212,9 +231,14 @@
     }
 }
 
-.reloadPage {
-    display: block;
-    padding: 5px;
-    margin: 10px;
-    cursor: pointer
+.button {
+    display: inline-block;
+    margin:1em;
+    padding: .5em;
+    cursor: pointer;
+    border-radius: 3px;
+    font-weight: bold;
+    text-transform: uppercase;
+    color:white;
+    background-color: var(--ascentColor, aqua);
 }

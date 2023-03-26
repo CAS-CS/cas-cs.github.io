@@ -70,8 +70,14 @@ getfile(fileListUrl, filelist => {
 
 
 
-    append(main, gen(button, "reload", "Reload", "reloadPage", { "onclick": "reloadPage()" }))
+    append(main, gen(button, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
+    append(main, gen(button, "open", "Open", "button,openFile", { "onclick": "openFile()" }))
 })
+
+const openFile = () => {
+    // var file = window.FileReader || window.webkitFileReader;
+
+}
 
 
 function parseSlide(link) {
@@ -93,7 +99,7 @@ function parseSlide(link) {
                     append(slideroot, gen(section, `slide${i}`, H, "slide"))
                     if (i != 0 && i != html.length - 1) {
                         append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
-                        append(slidenavlist, gen(li, "", gen(a, "", `Slide${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
+                        append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
                     }
                 })
             }
@@ -137,54 +143,7 @@ function parseSlide(link) {
 
 
 
-        #sideBar{
-            padding:10px;
-            margin-inline:auto;
-            z-index:1;
-            position:fixed;
-            left:0;
-            top:0;
-            min-width:10vw;
-            min-height:100vh;
-            
-            overflow:auto;
-            transition:opacity .1s ease-in-out;
-            opacity:0;
-            &:hover{   
-                background-color:hsla(0,0%,100%,.3);
-                display:block;
-            opacity:1;}
-
-
-            #sidenav{
-                position:sticky;
-                top:0;
-                height:100%;
-                ul{
-                    height:100%;
-                    overflow-y:scroll;
-                }
-            }
-            
-            .slidenavlist{
-                
-                padding:10px;
-                list-style:none;
-                display:flex;
-                flex-direction:column;
-                overflow-y:auto;
-                .slideNavLink{
-                    display:inline-block;
-                    padding:10px;
-                    margin-block:10px;
-                    background:white;
-                    color:black;
-                    text-decoration:none;
-                    width:100%;
-                    box-shadow:0 0 10px 0 hsla(0,0%,0%,.2);
-                }
-            }
-        }
+        
     }
 
 
@@ -274,6 +233,88 @@ function parseSlide(link) {
         }
         
     }
+
+    #sideBar{
+        
+        display:block;
+        position:fixed;
+        top:var(--headerHeight,60px);
+        height:calc(100vh - var(--headerHeight,60px));
+        padding:10px;
+        margin-inline:auto;
+        z-index:1;
+        left:0;
+        width:clamp(150px,5vw,20vw);
+        // overflow:hidden;
+        transition:opacity .1s ease-in-out;
+        opacity:0;
+        &:hover{   
+            background-color:hsla(var(--hueAscent),30%,70%,1);
+            opacity:1;
+        }
+
+
+
+
+        #slidenav{
+          position: relative;
+          height: 100%;
+          padding-block: 1em;
+          width: 100%;
+      
+          
+        #slidenavlist{
+            position: relative;
+            height: calc(90vh - 2em);
+            overflow-y: auto;
+            margin-top: 1em;
+            padding:5px;
+            list-style-type: none;
+            // display: flex;
+            // flex-direction: column;
+            // align-items: center;
+            // justify-content: center;
+            
+        
+            li{
+            margin-block:1em;
+            background-color:hsl(var(--hue),35%,90%);
+            width: 100%;	
+            margin-inline: auto;
+            display: flex;
+            justify-content: center;
+            border-radius: 5px;
+            padding: 5px;
+            font-weight: bold;
+            
+            color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
+            .sideNavLink{
+                display: inline-block;
+                width: 100%;
+                text-decoration:none;
+                margin-inline:auto;
+                font-weight: bold;
+                background:white;
+                
+            }
+
+            &:nth-last-child(1){
+                margin-bottom: 40vh;
+            }
+            
+            &:nth-first-child(1){
+                margin-top: 2em;
+            }
+            
+            &:hover{
+                background:hsl(var(--hue),20%,50%);
+            }
+            
+
+          }
+        
+      }
+      
 
     `)
 
