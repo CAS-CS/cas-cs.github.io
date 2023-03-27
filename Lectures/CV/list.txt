@@ -1,5 +1,6 @@
 ./
-./.img
+./L02
 ./.dist
+./img
 ./00 Syllabus.md
 ./L01 Image as Functions.md

@@ -1,3 +1,11 @@
+
+$$E=mc^2$$
+ inline $E=mc^2$ eqn
+ 
+ inline \(eqn\)
+ 
+ \[E=mc^2\]
+---
 # L01 
 ## Image as Functions
 

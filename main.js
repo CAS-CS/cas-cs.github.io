@@ -38,41 +38,48 @@ var currentLocation = window.location.href
 // fileListUrl=currentLocation+"/"+'list.txt'
 fileListUrl = currentLocation + 'list.txt'
 // log(fileListUrl)
-getfile(fileListUrl, filelist => {
 
-    filelist.split("\n").sort().forEach(link => {
-        var url = currentLocation + link.replaceAll('./', '')
-        link = link.replaceAll("\t", "")
+var slideUrl = currentLocation + '/slide.md'
+parseSlide(slideUrl)
+loadButtonToFiles(fileListUrl)
+function loadButtonToFiles(fileListUrl) {
 
-        if (link[2] != '.' && !link.includes(".md")) {
-            var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
-            if (link.length > 0 && link != './') {
-                var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                // redirect = redirect.replaceAll(" ", "")
-                // log(redirect)
-                // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
-                append(directoryGrid, gen(a, "", linkname, 'folderLinks', redirect))
+    getfile(fileListUrl, filelist => {
+
+        filelist.split("\n").sort().forEach(link => {
+            var url = currentLocation + link.replaceAll('./', '')
+            link = link.replaceAll("\t", "")
+
+            if (link[2] != '.' && !link.includes(".md")) {
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
+                if (link.length > 0 && link != './') {
+                    var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                    // redirect = redirect.replaceAll(" ", "")
+                    // log(redirect)
+                    // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
+                    append(directoryGrid, gen(a, "", linkname, 'folderLinks', redirect))
+                }
             }
-        }
 
-        //for markdown files
-        if (link[2] != '.' && link.includes(".md")) {
-            var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
-            if (link.length > 0 && link != './') {
-                var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                // redirect = redirect.replaceAll(" ", "")
-                // log(redirect)
-                // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
-                append(directoryGrid, gen(a, url, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
+            //for markdown files
+            if (link[2] != '.' && link.includes(".md")) {
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
+                if (link.length > 0 && link != './') {
+                    var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                    // redirect = redirect.replaceAll(" ", "")
+                    // log(redirect)
+                    // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
+                    append(directoryGrid, gen(a, url, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
+                }
             }
-        }
-    });
+        });
 
 
 
-    append(main, gen(button, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
-    append(main, gen(button, "open", "Open", "button,openFile", { "onclick": "openFile()" }))
-})
+        append(main, gen(button, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
+        append(main, gen(button, "open", "Open", "button,openFile", { "onclick": "openFile()" }))
+    })
+}
 
 const openFile = () => {
     // var file = window.FileReader || window.webkitFileReader;
@@ -104,10 +111,14 @@ function parseSlide(link) {
                 })
             }
         }
+        MathJax.typesetClear()
+        MathJax.typeset("slideroot")
+        MathJax.typeset()
+        GeneratorWebHelper().addCopyButton()
 
     })
     loadscss(`
-    @import url('https://fonts.googleapis.com/css2?family=Cantarell@1&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
     :root{
         --hue:278;
         --light:10%;
@@ -238,8 +249,8 @@ function parseSlide(link) {
         
         display:block;
         position:fixed;
-        top:var(--headerHeight,60px);
-        height:calc(100vh - var(--headerHeight,60px));
+        top:0;
+        height:100vh;
         padding:10px;
         margin-inline:auto;
         z-index:1;
