@@ -38,9 +38,13 @@ var currentLocation = window.location.href
 // fileListUrl=currentLocation+"/"+'list.txt'
 fileListUrl = currentLocation + 'list.txt'
 // log(fileListUrl)
-
+var notebook = currentLocation + '/slide.ipynb'
 var slideUrl = currentLocation + '/slide.md'
-parseSlide(slideUrl)
+try {
+    parseNotebook(notebook)
+} catch (error) {
+    parseSlide(slideUrl)
+}
 loadButtonToFiles(fileListUrl)
 function loadButtonToFiles(fileListUrl) {
 
@@ -117,220 +121,254 @@ function parseSlide(link) {
         GeneratorWebHelper().addCopyButton()
 
     })
-    loadscss(`
-    @import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
-    :root{
-        --hue:278;
-        --light:10%;
-        --sat:55%;
-        --hueAscent:234;
-        --fontFamily:"Cantarell";
-    }
-    ::selection{
-        background:hsl(var(--hueAscent),var(--satAscent),calc(calc(var(--light) + var(--lightAscent)) / 2));
-        
-    }
-    #app{
-        position:relative;
-        
-    }
-    #header{
-        position:relative;
-        
-        opacity:0;
-        transition:opacity .5s ease-in-out;
-        &:hover{
-            opacity:1;
-        }
-    }
-    .slideroot{
-        position:sticky;
-        top:0;
-        scroll-snap-type: y mandatory;
-        height:100vh;
-        overflow:scroll;
-        // padding:2em;
-        background-color:hsla(0,0%,100%,.1);
-
-
-
-        
-    }
-
-
-    .slide{
-        position:relative;
-        --padding:clamp(40px,15vw,300px);
-        width:calc(100%);
-        // min-height:100vh;
-        padding-block:clamp(40px,10vh,100px);;
-        padding-inline:var(--padding);
-        box-sizing:border-box;
-        font-size:clamp(calc(.8rem * var(--fontScale,1)),3vw,calc(2rem * var(--fontScale,1)));
-        // background-color:hsla(0,0%,100%,.1);
-        height:calc(100vh - 2em);
-        overflow-y:auto;
-        scroll-snap-align:start;
-        scroll-padding:var(--headerHeight,60px);
-        scroll-snap-stop: always
-        scroll-behavior:smooth;
-        
-        .slideCount{
-            display:inline-block;
-            position:absolute;
-            top:2em;
-            right:5em;
-            font-size:calc(.8rem * var(--fontScale,1));
-            
-
-        }
-
-        h1,h2,h3,h4,h5,h6{
-            color:hsl(var(--hueAscent,30),var(--satAscent,70%),var(--lightAscent,50%));)));
-            padding-block:.4em;
-            
-        }
-        h1{
-            font-size:1.5em;
-            &:first-child{
-                padding-top:0px !important;;
-            }
-        }
-        h2{
-            font-size:1.3em;
-        }
-        a{
-            color:var(--linkColor,hsl(0,0%,100%));
-        }
-
-
-        &:nth-child(odd){
-
-            background-color:hsla(0,0%,100%,.05);
-        }
-        ol,ul,p,img{
-            padding:clamp(.5em,10vw,1em);
-        }
-        ol,ul{
-            margin-left:1em;
-        }
-        li{
-            padding-block:.2em;
-            &:first-child{
-                padding-top:0px;
-            }
-            &:last-child{
-                padding-bottom:0px;
-            }
-        }
-        img{
-            max-width:80vw;
-            max-height:80vh;
-            aspect-ratio:prefer-content;
-        }
-
-        blockquote{
-            padding-block:.1em;
-            padding-inline:1em;
-            font-style:italic;
-            text-shadow:.1em .1em 0 hsla(0,0%,100%,.2);
-        }
-        p{
-            padding:0px;
-            padding-block:1em;
-            &:empty{
-                display:none;
-            }
-        }
-        
-    }
-
-    #sideBar{
-        
-        display:block;
-        position:fixed;
-        top:0;
-        height:100vh;
-        padding:10px;
-        margin-inline:auto;
-        z-index:1;
-        left:0;
-        width:clamp(150px,5vw,20vw);
-        // overflow:hidden;
-        transition:opacity .1s ease-in-out;
-        opacity:0;
-        &:hover{   
-            background-color:hsla(var(--hueAscent),30%,70%,1);
-            opacity:1;
-        }
-
-
-
-
-        #slidenav{
-          position: relative;
-          height: 100%;
-          padding-block: 1em;
-          width: 100%;
-      
-          
-        #slidenavlist{
-            position: relative;
-            height: calc(90vh - 2em);
-            overflow-y: auto;
-            margin-top: 1em;
-            padding:5px;
-            list-style-type: none;
-            // display: flex;
-            // flex-direction: column;
-            // align-items: center;
-            // justify-content: center;
-            
-        
-            li{
-            margin-block:1em;
-            background-color:hsl(var(--hue),35%,90%);
-            width: 100%;	
-            margin-inline: auto;
-            display: flex;
-            justify-content: center;
-            border-radius: 5px;
-            padding: 5px;
-            font-weight: bold;
-            
-            color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
-            .sideNavLink{
-                display: inline-block;
-                width: 100%;
-                text-decoration:none;
-                margin-inline:auto;
-                font-weight: bold;
-                background:white;
-                
-            }
-
-            &:nth-last-child(1){
-                margin-bottom: 40vh;
-            }
-            
-            &:nth-first-child(1){
-                margin-top: 2em;
-            }
-            
-            &:hover{
-                background:hsl(var(--hue),20%,50%);
-            }
-            
-
-          }
-        
-      }
-      
-
-    `)
-
+    loadscss(slideScss)
 }
 
+
+function parseNotebook(link) {
+    // log(link)
+    getfile(link, md => {
+        append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
+
+        append(appmain, gen(div, "slideroot", "", 'slideroot'), "replace")
+        append(slideroot, gen("aside", "sideBar", ""))
+        append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
+        append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
+
+        var html = md.split("---")
+
+        for (var i = 0; i < html.length; i++) {
+            var h = html[i]
+            if (h.length > 0) {
+                parsemd(h, H => {
+                    append(slideroot, gen(section, `slide${i}`, H, "slide"))
+                    if (i != 0 && i != html.length - 1) {
+                        append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
+                        append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
+                    }
+                })
+            }
+        }
+        MathJax.typesetClear()
+        MathJax.typeset("slideroot")
+        MathJax.typeset()
+        GeneratorWebHelper().addCopyButton()
+
+    })
+    loadscss(slideScss)
+}
+
+var slideScss = `
+@import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
+:root{
+    --hue:278;
+    --light:10%;
+    --sat:55%;
+    --hueAscent:234;
+    --fontFamily:"Cantarell";
+}
+::selection{
+    background:hsl(var(--hueAscent),var(--satAscent),calc(calc(var(--light) + var(--lightAscent)) / 2));
+    
+}
+#app{
+    position:relative;
+    
+}
+#header{
+    position:relative;
+    
+    opacity:0;
+    transition:opacity .5s ease-in-out;
+    &:hover{
+        opacity:1;
+    }
+}
+.slideroot{
+    position:sticky;
+    top:0;
+    scroll-snap-type: y mandatory;
+    height:100vh;
+    overflow:scroll;
+    // padding:2em;
+    background-color:hsla(0,0%,100%,.1);
+
+
+
+    
+}
+
+
+.slide{
+    position:relative;
+    --padding:clamp(40px,15vw,300px);
+    width:calc(100%);
+    // min-height:100vh;
+    padding-block:clamp(40px,10vh,100px);;
+    padding-inline:var(--padding);
+    box-sizing:border-box;
+    font-size:clamp(calc(.8rem * var(--fontScale,1)),3vw,calc(2rem * var(--fontScale,1)));
+    // background-color:hsla(0,0%,100%,.1);
+    height:calc(100vh - 2em);
+    overflow-y:auto;
+    scroll-snap-align:start;
+    scroll-padding:var(--headerHeight,60px);
+    scroll-snap-stop: always
+    scroll-behavior:smooth;
+    
+    .slideCount{
+        display:inline-block;
+        position:absolute;
+        top:2em;
+        right:5em;
+        font-size:calc(.8rem * var(--fontScale,1));
+        
+
+    }
+
+    h1,h2,h3,h4,h5,h6{
+        color:hsl(var(--hueAscent,30),var(--satAscent,70%),var(--lightAscent,50%));)));
+        padding-block:.4em;
+        
+    }
+    h1{
+        font-size:1.5em;
+        &:first-child{
+            padding-top:0px !important;;
+        }
+    }
+    h2{
+        font-size:1.3em;
+    }
+    a{
+        color:var(--linkColor,hsl(0,0%,100%));
+    }
+
+
+    &:nth-child(odd){
+
+        background-color:hsla(0,0%,100%,.05);
+    }
+    ol,ul,p,img{
+        padding:clamp(.5em,10vw,1em);
+    }
+    ol,ul{
+        margin-left:1em;
+    }
+    li{
+        padding-block:.2em;
+        &:first-child{
+            padding-top:0px;
+        }
+        &:last-child{
+            padding-bottom:0px;
+        }
+    }
+    img{
+        max-width:80vw;
+        max-height:80vh;
+        aspect-ratio:prefer-content;
+    }
+
+    blockquote{
+        padding-block:.1em;
+        padding-inline:1em;
+        font-style:italic;
+        text-shadow:.1em .1em 0 hsla(0,0%,100%,.2);
+    }
+    p{
+        padding:0px;
+        padding-block:1em;
+        &:empty{
+            display:none;
+        }
+    }
+    
+}
+
+#sideBar{
+    
+    display:block;
+    position:fixed;
+    top:0;
+    height:100vh;
+    padding:10px;
+    margin-inline:auto;
+    z-index:1;
+    left:0;
+    width:clamp(150px,5vw,20vw);
+    // overflow:hidden;
+    transition:opacity .1s ease-in-out;
+    opacity:0;
+    &:hover{   
+        background-color:hsla(var(--hueAscent),30%,70%,1);
+        opacity:1;
+    }
+
+
+
+
+    #slidenav{
+      position: relative;
+      height: 100%;
+      padding-block: 1em;
+      width: 100%;
+  
+      
+    #slidenavlist{
+        position: relative;
+        height: calc(90vh - 2em);
+        overflow-y: auto;
+        margin-top: 1em;
+        padding:5px;
+        list-style-type: none;
+        // display: flex;
+        // flex-direction: column;
+        // align-items: center;
+        // justify-content: center;
+        
+    
+        li{
+        margin-block:1em;
+        background-color:hsl(var(--hue),35%,90%);
+        width: 100%;	
+        margin-inline: auto;
+        display: flex;
+        justify-content: center;
+        border-radius: 5px;
+        padding: 5px;
+        font-weight: bold;
+        
+        color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
+        .sideNavLink{
+            display: inline-block;
+            width: 100%;
+            text-decoration:none;
+            margin-inline:auto;
+            font-weight: bold;
+            background:white;
+            
+        }
+
+        &:nth-last-child(1){
+            margin-bottom: 40vh;
+        }
+        
+        &:nth-first-child(1){
+            margin-top: 2em;
+        }
+        
+        &:hover{
+            background:hsl(var(--hue),20%,50%);
+        }
+        
+
+      }
+    
+  }
+  
+
+`
 function reloadPage() {
     sessionStorage.clear()
     localStorage.clear()
