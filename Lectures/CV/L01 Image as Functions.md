@@ -6,6 +6,13 @@ $$E=mc^2$$
  
  \[E=mc^2\]
 ---
+
+|some | dummy| table|
+|---|---|---|
+|some | dummy| table|
+|some | dummy| table|
+
+---
 # L01 
 ## Image as Functions
 

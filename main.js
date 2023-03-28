@@ -15,15 +15,15 @@ var slideScss = `
 }
 ::selection{
     background:hsl(var(--hueAscent),var(--satAscent),calc(calc(var(--light) + var(--lightAscent)) / 2));
-    
+
 }
 #app{
     position:relative;
-    
+
 }
 #header{
     position:relative;
-    
+
     opacity:0;
     transition:opacity .5s ease-in-out;
     &:hover{
@@ -41,7 +41,7 @@ var slideScss = `
 
 
 
-    
+
 }
 
 
@@ -61,21 +61,21 @@ var slideScss = `
     scroll-padding:var(--headerHeight,60px);
     scroll-snap-stop: always
     scroll-behavior:smooth;
-    
+
     .slideCount{
         display:inline-block;
         position:absolute;
         top:2em;
         right:5em;
         font-size:calc(.8rem * var(--fontScale,1));
-        
+
 
     }
 
     h1,h2,h3,h4,h5,h6{
         color:hsl(var(--hueAscent,30),var(--satAscent,70%),var(--lightAscent,50%));)));
         padding-block:.4em;
-        
+
     }
     h1{
         font-size:1.5em;
@@ -129,11 +129,74 @@ var slideScss = `
             display:none;
         }
     }
-    
+
 }
 
+
+
+table{
+    position:relative;
+    display: block;
+    width:90%;
+    padding:.5em;
+    margin:2em;
+    margin-inline:auto;
+    box-shadow:0 0 5px var(--testShadow,black);
+    overflow:auto;
+
+    thead,td:nth-child(1){
+        position:sticky;
+        top:0;
+        left:0
+    }
+    thead{margin-bottom:.2em;
+        tr{
+            <!-- background-color:hsla(var(--hue,0),40%,35%,.15); -->
+        }
+    }
+    thead,tbody{
+        width:100%;
+
+        display:flex;
+        flex-direction:column;
+    }
+    tr{
+        display:flex;
+        flex-direction:row;
+        flex-grow:1;
+        padding:.2em;
+        td{
+            width:100%;
+            padding:.2em;
+            text-align:center;
+            background:red;
+            background-color:hsla(var(--hue,0),60%,5%,.1);
+
+            &:nth-child(even){
+                background-color:hsla(var(--hue,0),60%,5%,.1);
+            }
+            &:hover{
+                background-color:hsla(var(--hue,0),60%,45%,.2);
+            }
+
+
+        }
+
+
+        &:nth-child(even){
+            background-color:hsla(var(--hue,0),40%,35%,.15);
+        }
+
+        &:hover{
+            background-color:hsla(var(--hue,0),60%,45%,.2);
+        }
+    }
+}
+
+
+
 #sideBar{
-    
+
     display:block;
     position:fixed;
     top:0;
@@ -146,7 +209,7 @@ var slideScss = `
     // overflow:hidden;
     transition:opacity .1s ease-in-out;
     opacity:0;
-    &:hover{   
+    &:hover{
         background-color:hsla(var(--hueAscent),30%,70%,1);
         opacity:1;
     }
@@ -159,8 +222,8 @@ var slideScss = `
       height: 100%;
       padding-block: 1em;
       width: 100%;
-  
-      
+
+
     #slidenavlist{
         position: relative;
         height: calc(90vh - 2em);
@@ -172,19 +235,19 @@ var slideScss = `
         // flex-direction: column;
         // align-items: center;
         // justify-content: center;
-        
-    
+
+
         li{
         margin-block:1em;
         background-color:hsl(var(--hue),35%,90%);
-        width: 100%;	
+        width: 100%;
         margin-inline: auto;
         display: flex;
         justify-content: center;
         border-radius: 5px;
         padding: 5px;
         font-weight: bold;
-        
+
         color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
         .sideNavLink{
             display: inline-block;
@@ -193,26 +256,26 @@ var slideScss = `
             margin-inline:auto;
             font-weight: bold;
             background:white;
-            
+
         }
 
         &:nth-last-child(1){
             margin-bottom: 40vh;
         }
-        
+
         &:nth-first-child(1){
             margin-top: 2em;
         }
-        
+
         &:hover{
             background:hsl(var(--hue),20%,50%);
         }
-        
+
 
       }
-    
+
   }
-  
+
 
 `
 
@@ -244,7 +307,7 @@ append(app, gen(main, "appmain", gen(h1, 'FileBrowser', "Directory List"), 'appm
 append(app, gen(footer, "appfooter", "", 'footer'));
 append(appmain, gen(section, "hero", "", "hero"))
 // load(["./header.js", "./script.js", "./footer.js","./style.css"])// load js and css files
-// append(hero, [gen(h1, "", "Hello GeneratorJs"), gen(p, "", "Yes, just Three functions for frontend."), gen(span, "", ["gen", "append", "load"]), gen(p, "", "And Three Optional functions."), gen(span, "", ["log", "getfile", "loadscss"])])        
+// append(hero, [gen(h1, "", "Hello GeneratorJs"), gen(p, "", "Yes, just Three functions for frontend."), gen(span, "", ["gen", "append", "load"]), gen(p, "", "And Three Optional functions."), gen(span, "", ["log", "getfile", "loadscss"])])
 
 append(main, gen(div, 'directoryGrid', "", "dirGrid"))
 
