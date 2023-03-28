@@ -5,12 +5,15 @@ $$E=mc^2$$
  inline \(eqn\)
  
  \[E=mc^2\]
+
 ---
 
+
 |some | dummy| table|
-|---|---|---|
+|:---:|:---:|:---:|
 |some | dummy| table|
 |some | dummy| table|
+
 
 ---
 # L01 

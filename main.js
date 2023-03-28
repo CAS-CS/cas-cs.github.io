@@ -203,14 +203,16 @@ table{
     height:100vh;
     padding:10px;
     margin-inline:auto;
-    z-index:1;
+    z-index:100;
     left:0;
-    width:clamp(150px,5vw,20vw);
+    width:clamp(150px,5vw,10vw);
     // overflow:hidden;
     transition:opacity .1s ease-in-out;
+    background-color:hsla(var(--hue),70%,5%,1);
     opacity:0;
+    border-right:1px solid hsla(var(--hueAscent),50%,10%,1);
+    box-shadow:1em 0 .5em hsla(0,0%,0%,.2);
     &:hover{
-        background-color:hsla(var(--hueAscent),30%,70%,1);
         opacity:1;
     }
 
@@ -231,15 +233,12 @@ table{
         margin-top: 1em;
         padding:5px;
         list-style-type: none;
-        // display: flex;
-        // flex-direction: column;
-        // align-items: center;
-        // justify-content: center;
+
 
 
         li{
         margin-block:1em;
-        background-color:hsl(var(--hue),35%,90%);
+        background-color:hsl(var(--hue),50%,95%);
         width: 100%;
         margin-inline: auto;
         display: flex;
@@ -247,6 +246,7 @@ table{
         border-radius: 5px;
         padding: 5px;
         font-weight: bold;
+        box-shadow: .1em .1em 5px hsla(0,0%,0%,.2);
 
         color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
         .sideNavLink{
@@ -255,7 +255,7 @@ table{
             text-decoration:none;
             margin-inline:auto;
             font-weight: bold;
-            background:white;
+            
 
         }
 
@@ -267,8 +267,9 @@ table{
             margin-top: 2em;
         }
 
-        &:hover{
-            background:hsl(var(--hue),20%,50%);
+        &:hover,.active{
+            inset:2px;
+            outline:2px solid aqua;
         }
 
 
@@ -317,12 +318,18 @@ fileListUrl = currentLocation + 'list.txt'
 // log(fileListUrl)
 var notebook = currentLocation + '/slide.ipynb'
 var slideUrl = currentLocation + '/slide.md'
+
 try {
-    parseNotebook(notebook)
+    loadButtonToFiles(fileListUrl)
 } catch (error) {
-    parseSlide(slideUrl)
+    try {
+        parseNotebook(notebook)
+    } catch (error) {
+        parseSlide(slideUrl)
+    }
 }
-loadButtonToFiles(fileListUrl)
+
+
 function loadButtonToFiles(fileListUrl) {
 
     getfile(fileListUrl, filelist => {
