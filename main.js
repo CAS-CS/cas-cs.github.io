@@ -143,22 +143,15 @@ table{
     margin-inline:auto;
     box-shadow:0 0 5px var(--testShadow,black);
     overflow:auto;
-
+    
     thead,td:nth-child(1){
-        position:sticky;
-        top:0;
-        left:0
-    }
-    thead{margin-bottom:.2em;
-        tr{
-            <!-- background-color:hsla(var(--hue,0),40%,35%,.15); -->
-        }
+        position:relative;
     }
     thead,tbody{
         width:100%;
-
         display:flex;
         flex-direction:column;
+        
     }
     tr{
         display:flex;
@@ -166,9 +159,9 @@ table{
         flex-grow:1;
         padding:.2em;
         td{
+            text-align:center;
             width:100%;
             padding:.2em;
-            text-align:center;
             background:red;
             background-color:hsla(var(--hue,0),60%,5%,.1);
 
@@ -180,20 +173,31 @@ table{
             }
 
 
+     
+        }
+        .left{
+            text-align:left;
+        }
+        .right{
+            text-align:right;
+        }
+        .justify{
+            text-align:justify;
+        }
+        .center{
+            text-align:center;
         }
 
-
+   
         &:nth-child(even){
             background-color:hsla(var(--hue,0),40%,35%,.15);
-        }
+        } 
 
         &:hover{
             background-color:hsla(var(--hue,0),60%,45%,.2);
         }
     }
 }
-
-
 
 #sideBar{
 
@@ -402,7 +406,7 @@ function parseSlide(link) {
         MathJax.typesetClear()
         MathJax.typeset("slideroot")
         MathJax.typeset()
-        GeneratorWebHelper().addCopyButton()
+        GeneratorWebHelper().addCopyIcon()
 
     })
     loadscss(slideScss)

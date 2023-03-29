@@ -1,3 +1,8 @@
+```python
+import numpy as np
+import matplotlib as mpl
+
+```
 
 $$E=mc^2$$
  inline $E=mc^2$ eqn
@@ -9,7 +14,7 @@ $$E=mc^2$$
 ---
 
 
-|some | dummy| table|
+|head |d|t|
 |:---:|:---:|:---:|
 |some | dummy| table|
 |some | dummy| table|
