@@ -14,10 +14,12 @@ $$E=mc^2$$
 ---
 
 
-|head |d|t|
+
+|head |d|t| 
 |:---:|:---:|:---:|
 |some | dummy| table|
 |some | dummy| table|
+
 
 
 ---

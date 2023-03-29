@@ -323,15 +323,11 @@ fileListUrl = currentLocation + 'list.txt'
 var notebook = currentLocation + '/slide.ipynb'
 var slideUrl = currentLocation + '/slide.md'
 
-try {
-    loadButtonToFiles(fileListUrl)
-} catch (error) {
-    try {
-        parseNotebook(notebook)
-    } catch (error) {
-        parseSlide(slideUrl)
-    }
-}
+
+loadButtonToFiles(fileListUrl)
+parseSlide(slideUrl)
+parseNotebook(notebook)
+
 
 
 function loadButtonToFiles(fileListUrl) {
@@ -415,15 +411,43 @@ function parseSlide(link) {
 
 function parseNotebook(link) {
     // log(link)
-    getfile(link, md => {
-        append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
+    getfile(link, nb => {
+        // log(nb)
+        var nbmd = ""
+        nb = JSON.parse(nb)
+        nb.cells.forEach(cell => {
+
+            if (cell.source.length > 0) {
+                var type = cell.cell_type
+                var src = cell.source
+
+                // log(type)
+                if (type == "markdown") {
+                    var md = src.join("\n")
+                    nbmd = nbmd + md + "\n---\n"
+                    // log(nbmd)
+                }
+                if (type == "code") {
+                    var code = src.join("\n")
+                    nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n"
+                }
+                // log(nbmd)
+            }
+
+        }
+
+
+        )
+
+
+        // append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
 
         append(appmain, gen(div, "slideroot", "", 'slideroot'), "replace")
         append(slideroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
 
-        var html = md.split("---")
+        var html = nbmd.split("---")
 
         for (var i = 0; i < html.length; i++) {
             var h = html[i]
@@ -440,7 +464,8 @@ function parseNotebook(link) {
         MathJax.typesetClear()
         MathJax.typeset("slideroot")
         MathJax.typeset()
-        GeneratorWebHelper().addCopyButton()
+        GeneratorWebHelper().addCopyIcon()
+
 
     })
     loadscss(slideScss)
