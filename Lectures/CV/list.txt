@@ -1,6 +1,6 @@
 ./
-./L02
-./.dist
 ./img
+./L02
 ./00 Syllabus.md
 ./L01 Image as Functions.md
+./L01 ImageFormation.ipynb

@@ -301,8 +301,8 @@ table{
     top:0;
     height:100vh;
     padding-block:2em;
-    padding-inline:clamp(1em,5vw,20vw);
-    margin-inline:auto;
+    padding-inline:clamp(2em,10vw,30vw);
+    // margin-inline:auto;
     overflow:scroll;
     background-color:hsla(0,0%,100%,.1);
     overflow-y:auto;
@@ -314,14 +314,15 @@ table{
     scroll-behavior:smooth;
 
     .block{
-        width:80%;
+        max-height:100vh;
         margin-inline:auto;
-        margin-block:1em;
-        border-radius:2px;
-        box-shadow:0 0 5px hsla(0,0%,0%,.2);
+        margin-block:2em;
+        word-break:break-word;
+        width:100%;
+        // border-radius:2px;
+        // box-shadow:0 0 5px hsla(0,0%,0%,.2);
         pre{
             margin-block:1em;
-            margin-inline:1em;
             box-shadow:1px 1px 5em hsla(0,0%,0%,1);
         }
 
@@ -329,17 +330,24 @@ table{
     }
 
     .output{
-        font-family:consolas;
-        width:70%;
-        margin-inline:auto;
-        margin-block:.5em;
+        display:block;
+        font-family:"consolas";
+        // width:100%;
+        // margin-inline:auto;
         background-color:hsla(0,0%,0%,.1);
-        outline:1px solid black;
+        // outline:1px solid black;
+        img{
+            margin-inline:auto;
+        }
+        .success{color:green;}
+        .fail{color:red;}
 
     }
   }
 
-
+.hide{
+    display:none;
+}
 
 
 `
@@ -490,7 +498,7 @@ function parseSlide(link) {
 }
 
 function viewSourceFile(link) {
-    log(link)
+    // log(link)
     window.location.href = link
 }
 
@@ -506,17 +514,36 @@ function parseNotebook(link) {
                 var type = cell.cell_type
                 var src = cell.source
 
+
                 // log(type)
                 if (type == "markdown") {
-                    var md = src.join("\n")
-                    nbmd = nbmd + md + "\n---\n"
+                    var md = src.join("")
+                    nbmd = nbmd + "\n\n" + md + "\n\n---\n"
                     // log(nbmd)
                 }
                 if (type == "code") {
-                    var code = src.join("\n")
+                    // var code = src.join("\n")
+                    var code = src.join("")
                     nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n"
-                    var op=src.output
-                    log(op)
+                    var op = cell.outputs
+
+                    if (op.length > 0) {
+                        var count = op[0].execution_count
+                        var status = (op[0].output_type == "execute_result") ? "success" : "fail"
+
+                        op.forEach(o => {
+                            var data = o.data
+                            if (data.hasOwnProperty("text/plain")) {
+                                var text = data["text/plain"]
+                                nbmd = nbmd + `\n\n<p class="output"><span class='execution_count,${status}'>Output: ${count}</span><br /> ${text} </p> \n\n`
+                            }
+
+                            if (data.hasOwnProperty("image/png")) {
+                                var image = data["image/png"]
+                                nbmd = nbmd + `\n\n<p class="output"><img src="data:image/png;base64,${image}" /> </p>\n\n`
+                            }
+                        })
+                    }
                 }
                 // log(nbmd)
             }
@@ -542,8 +569,8 @@ function parseNotebook(link) {
                 parsemd(h, H => {
                     append(blockroot, gen(section, `block${i}`, H, "block"))
                     if (i != 0 && i != html.length - 1) {
-                        append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
-                        append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
+                        append(get(".block")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount,hide"))
+                        append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
                     }
                 })
             }
@@ -561,7 +588,7 @@ function reloadPage() {
     sessionStorage.clear()
     localStorage.clear()
     var url = window.location.href
-    console.log(url)
+    // console.log(url)
     window.location.href = url
 }
 
