@@ -205,19 +205,23 @@ table{
     position:fixed;
     top:0;
     height:100vh;
-    padding:10px;
+    padding:1em;
     margin-inline:auto;
     z-index:100;
     left:0;
     width:clamp(150px,5vw,10vw);
-    // overflow:hidden;
-    transition:opacity .1s ease-in-out;
+    transition:all .1s ease-in-out;
     background-color:hsla(var(--hue),70%,5%,1);
     opacity:0;
-    border-right:1px solid hsla(var(--hueAscent),50%,10%,1);
-    box-shadow:1em 0 .5em hsla(0,0%,0%,.2);
+    
+    transform: translateX(calc(-100% + 2em));
+    
+    
     &:hover{
         opacity:1;
+        border-right:1px solid hsla(var(--hueAscent),50%,10%,1);
+        box-shadow:1em 0 .5em hsla(0,0%,0%,.2);
+        transform: translateX(0);
     }
 
 
@@ -242,24 +246,33 @@ table{
 
         li{
         margin-block:1em;
-        background-color:hsl(var(--hue),50%,95%);
-        width: 100%;
-        margin-inline: auto;
         display: flex;
         justify-content: center;
-        border-radius: 5px;
-        padding: 5px;
-        font-weight: bold;
-        box-shadow: .1em .1em 5px hsla(0,0%,0%,.2);
+        align-items: center;
+        
+        cursor: hand;
 
-        color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
-        .sideNavLink{
-            display: inline-block;
+        a{
+            background-color:hsl(var(--hue),50%,95%);
+            color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
+            border-radius: 5px;
+            font-weight: bold;
+            box-shadow: .1em .1em 5px hsla(0,0%,0%,.2);
+            
+            display: flex;
+            justify-content: center;
+            align-items: center;
             width: 100%;
+            min-width: 6em;
+            height: 100%;
+            min-height: 2em;
             text-decoration:none;
-            margin-inline:auto;
             font-weight: bold;
             
+            
+        &:hover,.active{
+            outline:2px solid aqua;
+        }
 
         }
 
@@ -271,15 +284,62 @@ table{
             margin-top: 2em;
         }
 
-        &:hover,.active{
-            inset:2px;
-            outline:2px solid aqua;
-        }
 
 
       }
 
+  
+    }
+}
+
+
+}
+
+  .blockroot{
+    
+    position:sticky;
+    top:0;
+    height:100vh;
+    padding-block:2em;
+    padding-inline:clamp(1em,5vw,20vw);
+    margin-inline:auto;
+    overflow:scroll;
+    background-color:hsla(0,0%,100%,.1);
+    overflow-y:auto;
+    
+    scroll-snap-type: y mandatory;
+    scroll-snap-align:start;
+    scroll-padding:var(--headerHeight,60px);
+    scroll-snap-stop: always;
+    scroll-behavior:smooth;
+
+    .block{
+        width:80%;
+        margin-inline:auto;
+        margin-block:1em;
+        border-radius:2px;
+        box-shadow:0 0 5px hsla(0,0%,0%,.2);
+        pre{
+            margin-block:1em;
+            margin-inline:1em;
+            box-shadow:1px 1px 5em hsla(0,0%,0%,1);
+        }
+
+        
+    }
+
+    .output{
+        font-family:consolas;
+        width:70%;
+        margin-inline:auto;
+        margin-block:.5em;
+        background-color:hsla(0,0%,0%,.1);
+        outline:1px solid black;
+
+    }
   }
+
+
 
 
 `
@@ -334,9 +394,9 @@ function loadButtonToFiles(fileListUrl) {
 
     getfile(fileListUrl, filelist => {
 
-        filelist.split("\n").sort().forEach(link => {
+        filelist.split("\n").sort().forEach((link, i) => {
             var url = currentLocation + link.replaceAll('./', '')
-            link = link.replaceAll("\t", "")
+            link = link.replaceAll("\t", "").replaceAll("\n", "")
 
             if (link[2] != '.' && !link.includes(".md")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
@@ -354,10 +414,17 @@ function loadButtonToFiles(fileListUrl) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    // redirect = redirect.replaceAll(" ", "")
-                    // log(redirect)
-                    // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
-                    append(directoryGrid, gen(a, url, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
+                }
+            }
+
+            //for notebook files
+            //for markdown files
+            if (link[2] != '.' && link.includes(".ipynb")) {
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
+                if (link.length > 0 && link != './') {
+                    var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
                 }
             }
         });
@@ -374,6 +441,21 @@ const openFile = () => {
 
 }
 
+function mathjaxHljsCopyIcon() {
+    load("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css")
+    load("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js")
+
+
+    setTimeout(() => {
+
+        MathJax.typesetClear()
+        MathJax.typeset("slideroot")
+        MathJax.typeset()
+        hljs.highlightAll()
+        setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+    }
+        , 1000)
+}
 
 function parseSlide(link) {
     // log(link)
@@ -385,7 +467,7 @@ function parseSlide(link) {
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
 
-        var html = md.split("\n---\n")
+        var html = md.split(/^---\s*?$/gm)
 
         for (var i = 0; i < html.length; i++) {
             var h = html[i]
@@ -396,18 +478,21 @@ function parseSlide(link) {
                         append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
                         append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
                     }
+
                 })
             }
         }
-        MathJax.typesetClear()
-        MathJax.typeset("slideroot")
-        MathJax.typeset()
-        GeneratorWebHelper().addCopyIcon()
+        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank" })))
 
     })
     loadscss(slideScss)
+    mathjaxHljsCopyIcon()
 }
 
+function viewSourceFile(link) {
+    log(link)
+    window.location.href = link
+}
 
 function parseNotebook(link) {
     // log(link)
@@ -430,6 +515,8 @@ function parseNotebook(link) {
                 if (type == "code") {
                     var code = src.join("\n")
                     nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n"
+                    var op=src.output
+                    log(op)
                 }
                 // log(nbmd)
             }
@@ -442,8 +529,8 @@ function parseNotebook(link) {
 
         // append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
 
-        append(appmain, gen(div, "slideroot", "", 'slideroot'), "replace")
-        append(slideroot, gen("aside", "sideBar", ""))
+        append(appmain, gen(div, "blockroot", "", 'blockroot'), "replace")
+        append(blockroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
 
@@ -453,7 +540,7 @@ function parseNotebook(link) {
             var h = html[i]
             if (h.length > 0) {
                 parsemd(h, H => {
-                    append(slideroot, gen(section, `slide${i}`, H, "slide"))
+                    append(blockroot, gen(section, `block${i}`, H, "block"))
                     if (i != 0 && i != html.length - 1) {
                         append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
                         append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
@@ -461,14 +548,13 @@ function parseNotebook(link) {
                 })
             }
         }
-        MathJax.typesetClear()
-        MathJax.typeset("slideroot")
-        MathJax.typeset()
-        GeneratorWebHelper().addCopyIcon()
+        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank" })))
+
 
 
     })
     loadscss(slideScss)
+    mathjaxHljsCopyIcon()
 }
 
 function reloadPage() {

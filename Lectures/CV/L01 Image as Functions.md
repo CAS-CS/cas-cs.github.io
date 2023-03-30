@@ -65,9 +65,14 @@ a=1
 print(a)
 ```
 
-``` 
-some 
-othere language
+```c
+#include<stdio.h>
+
+void main(){
+     
+    int a = 10;
+    printf("%d",&a);
+}
 ```
 
 
