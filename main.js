@@ -338,6 +338,9 @@ table{
         // outline:1px solid black;
         img{
             margin-inline:auto;
+            max-width:100%;
+            max-height:100%;
+            object-fit:contain;
         }
         .success{color:green;}
         .fail{color:red;}
@@ -406,7 +409,7 @@ function loadButtonToFiles(fileListUrl) {
             var url = currentLocation + link.replaceAll('./', '')
             link = link.replaceAll("\t", "").replaceAll("\n", "")
 
-            if (link[2] != '.' && !link.includes(".md")) {
+            if (link[2] != '.' && !link.includes(".md") && !link.includes(".ipynb")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
@@ -429,10 +432,10 @@ function loadButtonToFiles(fileListUrl) {
             //for notebook files
             //for markdown files
             if (link[2] != '.' && link.includes(".ipynb")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "")
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
                 }
             }
         });
