@@ -385,7 +385,7 @@ function parseSlide(link) {
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
 
-        var html = md.split("---")
+        var html = md.split("\n---\n")
 
         for (var i = 0; i < html.length; i++) {
             var h = html[i]
