@@ -502,7 +502,7 @@ function parseSlide(link) {
 
 function viewSourceFile(link) {
     // log(link)
-    window.location.href = link
+    // window.location.href = link
 }
 
 function parseNotebook(link) {
@@ -577,7 +577,7 @@ function parseNotebook(link) {
                 })
             }
         }
-        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank" })))
+        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": `${link.split('/')[link.split('/').length - 2]}_${link.split('/')[link.split('/').length - 1]}` })))
 
 
 
