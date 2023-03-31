@@ -391,13 +391,13 @@ var currentLocation = window.location.href
 // fileListUrl=currentLocation+"/"+'list.txt'
 fileListUrl = currentLocation + 'list.txt'
 // log(fileListUrl)
-var notebook = currentLocation + '/slide.ipynb'
-var slideUrl = currentLocation + '/slide.md'
+var notebook = currentLocation + 'slide.ipynb'
+var slideUrl = currentLocation + 'slide.md'
 
 
 loadButtonToFiles(fileListUrl)
-parseSlide(slideUrl)
 parseNotebook(notebook)
+parseSlide(slideUrl)
 
 
 
@@ -424,17 +424,17 @@ function loadButtonToFiles(fileListUrl) {
             if (link[2] != '.' && link.includes(".md")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
                 if (link.length > 0 && link != './') {
-                    var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                    // var redirect = currentLocation + link.replaceAll('./', '') + "/"
                     append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
                 }
             }
 
             //for notebook files
-            //for markdown files
             if (link[2] != '.' && link.includes(".ipynb")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "")
                 if (link.length > 0 && link != './') {
-                    var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                    // var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                    // log(url)
                     append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
                 }
             }
@@ -506,11 +506,10 @@ function viewSourceFile(link) {
 }
 
 function parseNotebook(link) {
-    // log(link)
     getfile(link, nb => {
-        // log(nb)
         var nbmd = ""
         nb = JSON.parse(nb)
+
         nb.cells.forEach(cell => {
 
             if (cell.source.length > 0) {

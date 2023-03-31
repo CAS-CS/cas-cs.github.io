@@ -3,4 +3,5 @@
 ./CV
 ./RM
 ./ACNC
+./.dist
 ./IOT

@@ -1,8 +1,9 @@
 ./
-./.dist
-./.git
-./.Previous Question Papers
+./Lectures
+./Notices
+./TimeTable
 ./.Syllabus
 ./Gallery
-./Lectures
-./TimeTable
+./.Previous Question Papers
+./.dist
+./.git
