@@ -1,12 +1,14 @@
 # Time table
 
-## M.Tech First Year
-
-![First Year]("./M.Tech_FirstYear_TimeTable.jpg")
+### M.Tech First Year
 
 
-## M.Tech First Year
+<img src="./1.jpg" />
 
-![First Year]("./M.Tech_SecondYear_TimeTable.jpg")
 
----
+### M.Tech Second Year
+
+
+<img src="./2.jpg" />
+
+
