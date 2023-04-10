@@ -2,3 +2,4 @@
 ./.dist
 ./00 Syllabus.md
 ./L01 Introduction to IoT.md
+./Lab 02 Introduction to Arduino and platformio.md

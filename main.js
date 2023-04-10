@@ -1,3 +1,4 @@
+window.DEBUT = 1
 window.$ = GeneratorJs()
 window.$$ = GeneratorWebHelper()
 $.init()
