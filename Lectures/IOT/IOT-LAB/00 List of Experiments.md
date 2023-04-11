@@ -16,6 +16,8 @@
 
 1. create a mesh network of iot(esp) devices using [ESP-NOW](https://www.instructables.com/ESP32-With-ESP-Now-Protocol/) protocol.
 
+
+## List can be updated.
 ---
 
 # Project
