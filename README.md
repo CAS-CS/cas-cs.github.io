@@ -1,8 +1,8 @@
 # cas-cs.github.io
 
-Repo is used to host notices, timetables, lecture snippets, and other resources for Students of [Centre for Advanced Studies](cas.res.in) [AKTU Lucknow](aktu.ac.in).
+Repo is used to host notices, timetables, lecture snippets, and other resources for Students of [Centre for Advanced Studies](https://cas.res.in) [AKTU Lucknow](https://aktu.ac.in).
 
-[website](cas-cs.github.io)
+[website](https://cas-cs.github.io)
 
 
 by 
