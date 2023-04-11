@@ -159,6 +159,7 @@ MQTT Publish / Subscribe Architecture
 -------------------------------------
 
 ![MQTT: publish / subscribe architecture](https://mqtt.org/assets/img/mqtt-publish-subscribe.png)
+
 "MQTT: publish / subscribe architecture"
 
 
