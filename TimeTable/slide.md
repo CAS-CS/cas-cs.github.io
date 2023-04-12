@@ -3,10 +3,10 @@
 ### M.Tech First Year
 
 
-<img src="./1.jpg" />
+![](./1.png)
 
 
 ### M.Tech Second Year
 
 
-<img src="./2.jpg" />
+![](./2.jpg)
