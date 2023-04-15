@@ -3,6 +3,6 @@
 ./.ipynb_checkpoints
 ./00 Syllabus.md
 ./L01 Image as Functions.md
-./CreateImages_fourierTransform.ipynb
+./Create Images fourier Transform.ipynb
 ./fourierTransform.ipynb
 ./L03 Histogram Equalization.ipynb

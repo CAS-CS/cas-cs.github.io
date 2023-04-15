@@ -389,6 +389,8 @@ append(appmain, gen(section, "hero", "", "hero"))
 append(main, gen(div, 'directoryGrid', "", "dirGrid"))
 
 var currentLocation = window.location.href
+var search = window.location.search
+currentLocation = currentLocation.replaceAll(search, "")
 // fileListUrl=currentLocation+"/"+'list.txt'
 fileListUrl = currentLocation + 'list.txt'
 // log(fileListUrl)
@@ -401,6 +403,7 @@ parseNotebook(notebook)
 parseSlide(slideUrl)
 
 
+// var searchParam = new URLSearchParams(search)
 
 function loadButtonToFiles(fileListUrl) {
 
@@ -470,6 +473,10 @@ function mathjaxHljsCopyIcon() {
 }
 
 function parseSlide(link) {
+    // searchParam = new URLSearchParams()
+    // searchParam.set("view", link)
+    // searchParam.set("type", 'md')
+    // window.history.pushState({}, "", "?" + searchParam.toString())
     // log(link)
     getfile(link, md => {
         append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
@@ -507,6 +514,10 @@ function viewSourceFile(link) {
 }
 
 function parseNotebook(link) {
+    // searchParam = new URLSearchParams()
+    // searchParam.set("view", link)
+    // searchParam.set("type", 'ipynb')
+    // window.history.pushState({}, "", "?" + searchParam.toString())
     getfile(link, nb => {
         var nbmd = ""
         nb = JSON.parse(nb)
