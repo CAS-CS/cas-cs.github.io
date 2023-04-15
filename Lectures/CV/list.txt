@@ -1,8 +1,8 @@
 ./
-./.ipynb_checkpoints
 ./L02
-./.dist
+./.ipynb_checkpoints
 ./00 Syllabus.md
 ./L01 Image as Functions.md
+./CreateImages_fourierTransform.ipynb
 ./fourierTransform.ipynb
 ./L03 Histogram Equalization.ipynb
