@@ -528,17 +528,19 @@ function parseNotebook(link) {
                 var type = cell.cell_type
                 var src = cell.source
 
+                var ecount = cell.execution_count
 
                 // log(type)
                 if (type == "markdown") {
                     var md = src.join("")
-                    nbmd = nbmd + "\n\n" + md + "\n\n---\n"
+                    nbmd = nbmd + "\n\n" + md + "\n\n"
                     // log(nbmd)
                 }
                 if (type == "code") {
                     // var code = src.join("\n")
                     var code = src.join("")
-                    nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n"
+                    nbmd = nbmd + `\n\n<p class="input">In ${ecount} :</span><br />`
+                    nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n</p>"
                     var op = cell.outputs
 
                     if (op.length > 0) {
@@ -546,16 +548,39 @@ function parseNotebook(link) {
                         var status = (op[0].output_type == "execute_result") ? "success" : "fail"
 
                         op.forEach(o => {
-                            var data = o.data
-                            if (data.hasOwnProperty("text/plain")) {
-                                var text = data["text/plain"]
-                                nbmd = nbmd + `\n\n<p class="output"><span class='execution_count,${status}'>Output: ${count}</span><br /> ${text} </p> \n\n`
+
+
+                            try {
+                                var text = o.text
+                                if (data.hasOwnProperty("text/plain")) {
+                                    var text = data["text"]
+                                    nbmd = nbmd + `\n\n<p class="output"><span class='execution_count,${status}'>Output: ${count}</span><br /> ${text} </p> \n\n`
+                                }
+
+
+                            } catch (error) {
+
                             }
 
-                            if (data.hasOwnProperty("image/png")) {
-                                var image = data["image/png"]
-                                nbmd = nbmd + `\n\n<p class="output"><img src="data:image/png;base64,${image}" /> </p>\n\n`
+
+
+
+                            try {
+                                var data = o.data
+                                if (data.hasOwnProperty("text/plain")) {
+                                    var text = data["text/plain"]
+                                    nbmd += `\n\n<span class='execution_count,${status}'>\n\nOutput: ${count}</span><br />`
+                                    nbmd = nbmd + `\n\n<p class="output"> ${text} </p> \n\n`
+                                }
+
+                                if (data.hasOwnProperty("image/png")) {
+                                    var image = data["image/png"]
+                                    nbmd = nbmd + `\n\n<p class="output">\n\n<img src="data:image/png;base64,${image}" /> </p>\n\n`
+                                }
+                            } catch (error) {
+
                             }
+
                         })
                     }
                 }

@@ -1,8 +1,7 @@
 ./
-./.Syllabus
-./.dist
-./Gallery
 ./Lectures
-./.git
-./.Previous Question Papers
 ./TimeTable
+./.Syllabus
+./Gallery
+./.Previous Question Papers
+./.git
