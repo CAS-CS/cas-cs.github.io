@@ -45,7 +45,6 @@ var slideScss = `
 
 }
 
-
 .slide{
     position:relative;
     --padding:clamp(40px,15vw,300px);
@@ -113,8 +112,9 @@ var slideScss = `
     }
     img{
         max-width:80vw;
-        max-height:80vh;
+        // max-height:80vh;
         aspect-ratio:prefer-content;
+        padding:1em;
     }
 
     blockquote{
@@ -315,16 +315,22 @@ table{
     scroll-behavior:smooth;
 
     .block{
-        max-height:100vh;
+        // max-height:100vh;
         margin-inline:auto;
         margin-block:2em;
         word-break:break-word;
         width:100%;
         // border-radius:2px;
-        // box-shadow:0 0 5px hsla(0,0%,0%,.2);
+        box-shadow:0 0 5px hsla(0,0%,0%,.2);
+        padding:.5em;
+        background-color:hsla(0,0%,100%,.1);
+
         pre{
             margin-block:1em;
             box-shadow:1px 1px 5em hsla(0,0%,0%,1);
+        }
+        &:last-child{
+            margin-bottom:10em;
         }
 
         
@@ -332,9 +338,8 @@ table{
 
     .output{
         display:block;
-        font-family:"consolas";
-        // width:100%;
-        // margin-inline:auto;
+        font-family:"consolas", "terminal", "monospace";
+
         background-color:hsla(0,0%,0%,.1);
         // outline:1px solid black;
         img{
@@ -343,6 +348,7 @@ table{
             max-height:100%;
             object-fit:contain;
         }
+  
         .success{color:green;}
         .fail{color:red;}
 
@@ -352,6 +358,12 @@ table{
 .hide{
     display:none;
 }
+
+.needs-background-light{
+    background: hsla(0,0%,100%,.9) !important;
+    padding-block:1em;
+  }
+
 
 
 `
@@ -519,7 +531,8 @@ function parseNotebook(link) {
     // searchParam.set("type", 'ipynb')
     // window.history.pushState({}, "", "?" + searchParam.toString())
     getfile(link, nb => {
-        var nbmd = ""
+        var PrintFileName = link.split("/").pop().replaceAll(".ipynb", "")
+        var nbmd = `<h1>Python Notebook: ${PrintFileName}</h1>`
         nb = JSON.parse(nb)
 
         nb.cells.forEach(cell => {
@@ -537,49 +550,58 @@ function parseNotebook(link) {
                     // log(nbmd)
                 }
                 if (type == "code") {
+
+                    var count = cell.execution_count
                     // var code = src.join("\n")
                     var code = src.join("")
-                    nbmd = nbmd + `\n\n<p class="input">In ${ecount} :</span><br />`
+                    nbmd = nbmd + `\n\n<p class="input">In [${ecount}] :</span><br />`
                     nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n</p>"
                     var op = cell.outputs
 
-                    if (op.length > 0) {
-                        var count = op[0].execution_count
+                    if (op.length > 1) {
                         var status = (op[0].output_type == "execute_result") ? "success" : "fail"
+                        nbmd += `\n\n<span class='execution_count,${status}'>\n\nOut [${count}] :</span><br />\n`
 
                         op.forEach(o => {
 
-
-                            try {
+                            var output_type = o.output_type
+                            if (output_type == "stream") {
                                 var text = o.text
-                                if (data.hasOwnProperty("text/plain")) {
-                                    var text = data["text"]
-                                    nbmd = nbmd + `\n\n<p class="output"><span class='execution_count,${status}'>Output: ${count}</span><br /> ${text} </p> \n\n`
+
+                                // nbmd = nbmd + `\n\n<p class="output"><span class='execution_count,${status}'>Out [${count}] : </span><br /> ${text} </p> \n\n`
+                            }
+                            if (output_type == "display_data") {
+                                // nbmd += `\n\n<span class='execution_count,${status}'>\n\nOut [${count}] : </span><br />`
+
+                                try {
+                                    var data = o.data
+                                    if (data.hasOwnProperty("text/plain")) {
+                                        var text = data["text/plain"]
+                                        nbmd = nbmd + `\n\n<p class="output"> ${text} </p> \n\n`
+                                    }
+
+                                    if (data.hasOwnProperty("image/png")) {
+
+                                        var className = '';
+                                        if (o.metadata.hasOwnProperty("needs_background")) {
+                                            className = `needs-background-${o.metadata["needs_background"]}`
+                                        }
+
+
+                                        var image = data["image/png"]
+                                        nbmd = nbmd + `\n\n<p class="output ${className}">\n\n<img src="data:image/png;base64,${image}" /> </p><br />\n\n`
+                                    }
+                                } catch (error) {
+
                                 }
-
-
-                            } catch (error) {
-
                             }
 
 
 
 
-                            try {
-                                var data = o.data
-                                if (data.hasOwnProperty("text/plain")) {
-                                    var text = data["text/plain"]
-                                    nbmd += `\n\n<span class='execution_count,${status}'>\n\nOutput: ${count}</span><br />`
-                                    nbmd = nbmd + `\n\n<p class="output"> ${text} </p> \n\n`
-                                }
 
-                                if (data.hasOwnProperty("image/png")) {
-                                    var image = data["image/png"]
-                                    nbmd = nbmd + `\n\n<p class="output">\n\n<img src="data:image/png;base64,${image}" /> </p>\n\n`
-                                }
-                            } catch (error) {
 
-                            }
+
 
                         })
                     }
