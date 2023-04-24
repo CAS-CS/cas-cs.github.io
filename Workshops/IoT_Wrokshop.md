@@ -1,7 +1,7 @@
 # "Artificial Intelligence: Machine Learning and Deep learning"
 ## Two Days Offline Workshop
 
-**Date:** ~10 May to 11 May 2023~
+**Date:** ~~10 May to 11 May 2023~~
 
 
 ### *Eligibility:*
