@@ -1,6 +1,7 @@
 ./
 ./Lectures
 ./TimeTable
+./Workshops
 ./.Syllabus
 ./Gallery
 ./.Previous Question Papers
