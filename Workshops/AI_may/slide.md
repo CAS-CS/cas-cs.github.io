@@ -10,7 +10,7 @@
 * B.Tech (III and IV) Branch (CSE/ECE/IT)
 
 ### Registration Link: 
-[https://cas.res.in/workshop.html]( https://cas.res.in/workshop.html)
+[https://cas.res.in/workshops.html]( https://cas.res.in/workshops.html)
 
 #### Highlights:
 

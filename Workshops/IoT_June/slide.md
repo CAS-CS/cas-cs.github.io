@@ -1,14 +1,14 @@
 # "Artificial Intelligence: Machine Learning and Deep learning"
 ## Two Days Offline Workshop
 
-**Date:** ~~10 May to 11 May 2023~~
+**Date:** ~~1 June to 11 June 2023~~
 
 
 ### *Eligibility:*
 * B.Tech (III and IV) Branch (CSE/ECE/IT)
 
 ### Registration Link: 
-[https://cas.res.in/workshop.html]( https://cas.res.in/workshop.html)
+[https://cas.res.in/workshops.html]( https://cas.res.in/workshops.html)
 
 #### Highlights:
 
