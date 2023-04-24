@@ -1,3 +1,5 @@
 ./
-./AI_Wrokshop.md
-./IoT_Wrokshop.md
+./.resources
+./IoT_June
+./.dist
+./AI_may
