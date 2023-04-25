@@ -3,6 +3,8 @@
 
 **Date:** ~~1 June to 11 June 2023~~
 
+[![BANNER]("./iotWorkshopNewtemplate.png")](iotWorkshopBanner.pdf)
+<a href="./iotWorkshopBanner.pdf" download target="_blank">Download Banner</a>
 
 ### *Eligibility:*
 * B.Tech (III and IV) Branch (CSE/ECE/IT)

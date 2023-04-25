@@ -4,13 +4,16 @@
 **Date:** 10 May to 11 May 2023
 
 
-![BANNER]("./AIWorkshopNewtemplate.png")
+[![BANNER]("./AIWorkshopNewtemplate.png")](AIWorkshopBanner.pdf)
+<a href="./AIWorkshopBanner.pdf" download target="_blank">Download Banner</a>
+
 
 ### *Eligibility:*
 * B.Tech (III and IV) Branch (CSE/ECE/IT)
 
 ### Registration Link: 
 [https://cas.res.in/workshops.html]( https://cas.res.in/workshops.html)
+
 
 #### Highlights:
 
