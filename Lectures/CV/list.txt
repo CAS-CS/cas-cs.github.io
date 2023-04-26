@@ -1,8 +1,9 @@
 ./
-./L02
+./L09_FourierTransformExample
 ./.ipynb_checkpoints
+./L04_Histogram
+./L02
+./L05_Histogram_Equalization__
+./L10_GenerateImage_and_FourierTransform
 ./00 Syllabus.md
 ./L01 Image as Functions.md
-./Create Images fourier Transform.ipynb
-./fourierTransform.ipynb
-./L03 Histogram Equalization.ipynb

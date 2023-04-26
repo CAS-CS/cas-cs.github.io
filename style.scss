@@ -1,92 +1,95 @@
 //some temp style in nested css/ scss format
 //@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
 :root {
-    --hue: 200;
-    --sat: 60%;
-    --light: 10%;
-    --hueAscent: 180;
-    --satAscent: 50%;
-    --lightAscent: 80%;
-    --textColor: white;
-    --ascentColor: hsl(var(--hueAscent), calc(var(--sat) * 1.5), calc(var(--light) * 2));
-    --colorScheme: dark;
-    --testShadow: black;
-    --lightFactor: 1;
-    --fontScale: 1;
-    --fontFamily: "Finlandica", "Poppins", "Arial";
+    --hue         : 200;
+    --sat         : 60%;
+    --light       : 10%;
+    --hueAscent   : 180;
+    --satAscent   : 50%;
+    --lightAscent : 80%;
+    --textColor   : white;
+    --ascentColor : hsl(var(--hueAscent), calc(var(--sat) * 1.5), calc(var(--light) * 2));
+    --colorScheme : dark;
+    --testShadow  : black;
+    --lightFactor : 1;
+    --fontScale   : 1;
+    --fontFamily  : "Finlandica", "Poppins", "Arial";
     --headerHeight: 60px;
 }
 
 * {
     box-sizing: border-box;
-    margin: 0px;
-    padding: 0px;
-    font-size:var(--fontSize);
+    margin    : 0px;
+    padding   : 0px;
+    font-size : var(--fontSize);
     transition: all 200ms ease-in-out;
-    
+
 }
 
 ::-webkit-scrollbar {
-width: 2px;
-&:hover {
-    width: 8px;
+    width: 2px;
+
+    &:hover {
+        width: 8px;
     }
 }
 
 ::-webkit-scrollbar-track {
-background: #f1f1f1;
+    background: #f1f1f1;
 }
 
 ::-webkit-scrollbar-thumb {
-background: #888;
-&:hover {
-    background: #555;
+    background: #888;
+
+    &:hover {
+        background: #555;
     }
 }
-  
+
 
 #app {
-    --h: var(--hue, 200);
-    --s: var(--sat, 50%);
-    --l: calc(var(--light, 15%) * var(--lightFactor, 1));
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    color: var(--textColor, white);
+    --h             : var(--hue, 200);
+    --s             : var(--sat, 50%);
+    --l             : calc(var(--light, 15%) * var(--lightFactor, 1));
+    display         : flex;
+    flex-direction  : column;
+    min-height      : 100vh;
+    color           : var(--textColor, white);
     background-color: hsl(var(--h), var(--s), var(--l));
-    font-size: calc(1rem * var(--fontScale, 1));
-    font-family: var(--fontFamily), "arial", "sans";
+    font-size       : calc(1rem * var(--fontScale, 1));
+    font-family     : var(--fontFamily), "arial", "sans";
 
     h1 {
         padding-block: 1em;
     }
 
     header {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: center;
-        --s: calc(var(--sat, 50%) * var(--lightFactor, 1) * 1.5);
-        --l: calc(var(--light, 15%) * var(--lightFactor, 1) * .5);
+        display         : flex;
+        flex-wrap       : wrap;
+        justify-content : space-between;
+        align-items     : center;
+        --s             : calc(var(--sat, 50%) * var(--lightFactor, 1) * 1.5);
+        --l             : calc(var(--light, 15%) * var(--lightFactor, 1) * .5);
         background-color: hsl(var(--h), var(--s), var(--l));
-        position: sticky;
-        top: 0px;
-        min-height: var(--headerHeight,60px);
-        padding:5px;
-        z-index: 100;
+        position        : sticky;
+        top             : 0px;
+        min-height      : var(--headerHeight, 60px);
+        padding         : 5px;
+        z-index         : 100;
 
 
-        .title{
-            padding:5px;
-        }
-        .pathNavigator {
-            color: var(--ascentColor, aqua);
+        .title {
             padding: 5px;
-            margin: 5px;
-            text-decoration: none;
-            text-transform: uppercase;
+        }
+
+        .pathNavigator {
+            color           : var(--ascentColor, aqua);
+            padding         : 5px;
+            margin          : 5px;
+            text-decoration : none;
+            text-transform  : uppercase;
             background-color: rgb(255, 255, 255);
-            
+
 
             &:after {
                 content: " /"
@@ -96,26 +99,26 @@ background: #888;
                 background-color: rgb(249, 255, 166);
             }
 
-            &:first-of-type{
-                    content: "";
+            &:first-of-type {
+                content: "";
             }
- 
+
         }
     }
 
     main {
-        min-height: 90vh;
+        min-height : 90vh;
         font-family: var(--fontFamily);
-        font-size: var(--fontSize);
+        font-size  : var(--fontSize);
 
         p {
             margin-block: 1em;
         }
 
         span {
-            padding: 2em;
-            margin-right: 2em;
-            color: var(--ascentColor, aqua);
+            padding       : 2em;
+            margin-right  : 2em;
+            color         : var(--ascentColor, aqua);
             text-transform: uppercase;
         }
     }
@@ -129,120 +132,139 @@ background: #888;
     padding-inline: 3em;
 }
 
-.dirGrid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(200px, 1fr));
-    padding:5px;
-    grid-gap:5px;
-    z-index: inherit;
+.dirGrid {
+    display              : grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    padding              : 5px;
+    grid-gap             : 5px;
+    z-index              : inherit;
 }
+
 .folderLinks {
-    position:relative;
-    display: flex;
-    flex-direction: column;
+    position       : relative;
+    display        : flex;
+    flex-direction : column;
     justify-content: flex-end;
-    align-content: flex-end;
-    align-self: flex-end;
-    display: inline-block;
-    padding: 10px;
-    margin: 10px;
-    text-transform: uppercase;
-    color: var(--textColor, white);
-    font-size: .7em;
-    border-radius: 3px;
+    align-content  : flex-end;
+    align-self     : flex-end;
+    display        : inline-block;
+    padding        : 10px;
+    padding-top    : 7.5em;
+    margin         : 10px;
+    text-transform : uppercase;
+    color          : var(--textColor, white);
+    text-shadow    : #555;
+    font-size      : .7em;
+    border-radius  : 3px;
     text-decoration: none;
-    width:100px;
-    height: 120px;
-    margin-top: auto;
-    z-index: inherit;
-    &:hover{
-        box-shadow: 1px 1px 2px white;
+    min-width      : 6em;
+    min-height     : 8em;
+    margin-top     : auto;
+    z-index        : inherit;
+
+    &:hover {
+        box-shadow      : 1px 1px 2px white;
         background-color: hsla(0, 0%, 100%, 0.404);
-  
+
     }
 
-    &:before,&:after{
-        content:"";
-        width:55px;
-        height:55px;
-        border-radius:5px;
-        position:absolute;
-        bottom:0%;
-        left:0;
-        margin: 5px;
+    // &:before,
+    // &:after {
+    //     content      : "";
+    //     width        : 6em;
+    //     height       : 5em;
+    //     border-radius: 5px;
+    //     position     : absolute;
+    //     bottom       : 0%;
+    //     left         : 0;
+    //     margin       : 5px;
+    // }
+
+
+    &:before {
+        content         : "";
+        width           : 6em;
+        height          : 5em;
+        border-radius   : 5px;
+        position        : absolute;
+        top             : 1em;
+        left            : 0;
+        margin          : 1em;
+        background-color: hsla(180, 81%, 39%, 0.6);
+        transform       : skewY(0deg);
     }
 
-    
-    &:before{
-        background-color: rgb(19, 179, 179);
-        transform:skewY(0deg);
-        width:60px;
-        
-    }
-     
-    &:after{
-        background-color: rgb(76, 236, 236);
-        transform:skewY(-20deg) translateY(-10px);
-
+    &:after {
+        content         : "";
+        width           : 5em;
+        height          : 5em;
+        border-radius   : 5px;
+        position        : absolute;
+        top             : 1em;
+        left            : 0;
+        margin          : 1em;
+        background-color: rgba(75, 236, 236, 0.6);
+        transform       : skewY(-20deg) translateY(-10px);
     }
 }
 
 
 
 .slideLinks {
-    position:relative;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-content: flex-end;
-    align-self: flex-end;
-    display: inline-block;
-    padding-block: 10px;
-    padding-inline: 15px;
-    margin: 10px;
-    text-transform: uppercase;
-    color: var(--textColor, white);
-    font-size: .7em;
-    border-radius: 3px;
-    text-decoration: none;
-    width:150px;
-    height: 110px;
-    margin-top: auto;
-    z-index: inherit;
+    position        : relative;
+    display         : flex;
+    flex-direction  : column;
+    justify-content : flex-end;
+    align-content   : flex-end;
+    align-self      : flex-end;
+    display         : inline-block;
+    padding-block   : 10px;
+    padding-inline  : 15px;
+    margin          : 10px;
+    text-transform  : uppercase;
+    color           : var(--textColor, white);
+    font-size       : .7em;
+    border-radius   : 3px;
+    text-decoration : none;
+    width           : 150px;
+    height          : 110px;
+    margin-top      : auto;
+    z-index         : inherit;
     background-color: hsla(0, 0%, 100%, 0.104);
-    &:hover{
-        box-shadow: 1px 1px 2px white;
+
+    &:hover {
+        box-shadow      : 1px 1px 2px white;
         background-color: hsla(0, 0%, 100%, 0.404);
-  
+
     }
 
-    
-    &:before{
+
+    &:before {
         background-color: rgb(19, 179, 179);
-        transform:skewY(0deg);
-        width:60px;
-        
+        transform       : skewY(0deg);
+        width           : 60px;
+
     }
-     
-    &:after{
+
+    &:after {
         background-color: rgb(76, 236, 236);
-        transform:skewY(-20deg) translateY(-10px);
+        transform       : skewY(-20deg) translateY(-10px);
 
     }
 }
 
 .button {
-    display: inline-block;
-    margin:1em;
-    padding: .5em;
-    cursor: pointer;
-    border-radius: 3px;
-    font-weight: bold;
+    display       : inline-block;
+    margin        : 1em;
+    padding       : .5em;
+    cursor        : pointer;
+    border-radius : 3px;
+    font-weight   : bold;
     text-transform: uppercase;
-    color:white;
-    background: hsl(188, 45%, 22%)
+    color         : white;
+    background    : hsl(188, 45%, 22%)
 }
 
-pre{
+pre {
     margin-block: 1em;
 }

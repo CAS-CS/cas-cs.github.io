@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Prateek Raj Gautam at CAS AKTU</title>
+</head>
+
+<body>
+  <div id="app" class="app">
+  </div>
+  <script src="https://generatorjs.github.io/generatorjs.cdn/generator.js"></script>
+  <script src="https://generatorjs.github.io/generatorjs.cdn/generatorWebHelper.js"></script>
+  <script src="/main.js" defer></script>
+
+  <!-- MathJax -->
+  <script type="text/x-mathjax-config">
+        MathJax.Hub.Config({
+          extensions: ["tex2jax.js"],
+          <!-- jax: ["input/TeX", "output/HTML-CSS"], -->
+          jax: ["input/TeX", "output/SVG"],
+          tex2jax: {
+            inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+            displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+            processEscapes: true
+          },
+          "HTML-CSS": { fonts: ["TeX"] }
+        });
+      </script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+
+  <!-- highlighter -->
+  <script>
+    load(["https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css", "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"])
+    setTimeout(hljs.highlightAll(), 1000)
+  </script>
+</body>
+
+</html>
