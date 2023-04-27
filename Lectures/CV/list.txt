@@ -5,5 +5,7 @@
 ./L02
 ./L05_Histogram_Equalization__
 ./L10_GenerateImage_and_FourierTransform
+./L06_Box,Gaussian,LinearFilters
 ./00 Syllabus.md
 ./L01 Image as Functions.md
+./Edge_detection.ipynb
