@@ -1,4 +1,4 @@
-window.DEBUT = 1
+window.DEBUT = true
 window.$ = GeneratorJs()
 window.$$ = GeneratorWebHelper()
 $.init()
@@ -99,7 +99,8 @@ var slideScss = `
         padding:clamp(.5em,10vw,1em);
     }
     ol,ul{
-        margin-left:1em;
+        margin-left:2em;
+        padding-left:2em;
     }
     li{
         padding-block:.2em;
@@ -321,13 +322,14 @@ table{
         word-break:break-word;
         width:100%;
         // border-radius:2px;
-        box-shadow:0 0 5px hsla(0,0%,0%,.2);
+        // box-shadow:0 0 1px hsla(0,0%,0%,.1);
         padding:.5em;
-        background-color:hsla(0,0%,100%,.1);
+        // background-color:hsla(0,0%,100%,.1);
 
+        box-shadow:1px 1px .5em hsla(0,0%,0%,.2);
         pre{
             margin-block:1em;
-            box-shadow:1px 1px 5em hsla(0,0%,0%,1);
+            box-shadow:1px 1px 5px hsla(0,0%,0%,.2);
         }
         &:last-child{
             margin-bottom:10em;
@@ -336,9 +338,18 @@ table{
         
     }
 
+    .input{
+        display:block;
+        margin-inline:auto;
+        margin-block:1em;
+        // background-color:hsla(0,0%,0%,.1);
+        font-family:"consoles", "terminal", "monospace";
+    }
     .output{
         display:block;
-        font-family:"consolas", "terminal", "monospace";
+        margin-inline:auto;
+        margin-block:1em;
+        font-family:"consoles", "terminal", "monospace";
 
         background-color:hsla(0,0%,0%,.1);
         // outline:1px solid black;
@@ -364,7 +375,13 @@ table{
     padding-block:1em;
   }
 
-
+  .code{
+    background-color:hsla(0,0%,100%,.8);
+    color:#333;
+    padding:.5em;
+    overflow-x:auto;
+    white-space: nowrap
+  }
 
 `
 
@@ -531,69 +548,109 @@ function parseNotebook(link) {
     // searchParam.set("type", 'ipynb')
     // window.history.pushState({}, "", "?" + searchParam.toString())
     getfile(link, nb => {
+        append(appmain, gen(div, "blockroot", "", 'blockroot'), "replace")
+        append(blockroot, gen("aside", "sideBar", ""))
+        append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
+        append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
+
         var PrintFileName = link.split("/").pop().replaceAll(".ipynb", "")
-        var nbmd = `<h1>Python Notebook: ${PrintFileName}</h1>`
+        var nbmd = ``
+
+        append(blockroot, gen(h1, "Title", `Python Notebook: ${PrintFileName}`, "title"))
         nb = JSON.parse(nb)
 
         nb.cells.forEach(cell => {
 
             if (cell.source.length > 0) {
-                var type = cell.cell_type
+                var cell_type = cell.cell_type
                 var src = cell.source
 
                 var ecount = cell.execution_count
 
                 // log(type)
-                if (type == "markdown") {
+                if (cell_type == "markdown") {
                     var md = src.join("")
-                    nbmd = nbmd + "\n\n" + md + "\n\n"
+                    // nbmd = nbmd + "<p class='input markdown'>\n\n" + md + "\n\n</p> --- \n"
+                    // nbhtml += htmltostring(gen(p, "", parsemd(md), "input markdown"))
+                    append(blockroot, gen(div, `Markdown${ecount}`, parsemd(md), "markdown block"))
                     // log(nbmd)
+                    // log(nbhtml)
                 }
-                if (type == "code") {
-
+                if (cell_type == "code") {
                     var count = cell.execution_count
-                    // var code = src.join("\n")
-                    var code = src.join("")
-                    nbmd = nbmd + `\n\n<p class="input">In [${ecount}] :</span><br />`
-                    nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n</p>"
-                    var op = cell.outputs
+                    var inputCode = src.join("")
+                    append(blockroot, gen(div, `input${count}`, "", "input block"))
+                    append(`#input${count}`, gen(span, "", `In [${count}] :`, "execution_count"))
+                    append(`#input${count}`, gen(code, "", inputCode, "python language-python code"))
 
-                    if (op.length > 1) {
-                        var status = (op[0].output_type == "execute_result") ? "success" : "fail"
-                        nbmd += `\n\n<span class='execution_count,${status}'>\n\nOut [${count}] :</span><br />\n`
 
-                        op.forEach(o => {
+                    // nbmd = nbmd + `\n\n<p class="input"><span>In [${ecount}] :</span><br />`
+                    // nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n</p>"
+                    var outputs = cell.outputs
+                    var status = "success"
+                    if (outputs.length > 1) {
+                        var status = (outputs[0].output_type == "execute_result") ? "success" : "fail"
+                        append(blockroot, gen(div, `output${count}`, gen(span, "", `Out [${count}] :`, "execution_count"), `output block execution_count,${status}`))
+                        // nbmd += `\n\n<span class='execution_count,${status}'>\n\nOut [${count}] :</span><br />\n`
+                        outputs.forEach(output => {
 
-                            var output_type = o.output_type
+                            var output_type = output.output_type
                             if (output_type == "stream") {
-                                var text = o.text
+                                var text = output.text
 
-                                // nbmd = nbmd + `\n\n<p class="output"><span class='execution_count,${status}'>Out [${count}] : </span><br /> ${text} </p> \n\n`
+                                // nbmd = nbmd + `\n\n<p class="output ${output_type}">
+                                // <span class='execution_count,${status}'>Out [${count}] : </span>
+                                // <br /> ${text} </p> \n\n`
+
+                                append(`#output${count}`, gen(p, "", text, `output ${output_type}`))
                             }
+
+
+
+
                             if (output_type == "display_data") {
-                                // nbmd += `\n\n<span class='execution_count,${status}'>\n\nOut [${count}] : </span><br />`
 
                                 try {
-                                    var data = o.data
+                                    var data = output.data
                                     if (data.hasOwnProperty("text/plain")) {
                                         var text = data["text/plain"]
-                                        nbmd = nbmd + `\n\n<p class="output"> ${text} </p> \n\n`
+                                        // nbmd = nbmd + `\n\n<p class="output ${output_type}"> ${text} </p> \n\n`
+                                        append(`#output${count}`, gen(p, "", text, `output ${output_type}`))
                                     }
 
                                     if (data.hasOwnProperty("image/png")) {
 
                                         var className = '';
+                                        var src = `data:image/png;base64,${image}`
                                         if (o.metadata.hasOwnProperty("needs_background")) {
-                                            className = `needs-background-${o.metadata["needs_background"]}`
+                                            className = `needs-background-${output.metadata["needs_background"]}`
                                         }
 
 
                                         var image = data["image/png"]
-                                        nbmd = nbmd + `\n\n<p class="output ${className}">\n\n<img src="data:image/png;base64,${image}" /> </p><br />\n\n`
+                                        // nbmd = nbmd + `\n\n<p class="output ${className}">\n\n<img src= /> </p><br />\n\n`
+                                        append(`#output${count}`, gen(img, "", "", `output ${output_type} ${className}`, { "src": src }))
                                     }
                                 } catch (error) {
 
                                 }
+                            }
+
+                            if (output_type == "execute_result") {
+                                // log(`<pre><code>` + JSON.stringify(output.data["text/plain"].join()) + `</code></pre>`)
+
+
+                                try {
+                                    var data = output.data
+
+                                    console.log(data)
+                                    if (data.hasOwnProperty("text/plain")) {
+
+                                        var text = data["text/plain"].join()
+                                        //             nbmd = nbmd + `\n\n<p class="output ${output_type}"> <pre>${text.join()}</pre> </p> \n\n`
+                                        //             console.log(text.join())
+                                    }
+                                } catch (error) { alert(error) }
                             }
 
 
@@ -617,26 +674,22 @@ function parseNotebook(link) {
 
         // append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
 
-        append(appmain, gen(div, "blockroot", "", 'blockroot'), "replace")
-        append(blockroot, gen("aside", "sideBar", ""))
-        append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
-        append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
 
-        var html = nbmd.split("---")
+        // var html = nbmd.split("---")
 
-        for (var i = 0; i < html.length; i++) {
-            var h = html[i]
-            if (h.length > 0) {
-                parsemd(h, H => {
-                    append(blockroot, gen(section, `block${i}`, H, "block"))
-                    if (i != 0 && i != html.length - 1) {
-                        append(get(".block")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount,hide"))
-                        append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
-                    }
-                })
-            }
-        }
-        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": `${link.split('/')[link.split('/').length - 2]}_${link.split('/')[link.split('/').length - 1]}` })))
+        // for (var i = 0; i < html.length; i++) {
+        //     var h = html[i]
+        //     if (h.length > 0) {
+        //         parsemd(h, H => {
+        //             append(blockroot, gen(section, `block${i}`, H, "block"))
+        //             if (i != 0 && i != html.length - 1) {
+        //                 append(get(".block")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount,hide"))
+        //                 append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
+        //             }
+        //         })
+        //     }
+        // }
+        // append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": `${link.split('/')[link.split('/').length - 2]}_${link.split('/')[link.split('/').length - 1]}` })))
 
 
 
