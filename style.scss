@@ -17,13 +17,31 @@
     --headerHeight: 60px;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin    : 0px;
     padding   : 0px;
     font-size : var(--fontSize);
-    transition: all 200ms ease-in-out;
+    transition: all 100ms ease-in-out;
 
+}
+
+html {
+    color-scheme: dark light;
+}
+
+body {
+    min-height: 100vh;
+}
+
+img,
+picture,
+svg,
+video {
+    display  : block;
+    max-width: 100%;
 }
 
 ::-webkit-scrollbar {
@@ -256,22 +274,28 @@
 .button {
     display       : inline-block;
     margin        : 1em;
-    padding       : .5em;
+    padding       : 1em;
     cursor        : pointer;
-    border-radius : 3px;
     font-weight   : bold;
     text-transform: uppercase;
     color         : white;
-    background    : hsl(188, 45%, 22%)
+    background    : hsla(var(--hueAscent), 80%, 30%, 0.4);
+    border        : none;
+    border-radius : .5em;
+    box-shadow    : 1px 1px 5px var(--shadowDark, #333);
+    transition    : all 0.2s ease-in-out;
+
+    &:hover {
+        inset     : 2px;
+        box-shadow: 1px 1px 2px var(--shadowDark, #fff);
+    }
 }
 
 pre {
     margin-block: 1em;
 }
 
-img {
-    max-width: 100%;
-}
+
 
 ol,
 ul {

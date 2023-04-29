@@ -19,7 +19,6 @@
   <script type="text/x-mathjax-config">
         MathJax.Hub.Config({
           extensions: ["tex2jax.js"],
-          <!-- jax: ["input/TeX", "output/HTML-CSS"], -->
           jax: ["input/TeX", "output/SVG"],
           tex2jax: {
             inlineMath: [ ['$','$'], ["\\(","\\)"] ],
@@ -34,10 +33,12 @@
   </script>
 
   <!-- highlighter -->
-  <script>
-    load(["https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css", "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"])
-    setTimeout(hljs.highlightAll(), 1000)
-  </script>
+  <!-- <script>
+    setTimeout(() => {
+      load(["https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css", "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"])
+      hljs.highlightAll()
+    }, 1000) 
+  </script> -->
 </body>
 
 </html>

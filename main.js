@@ -304,7 +304,7 @@ table{
     height:100vh;
     padding-block:2em;
     padding-inline:clamp(2em,10vw,30vw);
-    // margin-inline:auto;
+    margin-block:5em;
     overflow:scroll;
     background-color:hsla(0,0%,100%,.1);
     overflow-y:auto;
@@ -344,6 +344,7 @@ table{
         margin-block:1em;
         // background-color:hsla(0,0%,0%,.1);
         font-family:"consoles", "terminal", "monospace";
+        overflow-x:auto;
     }
     .output{
         display:block;
@@ -352,6 +353,7 @@ table{
         font-family:"consoles", "terminal", "monospace";
 
         background-color:hsla(0,0%,0%,.1);
+        overflow-x:auto;
         // outline:1px solid black;
         img{
             margin-inline:auto;
@@ -378,9 +380,9 @@ table{
   .code{
     background-color:hsla(0,0%,100%,.8);
     color:#333;
-    padding:.5em;
+    padding:1em;
     overflow-x:auto;
-    white-space: nowrap
+    // white-space: nowrap
   }
 
 `
@@ -495,7 +497,7 @@ function mathjaxHljsCopyIcon() {
         MathJax.typesetClear()
         MathJax.typeset("slideroot")
         MathJax.typeset()
-        hljs.highlightAll()
+        // hljs.highlightAll()
         setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
     }
         , 1000)
@@ -537,17 +539,11 @@ function parseSlide(link) {
     mathjaxHljsCopyIcon()
 }
 
-function viewSourceFile(link) {
-    // log(link)
-    // window.location.href = link
-}
+
 
 function parseNotebook(link) {
-    // searchParam = new URLSearchParams()
-    // searchParam.set("view", link)
-    // searchParam.set("type", 'ipynb')
-    // window.history.pushState({}, "", "?" + searchParam.toString())
     getfile(link, nb => {
+        append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
         append(appmain, gen(div, "blockroot", "", 'blockroot'), "replace")
         append(blockroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
@@ -563,107 +559,76 @@ function parseNotebook(link) {
 
             if (cell.source.length > 0) {
                 var cell_type = cell.cell_type
-                var src = cell.source
 
                 var ecount = cell.execution_count
 
-                // log(type)
                 if (cell_type == "markdown") {
-                    var md = src.join("")
-                    // nbmd = nbmd + "<p class='input markdown'>\n\n" + md + "\n\n</p> --- \n"
-                    // nbhtml += htmltostring(gen(p, "", parsemd(md), "input markdown"))
+
+                    var src = cell.source
+                    var md = src.join("\n")
                     append(blockroot, gen(div, `Markdown${ecount}`, parsemd(md), "markdown block"))
-                    // log(nbmd)
-                    // log(nbhtml)
+
                 }
                 if (cell_type == "code") {
                     var count = cell.execution_count
+
+                    var src = cell.source
                     var inputCode = src.join("")
                     append(blockroot, gen(div, `input${count}`, "", "input block"))
                     append(`#input${count}`, gen(span, "", `In [${count}] :`, "execution_count"))
-                    append(`#input${count}`, gen(code, "", inputCode, "python language-python code"))
+                    append(`#input${count}`, gen(pre, "", gen(code, "", inputCode, "python language-python code")))
 
 
-                    // nbmd = nbmd + `\n\n<p class="input"><span>In [${ecount}] :</span><br />`
-                    // nbmd = nbmd + "\n```python\n" + code + "\n```\n" + "\n---\n</p>"
                     var outputs = cell.outputs
                     var status = "success"
-                    if (outputs.length > 1) {
+                    if (outputs.length > 0) {
                         var status = (outputs[0].output_type == "execute_result") ? "success" : "fail"
                         append(blockroot, gen(div, `output${count}`, gen(span, "", `Out [${count}] :`, "execution_count"), `output block execution_count,${status}`))
-                        // nbmd += `\n\n<span class='execution_count,${status}'>\n\nOut [${count}] :</span><br />\n`
                         outputs.forEach(output => {
+                            // for (var j = 0; outputs.length; j++) {
+                            // var output = outputs[j]
 
                             var output_type = output.output_type
                             if (output_type == "stream") {
-                                var text = output.text
-
-                                // nbmd = nbmd + `\n\n<p class="output ${output_type}">
-                                // <span class='execution_count,${status}'>Out [${count}] : </span>
-                                // <br /> ${text} </p> \n\n`
-
-                                append(`#output${count}`, gen(p, "", text, `output ${output_type}`))
+                                var text = output.text.join("")
+                                append(`#output${count}`, gen(pre, "", text, `output ${output_type}`))
                             }
-
 
 
 
                             if (output_type == "display_data") {
 
-                                try {
-                                    var data = output.data
-                                    if (data.hasOwnProperty("text/plain")) {
-                                        var text = data["text/plain"]
-                                        // nbmd = nbmd + `\n\n<p class="output ${output_type}"> ${text} </p> \n\n`
-                                        append(`#output${count}`, gen(p, "", text, `output ${output_type}`))
-                                    }
-
-                                    if (data.hasOwnProperty("image/png")) {
-
-                                        var className = '';
-                                        var src = `data:image/png;base64,${image}`
-                                        if (o.metadata.hasOwnProperty("needs_background")) {
-                                            className = `needs-background-${output.metadata["needs_background"]}`
-                                        }
-
-
-                                        var image = data["image/png"]
-                                        // nbmd = nbmd + `\n\n<p class="output ${className}">\n\n<img src= /> </p><br />\n\n`
-                                        append(`#output${count}`, gen(img, "", "", `output ${output_type} ${className}`, { "src": src }))
-                                    }
-                                } catch (error) {
+                                var data = output.data
+                                if (data.hasOwnProperty("text/plain")) {
+                                    var text = data["text/plain"]
+                                    append(`#output${count}`, gen(p, "", gen(code, "", text, `output ${output_type}`), `output ${output_type}`))
+                                    // append(`#output${count}`, gen(p, "", gen(code, "", text, `output ${output_type}`)))
 
                                 }
-                            }
 
-                            if (output_type == "execute_result") {
-                                // log(`<pre><code>` + JSON.stringify(output.data["text/plain"].join()) + `</code></pre>`)
+                                if (data.hasOwnProperty("image/png")) {
+                                    var className = '';
 
-
-                                try {
-                                    var data = output.data
-
-                                    console.log(data)
-                                    if (data.hasOwnProperty("text/plain")) {
-
-                                        var text = data["text/plain"].join()
-                                        //             nbmd = nbmd + `\n\n<p class="output ${output_type}"> <pre>${text.join()}</pre> </p> \n\n`
-                                        //             console.log(text.join())
+                                    var image = data["image/png"]
+                                    var src = `data:image/png;base64,${image}`
+                                    if (output.metadata.hasOwnProperty("needs_background")) {
+                                        className = `needs-background-${output.metadata["needs_background"]}`
                                     }
-                                } catch (error) { alert(error) }
+                                    append(`#output${count}`, gen(img, "", "", `output ${output_type} ${className}`, { "src": src }))
+                                }
+
                             }
 
-
-
-
-
-
-
-
+                            if (output_type == "execute_result" || output_type == "display_data") {
+                                var data = output.data
+                                if (data.hasOwnProperty("text/plain")) {
+                                    var text = data["text/plain"].join("")
+                                    append(`#output${count}`, gen(pre, "", gen(code, "", text, `output ${output_type}`)))
+                                }
+                            }
                         })
                     }
                 }
-                // log(nbmd)
             }
 
         }
@@ -672,25 +637,16 @@ function parseNotebook(link) {
         )
 
 
-        // append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
-
-
-        // var html = nbmd.split("---")
-
-        // for (var i = 0; i < html.length; i++) {
-        //     var h = html[i]
-        //     if (h.length > 0) {
-        //         parsemd(h, H => {
-        //             append(blockroot, gen(section, `block${i}`, H, "block"))
-        //             if (i != 0 && i != html.length - 1) {
-        //                 append(get(".block")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount,hide"))
-        //                 append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
-        //             }
-        //         })
-        //     }
-        // }
-        // append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": `${link.split('/')[link.split('/').length - 2]}_${link.split('/')[link.split('/').length - 1]}` })))
-
+        var noOfBlocks = get(".block").length
+        for (var i = 0; i < noOfBlocks; i++) {
+            append(get(".block")[i], gen(span, "", `${i + 1}/${noOfBlocks}`, "slideCount hide"))
+            // append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
+            append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `get(".block")[${i}].scrollIntoView()` })))
+        }
+        // download source file
+        var downloadFileName = `${link.split('/')[link.split('/').length - 2]}_${link.split('/')[link.split('/').length - 1]}`
+        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": downloadFileName })))
+        append(blockroot, gen(button, "", gen(a, "src", `Download Source`, "button", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": downloadFileName })))
 
 
     })
