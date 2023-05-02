@@ -534,9 +534,8 @@ Thus, a user should pick a communication peripheral that suits your project the 
 
    
 | Protocol | UART | I2C | SPI |
-| --- | --- | --- | --- |
-| Complexity | Simple | Easy to chain multiple devices | Complex as device  
-increases |
+|---|---|---|---|
+| Complexity | Simple | Easy to chain multiple devices |Complex as device increases |
 | Speed | Slowest | Faster than UART | Fastest |
 | Number of devices | Up to 2 devices | Up to 127, but gets complex | Many, but gets complex |
 | Number of wires | 1 | 2 | 4 |
@@ -547,5 +546,7 @@ increases |
 
 ---
 # Resource
-[https://www.nextpcb.com/blog/spi-i2c-uart](https://www.nextpcb.com/blog/spi-i2c-uart)
-[https://www.nextpcb.com/blog/spi-i2c-uart](https://www.nextpcb.com/blog/spi-i2c-uart)
+
+1. [https://www.nextpcb.com/blog/spi-i2c-uart](https://www.nextpcb.com/blog/spi-i2c-uart)
+
+1. [https://www.nextpcb.com/blog/spi-i2c-uart](https://www.nextpcb.com/blog/spi-i2c-uart)
