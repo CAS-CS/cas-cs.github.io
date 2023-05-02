@@ -1,7 +1,7 @@
 ./
 ./IOT-LAB
-./.dist
 ./00 Syllabus.md
+./CH_4_L01_UART vs I2C vs SPI – Communication Protocols and Uses.md
 ./IPv4 Header, IPv6 Header and MQTT.md
 ./L01 Introduction to IoT.md
 ./Lab 02 Introduction to Arduino and platformio.md
