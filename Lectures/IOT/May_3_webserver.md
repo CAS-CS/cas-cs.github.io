@@ -11,6 +11,20 @@ Web server is a program which processes the network requests of the users and se
 
 [](https://media.geeksforgeeks.org/wp-content/uploads/20190927155217/webserver.png)
 
+
+## Web Server Definition
+
+It consists of the hardware and software that is responsible for responding to requests on the World Wide Web, with the use of hypertext transfer protocol (HTTP) and other protocols. *These requests are made by clients.*
+
+
+The main thing that it is responsible for, is displaying the contents of a website to each user who requests it. This process involves storing, processing, and delivering data.
+
+
+The exchange of data among devices is facilitated by a web server’s hardware. The software component of a web server controls the users’ access to the hosted files. All systems that host websites need to have the web server software.
+
+
+---
+
 ## HTTP: Hyper Text Transport Protocol
 
 Http is a protocol, a way of communication which supplies web pages. 
@@ -24,19 +38,43 @@ Http is a protocol, a way of communication which supplies web pages.
 
 > One of the great qualities of this protocol is that it replaced complicated and heavy displays, with user friendly web pages.
 
+
+
+---
+# Functions of a Web Server
+
+
+1. Web servers store and configure all website data. This is done to protect data from unauthorized users.
+1. Web servers have the prime responsibility to enable accessibility to hosted websites. This includes the availability of back-end database server services and more.
+1. When potential clients around the globe are trying to access your website, your website’s web server would serve them accordingly. Such potential clients and visitors are known as end users and their access requests are known as end-user requests.
+1. Web servers help in controlling the bandwidth; they are equipped to minimize excess network traffic, thus regulating the overall traffic in the network. *This feature of web servers prevents downtime to a great extent. Downtime is usually caused by surplus web traffic.*
+1. The presence of a web server enables the creation of dynamic web pages in popular scripting languages such as Perl, Ruby, Python, and others.
+
+
 ---
 
 # How does it work? 
 
-The browser sends a request to the server who searches the demanded page and returns it to the browser for the user. 
+A web browser uses HTTP to request a file hosted on a web server. The HTTP server accepts this request, finds the file, and then sends it back to the browser using HTTP.  
+
+###  Steps involved in the process:
+* A user specifies the URL they want to access in the address bar.
+* The browser fetches the IP address of the domain name. This would take the web browser to the web server.
+* The browser requests the file from the web server using HTTP.
+* The web server will send back the requested file via HTTP. If, in case, the file does not exist, an error message will be sent.
+* The browser displays the web page.
 
 > The request will consist of information about the kind of browser that is used, about the computer or about the document requested. 
 
-It will have a method, a URL, a query string and the upload body in case you want data to be sent to the server.
+It will have a **method**, a **URL**, a **query string** and the **upload body** in case you want data to be sent to the server.
 
-* The **response will** include the status, which tells the browser if the page was found or not 
+### Response Status
 
-> (the errors among the 400s are about a not found page, 300 are redirections and 200s are confirmations of the page being found). 
+* The **response will** include the status, which tells the browser if the page was found or not.
+
+> 400s are about a not found page, 
+> 300 are redirections and 
+> 200s are confirmations of the page being found. 
 
 
 [](https://ocw.cs.pub.ro/courses/_media/iot2015/courses/picture1.png?cache=&w=827&h=306&tok=dcc09f)
