@@ -306,7 +306,7 @@ table{
     height:100vh;
     padding-block:2em;
     padding-inline:clamp(2em,10vw,30vw);
-    margin-block:5em;
+    margin-block:0em;
     overflow:scroll;
     background-color:hsla(0,0%,100%,.1);
     overflow-y:auto;
@@ -318,13 +318,10 @@ table{
     scroll-behavior:smooth;
 
     .block{
-        // max-height:100vh;
         margin-inline:auto;
         margin-block:2em;
         word-break:break-word;
         width:100%;
-        // border-radius:2px;
-        // box-shadow:0 0 1px hsla(0,0%,0%,.1);
         padding:.5em;
         // background-color:hsla(0,0%,100%,.1);
 
@@ -337,7 +334,13 @@ table{
             margin-bottom:10em;
         }
 
-        
+   
+
+
+        .execution_count{
+            color:var(--textColor,black);
+            text-shadow:0px 0px 1px var(--shadowLight,#ccc);
+        }
     }
 
     .input{
@@ -511,7 +514,9 @@ function footerButtons() {
 
 function generateView() {
 
-    append("#appmain", "", "over")
+    if (get("#appmain").length != 0) {
+        append("#appmain", "", "over")
+    }
     // append(main, gen(main, "main", "", ",main"), "replace")
 
 
@@ -576,7 +581,11 @@ function paginationUpdate(loc = "") {
     // var router = new Router()
     router.readHash()
     loc = router.pathname + router.dir
-    try { append(`#location`, "", "replace") } catch { }
+    if (get("#location").length != 0) {
+        append("#location", "", "replace")
+    }
+
+    // try { append(`#location`, "", "replace") } catch { }
     append(`#header`, gen(div, 'location', ""))
     var root = router.protocol + router.host
     var path = "/"
@@ -739,12 +748,13 @@ function parseSlide(link) {
 
 function parseNotebook(link) {
     getfile(link, nb => {
-        if (get("#back") != null) { append("#back", "", "replace") }
+        if (get("#back").length != 0) { append("#back", "", "replace") }
 
         append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
+        if (get("#appmain").length != 0) { append("#appmain", "", "replace") }
 
-        append(appmain, gen(div, "appmain", ""), "replace")
-        append(appmain, "", "replace")
+        // append(appmain, gen(div, "appmain", ""), "replace")
+        // append(appmain, "", "replace")
         append(main, gen(div, "blockroot", "", 'blockroot'))
         append(blockroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
