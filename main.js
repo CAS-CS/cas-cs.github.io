@@ -399,6 +399,10 @@ table{
     }
 
   }
+
+  .title{
+    padding-inline:1em;
+}
 `
 
 function loadBasicSkeleton(title = "CAS-CS") {
@@ -549,7 +553,7 @@ function generateView() {
 
 
 
-function updateOnHashChange() {
+async function updateOnHashChange() {
 
     var router = new Router()
     if (router.dir != "/") {
@@ -622,11 +626,11 @@ function appendfile(e) {
 
 }
 
-function parselist(fileListUrl, target = "#appmain") {
+function parselist(fileListUrl, target = "#main") {
     append(target, "", "over")
-    append(target, gen(h1, 'FileBrowser', "Directory List", "title"), "over")
+    append(target, gen(div, 'appmain', gen(h1, 'FileBrowser', "Directory List", "title"), "appmain"), "over")
 
-    append(target, gen(div, 'directoryGrid', "", "dirGrid"))
+    append(appmain, gen(div, 'directoryGrid', "", "dirGrid"))
 
     var currentLocation = router.dirpath
 
@@ -717,7 +721,8 @@ function parseSlide(link) {
 
         append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
 
-        append(`main`, gen(div, "slideroot", "", 'slideroot'), "replace")
+        append(`main`, "", "over")
+        append(`main`, gen(div, "slideroot", "", 'slideroot'))
         append(slideroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
@@ -868,10 +873,6 @@ function parseNotebook(link) {
 function reloadPage() {
     sessionStorage.clear()
     localStorage.clear()
-    var url = window.location.href
-    // console.log(url)
-    // window.location.href = url
-    updateOnHashChange()
 }
 
 
