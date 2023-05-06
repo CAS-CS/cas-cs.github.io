@@ -2,6 +2,7 @@ window.DEBUT = true
 window.$ = GeneratorJs()
 window.$$ = GeneratorWebHelper()
 $.init()
+load("./script.js")
 
 //STYLE
 
@@ -243,6 +244,7 @@ table{
         margin-top: 1em;
         padding:5px;
         list-style-type: none;
+        font-size: .8em;
 
 
 
@@ -385,73 +387,254 @@ table{
     // white-space: nowrap
   }
 
+
+  #titleheading{
+    a{
+
+        link-style:none;
+    text-style:none;
+    }
+
+  }
 `
 
+function loadBasicSkeleton(title = "CAS-CS") {
+    window.addEventListener('hashchange', updateOnHashChange, false);
 
+    load('/style.scss')
+    //your app logic
+    append(app, "", "over") /* reset app */
+    append(app, gen(header, "header", "", 'header'));
+    append(header, gen(h3, 'heading', gen(a, '', title, 'title', "/")))
+    append(app, gen(main, "main", "", 'main'));
+    append(main, gen(div, "appmain", "", 'appmain container'));
+    append(app, gen(footer, "appfooter", "", 'footer'));
+    append(appmain, gen(section, "hero", "", "hero"))
 
-load('/style.scss')
-//your app logic
-append(app, "", "over") /* reset app */
-append(app, gen(header, "header", "", 'header'));
-append(header, gen(h3, 'heading', 'Lecture Server', 'title'))
-var loc = window.location.href
+}
 
-var printLocation = loc.replaceAll('https://', "").replaceAll('http://', "")
-append(header, gen(div, 'location', printLocation))
+class Router {
+    constructor() {
+        this.dir = ""
+        this.file = ""
+        this.hashObj = {}
+        this.filepath = ""
+        this.readfromurl()
+        this.readHash()
 
+        this.updateroute()
+        return this.hash
+    }
 
-append("#location", "", 'over')
-var path = window.location.protocol + "//"
-printLocation.split("/").forEach(l => {
-    if (l.length > 0) {
-        path = path + "/" + l
-        append("#location", gen(a, '', l, 'pathNavigator', path + "/"))
-        append("#location", gen(span, '', "  ", 'spacer'))
+    readfromurl() {
+        this.host = window.location.host
+        this.protocol = window.location.protocol + "//"
+        this.pathname = window.location.pathname
+        this.root = this.protocol + this.host + this.pathname
 
     }
 
-})
-append(app, gen(main, "appmain", gen(h1, 'FileBrowser', "Directory List"), 'appmain container'));
-append(app, gen(footer, "appfooter", "", 'footer'));
-append(appmain, gen(section, "hero", "", "hero"))
-// load(["./header.js", "./script.js", "./footer.js","./style.css"])// load js and css files
-// append(hero, [gen(h1, "", "Hello GeneratorJs"), gen(p, "", "Yes, just Three functions for frontend."), gen(span, "", ["gen", "append", "load"]), gen(p, "", "And Three Optional functions."), gen(span, "", ["log", "getfile", "loadscss"])])
+    readHash() {
+        this.hash = window.location.hash
+        this.hash.substring(1,).split("&").forEach(row => {
+            var keyval = ""
+            keyval = row.split("=")
 
-append(main, gen(div, 'directoryGrid', "", "dirGrid"))
+            if (keyval[0] == "dir") {
+                this.dir = keyval[1]
+            }
+            if (keyval[0] == "file") { this.file = keyval[1] }
+            this.hashObj[keyval[0]] = keyval[1]
+        })
+        this.setdirpath(this.dir, this.file)
+    }
 
-var currentLocation = window.location.href
-var search = window.location.search
-currentLocation = currentLocation.replaceAll(search, "")
-// fileListUrl=currentLocation+"/"+'list.txt'
-fileListUrl = currentLocation + 'list.txt'
-// log(fileListUrl)
-var notebook = currentLocation + 'slide.ipynb'
-var slideUrl = currentLocation + 'slide.md'
+    updateroute() {
+        this.filepath = this.root
+        this.hash = `dir=${this.dir}&file=${this.file}`
+        if (this.dir.length == 0) {
+            this.dir += "/"
+        }
+        else {
+            if (this.dir.substring(this.dir.length - 1) != "/") {
+                this.dir += "/"
+            }
+            this.filepath += this.dir
+        }
+
+        this.dirpath = this.filepath
+        if (this.file.length > 0) {
+            this.filepath += this.file
+        }
+
+        window.location.hash = this.hash
+        // this.setdirpath(this.dir, this.file)
+    }
+
+    setdirpath(dir = "", file = "", url = window.location.origin) {
+        // window.location.href = url
+        this.dir = dir
+        this.file = file
+        this.updateroute()
+    }
+    get view() {
+        return this.filepath
+    }
+
+    set setfile(file) {
+        this.file = file
+
+        this.updateroute()
+    }
+
+    set setdir(dir) {
+        this.dir = dir
+
+        this.updateroute()
+    }
 
 
-loadButtonToFiles(fileListUrl)
-parseNotebook(notebook)
-parseSlide(slideUrl)
+
+}
+const router = new Router()
 
 
-// var searchParam = new URLSearchParams(search)
 
-function loadButtonToFiles(fileListUrl) {
+function footerButtons() {
+    if (get(`#footerButtons`).length != 0) {
+        append(`#footerButtons`, "", "replace")
+    }
+    append(`#appfooter`, gen(div, "footerButtons", ""), 'before')
+    append(`#footerButtons`, gen(button, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
+    append(`#footerButtons`, gen(button, "open", "Open", "button,openFile", { "onclick": "openFile()" }))
+}
+
+function generateView() {
+
+    append("#appmain", "", "over")
+    // append(main, gen(main, "main", "", ",main"), "replace")
+
+
+    var file = router.file
+    if (file.length == 0) {
+        router.setfile = "list.txt"
+    }
+
+    var ext = file.split(".").pop()
+    const route = {
+        "txt": () => { parselist(router.view) },
+        "md": () => { parseSlide(router.view) },
+        "ipynb": () => { parseNotebook(router.view) },
+        "pdf": () => { showPDF(router.view) }
+    }
+    try {
+        route[ext]()
+
+    } catch (e) {
+
+    }
+
+
+
+
+
+}
+
+
+
+
+
+function updateOnHashChange() {
+
+    var router = new Router()
+    if (router.dir != "/") {
+        var oldroot = router.root
+        var indexpath = router.root + router.dir.substring(1,) + "index.html"
+        var newroot = router.root + router.dir.substring(1,)
+        router.dir = "/"
+        fetch(indexpath).then(res => {
+            if (res.status == 200) {
+                window.location.href = newroot
+            }
+        })
+
+    }
+
+
+    paginationUpdate()
+    generateView()
+    footerButtons()
+    window.scrollTo(0, 0)
+
+}
+
+
+
+// var router = new Router()
+
+function paginationUpdate(loc = "") {
+    // var router = new Router()
+    router.readHash()
+    loc = router.pathname + router.dir
+    try { append(`#location`, "", "replace") } catch { }
+    append(`#header`, gen(div, 'location', ""))
+    var root = router.protocol + router.host
+    var path = "/"
+
+    var printLocation = loc.replaceAll('https://', "").replaceAll('http://', "")
+    printLocation.split("/").forEach(l => {
+        if (l.length > 0) {
+            // log(l)
+            path += l + "/"
+            append("#location", gen(a, '', l, 'pathNavigator', root + path, { "onclick": "updateOnHashChange()" }))
+            // append("#location", gen(span, '', "  ", 'spacer'))
+
+        }
+
+    })
+    generateView()
+}
+
+loadBasicSkeleton()
+
+// paginationUpdate()
+
+
+
+
+function appendDir(e) {
+    var newDir = router.dir + e.dataset.dir
+    newDir = newDir.replaceAll("//", "/").replaceAll("\\\\", "\\")
+    router.setdirpath(newDir, "")
+}
+function appendfile(e) {
+    router.setdirpath(router.dir, e.dataset.file)
+    updateOnHashChange()
+
+}
+
+function parselist(fileListUrl, target = "#appmain") {
+    append(target, "", "over")
+    append(target, gen(h1, 'FileBrowser', "Directory List", "title"), "over")
+
+    append(target, gen(div, 'directoryGrid', "", "dirGrid"))
+
+    var currentLocation = router.dirpath
+
 
     getfile(fileListUrl, filelist => {
 
         filelist.split("\n").sort().forEach((link, i) => {
             var url = currentLocation + link.replaceAll('./', '')
             link = link.replaceAll("\t", "").replaceAll("\n", "")
-
+            //for directories
             if (link[2] != '.' && !link.includes(".md") && !link.includes(".ipynb")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    // redirect = redirect.replaceAll(" ", "")
-                    // log(redirect)
-                    // append(directoryGrid, gen(a, "", linkname, 'folderLinks', link))
-                    append(directoryGrid, gen(a, "", linkname, 'folderLinks', redirect))
+                    var dir = link.replaceAll('./', '')
+
+                    append(`#directoryGrid`, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)` }))
                 }
             }
 
@@ -459,26 +642,41 @@ function loadButtonToFiles(fileListUrl) {
             if (link[2] != '.' && link.includes(".md")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
                 if (link.length > 0 && link != './') {
+                    var file = link.replaceAll('./', '')
                     // var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
+                    // append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { 'data-file': file, "onclick": `appendfile(this)` }))
+                    // append(directoryGrid, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)` }))
                 }
             }
 
             //for notebook files
             if (link[2] != '.' && link.includes(".ipynb")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "")
+                var file = link.replaceAll('./', '')
                 if (link.length > 0 && link != './') {
                     // var redirect = currentLocation + link.replaceAll('./', '') + "/"
                     // log(url)
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
+                    // append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
+                    // append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { 'data-file': file, "onclick": `appendfile(this)` }))
+
+                }
+            }
+            //for pdf files
+            if (link[2] != '.' && link.includes(".pdf]")) {
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "")
+                if (link.length > 0 && link != './') {
+                    // var redirect = currentLocation + link.replaceAll('./', '') + "/"
+                    // log(url)
+                    append(directoryGrid, gen(object, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
                 }
             }
         });
 
 
 
-        append(main, gen(button, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
-        append(main, gen(button, "open", "Open", "button,openFile", { "onclick": "openFile()" }))
+
     })
 }
 
@@ -504,15 +702,13 @@ function mathjaxHljsCopyIcon() {
 }
 
 function parseSlide(link) {
-    // searchParam = new URLSearchParams()
-    // searchParam.set("view", link)
-    // searchParam.set("type", 'md')
-    // window.history.pushState({}, "", "?" + searchParam.toString())
-    // log(link)
-    getfile(link, md => {
-        append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
 
-        append(appmain, gen(div, "slideroot", "", 'slideroot'), "replace")
+    getfile(link, md => {
+        if (get("#back") != null) { append("#back", "", "replace") }
+
+        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
+
+        append(`main`, gen(div, "slideroot", "", 'slideroot'), "replace")
         append(slideroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
@@ -543,8 +739,13 @@ function parseSlide(link) {
 
 function parseNotebook(link) {
     getfile(link, nb => {
-        append(header, gen(a, "Back", "Back", "pathNavigator", { "onclick": "reloadPage()", "tabindex": 0 }))
-        append(appmain, gen(div, "blockroot", "", 'blockroot'), "replace")
+        if (get("#back") != null) { append("#back", "", "replace") }
+
+        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
+
+        append(appmain, gen(div, "appmain", ""), "replace")
+        append(appmain, "", "replace")
+        append(main, gen(div, "blockroot", "", 'blockroot'))
         append(blockroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
         append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
@@ -659,7 +860,8 @@ function reloadPage() {
     localStorage.clear()
     var url = window.location.href
     // console.log(url)
-    window.location.href = url
+    // window.location.href = url
+    updateOnHashChange()
 }
 
 
@@ -673,4 +875,5 @@ if (window.location.href.includes("Gallery")) {
 }
 
 
-load("./script.js")
+
+updateOnHashChange()

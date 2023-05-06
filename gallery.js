@@ -1,8 +1,8 @@
 var galleryData = []
-append(main, gen(div, 'gallery', gen(h1, "", "Gallery"), 'section,gallery'), "over")
+append("#main", gen(div, 'gallery', gen(h1, "", "Gallery"), 'section,gallery'), "over")
 
 
-var currentLocation = window.location.href
+var currentLocation = window.location.origin + window.location.pathname
 var subGalleryUrllist = currentLocation + 'listDir.txt'
 // log(subGalleryUrllist)
 getfile(subGalleryUrllist, f => {
@@ -84,7 +84,7 @@ function openImage(i) {
     var downloadurl = folderUrl + fileNames[i].replaceAll("./", "")
     try { append(imageDialog, "", 'replace') }
     catch { }
-    append(appmain, gen("dialog", 'imageDialog', gen(img, '', '', "modal-image", { "src": downloadurl, "data-seq": i }), 'imageDialog'
+    append(main, gen("dialog", 'imageDialog', gen(img, '', '', "modal-image", { "src": downloadurl, "data-seq": i }), 'imageDialog'
         // , { "onclick": "closeModal()" }
     ), "before")
     get(imageDialog).classList.add("active")
@@ -150,6 +150,11 @@ var imagestyle = `
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     grid-auto-rows: 200px;
     grid-auto-flow: dense;
+    justify-content: center;
+    align-items: center;
+    padding: 10em 5em;
+    margin: 0 auto;
+
 
 
 }
@@ -235,13 +240,13 @@ transition:all .5sec ease-in-out;
         height: 4em;
         .modalButton{
             text-decoration:none;
-            font-weight:900;
+            font-weight:500;
             text-align: center;
             text-transform: uppercase;
             min-width: 8em;
             padding: 5px;
-            border-radius: 2px;
-            background-color: rgba(255,255,255,.5);
+            background-color: rgba(255,255,255,.9);
+            color: var(--ascentColor);
             user-select:none;
             opacity: .2;
             &:hover{
@@ -250,6 +255,11 @@ transition:all .5sec ease-in-out;
             }
         }
 
+    }
+}
+.gallery{
+    h1{
+        padding:2em;
     }
 }
 
