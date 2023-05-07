@@ -1,7 +1,6 @@
 ./
 ./Workshops
 ./.Syllabus
-./urlRouting
 ./.dist
 ./Gallery
 ./Lectures

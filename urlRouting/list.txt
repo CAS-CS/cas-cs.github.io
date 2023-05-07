@@ -1,7 +1,0 @@
-./
-./FoML
-./CV
-./RM
-./ACNC
-./.dist
-./IOT

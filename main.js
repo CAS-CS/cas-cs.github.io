@@ -14,6 +14,7 @@ var slideScss = `
     --sat:55%;
     --hueAscent:234;
     --fontFamily:"Cantarell";
+    --blockCountColor:#fff;
 }
 ::selection{
     background:hsl(var(--hueAscent),var(--satAscent),calc(calc(var(--light) + var(--lightAscent)) / 2));
@@ -32,6 +33,14 @@ var slideScss = `
         opacity:1;
     }
 }
+
+
+
+
+
+
+
+
 .slideroot{
     position:sticky;
     top:0;
@@ -338,8 +347,9 @@ table{
 
 
         .execution_count{
-            color:var(--textColor,black);
-            text-shadow:0px 0px 1px var(--shadowLight,#ccc);
+            color:var(--blockCountColor,black);
+            font-weight:bold;
+            // text-shadow:0px 0px 1px var(--shadowLight,#ccc);
         }
     }
 
@@ -386,27 +396,21 @@ table{
     background-color:hsla(0,0%,100%,.8);
     color:#333;
     padding:1em;
-    overflow-x:auto;
-    // white-space: nowrap
   }
 
 
   #titleheading{
     a{
-
-        link-style:none;
+    link-style:none;
     text-style:none;
     }
 
   }
 
-  .title{
-    padding-inline:1em;
-}
+  
 `
 
 function loadBasicSkeleton(title = "CAS-CS") {
-    window.addEventListener('hashchange', updateOnHashChange, false);
 
     load('/style.scss')
     //your app logic
@@ -438,6 +442,7 @@ class Router {
         this.protocol = window.location.protocol + "//"
         this.pathname = window.location.pathname
         this.root = this.protocol + this.host + this.pathname
+        this.origin = window.location.origin
 
     }
 
@@ -474,6 +479,10 @@ class Router {
             this.filepath += this.file
         }
 
+        var oldhash = window.location.hash
+        if (oldhash != this.hash) {
+            window.location.hash = this.hash
+        }
         window.location.hash = this.hash
         // this.setdirpath(this.dir, this.file)
     }
@@ -553,8 +562,8 @@ function generateView() {
 
 
 
-async function updateOnHashChange() {
-
+function updateOnHashChange() {
+    window.removeEventListener('hashchange', updateOnHashChange);
     var router = new Router()
     if (router.dir != "/") {
         var oldroot = router.root
@@ -566,20 +575,41 @@ async function updateOnHashChange() {
                 window.location.href = newroot
             }
         })
-
     }
 
 
+    reloadPage()
+}
+
+
+function reloadPage() {
+    sessionStorage.clear()
+    localStorage.clear()
     paginationUpdate()
     generateView()
     footerButtons()
     window.scrollTo(0, 0)
+    window.addEventListener('hashchange', updateOnHashChange);
+
+
 
 }
 
 
 
-// var router = new Router()
+
+function changepath(thispath) {
+    // log(thispath.dataset.path)
+    var path = thispath.dataset.path
+    var origin = window.location.origin
+    pathname = path.replace(origin, "")
+    // log(pathname)
+    var router = new Router()
+    router.setdir = pathname
+
+    window.location.pathname = "/"
+    updateOnHashChange()
+}
 
 function paginationUpdate(loc = "") {
     // var router = new Router()
@@ -590,7 +620,7 @@ function paginationUpdate(loc = "") {
     }
 
     // try { append(`#location`, "", "replace") } catch { }
-    append(`#header`, gen(div, 'location', ""))
+    append(`#header`, gen(nav, 'location', ""))
     var root = router.protocol + router.host
     var path = "/"
 
@@ -599,18 +629,17 @@ function paginationUpdate(loc = "") {
         if (l.length > 0) {
             // log(l)
             path += l + "/"
-            append("#location", gen(a, '', l, 'pathNavigator', root + path, { "onclick": "updateOnHashChange()" }))
+            // append("#location", gen(a, '', l, 'pathNavigator', root + path, { "onclick": "updateOnHashChange()" }))
+            append("#location", gen(a, '', l, 'pathNavigator', { 'data-path': root + path, "onclick": "changepath(this)" }))
             // append("#location", gen(span, '', "  ", 'spacer'))
 
         }
 
     })
-    generateView()
+    // generateView()
 }
 
 loadBasicSkeleton()
-
-// paginationUpdate()
 
 
 
@@ -622,66 +651,56 @@ function appendDir(e) {
 }
 function appendfile(e) {
     router.setdirpath(router.dir, e.dataset.file)
-    updateOnHashChange()
 
 }
 
-function parselist(fileListUrl, target = "#main") {
-    append(target, "", "over")
-    append(target, gen(div, 'appmain', gen(h1, 'FileBrowser', "Directory List", "title"), "appmain"), "over")
-
-    append(appmain, gen(div, 'directoryGrid', "", "dirGrid"))
-
-    var currentLocation = router.dirpath
+function parselist(fileListUrl = window.location.origin + window.location.pathname + "list.txt", target = "#main") {
 
 
+    var filelist = ""
     getfile(fileListUrl, filelist => {
+        append(target, "", "over")
+        append(target, gen(div, 'appmain', gen(h1, '', "File Browser", "heading"), "appmain"), "over")
+
+        append(appmain, gen(div, 'directoryGrid', "", "dirGrid"))
+
+        var currentLocation = router.dirpath
 
         filelist.split("\n").sort().forEach((link, i) => {
             var url = currentLocation + link.replaceAll('./', '')
             link = link.replaceAll("\t", "").replaceAll("\n", "")
             //for directories
             if (link[2] != '.' && !link.includes(".md") && !link.includes(".ipynb")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ")
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
                     var dir = link.replaceAll('./', '')
-
                     append(`#directoryGrid`, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)` }))
                 }
             }
 
             //for markdown files
             if (link[2] != '.' && link.includes(".md")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "")
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
                     var file = link.replaceAll('./', '')
-                    // var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    // append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { "onclick": `parseSlide(\`${url}\`)` }))
                     append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { 'data-file': file, "onclick": `appendfile(this)` }))
-                    // append(directoryGrid, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)` }))
                 }
             }
 
             //for notebook files
             if (link[2] != '.' && link.includes(".ipynb")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "")
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
                 var file = link.replaceAll('./', '')
                 if (link.length > 0 && link != './') {
-                    // var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    // log(url)
-                    // append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
-                    // append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
                     append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { 'data-file': file, "onclick": `appendfile(this)` }))
 
                 }
             }
             //for pdf files
             if (link[2] != '.' && link.includes(".pdf]")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "")
+                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
-                    // var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    // log(url)
                     append(directoryGrid, gen(object, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
                 }
             }
@@ -752,14 +771,17 @@ function parseSlide(link) {
 
 
 function parseNotebook(link) {
-    getfile(link, nb => {
-        if (get("#back").length != 0) { append("#back", "", "replace") }
 
+    getfile(link, nb => {
+
+        if (get("#back").length != 0) { append("#back", "", "replace") }
         append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
         if (get("#appmain").length != 0) { append("#appmain", "", "replace") }
 
         // append(appmain, gen(div, "appmain", ""), "replace")
         // append(appmain, "", "replace")
+        if (get("#main").length != 0) { append("#main", gen(main, "main", "", "main"), "replace") }
+
         append(main, gen(div, "blockroot", "", 'blockroot'))
         append(blockroot, gen("aside", "sideBar", ""))
         append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
@@ -870,10 +892,6 @@ function parseNotebook(link) {
     mathjaxHljsCopyIcon()
 }
 
-function reloadPage() {
-    sessionStorage.clear()
-    localStorage.clear()
-}
 
 
 
@@ -887,4 +905,4 @@ if (window.location.href.includes("Gallery")) {
 
 
 
-updateOnHashChange()
+reloadPage()

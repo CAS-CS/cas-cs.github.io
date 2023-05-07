@@ -15,6 +15,8 @@
     --fontScale   : 1;
     --fontFamily  : "Finlandica", "Poppins", "Arial";
     --headerHeight: 60px;
+    --bgColor     : hsl(var(--hue), calc(var(--sat) * 1.5), 5%);
+    ;
 }
 
 *,
@@ -33,7 +35,8 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    min-height      : 100vh;
+    background-color: var(--bgColor, #222);
 }
 
 img,
@@ -68,6 +71,10 @@ a {
     }
 }
 
+.heading {
+    font-size: clamp(1.2rem, 5vw, 2rem);
+    padding  : 1em !important;
+}
 
 #app {
     --h             : var(--hue, 200);
@@ -75,15 +82,13 @@ a {
     --l             : calc(var(--light, 15%) * var(--lightFactor, 1));
     display         : flex;
     flex-direction  : column;
-    min-height      : 100vh;
+    min-height      : 80vh;
     color           : var(--textColor, white);
     background-color: hsl(var(--h), var(--s), var(--l));
     font-size       : calc(1rem * var(--fontScale, 1));
     font-family     : var(--fontFamily), "arial", "sans";
 
-    h1 {
-        padding-block: 1em;
-    }
+
 
     header {
         display         : flex;
@@ -105,6 +110,7 @@ a {
         }
 
         .pathNavigator {
+            font-size       : .8em;
             color           : var(--ascentColor, aqua);
             padding         : 5px;
             margin          : 5px;
@@ -285,18 +291,18 @@ a {
 }
 
 .button {
-    display       : inline-block;
-    margin        : 1em;
-    padding       : .5em;
-    cursor        : pointer;
-    font-weight   : bold;
-    text-transform: uppercase;
-    color         : white;
-    background    : hsla(var(--hueAscent), 80%, 30%, 0.4);
-    border        : none;
-    border-radius : .5em;
-    box-shadow    : 1px 1px 2px var(--shadowDark, #333);
-    transition    : all 0.2s ease-in-out;
+    display             : inline-block;
+    // margin        : 1em;
+    padding             : .5em;
+    cursor              : pointer;
+    font-weight         : bold;
+    text-transform      : uppercase;
+    color               : white;
+    background          : hsla(var(--hueAscent), 80%, 30%, 0.4);
+    border              : none;
+    border-radius       : .5em;
+    // box-shadow       : 1px 1px 2px var(--shadowDark, #333);
+    transition          : all 0.2s ease-in-out;
 
     &:hover {
         inset     : 2px;

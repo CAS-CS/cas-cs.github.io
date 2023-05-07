@@ -19,7 +19,7 @@ getfile(subGalleryUrllist, f => {
             gen(
                 h1,
                 "",
-                foldername
+                foldername, 'heading'
             ), 'over')
         if (folder.length > 0 && folder != './' && folder != '\n') {
 
