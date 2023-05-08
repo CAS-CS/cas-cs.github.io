@@ -531,6 +531,7 @@ function generateView() {
         append("#appmain", "", "over")
     }
     // append(main, gen(main, "main", "", ",main"), "replace")
+    var file = filedetect()
 
 
     var file = router.file
@@ -558,6 +559,23 @@ function generateView() {
 
 }
 
+
+
+async function filedetect() {
+    var router = new Router()
+    var presentfile = ""
+    var files = "index.ipynb,slide.ipynb,slide.md,index.md".split(",")
+    files.forEach(file => {
+        var testpath = router.root + router.dir.substring(1,) + file
+        fetch(testpath).then(res => {
+            if (res.status == 200) {
+                router.setfile = file
+            }
+        })
+
+    })
+    return presentfile
+}
 
 
 
