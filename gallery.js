@@ -269,8 +269,8 @@ cssvar("--hue", "200")
 cssvar("--sat", "60%")
 loadscss(imagestyle)
 
-append(heading, 'Gallery', "over")
-append("title", 'Gallery', "over")
+// append(heading, 'Gallery', "over")
+// append("title", 'Gallery', "over")
 
 setTimeout(() => {
     var tempscss = `

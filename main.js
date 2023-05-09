@@ -43,11 +43,10 @@ var slideScss = `
 
 .slideroot{
     position:sticky;
-    top:0;
+    top:var(--headerHeight,60px);
     scroll-snap-type: y mandatory;
-    height:100vh;
+    height:calc(100vh - var(--headerHeight,60px));
     overflow:scroll;
-    // padding:2em;
     background-color:hsla(0,0%,100%,.1);
 
 
@@ -59,13 +58,12 @@ var slideScss = `
     position:relative;
     --padding:clamp(40px,15vw,300px);
     width:calc(100%);
-    // min-height:100vh;
-    padding-block:clamp(40px,10vh,100px);;
-    padding-inline:var(--padding);
+    height:calc(100vh - var(--headerHeight,60px));
+    padding-inline:clamp(40px,10vh,100px);;
+    padding-block:var(--padding);
     box-sizing:border-box;
     font-size:clamp(calc(.8rem * var(--fontScale,1)),3vw,calc(2rem * var(--fontScale,1)));
     // background-color:hsla(0,0%,100%,.1);
-    height:calc(100vh - 2em);
     overflow-y:auto;
     scroll-snap-align:start;
     scroll-padding:var(--headerHeight,60px);
@@ -409,6 +407,15 @@ table{
 
   
 `
+const convertLocalLinks = () => {
+    // log("converting local links")
+    var router = new Router()
+    setTimeout(() => {
+        document.body.innerHTML = document.body.innerHTML.replaceAll('./', router.dirpath)
+
+    }, 2000);
+}
+
 
 function loadBasicSkeleton(title = "CAS-CS") {
 
@@ -608,7 +615,7 @@ function reloadPage() {
     footerButtons()
     window.scrollTo(0, 0)
     window.addEventListener('hashchange', updateOnHashChange);
-
+    // convertLocalLinks()
 
 
 }
@@ -754,7 +761,7 @@ function mathjaxHljsCopyIcon() {
 function parseSlide(link) {
 
     getfile(link, md => {
-        if (get("#back") != null) { append("#back", "", "replace") }
+        if (get("#back").length != 0) { append("#back", "", "replace") }
 
         append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
 
@@ -783,6 +790,7 @@ function parseSlide(link) {
 
     })
     loadscss(slideScss)
+    convertLocalLinks()
     mathjaxHljsCopyIcon()
 }
 
@@ -908,6 +916,7 @@ function parseNotebook(link) {
     })
     loadscss(slideScss)
     mathjaxHljsCopyIcon()
+    convertLocalLinks()
 }
 
 
