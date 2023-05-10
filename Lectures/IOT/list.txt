@@ -1,6 +1,6 @@
 ./
-./CH_4_L01_UART vs I2C vs SPI – Communication Protocols and Uses
 ./IOT-LAB
+./UART vs I2C vs SPI
 ./May_3_webserver
 ./00 Syllabus.md
 ./IPv4 Header, IPv6 Header and MQTT.md
