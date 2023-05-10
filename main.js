@@ -15,6 +15,8 @@ var slideScss = `
     --hueAscent:234;
     --fontFamily:"Cantarell";
     --blockCountColor:#fff;
+    --fontScale:1;
+    --fontsize:1.5rem;
 }
 ::selection{
     background:hsl(var(--hueAscent),var(--satAscent),calc(calc(var(--light) + var(--lightAscent)) / 2));
@@ -56,13 +58,13 @@ var slideScss = `
 
 .slide{
     position:relative;
-    --padding:clamp(40px,15vw,300px);
+    --padding:clamp(1em,15vw,2em);
     width:calc(100%);
     height:calc(100vh - var(--headerHeight,60px));
-    padding-inline:clamp(40px,10vh,100px);;
+    padding-inline:clamp(2em,10vw,10vw);;
     padding-block:var(--padding);
     box-sizing:border-box;
-    font-size:clamp(calc(.8rem * var(--fontScale,1)),3vw,calc(2rem * var(--fontScale,1)));
+    font-size:clamp(calc(.8rem * var(--fontScale,1)),3vw,calc(1.5rem * var(--fontScale,1)));
     // background-color:hsla(0,0%,100%,.1);
     overflow-y:auto;
     scroll-snap-align:start;
@@ -408,38 +410,37 @@ table{
   
 `
 
-// const BC = new BroadcastChannel("scrollY")
-// const HASHBC = new BroadcastChannel("hash")
 
-// window.addEventListener("hashchange", e => {
+const hashChannel = new BroadcastChannel("hashChannel")
 
-//     var routerTx = new Router()
-//     HASHBC.postMessage({ router: routerTx })
-// })
+window.addEventListener("hashchange", e => {
 
-
-// HASHBC.addEventListener("message", e => {
-//     var R = e.data.router
-//     var router = new Router()
-//     router.setdirpath(R.pathname + R.dir, R.file)
-// })
+    hashChannel.postMessage({
+        dir: router.dir.substring(1),
+        file: router.file
+    })
+})
 
 
+hashChannel.addEventListener("message", e => {
 
-// window.addEventListener("scroll", e => {
-//     BC.postMessage({ scrollY: window.scrollY })
-// })
-// BC.addEventListener("message", e => {
-//     window.scrollTo(0, e.data.scrollY)
-// })
-// const convertLocalLinks = () => {
-//     // log("converting local links")
-//     var router = new Router()
-//     setTimeout(() => {
-//         document.body.innerHTML = document.body.innerHTML.replaceAll('./', router.dirpath)
+    var dir = e.data.dir
+    var file = e.data.file
+    // var router = new Router()
+    // if ((router.dir != dir) || (router.file != file)) {
+    //     router.setdirpath(dir, file)
+    // }
+})
 
-//     }, 2000);
-// }
+
+
+const convertLocalLinks = () => {
+    var router = new Router()
+    setTimeout(() => {
+        document.body.innerHTML = document.body.innerHTML.replaceAll('./', router.dirpath)
+
+    }, 2000);
+}
 
 
 function loadBasicSkeleton(title = "CAS-CS") {
@@ -596,7 +597,7 @@ function generateView() {
 async function filedetect() {
     var router = new Router()
     var presentfile = ""
-    var files = "index.ipynb,slide.ipynb,slide.md,index.md".split(",")
+    var files = "slide.ipynb,slide.md".split(",")
     files.forEach(file => {
         var testpath = router.root + router.dir.substring(1,) + file
         fetch(testpath).then(res => {
@@ -777,8 +778,8 @@ function mathjaxHljsCopyIcon() {
         MathJax.typesetClear()
         MathJax.typeset("slideroot")
         MathJax.typeset()
-        // hljs.highlightAll()
-        // setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+        hljs.highlightAll()
+        setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
     }
         , 1000)
 }

@@ -144,6 +144,7 @@ Also, the response may have more than text. Any additional feature: images, Java
 ---
 
 # Example Code for ESP AP (server) and Stattion (client) mode
+[(https://github.com/prateekrajgautam/Hardware_Code)](https://github.com/prateekrajgautam/Hardware_Code)
 [Github Repo](https://github.com/prateekrajgautam/Hardware_Code/tree/main/WIFI_RSSI_ESP8266_AP_and_STA)
 
 ### Pin Config
@@ -196,7 +197,7 @@ monitor_speed = 115200
 ---
 ### AP Mode 
 
-```c
+```cpp
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h> // Include the Wi-Fi library
@@ -231,7 +232,7 @@ void loop() {}
 ### STA Mode
 
 
-```c
+```cpp
 
 #include <Arduino.h>
 #include <ESP8266WiFi.h>      // Include the Wi-Fi library

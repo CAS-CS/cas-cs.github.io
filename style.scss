@@ -25,7 +25,6 @@
     box-sizing: border-box;
     margin    : 0px;
     padding   : 0px;
-    font-size : var(--fontSize);
     transition: all 100ms ease-in-out;
 
 }
@@ -37,14 +36,16 @@ html {
 body {
     min-height      : 100vh;
     background-color: var(--bgColor, #222);
+    font-size       : var(--fontSize);
 }
 
 img,
 picture,
 svg,
 video {
-    display  : block;
-    max-width: 100%;
+    display   : block;
+    max-width : 100%;
+    max-height: 100vh;
 }
 
 a {
