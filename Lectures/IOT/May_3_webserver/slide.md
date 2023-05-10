@@ -147,9 +147,9 @@ Also, the response may have more than text. Any additional feature: images, Java
 [Github Repo](https://github.com/prateekrajgautam/Hardware_Code/tree/main/WIFI_RSSI_ESP8266_AP_and_STA)
 
 ### Pin Config
-![](esp8266 pin ESP8266 .webp)
+![](esp8266_pin_ESP8266.webp)
 
-![](ESP - 01 ESP01 pin config.png)
+![](ESP_01_ESP01_pin_config.png)
 
 ---
 [AP Mode ](https://github.com/prateekrajgautam/Hardware_Code/blob/main/WIFI_RSSI_ESP8266_AP_and_STA/src/AP_ESP01_BS_Tx.cpp_)
