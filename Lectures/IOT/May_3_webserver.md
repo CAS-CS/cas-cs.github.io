@@ -17,7 +17,7 @@ Web server is a program which processes the network requests of the users and se
 It consists of the hardware and software that is responsible for responding to requests on the World Wide Web, with the use of hypertext transfer protocol (HTTP) and other protocols. *These requests are made by clients.*
 
 
-The main thing that it is responsible for, is displaying the contents of a website to each user who requests it. This process involves storing, processing, and delivering data.
+> The main thing that it is responsible for, is displaying the contents of a website to each user who requests it. This process involves storing, processing, and delivering data.
 
 
 The exchange of data among devices is facilitated by a web server’s hardware. The software component of a web server controls the users’ access to the hosted files. All systems that host websites need to have the web server software.
@@ -139,6 +139,235 @@ Also, the response may have more than text. Any additional feature: images, Java
 
 
 
+
+
+---
+
+# Example Code for ESP AP (server) and Stattion (client) mode
+[Github Repo](https://github.com/prateekrajgautam/Hardware_Code/tree/main/WIFI_RSSI_ESP8266_AP_and_STA)
+
+### Pin Config
+![](esp8266 pin ESP8266 .webp)
+
+![](ESP - 01 ESP01 pin config.png)
+
+---
+[AP Mode ](https://github.com/prateekrajgautam/Hardware_Code/blob/main/WIFI_RSSI_ESP8266_AP_and_STA/src/AP_ESP01_BS_Tx.cpp_)
+
+[STA Mode](https://github.com/prateekrajgautam/Hardware_Code/blob/main/WIFI_RSSI_ESP8266_AP_and_STA/src/STA_ESP8266_NODE_RX_readRssi.cpp)
+
+[platformio.ini](https://github.com/prateekrajgautam/Hardware_Code/blob/main/WIFI_RSSI_ESP8266_AP_and_STA/platformio.ini)
+
+---
+
+### platformio.ini
+
+```ini
+
+; PlatformIO Project Configuration File
+;
+;   Build options: build flags, source filter
+;   Upload options: custom upload port, speed and extra flags
+;   Library options: dependencies, extra library storages
+;   Advanced options: extra scripting
+;
+; Please visit documentation for the other options and examples
+; https://docs.platformio.org/page/projectconf.html
+
+
+
+[env:nodemcu]
+platform = espressif8266
+board = nodemcu
+framework = arduino
+monitor_speed = 115200
+
+[env:esp01]
+platform = espressif8266
+framework = arduino
+board = esp01
+monitor_speed = 115200
+;upload_protocol = serial
+;board_build.mcu = esp8266
+;upload_protocol = esptool
+```
+
+
+---
+### AP Mode 
+
+```c
+
+#include <Arduino.h>
+#include <ESP8266WiFi.h> // Include the Wi-Fi library
+//#include <ESP8266WiFiMulti.h>   // Include the Wi-Fi-Multi library
+
+//SSID of your network
+
+//const char *ssid = "ESP-01_BS";
+const char *ssid = "ESP-8266_BS";
+const char *password = "password";
+
+void setup()
+{
+  Serial.begin(115200);
+  delay(10);
+  Serial.println('\n');
+
+  WiFi.softAP(ssid, password); // Start the access point
+  Serial.print("Access Point \"");
+  Serial.print(ssid);
+  Serial.println("\" started");
+
+  Serial.print("IP address:\t");
+  Serial.println(WiFi.softAPIP()); // Send the IP address of the ESP8266 to the computer
+}
+
+void loop() {}
+
+```
+---
+
+### STA Mode
+
+
+```c
+
+#include <Arduino.h>
+#include <ESP8266WiFi.h>      // Include the Wi-Fi library
+#include <ESP8266WiFiMulti.h> // Include the Wi-Fi-Multi library
+
+//#include <SPI.h>
+//#include <WiFi.h>
+
+
+//LED pin
+
+#define LED 2 
+float max_rssi = -1000;
+float min_rssi = -0;
+//SSID of your network
+
+const char *ssid = "ESP-01_BS";
+const char *password = "password";
+
+const char *ssid2 = "ESP-8266_BS";
+const char *password2 = "password";
+
+ESP8266WiFiMulti wifiMulti; // Create an instance of the ESP8266WiFiMulti class, called 'wifiMulti'
+
+void setup()
+{
+  pinMode(LED, OUTPUT);
+  Serial.begin(115200); // Start the Serial communication to send messages to the computer
+  delay(10);
+  Serial.println('\n');
+
+  wifiMulti.addAP(ssid, password);
+  //wifiMulti.addAP(ssid1, password1);
+  wifiMulti.addAP(ssid2, password2); // add Wi-Fi networks you want to connect to
+  //wifiMulti.addAP(ssid3, password3);   // add Wi-Fi networks you want to connect to
+
+  Serial.println("Connecting ...");
+  //int i = 0;
+  while (wifiMulti.run() != WL_CONNECTED)
+  { // Wait for the Wi-Fi to connect: scan for Wi-Fi networks, and connect to the strongest of the networks above
+    Serial.print("Connecting");
+    delay(1000);
+    Serial.print('.');
+  }
+  Serial.println('\n');
+  Serial.print("Connected to ");
+  Serial.println(WiFi.SSID()); // Tell us what network we're connected to
+  Serial.print("IP address:\t");
+  Serial.println(WiFi.localIP()); // Send the IP address of the ESP8266 to the computer
+  
+}
+
+void loop()
+{
+  if (wifiMulti.run() != WL_CONNECTED)
+  {
+
+    Serial.print("\nDisconnected\n\n");
+    while (wifiMulti.run() != WL_CONNECTED)
+    { // Wait for the Wi-Fi to connect: scan for Wi-Fi networks, and connect to the strongest of the networks above
+      Serial.print("\nRonnecting");
+      delay(1000);
+      Serial.print('.');
+    }
+  }
+  Serial.print("\n");
+  Serial.print(WiFi.SSID());
+  Serial.print(" @ RSSI: ");
+  float rssi = WiFi.RSSI();
+  Serial.print(rssi);
+  if(rssi>max_rssi){
+    max_rssi=rssi;
+  }
+  if(rssi<min_rssi){
+    min_rssi=rssi;
+  }
+  Serial.print("  Max: ");
+  Serial.print(max_rssi);
+  Serial.print("  min: ");
+  Serial.println(min_rssi);
+  if(max_rssi-rssi<=10 ){
+    digitalWrite(LED, LOW); // Turn the LED on (Note that LOW is the voltage level)
+    delay(50); // Wait for a second
+    digitalWrite(LED, HIGH); // Turn the LED off by making the voltage HIGH
+    //delay(500); // Wait for two seconds
+  }
+  digitalWrite(LED, HIGH);
+}
+
+```
+
+
+
+
+
+
+
+
+
+---
+
+### Hints
+
+# Program ESP-01 using arduino nano
+
+## connections
+
+
+
+**NANO RST --- NANO GND** *to bypass nano and act as usb to serial*
+
+| NANO | ESP-01 |
+| ---- | ------ |
+| 3.3V | VCC    |
+| GND  | GND    |
+| TX   | TX     |
+| RX   | RX     |
+| GND  | GPIO0  |
+| 3.3V | CH_PD  |
+|      |        |
+
+- before uploading programme disconnect connection from GPIO0 and and do same with CH_PD
+- Wait for the code to be uploaded to ESP8266.
+- When you see. ' leaving..  hard resting via RST pin', disconnect the serial port (GPIO 0).
+   then connect the RESET (EXT_RSTB) of ESP8266 to ground for 1 second and then release it.
+
+### After programming 
+
+| ESP-01        | Connection |
+| ------------- | ---------- |
+| VCC           | 3.3V       |
+| GND           | GND        |
+| CH_PD (CH_EN) | 3.3V       |
+|               |            |
+|               |            |
+|               |            |
 ---
 
 
@@ -152,5 +381,10 @@ Also, the response may have more than text. Any additional feature: images, Java
 
 
 ## LAB Experiment
+
+### Step 1
+
+[ESP8266WiFiSTA](https://github.com/esp8266/Arduino/blob/master/libraries/ESP8266WiFi/src/ESP8266WiFiSTA.cpp)
+
 
 [ESP8266 Based Webserver to Control LED from Webpage](https://iotdesignpro.com/projects/esp8266-based-webserver-to-control-led-from-webpage)

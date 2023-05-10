@@ -407,14 +407,39 @@ table{
 
   
 `
-const convertLocalLinks = () => {
-    // log("converting local links")
-    var router = new Router()
-    setTimeout(() => {
-        document.body.innerHTML = document.body.innerHTML.replaceAll('./', router.dirpath)
 
-    }, 2000);
-}
+// const BC = new BroadcastChannel("scrollY")
+// const HASHBC = new BroadcastChannel("hash")
+
+// window.addEventListener("hashchange", e => {
+
+//     var routerTx = new Router()
+//     HASHBC.postMessage({ router: routerTx })
+// })
+
+
+// HASHBC.addEventListener("message", e => {
+//     var R = e.data.router
+//     var router = new Router()
+//     router.setdirpath(R.pathname + R.dir, R.file)
+// })
+
+
+
+// window.addEventListener("scroll", e => {
+//     BC.postMessage({ scrollY: window.scrollY })
+// })
+// BC.addEventListener("message", e => {
+//     window.scrollTo(0, e.data.scrollY)
+// })
+// const convertLocalLinks = () => {
+//     // log("converting local links")
+//     var router = new Router()
+//     setTimeout(() => {
+//         document.body.innerHTML = document.body.innerHTML.replaceAll('./', router.dirpath)
+
+//     }, 2000);
+// }
 
 
 function loadBasicSkeleton(title = "CAS-CS") {
@@ -753,7 +778,7 @@ function mathjaxHljsCopyIcon() {
         MathJax.typeset("slideroot")
         MathJax.typeset()
         // hljs.highlightAll()
-        setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+        // setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
     }
         , 1000)
 }
