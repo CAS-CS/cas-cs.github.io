@@ -1,5 +1,7 @@
 ./
+./CannyEdgeDetector
 ./L09_FourierTransformExample
+./May 11 EdgesToStraightLines
 ./.ipynb_checkpoints
 ./L04_Histogram
 ./L02
@@ -8,4 +10,3 @@
 ./L06_Box,Gaussian,LinearFilters
 ./00 Syllabus.md
 ./L01 Image as Functions.md
-./Edge_detection.ipynb
