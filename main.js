@@ -362,9 +362,10 @@ table{
 
 
         .execution_count{
-            color:var(--blockCountColor,black);
-            font-weight:bold;
-            // text-shadow:0px 0px 1px var(--shadowLight,#ccc);
+            font-weight:300;
+            font-size:.6em;
+            // padding:.1em;
+            // margin:.1em;
         }
     }
 
@@ -378,12 +379,9 @@ table{
     }
     .output{
         display:block;
-        margin-inline:auto;
-        margin-block:1em;
         font-family:"consoles", "terminal", "monospace";
-
-        background-color:hsla(0,0%,0%,.1);
-        overflow-x:auto;
+        background-color:hsla(0,0%,0%,.05);
+        // overflow-x:auto;
         // outline:1px solid black;
         img{
             margin-inline:auto;
@@ -565,7 +563,7 @@ const router = new Router()
 
 
 function footerButtons() {
-    if (get(`#footerButtons`).length != 0) {
+    if (grab(`#footerButtons`).length != 0) {
         append(`#footerButtons`, "", "replace")
     }
     append(`#appfooter`, gen(div, "footerButtons", ""), 'before')
@@ -575,7 +573,7 @@ function footerButtons() {
 
 function generateView() {
 
-    if (get("#appmain").length != 0) {
+    if (grab("#appmain").length != 0) {
         append("#appmain", "", "over")
     }
     // append(main, gen(main, "main", "", ",main"), "replace")
@@ -681,7 +679,7 @@ function paginationUpdate(loc = "") {
     // var router = new Router()
     router.readHash()
     loc = router.pathname + router.dir
-    if (get("#location").length != 0) {
+    if (grab("#location").length != 0) {
         append("#location", "", "replace")
     }
 
@@ -793,7 +791,7 @@ function mathjaxHljsCopyIcon() {
         MathJax.typesetClear()
         MathJax.typeset("slideroot")
         MathJax.typeset()
-        get("code").forEach(c => {
+        grab("code").forEach(c => {
             c.innerHTML = c.innerHTML.replaceAll("<br>", "\n")
         })
         hljs.highlightAll()
@@ -805,7 +803,7 @@ function mathjaxHljsCopyIcon() {
 function parseSlide(link) {
 
     getfile(link, md => {
-        if (get("#back").length != 0) { append("#back", "", "replace") }
+        if (grab("#back").length != 0) { append("#back", "", "replace") }
 
         append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
 
@@ -823,7 +821,7 @@ function parseSlide(link) {
                 parsemd(h, H => {
                     append(slideroot, gen(section, `slide${i}`, H, "slide"))
                     if (i != 0 && i != html.length - 1) {
-                        append(get(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
+                        append(grab(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
                         append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
                     }
 
@@ -844,13 +842,13 @@ function parseNotebook(link) {
 
     getfile(link, nb => {
 
-        if (get("#back").length != 0) { append("#back", "", "replace") }
+        if (grab("#back").length != 0) { append("#back", "", "replace") }
         append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
-        if (get("#appmain").length != 0) { append("#appmain", "", "replace") }
+        if (grab("#appmain").length != 0) { append("#appmain", "", "replace") }
 
         // append(appmain, gen(div, "appmain", ""), "replace")
         // append(appmain, "", "replace")
-        if (get("#main").length != 0) { append("#main", gen(main, "main", "", "main"), "replace") }
+        if (grab("#main").length != 0) { append("#main", gen(main, "main", "", "main"), "replace") }
 
         append(main, gen(div, "blockroot", "", 'blockroot'))
         append(blockroot, gen("aside", "sideBar", ""))
@@ -899,8 +897,8 @@ function parseNotebook(link) {
                             var output_type = output.output_type
                             if (output_type == "stream") {
                                 var text = output.text.join("")
-                                append(`#output${count}`, gen(pre, "", text, `output ${output_type}`))
-                                append(`#output${count}`, gen("samp", "", text, `output ${output_type}`))
+                                // append(`#output${count}`, gen(pre, "", text, `output ${output_type}`))
+                                append(`#output${count}`, gen("samp", "", text, `samp ${output_type}`))
                             }
 
 
@@ -932,7 +930,23 @@ function parseNotebook(link) {
                                 var data = output.data
                                 if (data.hasOwnProperty("text/plain")) {
                                     var text = data["text/plain"].join("")
-                                    append(`#output${count}`, gen(pre, "", gen(code, "", text, `output ${output_type}`)))
+                                    // append(`#output${count}`, gen(pre, "", gen(code, "", text, `output ${output_type}`)))
+                                    append(`#output${count}`,
+                                        // gen(pre,
+                                        //     "",
+                                        //     gen(code,
+                                        //         "",
+                                        //         text,
+                                        //         `output ${output_type}`
+                                        //     )
+                                        // )
+
+                                        gen("samp",
+                                            "",
+                                            text,
+                                            `samp ${output_type}`
+                                        )
+                                    )
                                 }
                             }
                         })
@@ -946,16 +960,16 @@ function parseNotebook(link) {
         )
 
 
-        var noOfBlocks = get(".block").length
+        var noOfBlocks = grab(".block").length
         for (var i = 0; i < noOfBlocks; i++) {
-            append(get(".block")[i], gen(span, "", `${i + 1}/${noOfBlocks}`, "slideCount hide"))
+            append(grab(".block")[i], gen(span, "", `${i + 1}/${noOfBlocks}`, "slideCount hide"))
             // append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
-            append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `get(".block")[${i}].scrollIntoView()` })))
+            append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `grab(".block")[${i}].scrollIntoView()` })))
         }
         // download source file
         var downloadFileName = `${link.split('/')[link.split('/').length - 2]}_${link.split('/')[link.split('/').length - 1]}`
         append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": downloadFileName })))
-        append(blockroot, gen(button, "", gen(a, "src", `Download Source`, "button", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": downloadFileName })))
+        append(blockroot, gen(span, "", gen(a, "src", `Download Source`, "button", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": downloadFileName })))
 
 
     })
@@ -967,7 +981,7 @@ function parseNotebook(link) {
 
 
 
-// $$.init()
+$$.init()
 if (window.location.href.includes("Gallery")) {
     // log("gallery")
     setTimeout(() => {

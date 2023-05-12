@@ -141,15 +141,10 @@ a {
         font-size  : var(--fontSize);
 
         p {
-            margin-block: 1em;
+            margin-block: .5em;
         }
 
-        span {
-            padding       : 2em;
-            margin-right  : 2em;
-            color         : var(--ascentColor, aqua);
-            text-transform: uppercase;
-        }
+
     }
 
     .footer {
@@ -323,6 +318,12 @@ pre,
 samp {
     display     : block;
     margin-block: 1em;
+}
+
+.samp {
+    font-size  : .7em;
+    overflow-x : auto;
+    white-space: pre-wrap;
 }
 
 // code {
