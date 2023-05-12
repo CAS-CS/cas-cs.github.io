@@ -1,7 +1,7 @@
 # Artificial Intelligence and Machine Learning
 ## Two Days Offline Workshop
 
-**Date:** 10 May to 11 May 2023
+**Date:** June 2023
 
 
 [![BANNER]("./AIWorkshopNewtemplate.png")](AIWorkshopBanner.pdf)
@@ -11,9 +11,12 @@
 ### *Eligibility:*
 * B.Tech (III and IV) Branch (CSE/ECE/IT)
 
-### Registration Link: 
-[https://cas.res.in/workshops.html]( https://cas.res.in/workshops.html)
+### [Registration Link:](https://cas.res.in/workshops.html) 
+Google form for registration
+[https://forms.gle/VVugJwZanzuf2xna7](https://forms.gle/VVugJwZanzuf2xna7)
 
+Scan QR code 
+![QR](https://cas-cs.github.io/Workshops/WorkshopCAS2023.jpg)
 
 #### Highlights:
 

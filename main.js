@@ -336,8 +336,23 @@ table{
 
         box-shadow:1px 1px .5em hsla(0,0%,0%,.2);
         pre{
-            margin-block:1em;
+            // display:block;
+            // margin-block:1em;
+            padding:0
+            margin:0;
             box-shadow:1px 1px 5px hsla(0,0%,0%,.2);
+            code{
+                display:block;
+                margin:0;
+                padding:.5em;
+
+                margin-inline:.2em
+                padding-inline:.2em
+                span{
+                    padding:0;
+                    margin:0;
+                }
+            }
         }
         &:last-child{
             margin-bottom:10em;
@@ -778,8 +793,11 @@ function mathjaxHljsCopyIcon() {
         MathJax.typesetClear()
         MathJax.typeset("slideroot")
         MathJax.typeset()
+        get("code").forEach(c => {
+            c.innerHTML = c.innerHTML.replaceAll("<br>", "\n")
+        })
         hljs.highlightAll()
-        setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+        // setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
     }
         , 1000)
 }
@@ -863,7 +881,7 @@ function parseNotebook(link) {
                     var count = cell.execution_count
 
                     var src = cell.source
-                    var inputCode = src.join("")
+                    var inputCode = src.join("")   //.replaceAll("<br>", "\r\n")
                     append(blockroot, gen(div, `input${count}`, "", "input block"))
                     append(`#input${count}`, gen(span, "", `In [${count}] :`, "execution_count"))
                     append(`#input${count}`, gen(pre, "", gen(code, "", inputCode, "python language-python code")))
@@ -882,6 +900,7 @@ function parseNotebook(link) {
                             if (output_type == "stream") {
                                 var text = output.text.join("")
                                 append(`#output${count}`, gen(pre, "", text, `output ${output_type}`))
+                                append(`#output${count}`, gen("samp", "", text, `output ${output_type}`))
                             }
 
 
@@ -948,7 +967,7 @@ function parseNotebook(link) {
 
 
 
-$$.init()
+// $$.init()
 if (window.location.href.includes("Gallery")) {
     // log("gallery")
     setTimeout(() => {

@@ -319,10 +319,15 @@ a {
 
 }
 
-pre {
+pre,
+samp {
+    display     : block;
     margin-block: 1em;
 }
 
+// code {
+//     white-space: pre-wrap;
+// }
 
 
 ol,
