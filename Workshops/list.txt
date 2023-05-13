@@ -1,5 +1,4 @@
 ./
-./.resources
 ./IoT_June
-./.dist
-./AI_may
+./AI_June
+./.resources
