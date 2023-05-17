@@ -26,11 +26,11 @@ Download and open the attached source code on Arduino IDE.
 
 ### LM35 Pin Config
 
-![](f0.png)
+![](./f0.png)
 
 ### Connection
 
-![](f1.png)
+![](./f1.png)
 Upload the sketch and read the sensor output on Serial Monitor
 
 # Program
