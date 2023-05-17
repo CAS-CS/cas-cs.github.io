@@ -26,7 +26,7 @@ Download and open the attached source code on Arduino IDE.
 
 ### LM35 Pin Config
 
-![](./f0.png)
+![](./f0.jpg)
 
 ### Connection
 
