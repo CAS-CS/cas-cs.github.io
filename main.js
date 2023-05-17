@@ -424,6 +424,50 @@ table{
 `
 
 
+
+function scrollAction(direction = "down") {
+
+    var top = grab(`#slideroot`)[0].scrollTop
+    var end = grab(`#slideroot`)[0].scrollHeight - grab(`#slideroot`)[0].offsetHeight
+    var offsetHeight = grab(`#slideroot`)[0].offsetHeight
+    if (direction == "home") {
+        grab(`#slideroot`)[0].scrollTop = 0
+    }
+    if (direction == "end") {
+        grab(`#slideroot`)[0].scrollTop = end
+    }
+    if (direction == "up") {
+        grab(`#slideroot`)[0].scrollTop -= offsetHeight
+
+    }
+    if (direction == "down") {
+        grab(`#slideroot`)[0].scrollTop += offsetHeight
+    }
+}
+
+
+document.addEventListener("keydown", e => {
+    // e.preventDefault()
+    var key = e.key.toLowerCase()
+    // log(key)
+    if (key == "arrowdown" || key == "pagedown" || key == "arrowright") {
+        e.preventDefault()
+        scrollAction('down')
+    }
+    if (key == "arrowup" || key == "arrowleft" || key == "pageup") {
+        e.preventDefault()
+        scrollAction('up')
+    }
+    if (key == "home") {
+        e.preventDefault()
+        scrollAction('home')
+    }
+    if (key == "end") {
+        e.preventDefault()
+        scrollAction('end')
+    }
+})
+
 const hashChannel = new BroadcastChannel("hashChannel")
 
 window.addEventListener("hashchange", e => {
@@ -788,6 +832,8 @@ function mathjaxHljsCopyIcon() {
 
     setTimeout(() => {
 
+        MathJax.startup.document.state(0);
+        MathJax.texReset();
         MathJax.typesetClear()
         MathJax.typeset("slideroot")
         MathJax.typeset()
