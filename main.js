@@ -5,7 +5,6 @@ $.init()
 load("./script.js")
 
 //STYLE
-
 var slideScss = `
 @import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
 :root{
@@ -39,7 +38,16 @@ var slideScss = `
 
 
 
+:fullscreen {
+    background-color: hsl(var(--h), var(--s), var(--l));
 
+    .slideroot{
+        height:100vh;
+        
+
+
+    }
+}
 
 
 
@@ -48,6 +56,7 @@ var slideScss = `
     top:var(--headerHeight,60px);
     scroll-snap-type: y mandatory;
     height:calc(100vh - var(--headerHeight,60px));
+    
     overflow:scroll;
     background-color:hsla(0,0%,100%,.1);
 
@@ -60,7 +69,8 @@ var slideScss = `
     position:relative;
     --padding:clamp(1em,15vw,2em);
     width:calc(100%);
-    height:calc(100vh - var(--headerHeight,60px));
+    // height:calc(100vh - var(--headerHeight,60px));
+    height:100%;
     padding-inline:clamp(2em,10vw,10vw);;
     padding-block:var(--padding);
     box-sizing:border-box;
@@ -420,11 +430,42 @@ table{
 
   }
 
-  
+  #fullscreenTitle{
+    display:grid;
+    place-items:center;
+    margin:0 auto;
+    padding: 0 auto;
+    position:fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:2em;
+    z-index:1000;
+  }
 `
 
 
+// Fullscreen
+function toggleFullscreen() {
+    if (document.fullscreenElement) {
+        // append(fullscreenTitle, "", 'replace')
+        document.exitFullscreen();
+    }
+    else {
+        // document.documentElement.requestFullscreen();
+        grab(`#main`)[0].requestFullscreen();
+        var titlestr = document.title +
+            router.pathname.replaceAll("/", " | ") +
+            grab("h1")[0].innerHTML
+        // append(main, gen(div, "fullscreenTitle", titlestr), 'before')
+    }
+}
 
+document.addEventListener("dblclick", e => {
+    toggleFullscreen()
+})
+
+// ScrollControl
 function scrollAction(direction = "down") {
 
     var top = grab(`#slideroot`)[0].scrollTop
@@ -445,7 +486,7 @@ function scrollAction(direction = "down") {
     }
 }
 
-
+// Keyboard Control
 document.addEventListener("keydown", e => {
     // e.preventDefault()
     var key = e.key.toLowerCase()
@@ -465,6 +506,10 @@ document.addEventListener("keydown", e => {
     if (key == "end") {
         e.preventDefault()
         scrollAction('end')
+    }
+    if (key == "f") {
+        e.preventDefault()
+        toggleFullscreen()
     }
 })
 
