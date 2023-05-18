@@ -445,6 +445,18 @@ table{
 `
 
 function openFile() {
+    var fileObj = grab('#open')[0].files[0]
+    var fileName = fileObj.name
+    var fileType = fileObj.type
+    var fileUrl = URL.createObjectURL(fileObj)
+    ext = fileName.split(".").pop()
+    if (fileType = "text/markdown" || ext == "md" || ext == "markdown") {
+        parseSlide(fileUrl)
+    }
+    if (fileType = "application/x-ipynb+json" || ext == "ipynb") {
+        parseNotebook(fileUrl)
+    }
+    getfile(fileUrl, fileName)
 
 }
 
@@ -513,43 +525,50 @@ function scrollAction(direction = "down", scrollState) {
 // Keyboard Control
 document.addEventListener("keydown", e => {
     // e.preventDefault()
-    var key = e.key.toLowerCase()
-    // log(key)
-    if (key == "arrowdown" || key == "pagedown" || key == "arrowright") {
-        e.preventDefault()
-        scrollAction('down')
+    if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) { }
+    else {
+        var key = e.key.toLowerCase()
+        // log(key)
+        if (key == "arrowdown" || key == "pagedown" || key == "arrowright") {
+            e.preventDefault()
+            scrollAction('down')
+        }
+        if (key == "arrowup" || key == "arrowleft" || key == "pageup") {
+            e.preventDefault()
+            scrollAction('up')
+        }
+        if (key == "home") {
+            e.preventDefault()
+            scrollAction('home')
+        }
+        if (key == "end") {
+            e.preventDefault()
+            scrollAction('end')
+        }
+        if (key == "f") {
+            e.preventDefault()
+            toggleFullscreen()
+        }
+        if (key == "o") {
+            e.preventDefault()
+            openFile()
+        }
+        if (key == "c") {
+            e.preventDefault()
+            cloneView()
+        }
+        if (key == "h") {
+            e.preventDefault()
+            toggleHints()
+        }
+        if (key == "r") {
+            e.preventDefault()
+            reloadPage()
+        }
     }
-    if (key == "arrowup" || key == "arrowleft" || key == "pageup") {
+    if (e.ctrlKey && e.key.toLowerCase() == "o") {
         e.preventDefault()
-        scrollAction('up')
-    }
-    if (key == "home") {
-        e.preventDefault()
-        scrollAction('home')
-    }
-    if (key == "end") {
-        e.preventDefault()
-        scrollAction('end')
-    }
-    if (key == "f") {
-        e.preventDefault()
-        toggleFullscreen()
-    }
-    if (key == "o") {
-        e.preventDefault()
-        openFile()
-    }
-    if (key == "c") {
-        e.preventDefault()
-        cloneView()
-    }
-    if (key == "h") {
-        e.preventDefault()
-        toggleHints()
-    }
-    if (key == "r") {
-        e.preventDefault()
-        reloadPage()
+        grab("#open")[0].click()
     }
 })
 
@@ -721,8 +740,10 @@ function footerButtons() {
         append(`#footerButtons`, "", "replace")
     }
     append(`#appfooter`, gen(div, "footerButtons", ""), 'before')
-    append(`#footerButtons`, gen(button, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
-    append(`#footerButtons`, gen(button, "open", "Open", "button,openFile", { "onclick": "openFile()" }))
+    append(`#footerButtons`, gen(span, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
+    append(`#footerButtons`, gen(input, "open", '', "hide", { "type": "file", "accept": ".md,.markdown,.ipynb", "onchange": "openFile()" }))
+    // append(`#footerButtons`, gen(input, "open", "Open", "button,openFile", { "type": "file", "onchange": "openFile()" }))
+    append(`#footerButtons`, gen(label, "openbtn", "Open", "button,openFile", { "for": "open" }))
 }
 
 function generateView() {
