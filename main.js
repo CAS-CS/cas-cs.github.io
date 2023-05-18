@@ -444,6 +444,21 @@ table{
   }
 `
 
+function openFile() {
+
+}
+
+function cloneView() {
+    var url = window.location.href
+    // window.open(url, '_blank');
+    window.open(url,
+        'newwindow',
+        'width=600,height=400');
+    gen(a, "clone", "Open Clone Window", "hide", { "href": window.location.href, "target": "_blank" }).click()
+}
+
+function toggleHints() { }
+
 
 // Fullscreen
 function toggleFullscreen() {
@@ -462,27 +477,36 @@ function toggleFullscreen() {
 }
 
 document.addEventListener("dblclick", e => {
+    e.preventDefault()
     toggleFullscreen()
 })
 
 // ScrollControl
-function scrollAction(direction = "down") {
 
-    var top = grab(`#slideroot`)[0].scrollTop
+function scrollAction(direction = "down", scrollState) {
     var end = grab(`#slideroot`)[0].scrollHeight - grab(`#slideroot`)[0].offsetHeight
     var offsetHeight = grab(`#slideroot`)[0].offsetHeight
+
+
+    if (!scrollState) scrollState = grab(`#slideroot`)[0].scrollTop / offsetHeight
+    var endState = end / offsetHeight
+
+
     if (direction == "home") {
         grab(`#slideroot`)[0].scrollTop = 0
     }
     if (direction == "end") {
-        grab(`#slideroot`)[0].scrollTop = end
+        grab(`#slideroot`)[0].scrollTop = endState * offsetHeight
     }
     if (direction == "up") {
-        grab(`#slideroot`)[0].scrollTop -= offsetHeight
+        // grab(`#slideroot`)[0].scrollTop -= offsetHeight
+        scrollState += 1
+        grab(`#slideroot`)[0].scrollTop = scrollState * offsetHeight
 
     }
     if (direction == "down") {
-        grab(`#slideroot`)[0].scrollTop += offsetHeight
+        scrollState -= 1
+        grab(`#slideroot`)[0].scrollTop = scrollState * offsetHeight
     }
 }
 
@@ -510,6 +534,22 @@ document.addEventListener("keydown", e => {
     if (key == "f") {
         e.preventDefault()
         toggleFullscreen()
+    }
+    if (key == "o") {
+        e.preventDefault()
+        openFile()
+    }
+    if (key == "c") {
+        e.preventDefault()
+        cloneView()
+    }
+    if (key == "h") {
+        e.preventDefault()
+        toggleHints()
+    }
+    if (key == "r") {
+        e.preventDefault()
+        reloadPage()
     }
 })
 
@@ -559,6 +599,30 @@ function loadBasicSkeleton(title = "CAS-CS") {
 
 }
 
+
+function dict2hash(dict) {
+    var hash = ""
+    Object.keys(dict).forEach(key => {
+        if (hash.length == 0) {
+            hash = key + "=" + dict[key]
+        }
+        else {
+            hash += "&" + key + "=" + dict[key]
+        }
+    })
+    return hash
+}
+
+function hash2dict(hash) {
+    var dict = {}
+    hash.substring(1,).split("&").forEach(row => {
+        // var keyval = ""
+        keyval = row.split("=")
+        dict[keyval[0]] = keyval[1]
+    })
+    return dict
+}
+
 class Router {
     constructor() {
         this.dir = ""
@@ -583,6 +647,7 @@ class Router {
 
     readHash() {
         this.hash = window.location.hash
+        this.hashDict = hash2dict(this.hash)
         this.hash.substring(1,).split("&").forEach(row => {
             var keyval = ""
             keyval = row.split("=")
@@ -865,10 +930,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
     })
 }
 
-const openFile = () => {
-    // var file = window.FileReader || window.webkitFileReader;
 
-}
 
 function mathjaxHljsCopyIcon() {
     load("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css")
