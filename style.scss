@@ -29,6 +29,14 @@
 
 }
 
+.hide {
+    display: none;
+}
+
+.blur {
+    filter: blur(3px) brightness(60%);
+}
+
 html {
     color-scheme: dark light;
 }

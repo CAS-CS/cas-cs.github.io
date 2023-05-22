@@ -405,10 +405,9 @@ table{
 
     }
   }
-
-.hide{
-    display:none;
 }
+
+
 
 .needs-background-light{
     background: hsla(0,0%,100%,.9) !important;
@@ -611,6 +610,7 @@ function loadBasicSkeleton(title = "CAS-CS") {
     append(app, "", "over") /* reset app */
     append(app, gen(header, "header", "", 'header'));
     append(header, gen(h3, 'heading', gen(a, '', title, 'title', "/")))
+    // append(app, gen(main, "main", "", 'main', { "draggable": "true" }));
     append(app, gen(main, "main", "", 'main'));
     append(main, gen(div, "appmain", "", 'appmain container'));
     append(app, gen(footer, "appfooter", "", 'footer'));
@@ -741,7 +741,7 @@ function footerButtons() {
     }
     append(`#appfooter`, gen(div, "footerButtons", ""), 'before')
     append(`#footerButtons`, gen(span, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
-    append(`#footerButtons`, gen(input, "open", '', "hide", { "type": "file", "accept": ".md,.markdown,.ipynb", "onchange": "openFile()" }))
+    append(`#footerButtons`, gen(input, "open", '', "hide", { "type": "file", "accept": ".md,.markdown,.ipynb,png,jpg,mp4", "onchange": "openFile()", "multiple": "true" }))
     // append(`#footerButtons`, gen(input, "open", "Open", "button,openFile", { "type": "file", "onchange": "openFile()" }))
     append(`#footerButtons`, gen(label, "openbtn", "Open", "button,openFile", { "for": "open" }))
 }
@@ -1166,3 +1166,44 @@ if (window.location.href.includes("Gallery")) {
 
 
 reloadPage()
+
+grab("#main")[0].addEventListener("dragenter", ondragenter)
+// grab("#main")[0].addEventListener("dragleave", ondragleave)
+grab("#main")[0].addEventListener("drop", ondrop)
+
+function ondragenter(e) {
+    console.log(e)
+    e.preventDefault()
+    e.stopPropagation()
+
+
+    grab('#main')[0].classList.add('blur')
+    grab("#main")[0].removeEventListener("dragenter", ondragenter)
+    grab("#main")[0].addEventListener("drop", ondrop)
+    grab("#main")[0].addEventListener("dragleave", ondragleave)
+}
+
+
+function ondragleave(e) {
+    e.preventDefault()
+    e.stopPropagation()
+    grab('#main')[0].classList.remove('blur')
+    grab("#main")[0].addEventListener("dragenter", ondragenter)
+    grab("#main")[0].removeEventListener("drop", ondrop)
+    grab("#main")[0].removeEventListener("dragleave", ondragleave)
+}
+
+function ondrop(e) {
+
+    log(e)
+
+    e.preventDefault()
+    e.stopPropagation()
+    grab('#main')[0].classList.remove('blur')
+    dropfilehandler(e)
+    grab("#main")[0].addEventListener("dragenter", ondragenter)
+    grab("#main")[0].removeEventListener("drop", ondrop)
+    grab("#main")[0].removeEventListener("dropleave", ondragleave)
+}
+
+function dropfilehandler(e) { }
