@@ -455,8 +455,8 @@ function openFile() {
     if (fileType = "application/x-ipynb+json" || ext == "ipynb") {
         parseNotebook(fileUrl)
     }
-    getfile(fileUrl, fileName)
-
+    // getfile(fileUrl, fileName)
+    updateFiledropEventListeners()
 }
 
 function cloneView() {
@@ -1167,12 +1167,28 @@ if (window.location.href.includes("Gallery")) {
 
 reloadPage()
 
-grab("#main")[0].addEventListener("dragenter", ondragenter)
-// grab("#main")[0].addEventListener("dragleave", ondragleave)
-grab("#main")[0].addEventListener("drop", ondrop)
 
+
+
+// 
+function updateFiledropEventListeners() {
+
+
+    // file drop
+    document.addEventListener("dragover", e => {
+        e.preventDefault();
+    });
+
+
+
+    grab("#main")[0].addEventListener("dragenter", ondragenter)
+    grab("#main")[0].addEventListener("drop", ondrop)
+
+}
+
+updateFiledropEventListeners()
 function ondragenter(e) {
-    console.log(e)
+    // console.log(e)
     e.preventDefault()
     e.stopPropagation()
 
@@ -1194,16 +1210,32 @@ function ondragleave(e) {
 }
 
 function ondrop(e) {
-
-    log(e)
-
     e.preventDefault()
     e.stopPropagation()
     grab('#main')[0].classList.remove('blur')
-    dropfilehandler(e)
     grab("#main")[0].addEventListener("dragenter", ondragenter)
     grab("#main")[0].removeEventListener("drop", ondrop)
     grab("#main")[0].removeEventListener("dropleave", ondragleave)
+    dropfilehandler(e)
+
 }
 
-function dropfilehandler(e) { }
+function dropfilehandler(e) {
+    var files = e.dataTransfer.files
+    for (var i = 0; i < files.length; i++) {
+        var f = files[i]
+        var fileName = f.name
+        var fileType = f.type
+        var fileUrl = URL.createObjectURL(f)
+        var ext = fileName.split(".").pop()
+        if (fileType = "text/markdown" || ext == "md" || ext == "markdown") {
+            parseSlide(fileUrl)
+        }
+        if (fileType = "application/x-ipynb+json" || ext == "ipynb") {
+            parseNotebook(fileUrl)
+        }
+        // getfile(fileUrl, fileName)
+        updateFiledropEventListeners()
+
+    }
+}

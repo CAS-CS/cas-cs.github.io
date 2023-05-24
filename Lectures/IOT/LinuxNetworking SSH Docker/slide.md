@@ -112,3 +112,4 @@ jupyter-lab --allow-root --ip 0.0.0.0 --port 8888
 
 1. [https://linuxize.com/post/how-to-setup-ssh-tunneling/](https://linuxize.com/post/how-to-setup-ssh-tunneling/)
 2. [https://linuxize.com/post/how-to-setup-ssh-socks-tunnel-for-private-browsing/](https://linuxize.com/post/how-to-setup-ssh-socks-tunnel-for-private-browsing/)
+3. [https://www.ssh.com/academy/ssh/command](https://www.ssh.com/academy/ssh/command)
