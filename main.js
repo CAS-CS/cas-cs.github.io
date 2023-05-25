@@ -909,7 +909,9 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
             var url = currentLocation + link.replaceAll('./', '')
             link = link.replaceAll("\t", "").replaceAll("\n", "")
             //for directories
-            if (link[2] != '.' && !link.includes(".md") && !link.includes(".ipynb")) {
+            var ext = link.split(".").pop()
+            // log(ext)
+            if (link[2] != '.' && !link.includes(".md") && !link.includes(".ipynb") && !link.includes(".pdf")) {
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
@@ -937,10 +939,11 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 }
             }
             //for pdf files
-            if (link[2] != '.' && link.includes(".pdf]")) {
+            if (ext == "pdf") {
+                // log("pdf")
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
-                    append(directoryGrid, gen(object, `${url}`, linkname, 'slideLinks,notebookLinks', { "onclick": `parseNotebook(\`${url}\`)` }))
+                    append(directoryGrid, gen(object, `${url}`, linkname, 'pdfLinks', { "onclick": `parsePdf(\`${url}\`)` }))
                 }
             }
         });
@@ -1153,6 +1156,29 @@ function parseNotebook(link) {
 }
 
 
+
+
+
+
+
+
+
+
+
+
+
+function parsePdf(link) {
+    // router = New Router()
+    link = link.replaceAll("./", router.dirpath)
+
+
+
+    // append(`main`, "", "over")
+    append(`main`, gen(dialog, "pdfdialog", "", 'pdfdialog'))
+    append(pdfdialog, gen("object", "mainpdf", "", "mainpdf", { "width": "100%", "height": "100%", "data": link, "type": "application/pdf" }))
+
+
+}
 
 
 $$.init()
