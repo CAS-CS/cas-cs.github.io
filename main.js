@@ -6,441 +6,466 @@ load("./script.js")
 
 //STYLE
 var slideScss = `
-@import url('https://fonts.googleapis.com/css2?family=Cantarell&display=swap');
-:root{
-    --hue:278;
-    --light:10%;
-    --sat:55%;
-    --hueAscent:234;
-    --fontFamily:"Cantarell";
-    --blockCountColor:#fff;
-    --fontScale:1;
-    --fontsize:1.5rem;
+/* main.js/slideScss*/
+
+@import url("https://fonts.googleapis.com/css2?family=Cantarell&display=swap");
+:root {
+  --hue: 278;
+  --light: 10%;
+  --sat: 55%;
+  --hueAscent: 234;
+  --fontFamily: "Cantarell";
+  --blockCountColor: #fff;
+  --fontScale: 1;
+  --fontsize: 1.5rem;
 }
-::selection{
-    background:hsl(var(--hueAscent),var(--satAscent),calc(calc(var(--light) + var(--lightAscent)) / 2));
-
+::selection {
+  background: hsl(
+    var(--hueAscent),
+    var(--satAscent),
+    calc(calc(var(--light) + var(--lightAscent)) / 2)
+  );
 }
-#app{
-    position:relative;
-
+#app {
+  position: relative;
 }
-#header{
-    position:relative;
+#header {
+  position: relative;
 
-    opacity:0;
-    transition:opacity .5s ease-in-out;
-    &:hover{
-        opacity:1;
-    }
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  &:hover {
+    opacity: 1;
+  }
 }
-
-
-
 
 :fullscreen {
-    background-color: hsl(var(--h), var(--s), var(--l));
+  background-color: hsl(var(--h), var(--s), var(--l));
 
-    .slideroot{
-        height:100vh;
-        
-
-
-    }
+  .slideroot {
+    height: 100vh;
+  }
 }
 
+.slideroot {
+  position: sticky;
+  top: var(--headerHeight, 60px);
+  scroll-snap-type: y mandatory;
+  height: calc(100vh - var(--headerHeight, 60px));
 
-
-.slideroot{
-    position:sticky;
-    top:var(--headerHeight,60px);
-    scroll-snap-type: y mandatory;
-    height:calc(100vh - var(--headerHeight,60px));
-    
-    overflow:scroll;
-    background-color:hsla(0,0%,100%,.1);
-
-
-
-
+  overflow: scroll;
+  background-color: hsla(0, 0%, 100%, 0.1);
 }
 
-.slide{
-    position:relative;
-    --padding:clamp(1em,15vw,2em);
-    width:calc(100%);
-    // height:calc(100vh - var(--headerHeight,60px));
-    height:100%;
-    padding-inline:clamp(2em,10vw,10vw);;
-    padding-block:var(--padding);
-    box-sizing:border-box;
-    font-size:clamp(calc(.8rem * var(--fontScale,1)),3vw,calc(1.5rem * var(--fontScale,1)));
-    // background-color:hsla(0,0%,100%,.1);
-    overflow-y:auto;
-    scroll-snap-align:start;
-    scroll-padding:var(--headerHeight,60px);
-    scroll-snap-stop: always
-    scroll-behavior:smooth;
+.slide {
+  position: relative;
+  --padding: clamp(1em, 15vw, 2em);
+  width: calc(100%);
+  // height:calc(100vh - var(--headerHeight,60px));
+  height: 100%;
+  padding-inline: clamp(2em, 10vw, 10vw);
+  padding-block: var(--padding);
+  box-sizing: border-box;
+  font-size: clamp(
+    calc(0.8rem * var(--fontScale, 1)),
+    3vw,
+    calc(1.5rem * var(--fontScale, 1))
+  );
+  // background-color:hsla(0,0%,100%,.1);
+  overflow-y: auto;
+  scroll-snap-align: start;
+  scroll-padding: var(--headerHeight, 60px);
+  scroll-snap-stop: always;
+  scroll-behavior: smooth;
 
-    .slideCount{
-        display:inline-block;
-        position:absolute;
-        top:2em;
-        right:5em;
-        font-size:calc(.8rem * var(--fontScale,1));
+  .slideCount {
+    display: inline-block;
+    position: absolute;
+    top: 2em;
+    right: 5em;
+    font-size: calc(0.8rem * var(--fontScale, 1));
+  }
 
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    color: hsl(
+      var(--hueAscent, 30),
+      var(--satAscent, 70%),
+      var(--lightAscent, 50%)
+    );
+    padding-block: 0.4em;
+  }
 
+  h1 {
+    font-size: 1.5em;
+    &:first-child {
+      padding-top: 0px !important;
     }
+  }
 
-    h1,h2,h3,h4,h5,h6{
-        color:hsl(var(--hueAscent,30),var(--satAscent,70%),var(--lightAscent,50%));)));
-        padding-block:.4em;
+  h2 {
+    font-size: 1.3em;
+  }
+  a {
+    color: var(--linkColor, hsl(0, 0%, 100%));
+  }
 
+  &:nth-child(odd) {
+    background-color: hsla(0, 0%, 100%, 0.05);
+  }
+  ol,
+  ul,
+  p,
+  img {
+    padding: clamp(0.5em, 10vw, 1em);
+  }
+  ol,
+  ul {
+    margin-left: 2em;
+    padding-left: 2em;
+  }
+  li {
+    padding-block: 0.2em;
+    &:first-child {
+      padding-top: 0px;
     }
-    h1{
-        font-size:1.5em;
-        &:first-child{
-            padding-top:0px !important;;
-        }
+    &:last-child {
+      padding-bottom: 0px;
     }
-    h2{
-        font-size:1.3em;
-    }
-    a{
-        color:var(--linkColor,hsl(0,0%,100%));
-    }
+  }
+  img {
+    max-width: 80vw;
+    // max-height:80vh;
+    aspect-ratio: prefer-content;
+    padding: 1em;
+  }
 
-
-    &:nth-child(odd){
-
-        background-color:hsla(0,0%,100%,.05);
+  blockquote {
+    padding-block: 0.1em;
+    padding-inline: 1em;
+    font-style: italic;
+    text-shadow: 0.1em 0.1em 0 hsla(0, 0%, 100%, 0.2);
+  }
+  p {
+    padding: 0px;
+    padding-block: 1em;
+    &:empty {
+      display: none;
     }
-    ol,ul,p,img{
-        padding:clamp(.5em,10vw,1em);
-    }
-    ol,ul{
-        margin-left:2em;
-        padding-left:2em;
-    }
-    li{
-        padding-block:.2em;
-        &:first-child{
-            padding-top:0px;
-        }
-        &:last-child{
-            padding-bottom:0px;
-        }
-    }
-    img{
-        max-width:80vw;
-        // max-height:80vh;
-        aspect-ratio:prefer-content;
-        padding:1em;
-    }
-
-    blockquote{
-        padding-block:.1em;
-        padding-inline:1em;
-        font-style:italic;
-        text-shadow:.1em .1em 0 hsla(0,0%,100%,.2);
-    }
-    p{
-        padding:0px;
-        padding-block:1em;
-        &:empty{
-            display:none;
-        }
-    }
-
+  }
 }
 
+table {
+  position: relative;
+  display: block;
+  width: 90%;
+  padding: 0.5em;
+  margin: 2em;
+  margin-inline: auto;
+  box-shadow: 0 0 5px var(--testShadow, black);
+  overflow: auto;
 
-
-table{
-    position:relative;
-    display: block;
-    width:90%;
-    padding:.5em;
-    margin:2em;
-    margin-inline:auto;
-    box-shadow:0 0 5px var(--testShadow,black);
-    overflow:auto;
-    
-    thead,td:nth-child(1){
-        position:relative;
-    }
-    thead,tbody{
-        width:100%;
-        display:flex;
-        flex-direction:column;
-        
-    }
-    tr{
-        display:flex;
-        flex-direction:row;
-        flex-grow:1;
-        padding:.2em;
-        td{
-            text-align:center;
-            width:100%;
-            padding:.2em;
-            background:red;
-            background-color:hsla(var(--hue,0),60%,5%,.1);
-
-            &:nth-child(even){
-                background-color:hsla(var(--hue,0),60%,5%,.1);
-            }
-            &:hover{
-                background-color:hsla(var(--hue,0),60%,45%,.2);
-            }
-
-
-     
-        }
-        .left{
-            text-align:left;
-        }
-        .right{
-            text-align:right;
-        }
-        .justify{
-            text-align:justify;
-        }
-        .center{
-            text-align:center;
-        }
-
-   
-        &:nth-child(even){
-            background-color:hsla(var(--hue,0),40%,35%,.15);
-        } 
-
-        &:hover{
-            background-color:hsla(var(--hue,0),60%,45%,.2);
-        }
-    }
-}
-
-#sideBar{
-
-    display:block;
-    position:fixed;
-    top:0;
-    height:100vh;
-    padding:1em;
-    margin-inline:auto;
-    z-index:100;
-    left:0;
-    width:clamp(150px,5vw,10vw);
-    transition:all .1s ease-in-out;
-    background-color:hsla(var(--hue),70%,5%,1);
-    opacity:0;
-    
-    transform: translateX(calc(-100% + 2em));
-    
-    
-    &:hover{
-        opacity:1;
-        border-right:1px solid hsla(var(--hueAscent),50%,10%,1);
-        box-shadow:1em 0 .5em hsla(0,0%,0%,.2);
-        transform: translateX(0);
-    }
-
-
-
-
-    #slidenav{
-      position: relative;
-      height: 100%;
-      padding-block: 1em;
+  thead,
+  td:nth-child(1) {
+    position: relative;
+  }
+  thead,
+  tbody {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  tr {
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+    padding: 0.2em;
+    td {
+      text-align: center;
       width: 100%;
+      padding: 0.2em;
+      background: red;
+      background-color: hsla(var(--hue, 0), 60%, 5%, 0.1);
 
+      &:nth-child(even) {
+        background-color: hsla(var(--hue, 0), 60%, 5%, 0.1);
+      }
+      &:hover {
+        background-color: hsla(var(--hue, 0), 60%, 45%, 0.2);
+      }
+    }
+    .left {
+      text-align: left;
+    }
+    .right {
+      text-align: right;
+    }
+    .justify {
+      text-align: justify;
+    }
+    .center {
+      text-align: center;
+    }
 
-    #slidenavlist{
-        position: relative;
-        height: calc(90vh - 2em);
-        overflow-y: auto;
-        margin-top: 1em;
-        padding:5px;
-        list-style-type: none;
-        font-size: .8em;
+    &:nth-child(even) {
+      background-color: hsla(var(--hue, 0), 40%, 35%, 0.15);
+    }
 
+    &:hover {
+      background-color: hsla(var(--hue, 0), 60%, 45%, 0.2);
+    }
+  }
+}
 
+#sideBar {
+  display: block;
+  position: fixed;
+  top: 0;
+  height: 100vh;
+  padding: 1em;
+  margin-inline: auto;
+  z-index: 100;
+  left: 0;
+  width: clamp(150px, 5vw, 10vw);
+  transition: all 0.1s ease-in-out;
+  background-color: hsla(var(--hue), 70%, 5%, 1);
+  opacity: 0;
 
-        li{
-        margin-block:1em;
+  transform: translateX(calc(-100% + 2em));
+
+  &:hover {
+    opacity: 1;
+    border-right: 1px solid hsla(var(--hueAscent), 50%, 10%, 1);
+    box-shadow: 1em 0 0.5em hsla(0, 0%, 0%, 0.2);
+    transform: translateX(0);
+  }
+
+  #slidenav {
+    position: relative;
+    height: 100%;
+    padding-block: 1em;
+    width: 100%;
+
+    #slidenavlist {
+      position: relative;
+      height: calc(90vh - 2em);
+      overflow-y: auto;
+      margin-top: 1em;
+      padding: 5px;
+      list-style-type: none;
+      font-size: 0.8em;
+
+      li {
+        margin-block: 1em;
         display: flex;
         justify-content: center;
         align-items: center;
-        
+
         cursor: hand;
 
-        a{
-            background-color:hsl(var(--hue),50%,95%);
-            color:var(--accentColor,hsl(var(--hueAscent),80%,20%));
-            border-radius: 5px;
-            font-weight: bold;
-            box-shadow: .1em .1em 5px hsla(0,0%,0%,.2);
-            
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-            min-width: 6em;
-            height: 100%;
-            min-height: 2em;
-            text-decoration:none;
-            font-weight: bold;
-            
-            
-        &:hover,.active{
-            outline:2px solid aqua;
+        a {
+          background-color: hsl(var(--hue), 50%, 95%);
+          color: var(--accentColor, hsl(var(--hueAscent), 80%, 20%));
+          border-radius: 5px;
+          font-weight: bold;
+          box-shadow: 0.1em 0.1em 5px hsla(0, 0%, 0%, 0.2);
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          min-width: 6em;
+          height: 100%;
+          min-height: 2em;
+          text-decoration: none;
+          font-weight: bold;
+
+          &:hover,
+          .active {
+            outline: 2px solid aqua;
+          }
         }
 
+        &:nth-last-child(1) {
+          margin-bottom: 40vh;
         }
 
-        &:nth-last-child(1){
-            margin-bottom: 40vh;
+        &:nth-first-child(1) {
+          margin-top: 2em;
         }
-
-        &:nth-first-child(1){
-            margin-top: 2em;
-        }
-
-
-
       }
-
-  
-    }
-}
-
-
-}
-
-  .blockroot{
-    
-    position:sticky;
-    top:0;
-    height:100vh;
-    padding-block:2em;
-    padding-inline:clamp(2em,10vw,30vw);
-    margin-block:0em;
-    overflow:scroll;
-    background-color:hsla(0,0%,100%,.1);
-    overflow-y:auto;
-    
-    scroll-snap-type: y mandatory;
-    scroll-snap-align:start;
-    scroll-padding:var(--headerHeight,60px);
-    scroll-snap-stop: always;
-    scroll-behavior:smooth;
-
-    .block{
-        margin-inline:auto;
-        margin-block:2em;
-        word-break:break-word;
-        width:100%;
-        padding:.5em;
-        // background-color:hsla(0,0%,100%,.1);
-
-        box-shadow:1px 1px .5em hsla(0,0%,0%,.2);
-        pre{
-            // display:block;
-            // margin-block:1em;
-            padding:0
-            margin:0;
-            box-shadow:1px 1px 5px hsla(0,0%,0%,.2);
-            code{
-                display:block;
-                margin:0;
-                padding:.5em;
-
-                margin-inline:.2em
-                padding-inline:.2em
-                span{
-                    padding:0;
-                    margin:0;
-                }
-            }
-        }
-        &:last-child{
-            margin-bottom:10em;
-        }
-
-   
-
-
-        .execution_count{
-            font-weight:300;
-            font-size:.6em;
-            // padding:.1em;
-            // margin:.1em;
-        }
-    }
-
-    .input{
-        display:block;
-        margin-inline:auto;
-        margin-block:1em;
-        // background-color:hsla(0,0%,0%,.1);
-        font-family:"consoles", "terminal", "monospace";
-        overflow-x:auto;
-    }
-    .output{
-        display:block;
-        font-family:"consoles", "terminal", "monospace";
-        background-color:hsla(0,0%,0%,.05);
-        // overflow-x:auto;
-        // outline:1px solid black;
-        img{
-            margin-inline:auto;
-            max-width:100%;
-            max-height:100%;
-            object-fit:contain;
-        }
-  
-        .success{color:green;}
-        .fail{color:red;}
-
     }
   }
 }
 
+.blockroot {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  padding-block: 2em;
+  padding-inline: clamp(2em, 10vw, 30vw);
+  margin-block: 0em;
+  overflow: scroll;
+  background-color: hsla(0, 0%, 100%, 0.1);
+  overflow-y: auto;
 
+  scroll-snap-type: y mandatory;
+  scroll-snap-align: start;
+  scroll-padding: var(--headerHeight, 60px);
+  scroll-snap-stop: always;
+  scroll-behavior: smooth;
 
-.needs-background-light{
-    background: hsla(0,0%,100%,.9) !important;
-    padding-block:1em;
-  }
+  .block {
+    margin-inline: auto;
+    margin-block: 2em;
+    word-break: break-word;
+    width: 100%;
+    padding: 0.5em;
+    // background-color:hsla(0,0%,100%,.1);
 
-  .code{
-    background-color:hsla(0,0%,100%,.8);
-    color:#333;
-    padding:1em;
-  }
-
-
-  #titleheading{
-    a{
-    link-style:none;
-    text-style:none;
+    box-shadow: 1px 1px 0.5em hsla(0, 0%, 0%, 0.2);
+    pre {
+      // display:block;
+      // margin-block:1em;
+      padding: 0;
+      margin: 0;
+      box-shadow: 1px 1px 5px hsla(0, 0%, 0%, 0.2);
+      code {
+        display: block;
+        margin: 0;
+        padding: 0.5em;
+        margin-inline: 0.2em;
+        padding-inline: 0.2em;
+        span {
+          padding: 0;
+          margin: 0;
+        }
+      }
+    }
+    &:last-child {
+      margin-bottom: 10em;
     }
 
+    .execution_count {
+      font-weight: 300;
+      font-size: 0.6em;
+      // padding:.1em;
+      // margin:.1em;
+    }
   }
 
-  #fullscreenTitle{
-    display:grid;
-    place-items:center;
-    margin:0 auto;
-    padding: 0 auto;
-    position:fixed;
-    top:0;
-    left:0;
-    width:100vw;
-    height:2em;
-    z-index:1000;
+  .input {
+    display: block;
+    margin-inline: auto;
+    margin-block: 1em;
+    // background-color:hsla(0,0%,0%,.1);
+    font-family: "consoles", "terminal", "monospace";
+    overflow-x: auto;
   }
+  .output {
+    display: block;
+    font-family: "consoles", "terminal", "monospace";
+    background-color: hsla(0, 0%, 0%, 0.05);
+    // overflow-x:auto;
+    // outline:1px solid black;
+    img {
+      margin-inline: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+    }
+
+    .success {
+      color: green;
+    }
+    .fail {
+      color: red;
+    }
+  }
+}
+
+.needs-background-light {
+  background: hsla(0, 0%, 100%, 0.9) !important;
+  padding-block: 1em;
+}
+
+.code {
+  background-color: hsla(0, 0%, 100%, 0.8);
+  color: #333;
+  padding: 1em;
+}
+
+#titleheading {
+  a {
+    link-style: none;
+    text-style: none;
+  }
+}
+
+#fullscreenTitle {
+  display: grid;
+  place-items: center;
+  margin: 0 auto;
+  padding: 0 auto;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 2em;
+  z-index: 1000;
+}
+
+.pdfdialog {
+  width: 100vw;
+  height: 80vh;
+  margin: 4em auto;
+  padding: 2em;
+  border: 1px solid white;
+  border-radius: 1em;
+  backdrop-filter: blur(10px) brightness(50%);
+
+  object {
+    padding: 1em;
+    display: block;
+    margin: 0 auto;
+  }
+}
+
+.cross {
+  position: absolute;
+  top: 1em;
+  display: inline-block;
+  right: 1em;
+  height: 1em;
+  width: 1em;
+  cursor: pointer;
+
+  &:before {
+    content: "";
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    transform: rotate(-45deg);
+  }
+
+  &:after {
+    content: "";
+    background-color: white;
+    display: inline-block;
+    position: absolute;
+    width: 15%;
+    height: 100%;
+    transform: rotate(45deg);
+  }
+}
+
+
 `
 
 function openFile() {
@@ -1165,20 +1190,41 @@ function parseNotebook(link) {
 
 
 
+function closeparent(e){
+
+    append(e.parentElement,'','replace')
+}
 
 
 function parsePdf(link) {
+    loadscss(slideScss)
     // router = New Router()
     link = link.replaceAll("./", router.dirpath)
+    // log(link)
 
 
 
     // append(`main`, "", "over")
-    append(`main`, gen(dialog, "pdfdialog", "", 'pdfdialog'))
-    append(pdfdialog, gen("object", "mainpdf", "", "mainpdf", { "width": "100%", "height": "100%", "data": link, "type": "application/pdf" }))
+    append(`main`, gen(dialog, "pdfdialog", "", 'pdfdialog active'))
+    append(pdfdialog,gen(a,'',"Download PDF","download button",link))
+    append(pdfdialog, gen("object", "mainpdf", "", "mainpdf", { "width": "80%", "height": "80vh", "data": link, "type": "application/pdf" }))
+    pdfdialog.classList.add("showdialog")
+    pdfdialog.showModal()
+    pdfdialog.addEventListener("blur",()=>{
+        log(blur)
+        pdfdialog.classList.remove("showdialog")
+        pdfdialog.close()
+    })
 
+    append(pdfdialog,gen(span,'closedialog',
+    "",
+    "closedialog cross",
+    {"onclick":"closeparent(this)"}
+    ))
 
+    
 }
+
 
 
 $$.init()
