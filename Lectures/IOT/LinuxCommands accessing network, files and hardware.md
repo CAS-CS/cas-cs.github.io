@@ -1,5 +1,36 @@
 # Basic linux commands to access and configure network, files, and hardware.
+---
+## How to get help in linux terminal
 
+In the context of Bash, `man` and `--help` are two common ways to access documentation and get help for commands.
+
+1. `man` command:
+The `man` command is used to display the manual pages for various commands and utilities available on your system. It provides detailed information, usage examples, options, and explanations for each command. You can use the `man` command followed by the name of the command you want to learn more about.
+
+Example:
+```bash
+man ls
+```
+This will display the manual page for the `ls` command, which provides information on how to use and customize the `ls` command for listing files and directories.
+
+The manual pages are divided into sections, and you can specify the section number if multiple sections exist for a command. For example, `man 2 open` displays the manual page for the `open` system call.
+
+2. `--help` option:
+Many command-line utilities and programs provide a `--help` option that displays a brief usage summary and available options for the specific command. It is a quick way to get information about command usage without opening the full manual page.
+
+Example:
+```bash
+ls --help
+```
+This command displays a brief help message for the `ls` command, including the available options and their descriptions.
+
+Note that not all commands support the `--help` option. It depends on how the command is implemented by its developers.
+
+Both `man` and `--help` are valuable resources for understanding and utilizing various commands and utilities in the Bash shell. They provide essential documentation and guidance for using commands effectively and efficiently.
+
+
+
+---
 ## touch
 
 Usage: `touch [OPTION]... FILE...`
@@ -312,7 +343,7 @@ Usage: `wget [OPTIONS] [URL]`
 - `--limit-rate=<RATE>`: Limit the download rate to the specified value.
 - `--header=<HEADER>`: Add a custom header to the request.
 
-These are just a few commonly used options. The `wget` command provides many more options and functionalities. You can refer to the `wget` documentation (`man wget`) for a complete list of options and their detailed descriptions.
+
 
 **Examples:**
 
@@ -341,7 +372,7 @@ These are just a few commonly used options. The `wget` command provides many mor
    wget --limit-rate=1m http://example.com/largefile.zip
    ```
 
-These examples demonstrate some of the ways you can use the `wget` command to download files from the web.
+> These examples demonstrate some of the ways you can use the `wget` command to download files from the web.
 
 ## curl
 
@@ -378,7 +409,7 @@ Usage: `curl [OPTIONS] [URL]`
 - `-k, --insecure`: Allow insecure connections when using SSL/TLS.
 - `-x, --proxy <PROXY>`: Use a proxy server for the request.
 
-These are just a few commonly used options. The `curl` command provides many more options and functionalities. You can refer to the `curl` documentation (`man curl`) for a complete list of options and their detailed descriptions.
+> These are just a few commonly used options. The `curl` command provides many more options and functionalities. You can refer to the `curl` documentation (`man curl`) for a complete list of options and their detailed descriptions.
 
 **Examples:**
 
@@ -517,7 +548,8 @@ Output: Displays the network route and statistics between your machine and the s
 
 ---
 
-# ssh
+# SSH and related commands
+
 ## ssh
 
 Usage: `ssh [USER@]HOST [COMMAND]`
