@@ -5,8 +5,10 @@
 ./LinuxNetworking SSH Docker
 ./TempSensor LM35
 ./00 Syllabus.md
+./DockerReference.md
 ./Industry 4.0.md
 ./IPv4 Header, IPv6 Header and MQTT.md
 ./L01 Introduction to IoT.md
 ./Lab 02 Introduction to Arduino and platformio.md
+./LinuxCommands accessing network, files and hardware.md
 ./MQTT.md
