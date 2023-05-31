@@ -12,3 +12,4 @@
 ./Lab 02 Introduction to Arduino and platformio.md
 ./LinuxCommands accessing network, files and hardware.md
 ./MQTT.md
+./YAML.md

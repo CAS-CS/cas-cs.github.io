@@ -468,16 +468,18 @@ table {
 
 `
 
+loadscss(slideScss)
+
 function openFile() {
     var fileObj = grab('#open')[0].files[0]
     var fileName = fileObj.name
     var fileType = fileObj.type
     var fileUrl = URL.createObjectURL(fileObj)
     ext = fileName.split(".").pop()
-    if (fileType = "text/markdown" || ext == "md" || ext == "markdown") {
+    if (fileType == "text/markdown" || ext == "md" || ext == "markdown") {
         parseSlide(fileUrl)
     }
-    if (fileType = "application/x-ipynb+json" || ext == "ipynb") {
+    if (fileType == "application/x-ipynb+json" || ext == "ipynb") {
         parseNotebook(fileUrl)
     }
     // getfile(fileUrl, fileName)
@@ -1033,7 +1035,7 @@ function parseSlide(link) {
         append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank" })))
 
     })
-    loadscss(slideScss)
+    // loadscss(slideScss)
     convertLocalLinks()
     mathjaxHljsCopyIcon()
 }
@@ -1175,7 +1177,7 @@ function parseNotebook(link) {
 
 
     })
-    loadscss(slideScss)
+    // loadscss(slideScss)
     mathjaxHljsCopyIcon()
     convertLocalLinks()
 }
@@ -1197,7 +1199,7 @@ function closeparent(e){
 
 
 function parsePdf(link) {
-    loadscss(slideScss)
+    // loadscss(slideScss)
     // router = New Router()
     link = link.replaceAll("./", router.dirpath)
     // log(link)
@@ -1300,10 +1302,10 @@ function dropfilehandler(e) {
         var fileType = f.type
         var fileUrl = URL.createObjectURL(f)
         var ext = fileName.split(".").pop()
-        if (fileType = "text/markdown" || ext == "md" || ext == "markdown") {
+        if (fileType == "text/markdown" || ext == "md" || ext == "markdown") {
             parseSlide(fileUrl)
         }
-        if (fileType = "application/x-ipynb+json" || ext == "ipynb") {
+        if (fileType == "application/x-ipynb+json" || ext == "ipynb") {
             parseNotebook(fileUrl)
         }
         // getfile(fileUrl, fileName)
