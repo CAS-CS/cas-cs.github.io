@@ -29,7 +29,10 @@ or using
 ```bash
 cargo install create-tauri-app
 cargo create-tauri-app
+```
 
+
+```bash
 # cli
 cargo install tauri-cli
 cargo tauri init
@@ -46,5 +49,6 @@ cargo tauri dev
 
 ```
 
+If every thing works then it will show you tauri app
 
 

@@ -1,5 +1,3 @@
----
-
 # What is Docker
 
 Docker is an open-source platform that allows you to automate the deployment, scaling, and management of applications using containerization. It provides a way to package software applications along with their dependencies into standardized units called containers. These containers are isolated and lightweight, providing a consistent environment for running applications across different operating systems and infrastructure.
@@ -138,6 +136,7 @@ That's how you can build an image using a Dockerfile. Remember to replace `<imag
 
 
 ---
+
 # Docker Compose
 
 Docker Compose is a tool for defining and running multi-container Docker applications. It allows you to define a set of services, their configurations, and their dependencies in a YAML file. With a single command, you can create and manage multiple containers that work together as a cohesive application.
