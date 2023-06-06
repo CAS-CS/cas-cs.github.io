@@ -468,7 +468,7 @@ table {
 
 `
 
-loadscss(slideScss)
+//loadscss(slideScss)
 
 function openFile() {
     var fileObj = grab('#open')[0].files[0]
@@ -627,6 +627,8 @@ const convertLocalLinks = () => {
         document.body.innerHTML = document.body.innerHTML.replaceAll('./', router.dirpath)
 
     }, 2000);
+    
+    document.title=grab("h1")[0].innerHTML
 }
 
 
@@ -1005,7 +1007,7 @@ function mathjaxHljsCopyIcon() {
 }
 
 function parseSlide(link) {
-
+loadscss(slideScss)
     getfile(link, md => {
         if (grab("#back").length != 0) { append("#back", "", "replace") }
 
@@ -1035,7 +1037,7 @@ function parseSlide(link) {
         append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank" })))
 
     })
-    // loadscss(slideScss)
+
     convertLocalLinks()
     mathjaxHljsCopyIcon()
 }
@@ -1043,7 +1045,7 @@ function parseSlide(link) {
 
 
 function parseNotebook(link) {
-
+	loadscss(slideScss)
     getfile(link, nb => {
 
         if (grab("#back").length != 0) { append("#back", "", "replace") }
@@ -1177,7 +1179,7 @@ function parseNotebook(link) {
 
 
     })
-    // loadscss(slideScss)
+    
     mathjaxHljsCopyIcon()
     convertLocalLinks()
 }
@@ -1199,7 +1201,7 @@ function closeparent(e){
 
 
 function parsePdf(link) {
-    // loadscss(slideScss)
+	loadscss(slideScss)
     // router = New Router()
     link = link.replaceAll("./", router.dirpath)
     // log(link)
