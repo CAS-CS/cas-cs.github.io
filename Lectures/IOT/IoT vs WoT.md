@@ -21,13 +21,15 @@ This is where the WoT comes into play.
 
 The web is an already established system that can allow all Things to communicate with each other. The Web may be used as a type of application where all Things can communicate together in the most efficient manner.
 
-“The _**Web of Things** (**WoT**)_ is a term used to describe approaches, software architectural styles and programming patterns that allow real-world objects to be part of the World Wide Web.”
+“The ***Web of Things (WoT)*** is a term used to describe approaches, software architectural styles and programming patterns that allow real-world objects to be part of the World Wide Web.”
 
 *   Similarly to what the Web (Application Layer) is to the Internet (Network Layer), the Web of Things provides an Application Layer that simplifies the creation of the Internet of Things
 *   Rather than re-inventing completely new standards, the Web of Things reuses existing and well-known Web standards.
 
 
-### **IoT and Web of Things \[ iot vs WoT \]**
+### IoT and Web of Things 
+
+##### IoT vs WoT
 
 *   From the developers perspective, the WoT enables access and control over IoT resources and applications using mainstream web technologies (such as HTML 5.0, JavaScript, Ajax, PHP, Ruby n Rails, etc)
 *   The approach to building WoT is therefore based on RESTful principles and REST API s, which enable s both developers and deployers to benefit from the popularity and maturity of web technologies.
