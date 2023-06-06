@@ -6,7 +6,7 @@ Synonymous with smart manufacturing, Industry 4.0 is the realization of the digi
 
 Industry 4.0 is revolutionizing the way companies manufacture, improve and distribute their products. Manufacturers are integrating new technologies, including Internet of Things (IoT), cloud computing and analytics, and AI and machine learning into their production facilities and throughout their operations.
 
-These smart factories are equipped with advanced sensors, embedded software and robotics that collect and analyze data and allow for better decision making. Even higher value is created when data from production operations is combined with operational data from ERP, supply chain, customer service and other enterprise systems to create whole new levels of visibility and insight from previously siloed information.
+These smart factories are equipped with advanced sensors, embedded software and robotics that collect and analyze data and allow for better decision making.Â Even higher value is created when data from production operations is combined with operational data from ERP, supply chain, customer service and other enterprise systems to create whole new levels of visibility and insight from previously siloed information.
 
 This digital technologies lead to increased automation, predictive maintenance, self-optimization of process improvements and, above all, a new level of efficiencies and responsiveness to customers not previously possible.
 
@@ -33,10 +33,11 @@ The third industrial revolution, which began in the middle of the 20th century, 
 
 ### Fourth industrial revolution
 
-We are now in the fourth industrial revolution, also referred to as Industry 4.0. Characterized by increasing automation and the employment of smart machines and smart factories, informed data helps to produce goods more efficiently and productively across the value chain. Flexibility is improved so that manufacturers can better meet customer demands using mass customization—ultimately seeking to achieve efficiency with, in many cases, a lot size of one. By collecting more data from the factory floor and combining that with other enterprise operational data, a smart factory can achieve information transparency and better decisions.
+We are now in the fourth industrial revolution, also referred to as Industry 4.0. Characterized by increasing automation and the employment of smart machines and smart factories, informed data helps to produce goods more efficiently and productively across the value chain. Flexibility is improved so that manufacturers can better meet customer demands using mass customization ultimately seeking to achieve efficiency with, in many cases, a lot size of one. By collecting more data from the factory floor and combining that with other enterprise operational data, a smart factory can achieve information transparency and better decisions.
+
 ---
 
-# What technologies are driving Industry 4.0?
+# What technologies are driving Industry 4.0
 
 ## Internet of Things (IoT)
 
@@ -52,7 +53,7 @@ AI and machine learning allow manufacturing companies to take full advantage of 
 
 ## Edge computing
 
-The demands of real-time production operations mean that some data analysis must be done at the “edge”—that is, where the data is created. This minimizes latency time from when data is produced to when a response is required. For instance, the detection of a safety or quality issue may require near-real-time action with the equipment. The time needed to send data to the enterprise cloud and then back to the factory floor may be too lengthy and depends on the reliability of the network. Using edge computing also means that data stays near its source, reducing security risks.
+The demands of real-time production operations mean that some data analysis must be done at the edge that is, where the data is created. This minimizes latency time from when data is produced to when a response is required. For instance, the detection of a safety or quality issue may require near-real-time action with the equipment. The time needed to send data to the enterprise cloud and then back to the factory floor may be too lengthy and depends on the reliability of the network. Using edge computing also means that data stays near its source, reducing security risks.
 
 ## Cybersecurity
 
@@ -71,11 +72,11 @@ Embedded sensors and interconnected machinery produce a significant amount of bi
 
 ### IT-OT integration
 
-The smart factory’s network architecture depends on interconnectivity. Real-time data collected from sensors, devices and machines on the factory floor can be consumed and used immediately by other factory assets, as well as shared across other components in the enterprise software stack, including enterprise resource planning (ERP) and other business management software.
+The smart factory's network architecture depends on interconnectivity. Real-time data collected from sensors, devices and machines on the factory floor can be consumed and used immediately by other factory assets, as well as shared across other components in the enterprise software stack, including enterprise resource planning (ERP) and other business management software.
 
 ### Custom manufacturing
 
-Smart factories can produce customized goods that meet individual customers’ needs more cost-effectively. In fact, in many industry segments, manufacturers aspire to achieve a "lot size of one" in an economical way. By using advanced simulation software applications, new materials and technologies such as 3-D printing, manufacturers can easily create small batches of specialized items for particular customers. Whereas the first industrial revolution was about mass production, Industry 4.0 is about mass customization.
+Smart factories can produce customized goods that meet individual customers' needs more cost-effectively. In fact, in many industry segments, manufacturers aspire to achieve a "lot size of one" in an economical way. By using advanced simulation software applications, new materials and technologies such as 3-D printing, manufacturers can easily create small batches of specialized items for particular customers. Whereas the first industrial revolution was about mass production, Industry 4.0 is about mass customization.
 
 ### Supply chain
 
@@ -85,4 +86,3 @@ Industrial operations are dependent on a transparent, efficient supply chain, wh
 # Industry 4.0 and hybrid multicloud IT architecture 
 
 Building a hybrid multicloud IT infrastructure is a key component in digital transformation for manufacturers seeking to take advantage of Industry 4.0. Hybrid multicloud is when a company has two or more public and private clouds to manage their computing workloads. This gives them the ability to optimize their workloads across all their clouds, as some environments are better suited to or more cost-effective for certain workloads. Manufacturers looking for digital transformation and a secure, open environment can move their existing workloads from their on-premises location to the best possible cloud environment. 
-

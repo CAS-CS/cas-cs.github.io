@@ -7,10 +7,12 @@
 ./00 Syllabus.md
 ./App_development_with_Tauri.md
 ./Docker_Reference.md
+./How to Program on the Raspberry Pi - Part 1.md
 ./Industry 4.0.md
 ./IPv4 Header, IPv6 Header and MQTT.md
 ./L01 Introduction to IoT.md
 ./Lab 02 Introduction to Arduino and platformio.md
 ./LinuxCommands accessing network, files and hardware.md
 ./MQTT.md
+./Raspberry Pi GPIO Explanation for Beginners + Programming - Part 2.md
 ./YAML.md
