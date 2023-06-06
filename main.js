@@ -557,11 +557,11 @@ document.addEventListener("keydown", e => {
         // log(key)
         if (key == "arrowdown" || key == "pagedown" || key == "arrowright") {
             e.preventDefault()
-            scrollAction('down')
+            scrollAction('up')
         }
         if (key == "arrowup" || key == "arrowleft" || key == "pageup") {
             e.preventDefault()
-            scrollAction('up')
+            scrollAction('down')
         }
         if (key == "home") {
             e.preventDefault()
