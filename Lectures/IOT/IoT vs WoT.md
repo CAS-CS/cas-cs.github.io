@@ -5,33 +5,6 @@
 
 Internet of things is a simple concept of basically controlling different devices by establishing a connection and communicating from a mobile app or web browser”.
 
-We already discussed IoT in details **Click below to read more about IoT**
-
-*   [What is IoT?  || Definition](https://iotdunia.com/what-is-iot/) 
-*   [How does IoT work? A simple explanation of IoT architecture](https://iotdunia.com/iot-architecture/)
-*   [How exactly are IoT devices are Smart?](https://iotdunia.com/iot-devices-smart/)
-*   [IoT bringing physical and digital together](https://iotdunia.com/iot-bringing-physical-digital-together/)
-
-1.  2.  [IoT Examples as per Applications](https://iotdunia.com/iot-and-web-of-things/#iot-examples-as-per-applications "IoT Examples as per Applications")
-        
-    
-    5.  [IoT and Web of Things \[ iot vs WoT \]](https://iotdunia.com/iot-and-web-of-things/#iot-and-web-of-things-iot-vs-wot "IoT and Web of Things [ iot vs WoT ]")
-        
-    6.  [Example Of Web of Things (WoT)](https://iotdunia.com/iot-and-web-of-things/#example-of-web-of-things-wot "Example Of Web of Things (WoT)")
-        
-
-### **IoT Examples as per Applications**
-
-Click on each application to read more.
-
-*   [Home Automation (Smart Home)](https://iotdunia.com/iot-application-sectors/home-automation/)
-*   [Smart Healthcare](https://iotdunia.com/iot-application-sectors/smart-healthcare/)
-*   [Intelligent Transport System](https://iotdunia.com/iot-application-sectors/intelligent-transport-system/)
-*   [IoT In Industry](https://iotdunia.com/iot-application-sectors/iot-in-industry/)
-*   [IoT In Agriculture](https://iotdunia.com/iot-application-sectors/iot-in-agriculture/)
-*   [IoT in Food Industry](https://iotdunia.com/iot-application-sectors/iot-food-industry/)
-*   [Smart Waste Management](https://iotdunia.com/iot-application-sectors/smart-waste-management/)
-
 ### **IoT limitations**
 
 When you want to integrate devices from various manufacturers into a single application or system, you face difficulty during effective together communication of all connected Things.
@@ -53,7 +26,6 @@ The web is an already established system that can allow all Things to communicat
 *   Similarly to what the Web (Application Layer) is to the Internet (Network Layer), the Web of Things provides an Application Layer that simplifies the creation of the Internet of Things
 *   Rather than re-inventing completely new standards, the Web of Things reuses existing and well-known Web standards.
 
-**See also**: [What is Open Source? Difference between Open source and Proprietor software (Close source)?](https://iotdunia.com/open-source/)
 
 ### **IoT and Web of Things \[ iot vs WoT \]**
 

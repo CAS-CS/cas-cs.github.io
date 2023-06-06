@@ -1,8 +1,8 @@
 # IoT v/s M2M
 
-**1\. Internet of Things :** IOT is known as the Internet of Things where things are said to be the communicating devices that can interact with each other using a communication media. Usually every day some new devices are being integrated which uses IoT devices for its function. These devices use various sensors and actuators for sending and receiving data over the internet. It is an ecosystem where the devices share data through a communication media known as the internet **or Iot** is an ecosystem of connected physical object that are accessible through internet. Iot means anything which can be connected to internet and can be controlled or monitored using internet from smart devices or  PC.
+**1. Internet of Things :** IOT is known as the Internet of Things where things are said to be the communicating devices that can interact with each other using a communication media. Usually every day some new devices are being integrated which uses IoT devices for its function. These devices use various sensors and actuators for sending and receiving data over the internet. It is an ecosystem where the devices share data through a communication media known as the internet **or Iot** is an ecosystem of connected physical object that are accessible through internet. Iot means anything which can be connected to internet and can be controlled or monitored using internet from smart devices or  PC.
 
-**2\. Machine to Machine :** This is commonly known as Machine to machine communication. It is a concept where two or more than two machines communicate with each other without human interaction using a wired or wireless mechanism. M2M is an technology that helps the devices to connect between devices without using internet. M2M communications offer several applications such as security, tracking and tracing, manufacturing and facility management. 
+**2. Machine to Machine :** This is commonly known as Machine to machine communication. It is a concept where two or more than two machines communicate with each other without human interaction using a wired or wireless mechanism. M2M is an technology that helps the devices to connect between devices without using internet. M2M communications offer several applications such as security, tracking and tracing, manufacturing and facility management. 
 
 **M2M** is also named as  Machine Type Communication (MTC) in 3GPP ( 3rd Generation Partnership Project). 
 
@@ -19,7 +19,7 @@ In **M2M** communication, the role of mobile networks is largely confined to ser
 
 
 | Basis of | IoT | M2M |
-| --- | --- | --- |
+|:---|:--- |:---|
 | Abbreviation | Internet of Things | Machine to Machine |
 | Intelligence | Devices have objects that are responsible for decision making | Some degree of intelligence is observed in this. |
 | Connection type used | The connection is via Network and using various communication types. | The connection is a point to point |
