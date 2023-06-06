@@ -630,7 +630,7 @@ const convertLocalLinks = () => {
 }
 
 
-function loadBasicSkeleton(title = "CAS-CS") {
+function loadBasicSkeleton(title = "Home") {
 
     load('/style.scss')
     //your app logic

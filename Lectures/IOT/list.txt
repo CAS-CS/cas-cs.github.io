@@ -5,6 +5,7 @@
 ./LinuxNetworking SSH Docker
 ./TempSensor LM35
 ./00 Syllabus.md
+./App_development_with_Tauri.md
 ./DockerReference.md
 ./Industry 4.0.md
 ./IPv4 Header, IPv6 Header and MQTT.md
