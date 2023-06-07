@@ -7,6 +7,7 @@
 ./L02
 ./L05_Histogram_Equalization__
 ./L10_GenerateImage_and_FourierTransform
+./BoundaryDetection from edges and corners to boundary
 ./L06_Box,Gaussian,LinearFilters
 ./00 Syllabus.md
 ./L01 Image as Functions.md
