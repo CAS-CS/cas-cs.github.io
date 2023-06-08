@@ -3,6 +3,7 @@
 ./L09_FourierTransformExample
 ./May 11 EdgesToStraightLines
 ./.ipynb_checkpoints
+./L10_1 how to convolve and 400x400 image with 3x3 filter in fourier domain as the fourier transform has different shape
 ./L04_Histogram
 ./L02
 ./L05_Histogram_Equalization__
