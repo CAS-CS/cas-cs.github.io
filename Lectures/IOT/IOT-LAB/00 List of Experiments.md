@@ -8,13 +8,28 @@
 
 1. To install boards and library in Arduino and [platformio](https://docs.platformio.org/en/latest/home/index.html#library-manager). Learn to manage your code and backup in to zip/rar or git/github.
 
+1. Programm esp8266/esp32 as Access Point Mode (AP) 
+
+1. Programm esp8266/esp32 as Station Mode (STA) 
+
+1. Explaing the use of [WifiManager](https://github.com/tzapu/WiFiManager) library and program esp8266/esp32
+
 1. Configure esp as [webserver](https://lastminuteengineers.com/creating-esp32-web-server-arduino-ide/) and toggle led.
+   
+1. Configure esp as [webserver](https://lastminuteengineers.com/creating-esp32-web-server-arduino-ide/) and toggle led using raw string to store webpage in separate header file.
+
+
+1. Explaing the use of async webserver using [ESPAsyncWebServer](https://github.com/me-no-dev/ESPAsyncWebServer)
+
+1. Show the use of mDNS (ESP8266mDNS) to access esp website using domain name insted of ip
+
+1. Use [LittleFS](https://github.com/lorol/LITTLEFS) to upload and serve HTML, CSS and JS 
 
 1. Config esp in to [WiFi AP and STA](https://www.instructables.com/ESP-to-ESP-Communication/) mode and communicate.
 
 1. Using [wifi-manager library](https://github.com/tzapu/WiFiManager) program esp and connect to a wifi network and change wifi config
 
-1. create a mesh network of iot(esp) devices using [ESP-NOW](https://www.instructables.com/ESP32-With-ESP-Now-Protocol/) protocol.
+9. create a mesh network of iot(esp) devices using [ESP-NOW](https://www.instructables.com/ESP32-With-ESP-Now-Protocol/) protocol.
 
 
 ## List can be updated.
@@ -34,3 +49,4 @@
 
 
 [ESP-NOW](https://microcontrollerslab.com/esp32-esp-now-two-way-communication-arduino-ide/)
+[ESP-websockets]()
