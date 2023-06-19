@@ -945,7 +945,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
                     var dir = link.replaceAll('./', '')
-                    append(`#directoryGrid`, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)` }))
+                    append(`#directoryGrid`, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)`,"tabindex":0 }))
                 }
             }
 
@@ -954,7 +954,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
                     var file = link.replaceAll('./', '')
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { 'data-file': file, "onclick": `appendfile(this)` }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":0 }))
                 }
             }
 
@@ -963,7 +963,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
                 var file = link.replaceAll('./', '')
                 if (link.length > 0 && link != './') {
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { 'data-file': file, "onclick": `appendfile(this)` }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":0 }))
 
                 }
             }
@@ -972,7 +972,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 // log("pdf")
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
-                    append(directoryGrid, gen(object, `${url}`, linkname, 'pdfLinks', { "onclick": `parsePdf(\`${url}\`)` }))
+                    append(directoryGrid, gen(object, `${url}`, linkname, 'pdfLinks', { "onclick": `parsePdf(\`${url}\`)`,"tabindex":0 }))
                 }
             }
         });
