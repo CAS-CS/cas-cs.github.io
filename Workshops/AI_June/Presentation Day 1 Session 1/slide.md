@@ -412,9 +412,10 @@ A true positive (TP) occurs when the model correctly predicts a positive instanc
 A true negative (TN) occurs when the model correctly predicts a negative instance. 
 > In our example, let's say the model correctly identifies 70 patients as not having the disease. These 70 patients are actually disease-free, so they are true negatives.
 
-To summarize:
-- True Positive (TP): The model predicts positive, and it is correct.
-- True Negative (TN): The model predicts negative, and it is correct.
+#### To summarize:
+
+* True Positive (TP): The model predicts positive, and it is correct.
+* True Negative (TN): The model predicts negative, and it is correct.
 
 It's important to note that TP and TN are both correct predictions made by the model. They indicate instances where the model's predictions align with the actual ground truth labels.
 
@@ -446,7 +447,7 @@ Now, let's break down each component of the confusion matrix:
 The confusion matrix allows us to visualize the performance of the classification model in terms of these four categories. It provides insights into the model's ability to correctly identify positive and negative instances. 
 
 > By analyzing the confusion matrix, we can calculate various evaluation metrics such as accuracy, precision, recall, and F1-score, which help assess the overall performance of the model.
-
+---
 # Thanks for your kind attention
 
 In the next three sessions you will be introduced with [Python](https://www.python.org/downloads/), installation of [JupyterLab](https://jupyter.org/), importing necessary modules and dataset, few ML techniques like KNN, Naive Bayes.
