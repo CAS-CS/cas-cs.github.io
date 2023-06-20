@@ -44,7 +44,7 @@ Dr. Prateek Raj Gautam
 
 ### A classic example of a task that requires machine learning: It is very hard to say what makes a 2
 
-![](./whatmakes2.png)
+![](./whatsmakes2.png)
 
 ---
 # Motivation for Machine Learning
@@ -228,7 +228,7 @@ After a model captures the probability distribution of your input data, it will 
 
 A simple diagram which clears the concept of supervised and unsupervised learning is shown below:
 
-![](https://media.geeksforgeeks.org/wp-content/uploads/supervised_learning-.png)![](https://media.geeksforgeeks.org/wp-content/uploads/unsupervised_learning-.png) 
+![](./supervised_learning.png)![](./unsupervised_learning.png) 
 
 the data in supervised learning is labelled, where as data in unsupervised learning is unlabelled.
 
@@ -246,9 +246,10 @@ These problems sit in between both supervised and unsupervised learning.
 
 ## Reinforcement learning:
 
-A computer program interacts with a dynamic environment in which it must perform a certain goal (such as driving a vehicle or playing a game against an opponent). The program is provided feedback in terms of rewards and punishments as it navigates its problem space.
+A computer program interacts with a dynamic environment in which it must perform a certain goal (such as driving a vehicle or playing a game against an opponent). 
 
-![](https://media.geeksforgeeks.org/wp-content/uploads/20200212121948/reinforcement_learning-11.png) 
+> The program is provided **feedback** in terms of **rewards** and **punishments** as it navigates its problem space.
+
 
 ---
 
@@ -284,7 +285,7 @@ For example, predicting the stock prices using historical data.
 
 Classification and regression on two different datasets :
 
-![](https://media.geeksforgeeks.org/wp-content/uploads/classification_regression.png)
+![](./classification_regression.png)
 
 ---
 
@@ -314,6 +315,24 @@ It simplifies inputs by mapping them into a lower-dimensional space. *Topic mode
 6. KNN(K nearest neighbors),
 7. K-Means,
 8. Random Forest, etc.
+
+---
+# Iris dataset
+
+| Sepal Length | Sepal Width | Petal Length | Petal Width |    Species    |
+|     5.1      |     3.5     |     1.4      |     0.2     |     Setosa    |
+|     4.9      |     3.0     |     1.4      |     0.2     |     Setosa    |
+|     7.0      |     3.2     |     4.7      |     1.4     |  Versicolor   |
+|     6.4      |     3.2     |     4.5      |     1.5     |  Versicolor   |
+|     6.3      |     3.3     |     6.0      |     2.5     |   Virginica   |
+|     5.8      |     2.7     |     5.1      |     1.9     |   Virginica   |
+
+
+
+* **Features**: Sepal Length, Sepal Width, Petal Length, Petal Width
+* **Target**: Species (Setosa, Versicolor, Virginica)
+
+The Iris dataset consists of measurements of sepal length, sepal width, petal length, and petal width for three different species of Iris flowers: Setosa, Versicolor, and Virginica.
 
 ---
 
@@ -372,6 +391,52 @@ Once our model is ready, it can be fed a set of inputs to which it will provide 
 ![](https://media.geeksforgeeks.org/wp-content/uploads/training.png)
 
 ---
+# Confusion Matrix
+
+Suppose we have a dataset of 100 patients, and our task is to classify whether they have a certain disease (positive class) or not (negative class) based on some symptoms. We build a model that makes predictions on this dataset.
+
+1. True Positive (TP):
+A true positive (TP) occurs when the model correctly predicts a positive instance. 
+> In our example, let's say the model correctly identifies 20 patients as having the disease. These 20 patients actually have the disease, so they are true positives. 
+
+2. True Negative (TN):
+A true negative (TN) occurs when the model correctly predicts a negative instance. 
+> In our example, let's say the model correctly identifies 70 patients as not having the disease. These 70 patients are actually disease-free, so they are true negatives.
+
+To summarize:
+- True Positive (TP): The model predicts positive, and it is correct.
+- True Negative (TN): The model predicts negative, and it is correct.
+
+It's important to note that TP and TN are both correct predictions made by the model. They indicate instances where the model's predictions align with the actual ground truth labels.
+
+
+---
+# Confusion Matrix
+Suppose we have a dataset of 100 images, where 60 images are cats and 40 images are dogs. We build a model to classify these images as either "cat" or "dog."
+
+After applying the model to the dataset, here's what the confusion matrix might look like:
+
+```
+                    Predicted
+                  | Cat  | Dog  |
+------------------|------|------|
+Actual    Cat     | 30   | 5    |
+          Dog     | 10   | 55   |
+```
+
+Now, let's break down each component of the confusion matrix:
+
+1. True Positives (TP): The model predicted "cat," and it was correct. In this example, the model correctly classified 30 images as cats (TP).
+
+2. True Negatives (TN): The model predicted "dog," and it was correct. In this example, the model correctly classified 55 images as dogs (TN).
+
+3. False Positives (FP): The model predicted "cat," but it was incorrect. In this example, the model wrongly classified 10 dog images as cats (FP).
+
+4. False Negatives (FN): The model predicted "dog," but it was incorrect. In this example, the model wrongly classified 5 cat images as dogs (FN).
+
+The confusion matrix allows us to visualize the performance of the classification model in terms of these four categories. It provides insights into the model's ability to correctly identify positive and negative instances. 
+
+> By analyzing the confusion matrix, we can calculate various evaluation metrics such as accuracy, precision, recall, and F1-score, which help assess the overall performance of the model.
 
 # Thanks for your kind attention
 
