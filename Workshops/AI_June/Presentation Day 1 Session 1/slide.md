@@ -50,7 +50,8 @@ Dr. Prateek Raj Gautam
 # Motivation for Machine Learning
 
 * Instead of writing a program by hand, collect lots of examples that specify the correct output for a given input.
-  
+
+ 
 * A machine learning algorithm takes these examples and produces a program that does the job.
   
 * If done right, the program works for new cases as well as the ones we trained it on.
@@ -436,13 +437,13 @@ Actual    Cat     | 30   | 5    |
 
 Now, let's break down each component of the confusion matrix:
 
-1. True Positives (TP): The model predicted "cat," and it was correct. In this example, the model correctly classified 30 images as cats (TP).
+1. **True Positives (TP)**: The model predicted "cat," and it was correct. In this example, the model correctly classified 30 images as cats (TP).
 
-2. True Negatives (TN): The model predicted "dog," and it was correct. In this example, the model correctly classified 55 images as dogs (TN).
+2. **True Negatives (TN)**: The model predicted "dog," and it was correct. In this example, the model correctly classified 55 images as dogs (TN).
 
-3. False Positives (FP): The model predicted "cat," but it was incorrect. In this example, the model wrongly classified 10 dog images as cats (FP).
+3. **False Positives (FP)**: The model predicted "cat," but it was incorrect. In this example, the model wrongly classified 10 dog images as cats (FP).
 
-4. False Negatives (FN): The model predicted "dog," but it was incorrect. In this example, the model wrongly classified 5 cat images as dogs (FN).
+4. **False Negatives (FN)**: The model predicted "dog," but it was incorrect. In this example, the model wrongly classified 5 cat images as dogs (FN).
 
 The confusion matrix allows us to visualize the performance of the classification model in terms of these four categories. It provides insights into the model's ability to correctly identify positive and negative instances. 
 
