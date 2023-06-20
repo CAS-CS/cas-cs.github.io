@@ -388,7 +388,7 @@ Once our model is ready, it can be fed a set of inputs to which it will provide 
 
 # ML Training and Prediction
 
-![](https://media.geeksforgeeks.org/wp-content/uploads/training.png)
+![](./training.png)
 
 ---
 # Confusion Matrix
