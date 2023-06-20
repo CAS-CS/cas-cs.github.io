@@ -1,10 +1,10 @@
 ./
+./.dist
+./.git
+./.Previous Question Papers
+./.Syllabus
+./Gallery
 ./Lectures
 ./Notices
 ./TimeTable
 ./Workshops
-./.Syllabus
-./Gallery
-./.Previous Question Papers
-./.dist
-./.git
