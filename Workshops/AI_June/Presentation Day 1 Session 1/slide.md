@@ -29,15 +29,15 @@ Dr. Prateek Raj Gautam
 
 ### It is hard to write programs for certain tasks
 
-* Human face or handwriting recognition
-* Playing complex games like chess
-* Recommending movies that a person will like
+* Human face or handwriting recognition 
+* Playing complex games like chess 
+* Recommending movies that a person will like 
   
 ### Why?
 
-* We do not ourselves know how to solve
-* Algorithm will be too complicated
-* Too many instances of the program needed (e.g., one for every user)
+* We do not ourselves know how to solve 
+* Algorithm will be too complicated 
+* Too many instances of the program needed (e.g., one for every user) 
 
 ---
 # Motivation for Machine Learning
@@ -49,12 +49,12 @@ Dr. Prateek Raj Gautam
 ---
 # Motivation for Machine Learning
 
-* Instead of writing a program by hand, collect lots of examples that specify the correct output for a given input.
+* Instead of writing a program by hand, collect lots of examples that specify the correct output for a given input. 
 
  
-* A machine learning algorithm takes these examples and produces a program that does the job.
+* A machine learning algorithm takes these examples and produces a program that does the job. 
   
-* If done right, the program works for new cases as well as the ones we trained it on.
+* If done right, the program works for new cases as well as the ones we trained it on. 
 
 ---
 ## Traditional Programming
