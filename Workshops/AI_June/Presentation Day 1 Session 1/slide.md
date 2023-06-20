@@ -12,16 +12,16 @@ Dr. Prateek Raj Gautam
 # A few quotes, before we start.
 
 
-**"A breakthrough in machine learning would be worth ten Microsofts"**
+#### "A breakthrough in machine learning would be worth ten Microsofts"
 > (Bill Gates, Chairman, Microsoft)
 
-**“Machine learning is the next Internet"**
+#### “Machine learning is the next Internet"
 > (Tony Tether, Director, DARPA)
 
-**"Machine learning is the hot new thing"**
+#### "Machine learning is the hot new thing"
 > (John Hennessy, President, Stanford)
 
-**"Web rankings today are mostly a matter of machine learning"**
+#### "Web rankings today are mostly a matter of machine learning"
 > (Prabhakar Raghavan, Dir. Research, Yahoo)
 
 ---
@@ -101,7 +101,7 @@ AI is a combination of two words: **“Artificial"** meaning something made by h
 
 Machine Learning is basically the study/process which provides the system(computer) to **learn automatically** on its own **through experiences** it had and improve accordingly **without being explicitly programmed**.
 
-ML is an application or subset of AI.
+> ML is an application or subset of AI.
 
 ML focuses on the development of programs so that it can access data to use it for themselves. The entire process makes observations on data to identify the possible patterns being formed and make better future decisions as per the examples provided to them.
 
@@ -150,16 +150,23 @@ Any agent is said to **learn** from **experience E** with respect to some class 
 ---
 ## Some more examples of tasks that are best solved by using a learning algorithm
 #### Recognizing patterns
-– Facial identities or facial expressions
-– Handwritten or spoken words
-– Medical images
+
+* Facial identities or facial expressions
+* Handwritten or spoken words
+* Medical images
+
 #### Generating patterns
-– Generating images or motion sequences
+
+* Generating images or motion sequences
+
 #### Recognizing anomalies
-– Unusual sequences of credit card transactions
-– Unusual patterns of sensor readings in a nuclear power plant or unusual sound in your car engine.
+
+* Unusual sequences of credit card transactions
+* Unusual patterns of sensor readings in a nuclear power plant or unusual sound in your car engine.
+
 #### Prediction
-– Future stock prices or currency exchange rate
+
+* Future stock prices or currency exchange rate
 
 
 ---
@@ -329,8 +336,10 @@ It simplifies inputs by mapping them into a lower-dimensional space. *Topic mode
 
 
 
-* **Features**: Sepal Length, Sepal Width, Petal Length, Petal Width
-* **Target**: Species (Setosa, Versicolor, Virginica)
+###### Features: 
+Sepal Length, Sepal Width, Petal Length, Petal Width
+###### Target: 
+Species (Setosa, Versicolor, Virginica)
 
 The Iris dataset consists of measurements of sepal length, sepal width, petal length, and petal width for three different species of Iris flowers: Setosa, Versicolor, and Virginica.
 
