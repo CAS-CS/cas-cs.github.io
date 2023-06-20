@@ -597,6 +597,15 @@ document.addEventListener("keydown", e => {
         		document.activeElement.click()
         	}
         }
+        if (key=="backspace"){
+        	e.preventDefault()
+        	grab(".pathNavigator")[grab(".pathNavigator").length-1].click()
+        }
+        if (key=="escape"){
+        	e.preventDefault()
+		//closeModal may interfere with fullscreenmode
+        }
+        
     }
     if (e.ctrlKey && e.key.toLowerCase() == "o") {
         e.preventDefault()
