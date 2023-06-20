@@ -591,6 +591,12 @@ document.addEventListener("keydown", e => {
             e.preventDefault()
             reloadPage()
         }
+        if (key=="enter"){
+        	e.preventDefault()
+        	if(document.activeElement!=document.body){ 
+        		document.activeElement.click()
+        	}
+        }
     }
     if (e.ctrlKey && e.key.toLowerCase() == "o") {
         e.preventDefault()
@@ -640,7 +646,7 @@ function loadBasicSkeleton(title = "Home") {
     append(app, gen(header, "header", "", 'header'));
     append(header, gen(h3, 'heading', gen(a, '', title, 'title', "/")))
     // append(app, gen(main, "main", "", 'main', { "draggable": "true" }));
-    append(app, gen(main, "main", "", 'main'));
+    append(app, gen(main, "main", "", 'main',{"tabindex": 20}));
     append(main, gen(div, "appmain", "", 'appmain container'));
     append(app, gen(footer, "appfooter", "", 'footer'));
     append(appmain, gen(section, "hero", "", "hero"))
@@ -898,7 +904,7 @@ function paginationUpdate(loc = "") {
             // log(l)
             path += l + "/"
             // append("#location", gen(a, '', l, 'pathNavigator', root + path, { "onclick": "updateOnHashChange()" }))
-            append("#location", gen(a, '', l, 'pathNavigator', { 'data-path': root + path, "onclick": "changepath(this)" }))
+            append("#location", gen(a, '', l, 'pathNavigator', { 'data-path': root + path, "onclick": "changepath(this)" , "tabindex": 20 }))
             // append("#location", gen(span, '', "  ", 'spacer'))
 
         }
@@ -945,7 +951,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 if (link.length > 0 && link != './') {
                     var redirect = currentLocation + link.replaceAll('./', '') + "/"
                     var dir = link.replaceAll('./', '')
-                    append(`#directoryGrid`, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)`,"tabindex":0 }))
+                    append(`#directoryGrid`, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)`,"tabindex":10 }))
                 }
             }
 
@@ -954,7 +960,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
                     var file = link.replaceAll('./', '')
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":0 }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":10 }))
                 }
             }
 
@@ -963,7 +969,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
                 var file = link.replaceAll('./', '')
                 if (link.length > 0 && link != './') {
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":0 }))
+                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":10 }))
 
                 }
             }
@@ -972,7 +978,7 @@ function parselist(fileListUrl = window.location.origin + window.location.pathna
                 // log("pdf")
                 var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
                 if (link.length > 0 && link != './') {
-                    append(directoryGrid, gen(object, `${url}`, linkname, 'pdfLinks', { "onclick": `parsePdf(\`${url}\`)`,"tabindex":0 }))
+                    append(directoryGrid, gen(object, `${url}`, linkname, 'pdfLinks', { "onclick": `parsePdf(\`${url}\`)`,"tabindex":10 }))
                 }
             }
         });
@@ -1011,7 +1017,7 @@ loadscss(slideScss)
     getfile(link, md => {
         if (grab("#back").length != 0) { append("#back", "", "replace") }
 
-        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
+        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 20 }))
 
         append(`main`, "", "over")
         append(`main`, gen(div, "slideroot", "", 'slideroot'))
@@ -1049,7 +1055,7 @@ function parseNotebook(link) {
     getfile(link, nb => {
 
         if (grab("#back").length != 0) { append("#back", "", "replace") }
-        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 0 }))
+        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 20 }))
         if (grab("#appmain").length != 0) { append("#appmain", "", "replace") }
 
         // append(appmain, gen(div, "appmain", ""), "replace")
