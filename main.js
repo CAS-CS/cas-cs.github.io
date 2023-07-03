@@ -1,8 +1,8 @@
-window.DEBUT = true
-window.$ = GeneratorJs()
-window.$$ = GeneratorWebHelper()
-$.init()
-load("./script.js")
+window.DEBUT = true;
+window.$ = GeneratorJs ();
+window.$$ = GeneratorWebHelper ();
+$.init ();
+load ('./script.js');
 
 //STYLE
 var slideScss = `
@@ -466,867 +466,988 @@ table {
 }
 
 
-`
+`;
 
 //loadscss(slideScss)
 
-function openFile() {
-    var fileObj = grab('#open')[0].files[0]
-    var fileName = fileObj.name
-    var fileType = fileObj.type
-    var fileUrl = URL.createObjectURL(fileObj)
-    ext = fileName.split(".").pop()
-    if (fileType == "text/markdown" || ext == "md" || ext == "markdown") {
-        parseSlide(fileUrl)
-    }
-    if (fileType == "application/x-ipynb+json" || ext == "ipynb") {
-        parseNotebook(fileUrl)
-    }
-    // getfile(fileUrl, fileName)
-    updateFiledropEventListeners()
+function openFile () {
+  var fileObj = grab ('#open')[0].files[0];
+  var fileName = fileObj.name;
+  var fileType = fileObj.type;
+  var fileUrl = URL.createObjectURL (fileObj);
+  ext = fileName.split ('.').pop ();
+  if (fileType == 'text/markdown' || ext == 'md' || ext == 'markdown') {
+    parseSlide (fileUrl);
+  }
+  if (fileType == 'application/x-ipynb+json' || ext == 'ipynb') {
+    parseNotebook (fileUrl);
+  }
+  // updateFiledropEventListeners()
 }
 
-function cloneView() {
-    var url = window.location.href
-    // window.open(url, '_blank');
-    window.open(url,
-        'newwindow',
-        'width=600,height=400');
-    gen(a, "clone", "Open Clone Window", "hide", { "href": window.location.href, "target": "_blank" }).click()
+function cloneView () {
+  var url = window.location.href;
+  // window.open(url, '_blank');
+  window.open (url, 'newwindow', 'width=600,height=400');
+  gen (a, 'clone', 'Open Clone Window', 'hide', {
+    href: window.location.href,
+    target: '_blank',
+  }).click ();
 }
 
-function toggleHints() { }
-
+function toggleHints () {}
 
 // Fullscreen
-function toggleFullscreen() {
-    if (document.fullscreenElement) {
-        // append(fullscreenTitle, "", 'replace')
-        document.exitFullscreen();
-    }
-    else {
-        // document.documentElement.requestFullscreen();
-        grab(`#main`)[0].requestFullscreen();
-        var titlestr = document.title +
-            router.pathname.replaceAll("/", " | ") +
-            grab("h1")[0].innerHTML
-        // append(main, gen(div, "fullscreenTitle", titlestr), 'before')
-    }
+function toggleFullscreen () {
+  if (document.fullscreenElement) {
+    // append(fullscreenTitle, "", 'replace')
+    document.exitFullscreen ();
+  } else {
+    // document.documentElement.requestFullscreen();
+    grab (`#main`)[0].requestFullscreen ();
+    var titlestr =
+      document.title +
+      router.pathname.replaceAll ('/', ' | ') +
+      grab ('h1')[0].innerHTML;
+    // append(main, gen(div, "fullscreenTitle", titlestr), 'before')
+  }
 }
 
-document.addEventListener("dblclick", e => {
-    e.preventDefault()
-    toggleFullscreen()
-})
+document.addEventListener ('dblclick', e => {
+  e.preventDefault ();
+  toggleFullscreen ();
+});
 
 // ScrollControl
 
-function scrollAction(direction = "down", scrollState) {
-    var end = grab(`#slideroot`)[0].scrollHeight - grab(`#slideroot`)[0].offsetHeight
-    var offsetHeight = grab(`#slideroot`)[0].offsetHeight
+function scrollAction (direction = 'down', scrollState) {
+  var end =
+    grab (`#slideroot`)[0].scrollHeight - grab (`#slideroot`)[0].offsetHeight;
+  var offsetHeight = grab (`#slideroot`)[0].offsetHeight;
 
+  if (!scrollState)
+    scrollState = grab (`#slideroot`)[0].scrollTop / offsetHeight;
+  var endState = end / offsetHeight;
 
-    if (!scrollState) scrollState = grab(`#slideroot`)[0].scrollTop / offsetHeight
-    var endState = end / offsetHeight
-
-
-    if (direction == "home") {
-        grab(`#slideroot`)[0].scrollTop = 0
-    }
-    if (direction == "end") {
-        grab(`#slideroot`)[0].scrollTop = endState * offsetHeight
-    }
-    if (direction == "up") {
-        // grab(`#slideroot`)[0].scrollTop -= offsetHeight
-        scrollState += 1
-        grab(`#slideroot`)[0].scrollTop = scrollState * offsetHeight
-
-    }
-    if (direction == "down") {
-        scrollState -= 1
-        grab(`#slideroot`)[0].scrollTop = scrollState * offsetHeight
-    }
+  if (direction == 'home') {
+    grab (`#slideroot`)[0].scrollTop = 0;
+  }
+  if (direction == 'end') {
+    grab (`#slideroot`)[0].scrollTop = endState * offsetHeight;
+  }
+  if (direction == 'up') {
+    // grab(`#slideroot`)[0].scrollTop -= offsetHeight
+    scrollState += 1;
+    grab (`#slideroot`)[0].scrollTop = scrollState * offsetHeight;
+  }
+  if (direction == 'down') {
+    scrollState -= 1;
+    grab (`#slideroot`)[0].scrollTop = scrollState * offsetHeight;
+  }
 }
 
 // Keyboard Control
-document.addEventListener("keydown", e => {
-    // e.preventDefault()
-    if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) { }
-    else {
-        var key = e.key.toLowerCase()
-        // log(key)
-        if (key == "arrowdown" || key == "pagedown" || key == "arrowright") {
-            e.preventDefault()
-            scrollAction('up')
-        }
-        if (key == "arrowup" || key == "arrowleft" || key == "pageup") {
-            e.preventDefault()
-            scrollAction('down')
-        }
-        if (key == "home") {
-            e.preventDefault()
-            scrollAction('home')
-        }
-        if (key == "end") {
-            e.preventDefault()
-            scrollAction('end')
-        }
-        if (key == "f") {
-            e.preventDefault()
-            toggleFullscreen()
-        }
-        if (key == "o") {
-            e.preventDefault()
-            openFile()
-        }
-        if (key == "c") {
-            e.preventDefault()
-            cloneView()
-        }
-        if (key == "h") {
-            e.preventDefault()
-            toggleHints()
-        }
-        if (key == "r") {
-            e.preventDefault()
-            reloadPage()
-        }
-        if (key=="enter"){
-        	e.preventDefault()
-        	if(document.activeElement!=document.body){ 
-        		document.activeElement.click()
-        	}
-        }
-        if (key=="backspace"){
-        	e.preventDefault()
-        	grab(".pathNavigator")[grab(".pathNavigator").length-1].click()
-        }
-        if (key=="escape"){
-        	e.preventDefault()
-		//closeModal may interfere with fullscreenmode
-        }
-        
+document.addEventListener ('keydown', e => {
+  // e.preventDefault()
+  if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
+  } else {
+    var key = e.key.toLowerCase ();
+    // log(key)
+    if (key == 'arrowdown' || key == 'pagedown' || key == 'arrowright') {
+      e.preventDefault ();
+      scrollAction ('up');
     }
-    if (e.ctrlKey && e.key.toLowerCase() == "o") {
-        e.preventDefault()
-        grab("#open")[0].click()
+    if (key == 'arrowup' || key == 'arrowleft' || key == 'pageup') {
+      e.preventDefault ();
+      scrollAction ('down');
     }
-})
+    if (key == 'home') {
+      e.preventDefault ();
+      scrollAction ('home');
+    }
+    if (key == 'end') {
+      e.preventDefault ();
+      scrollAction ('end');
+    }
+    if (key == 'f') {
+      e.preventDefault ();
+      toggleFullscreen ();
+    }
+    if (key == 'o') {
+      e.preventDefault ();
+      openFile ();
+    }
+    if (key == 'c') {
+      e.preventDefault ();
+      cloneView ();
+    }
+    if (key == 'h') {
+      e.preventDefault ();
+      toggleHints ();
+    }
+    if (key == 'r') {
+      e.preventDefault ();
+      reloadPage ();
+    }
+    if (key == 'enter') {
+      e.preventDefault ();
+      if (document.activeElement != document.body) {
+        document.activeElement.click ();
+      }
+    }
+    if (key == 'backspace') {
+      e.preventDefault ();
+      grab ('.pathNavigator')[grab ('.pathNavigator').length - 1].click ();
+    }
+    if (key == 'escape') {
+      e.preventDefault ();
+      //closeModal may interfere with fullscreenmode
+    }
+  }
+  if (e.ctrlKey && e.key.toLowerCase () == 'o') {
+    e.preventDefault ();
+    grab ('#open')[0].click ();
+  }
+});
 
-const hashChannel = new BroadcastChannel("hashChannel")
+const hashChannel = new BroadcastChannel ('hashChannel');
 
-window.addEventListener("hashchange", e => {
+window.addEventListener ('hashchange', e => {
+  hashChannel.postMessage ({
+    dir: router.dir.substring (1),
+    file: router.file,
+  });
+});
 
-    hashChannel.postMessage({
-        dir: router.dir.substring(1),
-        file: router.file
-    })
-})
-
-
-hashChannel.addEventListener("message", e => {
-
-    var dir = e.data.dir
-    var file = e.data.file
-    // var router = new Router()
-    // if ((router.dir != dir) || (router.file != file)) {
-    //     router.setdirpath(dir, file)
-    // }
-})
-
-
+hashChannel.addEventListener ('message', e => {
+  var dir = e.data.dir;
+  var file = e.data.file;
+  // var router = new Router()
+  // if ((router.dir != dir) || (router.file != file)) {
+  //     router.setdirpath(dir, file)
+  // }
+});
 
 const convertLocalLinks = () => {
-    var router = new Router()
-    setTimeout(() => {
-        document.body.innerHTML = document.body.innerHTML.replaceAll('./', router.dirpath)
+  var router = new Router ();
+  setTimeout (() => {
+    document.body.innerHTML = document.body.innerHTML.replaceAll (
+      './',
+      router.dirpath
+    );
+  }, 2000);
 
-    }, 2000);
-    
-    document.title=grab("h1")[0].innerHTML
+  document.title = grab ('h1')[0].innerHTML;
+};
+
+function loadBasicSkeleton (title = 'Home') {
+  load ('/style.scss');
+  //your app logic
+  append (app, '', 'over'); /* reset app */
+  append (app, gen (header, 'header', '', 'header'));
+  append (header, gen (h3, 'heading', gen (a, '', title, 'title', '/')));
+  // append(app, gen(main, "main", "", 'main', { "draggable": "true" }));
+  append (app, gen (main, 'main', '', 'main', {tabindex: 20}));
+  append (main, gen (div, 'appmain', '', 'appmain container'));
+  append (app, gen (footer, 'appfooter', '', 'footer'));
+  append (appmain, gen (section, 'hero', '', 'hero'));
 }
 
-
-function loadBasicSkeleton(title = "Home") {
-
-    load('/style.scss')
-    //your app logic
-    append(app, "", "over") /* reset app */
-    append(app, gen(header, "header", "", 'header'));
-    append(header, gen(h3, 'heading', gen(a, '', title, 'title', "/")))
-    // append(app, gen(main, "main", "", 'main', { "draggable": "true" }));
-    append(app, gen(main, "main", "", 'main',{"tabindex": 20}));
-    append(main, gen(div, "appmain", "", 'appmain container'));
-    append(app, gen(footer, "appfooter", "", 'footer'));
-    append(appmain, gen(section, "hero", "", "hero"))
-
+function dict2hash (dict) {
+  var hash = '';
+  Object.keys (dict).forEach (key => {
+    if (hash.length == 0) {
+      hash = key + '=' + dict[key];
+    } else {
+      hash += '&' + key + '=' + dict[key];
+    }
+  });
+  return hash;
 }
 
-
-function dict2hash(dict) {
-    var hash = ""
-    Object.keys(dict).forEach(key => {
-        if (hash.length == 0) {
-            hash = key + "=" + dict[key]
-        }
-        else {
-            hash += "&" + key + "=" + dict[key]
-        }
-    })
-    return hash
-}
-
-function hash2dict(hash) {
-    var dict = {}
-    hash.substring(1,).split("&").forEach(row => {
-        // var keyval = ""
-        keyval = row.split("=")
-        dict[keyval[0]] = keyval[1]
-    })
-    return dict
+function hash2dict (hash) {
+  var dict = {};
+  hash.substring (1).split ('&').forEach (row => {
+    // var keyval = ""
+    keyval = row.split ('=');
+    dict[keyval[0]] = keyval[1];
+  });
+  return dict;
 }
 
 class Router {
-    constructor() {
-        this.dir = ""
-        this.file = ""
-        this.hashObj = {}
-        this.filepath = ""
-        this.readfromurl()
-        this.readHash()
+  constructor () {
+    this.dir = '';
+    this.file = '';
+    this.hashObj = {};
+    this.filepath = '';
+    this.readfromurl ();
+    this.readHash ();
 
-        this.updateroute()
-        return this.hash
+    this.updateroute ();
+    return this.hash;
+  }
+
+  readfromurl () {
+    this.host = window.location.host;
+    this.protocol = window.location.protocol + '//';
+    this.pathname = window.location.pathname;
+    this.root = this.protocol + this.host + this.pathname;
+    this.origin = window.location.origin;
+  }
+
+  readHash () {
+    this.hash = window.location.hash;
+    this.hashDict = hash2dict (this.hash);
+    this.hash.substring (1).split ('&').forEach (row => {
+      var keyval = '';
+      keyval = row.split ('=');
+
+      if (keyval[0] == 'dir') {
+        this.dir = keyval[1];
+      }
+      if (keyval[0] == 'file') {
+        this.file = keyval[1];
+      }
+      this.hashObj[keyval[0]] = keyval[1];
+    });
+    this.setdirpath (this.dir, this.file);
+  }
+
+  updateroute () {
+    this.filepath = this.root;
+    this.hash = `dir=${this.dir}&file=${this.file}`;
+    if (this.dir.length == 0) {
+      this.dir += '/';
+    } else {
+      if (this.dir.substring (this.dir.length - 1) != '/') {
+        this.dir += '/';
+      }
+      this.filepath += this.dir;
     }
 
-    readfromurl() {
-        this.host = window.location.host
-        this.protocol = window.location.protocol + "//"
-        this.pathname = window.location.pathname
-        this.root = this.protocol + this.host + this.pathname
-        this.origin = window.location.origin
-
+    this.dirpath = this.filepath;
+    if (this.file.length > 0) {
+      this.filepath += this.file;
     }
 
-    readHash() {
-        this.hash = window.location.hash
-        this.hashDict = hash2dict(this.hash)
-        this.hash.substring(1,).split("&").forEach(row => {
-            var keyval = ""
-            keyval = row.split("=")
-
-            if (keyval[0] == "dir") {
-                this.dir = keyval[1]
-            }
-            if (keyval[0] == "file") { this.file = keyval[1] }
-            this.hashObj[keyval[0]] = keyval[1]
-        })
-        this.setdirpath(this.dir, this.file)
+    var oldhash = window.location.hash;
+    if (oldhash != this.hash) {
+      window.location.hash = this.hash;
     }
+    window.location.hash = this.hash;
+    // this.setdirpath(this.dir, this.file)
+  }
 
-    updateroute() {
-        this.filepath = this.root
-        this.hash = `dir=${this.dir}&file=${this.file}`
-        if (this.dir.length == 0) {
-            this.dir += "/"
-        }
-        else {
-            if (this.dir.substring(this.dir.length - 1) != "/") {
-                this.dir += "/"
-            }
-            this.filepath += this.dir
-        }
+  setdirpath (dir = '', file = '', url = window.location.origin) {
+    // window.location.href = url
+    this.dir = dir;
+    this.file = file;
+    this.updateroute ();
+  }
+  get view () {
+    return this.filepath;
+  }
 
-        this.dirpath = this.filepath
-        if (this.file.length > 0) {
-            this.filepath += this.file
-        }
+  set setfile (file) {
+    this.file = file;
 
-        var oldhash = window.location.hash
-        if (oldhash != this.hash) {
-            window.location.hash = this.hash
-        }
-        window.location.hash = this.hash
-        // this.setdirpath(this.dir, this.file)
-    }
+    this.updateroute ();
+  }
 
-    setdirpath(dir = "", file = "", url = window.location.origin) {
-        // window.location.href = url
-        this.dir = dir
-        this.file = file
-        this.updateroute()
-    }
-    get view() {
-        return this.filepath
-    }
+  set setdir (dir) {
+    this.dir = dir;
 
-    set setfile(file) {
-        this.file = file
-
-        this.updateroute()
-    }
-
-    set setdir(dir) {
-        this.dir = dir
-
-        this.updateroute()
-    }
-
-
-
+    this.updateroute ();
+  }
 }
-const router = new Router()
+const router = new Router ();
 
-
-
-function footerButtons() {
-    if (grab(`#footerButtons`).length != 0) {
-        append(`#footerButtons`, "", "replace")
-    }
-    append(`#appfooter`, gen(div, "footerButtons", ""), 'before')
-    append(`#footerButtons`, gen(span, "reload", "Reload", "button,reloadPage", { "onclick": "reloadPage()" }))
-    append(`#footerButtons`, gen(input, "open", '', "hide", { "type": "file", "accept": ".md,.markdown,.ipynb,png,jpg,mp4", "onchange": "openFile()", "multiple": "true" }))
-    // append(`#footerButtons`, gen(input, "open", "Open", "button,openFile", { "type": "file", "onchange": "openFile()" }))
-    append(`#footerButtons`, gen(label, "openbtn", "Open", "button,openFile", { "for": "open" }))
-}
-
-function generateView() {
-
-    if (grab("#appmain").length != 0) {
-        append("#appmain", "", "over")
-    }
-    // append(main, gen(main, "main", "", ",main"), "replace")
-    var file = filedetect()
-
-
-    var file = router.file
-    if (file.length == 0) {
-        router.setfile = "list.txt"
-    }
-
-    var ext = file.split(".").pop()
-    const route = {
-        "txt": () => { parselist(router.view) },
-        "md": () => { parseSlide(router.view) },
-        "ipynb": () => { parseNotebook(router.view) },
-        "pdf": () => { showPDF(router.view) }
-    }
-    try {
-        route[ext]()
-
-    } catch (e) {
-
-    }
-
-//this is untested edit
-	updateFiledropEventListeners()
-
-
-}
-
-
-
-async function filedetect() {
-    var router = new Router()
-    var presentfile = ""
-    var files = "slide.ipynb,slide.md".split(",")
-    files.forEach(file => {
-        var testpath = router.root + router.dir.substring(1,) + file
-        fetch(testpath).then(res => {
-            if (res.status == 200) {
-                router.setfile = file
-            }
-        })
-
+function footerButtons () {
+  if (grab (`#footerButtons`).length != 0) {
+    append (`#footerButtons`, '', 'replace');
+  }
+  append (`#appfooter`, gen (div, 'footerButtons', ''), 'before');
+  append (
+    `#footerButtons`,
+    gen (span, 'reload', 'Reload', 'button,reloadPage', {
+      onclick: 'reloadPage()',
     })
-    return presentfile
+  );
+  append (
+    `#footerButtons`,
+    gen (input, 'open', '', 'hide', {
+      type: 'file',
+      accept: '.md,.markdown,.ipynb,png,jpg,mp4',
+      onchange: 'openFile()',
+      multiple: 'true',
+    })
+  );
+  // append(`#footerButtons`, gen(input, "open", "Open", "button,openFile", { "type": "file", "onchange": "openFile()" }))
+  append (
+    `#footerButtons`,
+    gen (label, 'openbtn', 'Open', 'button,openFile', {for: 'open'})
+  );
 }
 
+function generateView () {
+  if (grab ('#appmain').length != 0) {
+    append ('#appmain', '', 'over');
+  }
+  // append(main, gen(main, "main", "", ",main"), "replace")
+  var file = filedetect ();
 
+  var file = router.file;
+  if (file.length == 0) {
+    router.setfile = 'list.txt';
+  }
 
+  var ext = file.split ('.').pop ();
+  const route = {
+    txt: () => {
+      parselist (router.view);
+    },
+    md: () => {
+      parseSlide (router.view);
+    },
+    ipynb: () => {
+      parseNotebook (router.view);
+    },
+    pdf: () => {
+      showPDF (router.view);
+    },
+  };
+  try {
+    route[ext] ();
+    // updateFiledropEventListeners()
+  } catch (e) {}
 
-function updateOnHashChange() {
-    window.removeEventListener('hashchange', updateOnHashChange);
-    var router = new Router()
-    if (router.dir != "/") {
-        var oldroot = router.root
-        var indexpath = router.root + router.dir.substring(1,) + "index.html"
-        var newroot = router.root + router.dir.substring(1,)
-        router.dir = "/"
-        fetch(indexpath).then(res => {
-            if (res.status == 200) {
-                window.location.href = newroot
-            }
+  // updateFiledropEventListeners()
+}
+
+async function filedetect () {
+  var router = new Router ();
+  var presentfile = '';
+  var files = 'slide.ipynb,slide.md'.split (',');
+  files.forEach (file => {
+    var testpath = router.root + router.dir.substring (1) + file;
+    fetch (testpath).then (res => {
+      if (res.status == 200) {
+        router.setfile = file;
+      }
+    });
+  });
+  return presentfile;
+}
+
+function updateOnHashChange () {
+  window.removeEventListener ('hashchange', updateOnHashChange);
+  var router = new Router ();
+  if (router.dir != '/') {
+    var oldroot = router.root;
+    var indexpath = router.root + router.dir.substring (1) + 'index.html';
+    var newroot = router.root + router.dir.substring (1);
+    router.dir = '/';
+    fetch (indexpath).then (res => {
+      if (res.status == 200) {
+        window.location.href = newroot;
+      }
+    });
+  }
+
+  reloadPage ();
+}
+
+function reloadPage () {
+  sessionStorage.clear ();
+  localStorage.clear ();
+  paginationUpdate ();
+  generateView ();
+  footerButtons ();
+  window.scrollTo (0, 0);
+  window.addEventListener ('hashchange', updateOnHashChange);
+  // convertLocalLinks()
+}
+
+function changepath (thispath) {
+  // log(thispath.dataset.path)
+  var path = thispath.dataset.path;
+  var origin = window.location.origin;
+  pathname = path.replace (origin, '');
+  // log(pathname)
+  var router = new Router ();
+  router.setdir = pathname;
+
+  window.location.pathname = '/';
+}
+
+function paginationUpdate (loc = '') {
+  // var router = new Router()
+  router.readHash ();
+  loc = router.pathname + router.dir;
+  if (grab ('#location').length != 0) {
+    append ('#location', '', 'replace');
+  }
+
+  // try { append(`#location`, "", "replace") } catch { }
+  append (`#header`, gen (nav, 'location', ''));
+  var root = router.protocol + router.host;
+  var path = '/';
+
+  var printLocation = loc
+    .replaceAll ('https://', '')
+    .replaceAll ('http://', '');
+  printLocation.split ('/').forEach (l => {
+    if (l.length > 0) {
+      // log(l)
+      path += l + '/';
+      // append("#location", gen(a, '', l, 'pathNavigator', root + path, { "onclick": "updateOnHashChange()" }))
+      append (
+        '#location',
+        gen (a, '', l, 'pathNavigator', {
+          'data-path': root + path,
+          onclick: 'changepath(this)',
+          tabindex: 20,
         })
+      );
+      // append("#location", gen(span, '', "  ", 'spacer'))
     }
-
-
-    reloadPage()
+  });
+  // generateView()
 }
 
+loadBasicSkeleton ();
 
-function reloadPage() {
-    sessionStorage.clear()
-    localStorage.clear()
-    paginationUpdate()
-    generateView()
-    footerButtons()
-    window.scrollTo(0, 0)
-    window.addEventListener('hashchange', updateOnHashChange);
-    // convertLocalLinks()
-
-
+function appendDir (e) {
+  var newDir = router.dir + e.dataset.dir;
+  newDir = newDir.replaceAll ('//', '/').replaceAll ('\\\\', '\\');
+  router.setdirpath (newDir, '');
+}
+function appendfile (e) {
+  router.setdirpath (router.dir, e.dataset.file);
 }
 
+function parselist (
+  fileListUrl = window.location.origin + window.location.pathname + 'list.txt',
+  target = '#main'
+) {
+  var filelist = '';
+  getfile (fileListUrl, filelist => {
+    append (target, '', 'over');
+    append (
+      target,
+      gen (div, 'appmain', gen (h1, '', 'File Browser', 'heading'), 'appmain'),
+      'over'
+    );
 
+    append (appmain, gen (div, 'directoryGrid', '', 'dirGrid'));
 
+    var currentLocation = router.dirpath;
 
-function changepath(thispath) {
-    // log(thispath.dataset.path)
-    var path = thispath.dataset.path
-    var origin = window.location.origin
-    pathname = path.replace(origin, "")
-    // log(pathname)
-    var router = new Router()
-    router.setdir = pathname
-
-    window.location.pathname = "/"
-    updateOnHashChange()
-}
-
-function paginationUpdate(loc = "") {
-    // var router = new Router()
-    router.readHash()
-    loc = router.pathname + router.dir
-    if (grab("#location").length != 0) {
-        append("#location", "", "replace")
-    }
-
-    // try { append(`#location`, "", "replace") } catch { }
-    append(`#header`, gen(nav, 'location', ""))
-    var root = router.protocol + router.host
-    var path = "/"
-
-    var printLocation = loc.replaceAll('https://', "").replaceAll('http://', "")
-    printLocation.split("/").forEach(l => {
-        if (l.length > 0) {
-            // log(l)
-            path += l + "/"
-            // append("#location", gen(a, '', l, 'pathNavigator', root + path, { "onclick": "updateOnHashChange()" }))
-            append("#location", gen(a, '', l, 'pathNavigator', { 'data-path': root + path, "onclick": "changepath(this)" , "tabindex": 20 }))
-            // append("#location", gen(span, '', "  ", 'spacer'))
-
+    filelist.split ('\n').sort ().forEach ((link, i) => {
+      var url = currentLocation + link.replaceAll ('./', '');
+      link = link.replaceAll ('\t', '').replaceAll ('\n', '');
+      //for directories
+      var ext = link.split ('.').pop ();
+      // log(ext)
+      if (
+        link[2] != '.' &&
+        !link.includes ('.md') &&
+        !link.includes ('.ipynb') &&
+        !link.includes ('.pdf')
+      ) {
+        var linkname = link
+          .replaceAll ('./', '')
+          .replaceAll ('/', ' / ')
+          .replaceAll ('-', ' ')
+          .replaceAll ('_', ' ');
+        if (link.length > 0 && link != './') {
+          var redirect = currentLocation + link.replaceAll ('./', '') + '/';
+          var dir = link.replaceAll ('./', '');
+          append (
+            `#directoryGrid`,
+            gen (a, '', linkname, 'folderLinks', {
+              'data-dir': dir,
+              onclick: `appendDir(this)`,
+              tabindex: 10,
+            })
+          );
         }
+      }
 
-    })
-    // generateView()
+      //for markdown files
+      if (link[2] != '.' && link.includes ('.md')) {
+        var linkname = link
+          .replaceAll ('./', '')
+          .replaceAll ('/', ' / ')
+          .replaceAll ('-', ' ')
+          .replaceAll ('.md', '')
+          .replaceAll ('_', ' ');
+        if (link.length > 0 && link != './') {
+          var file = link.replaceAll ('./', '');
+          append (
+            directoryGrid,
+            gen (a, `${url}`, linkname, 'slideLinks', {
+              'data-file': file,
+              onclick: `appendfile(this)`,
+              tabindex: 10,
+            })
+          );
+        }
+      }
+
+      //for notebook files
+      if (link[2] != '.' && link.includes ('.ipynb')) {
+        var linkname = link
+          .replaceAll ('./', '')
+          .replaceAll ('/', ' / ')
+          .replaceAll ('-', ' ')
+          .replaceAll ('.ipynb', '')
+          .replaceAll ('_', ' ');
+        var file = link.replaceAll ('./', '');
+        if (link.length > 0 && link != './') {
+          append (
+            directoryGrid,
+            gen (a, `${url}`, linkname, 'slideLinks,notebookLinks', {
+              'data-file': file,
+              onclick: `appendfile(this)`,
+              tabindex: 10,
+            })
+          );
+        }
+      }
+      //for pdf files
+      if (ext == 'pdf') {
+        // log("pdf")
+        var linkname = link
+          .replaceAll ('./', '')
+          .replaceAll ('/', ' / ')
+          .replaceAll ('-', ' ')
+          .replaceAll ('.ipynb', '')
+          .replaceAll ('_', ' ');
+        if (link.length > 0 && link != './') {
+          append (
+            directoryGrid,
+            gen (object, `${url}`, linkname, 'pdfLinks', {
+              onclick: `parsePdf(\`${url}\`)`,
+              tabindex: 10,
+            })
+          );
+        }
+      }
+    });
+  });
 }
 
-loadBasicSkeleton()
+function mathjaxHljsCopyIcon () {
+  load (
+    'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css'
+  );
+  load (
+    'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js'
+  );
 
-
-
-
-function appendDir(e) {
-    var newDir = router.dir + e.dataset.dir
-    newDir = newDir.replaceAll("//", "/").replaceAll("\\\\", "\\")
-    router.setdirpath(newDir, "")
-}
-function appendfile(e) {
-    router.setdirpath(router.dir, e.dataset.file)
-
-}
-
-function parselist(fileListUrl = window.location.origin + window.location.pathname + "list.txt", target = "#main") {
-
-
-    var filelist = ""
-    getfile(fileListUrl, filelist => {
-        append(target, "", "over")
-        append(target, gen(div, 'appmain', gen(h1, '', "File Browser", "heading"), "appmain"), "over")
-
-        append(appmain, gen(div, 'directoryGrid', "", "dirGrid"))
-
-        var currentLocation = router.dirpath
-
-        filelist.split("\n").sort().forEach((link, i) => {
-            var url = currentLocation + link.replaceAll('./', '')
-            link = link.replaceAll("\t", "").replaceAll("\n", "")
-            //for directories
-            var ext = link.split(".").pop()
-            // log(ext)
-            if (link[2] != '.' && !link.includes(".md") && !link.includes(".ipynb") && !link.includes(".pdf")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll("_", " ")
-                if (link.length > 0 && link != './') {
-                    var redirect = currentLocation + link.replaceAll('./', '') + "/"
-                    var dir = link.replaceAll('./', '')
-                    append(`#directoryGrid`, gen(a, "", linkname, 'folderLinks', { 'data-dir': dir, "onclick": `appendDir(this)`,"tabindex":10 }))
-                }
-            }
-
-            //for markdown files
-            if (link[2] != '.' && link.includes(".md")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".md", "").replaceAll("_", " ")
-                if (link.length > 0 && link != './') {
-                    var file = link.replaceAll('./', '')
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":10 }))
-                }
-            }
-
-            //for notebook files
-            if (link[2] != '.' && link.includes(".ipynb")) {
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
-                var file = link.replaceAll('./', '')
-                if (link.length > 0 && link != './') {
-                    append(directoryGrid, gen(a, `${url}`, linkname, 'slideLinks,notebookLinks', { 'data-file': file, "onclick": `appendfile(this)`,"tabindex":10 }))
-
-                }
-            }
-            //for pdf files
-            if (ext == "pdf") {
-                // log("pdf")
-                var linkname = link.replaceAll("./", "").replaceAll("/", " / ").replaceAll("-", " ").replaceAll(".ipynb", "").replaceAll("_", " ")
-                if (link.length > 0 && link != './') {
-                    append(directoryGrid, gen(object, `${url}`, linkname, 'pdfLinks', { "onclick": `parsePdf(\`${url}\`)`,"tabindex":10 }))
-                }
-            }
-        });
-
-
-
-
-    })
+  setTimeout (() => {
+    MathJax.startup.document.state (0);
+    MathJax.texReset ();
+    MathJax.typesetClear ();
+    MathJax.typeset ('slideroot');
+    MathJax.typeset ();
+    grab ('code').forEach (c => {
+      c.innerHTML = c.innerHTML.replaceAll ('<br>', '\n');
+    });
+    hljs.highlightAll ();
+    // setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+  }, 1000);
 }
 
-
-
-function mathjaxHljsCopyIcon() {
-    load("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css")
-    load("https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js")
-
-
-    setTimeout(() => {
-
-        MathJax.startup.document.state(0);
-        MathJax.texReset();
-        MathJax.typesetClear()
-        MathJax.typeset("slideroot")
-        MathJax.typeset()
-        grab("code").forEach(c => {
-            c.innerHTML = c.innerHTML.replaceAll("<br>", "\n")
-        })
-        hljs.highlightAll()
-        // setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+function parseSlide (link) {
+  loadscss (slideScss);
+  getfile (link, md => {
+    if (grab ('#back').length != 0) {
+      append ('#back', '', 'replace');
     }
-        , 1000)
-}
 
-function parseSlide(link) {
-loadscss(slideScss)
-    getfile(link, md => {
-        if (grab("#back").length != 0) { append("#back", "", "replace") }
+    append (
+      `#location`,
+      gen (a, 'back', 'Back', 'pathNavigator', {
+        'data-file': '',
+        onclick: 'appendfile(this)',
+        tabindex: 20,
+      })
+    );
 
-        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 20 }))
+    append (`main`, '', 'over');
+    updateFiledropEventListeners ();
+    append (`main`, gen (div, 'slideroot', '', 'slideroot'));
+    append (slideroot, gen ('aside', 'sideBar', ''));
+    append (sideBar, gen (div, 'slidenav', gen (h3, '', 'Navigator')));
+    append (slidenav, gen (ul, 'slidenavlist', '', 'slidenavlist'));
 
-        append(`main`, "", "over")
-        append(`main`, gen(div, "slideroot", "", 'slideroot'))
-        append(slideroot, gen("aside", "sideBar", ""))
-        append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
-        append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
+    var html = md.split (/^---\s*?$/gm);
 
-        var html = md.split(/^---\s*?$/gm)
-
-        for (var i = 0; i < html.length; i++) {
-            var h = html[i]
-            if (h.length > 0) {
-                parsemd(h, H => {
-                    append(slideroot, gen(section, `slide${i}`, H, "slide"))
-                    if (i != 0 && i != html.length - 1) {
-                        append(grab(".slide")[i], gen(span, "", `${i + 1}/${html.length}`, "slideCount"))
-                        append(slidenavlist, gen(li, "", gen(a, "", `Slide ${i + 1}`, "slideNavLink", { "onclick": `slide${i}.scrollIntoView()` })))
-                    }
-
+    for (var i = 0; i < html.length; i++) {
+      var h = html[i];
+      if (h.length > 0) {
+        var x = parsemd (h, H => {
+          append (slideroot, gen (section, `slide${i}`, H, 'slide'));
+          if (i != 0 && i != html.length - 1) {
+            append (
+              grab ('.slide')[i],
+              gen (span, '', `${i + 1}/${html.length}`, 'slideCount')
+            );
+            append (
+              slidenavlist,
+              gen (
+                li,
+                '',
+                gen (a, '', `Slide ${i + 1}`, 'slideNavLink', {
+                  onclick: `slide${i}.scrollIntoView()`,
                 })
-            }
-        }
-        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank" })))
+              )
+            );
+          }
+        });
+      }
 
-    })
+      
+    }
+    append (
+      slidenavlist,
+      gen (
+        li,
+        '',
+        gen (a, 'src', `Source`, 'slideNavLink', {
+          onclick: `viewSourceFile('${link}')`,
+          href: link,
+          target: '_blank',
+        })
+      )
+    );
+  });
 
-    convertLocalLinks()
-    mathjaxHljsCopyIcon()
+  convertLocalLinks ();
+  mathjaxHljsCopyIcon ();
 }
 
+function parseNotebook (link) {
+  loadscss (slideScss);
+  getfile (link, nb => {
+    if (grab ('#back').length != 0) {
+      append ('#back', '', 'replace');
+    }
+    append (
+      `#location`,
+      gen (a, 'back', 'Back', 'pathNavigator', {
+        'data-file': '',
+        onclick: 'appendfile(this)',
+        tabindex: 20,
+      })
+    );
+    if (grab ('#main').length != 0) {
+      append ('#main', '', 'over');
 
+      updateFiledropEventListeners();
+    }
 
-function parseNotebook(link) {
-	loadscss(slideScss)
-    getfile(link, nb => {
+    append (main, gen (div, 'blockroot', '', 'blockroot'));
+    append (blockroot, gen ('aside', 'sideBar', ''));
+    append (sideBar, gen (div, 'slidenav', gen (h3, '', 'Navigator')));
+    append (slidenav, gen (ul, 'slidenavlist', '', 'slidenavlist'));
 
-        if (grab("#back").length != 0) { append("#back", "", "replace") }
-        append(`#location`, gen(a, "back", "Back", "pathNavigator", { 'data-file': "", "onclick": "appendfile(this)", "tabindex": 20 }))
-        if (grab("#appmain").length != 0) { append("#appmain", "", "replace") }
+    var PrintFileName = link.split ('/').pop ().replaceAll ('.ipynb', '');
+    var nbmd = ``;
 
-        // append(appmain, gen(div, "appmain", ""), "replace")
-        // append(appmain, "", "replace")
-        if (grab("#main").length != 0) { append("#main", gen(main, "main", "", "main"), "replace") }
+    append (
+      blockroot,
+      gen (h1, 'Title', `Python Notebook: ${PrintFileName}`, 'title')
+    );
+    nb = JSON.parse (nb);
 
-        append(main, gen(div, "blockroot", "", 'blockroot'))
-        append(blockroot, gen("aside", "sideBar", ""))
-        append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")))
-        append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"))
+    nb.cells.forEach (cell => {
+      if (cell.source.length > 0) {
+        var cell_type = cell.cell_type;
 
-        var PrintFileName = link.split("/").pop().replaceAll(".ipynb", "")
-        var nbmd = ``
+        var ecount = cell.execution_count;
 
-        append(blockroot, gen(h1, "Title", `Python Notebook: ${PrintFileName}`, "title"))
-        nb = JSON.parse(nb)
+        if (cell_type == 'markdown') {
+          var src = cell.source;
+          var md = src.join ('\n');
+          append (
+            blockroot,
+            gen (div, `Markdown${ecount}`, parsemd (md), 'markdown block')
+          );
+        }
+        if (cell_type == 'code') {
+          var count = cell.execution_count;
 
-        nb.cells.forEach(cell => {
+          var src = cell.source;
+          var inputCode = src.join (''); //.replaceAll("<br>", "\r\n")
+          append (blockroot, gen (div, `input${count}`, '', 'input block'));
+          append (
+            `#input${count}`,
+            gen (span, '', `In [${count}] :`, 'execution_count')
+          );
+          append (
+            `#input${count}`,
+            gen (
+              pre,
+              '',
+              gen (code, '', inputCode, 'python language-python code')
+            )
+          );
 
-            if (cell.source.length > 0) {
-                var cell_type = cell.cell_type
+          var outputs = cell.outputs;
+          var status = 'success';
+          if (outputs.length > 0) {
+            var status = outputs[0].output_type == 'execute_result'
+              ? 'success'
+              : 'fail';
+            append (
+              blockroot,
+              gen (
+                div,
+                `output${count}`,
+                gen (span, '', `Out [${count}] :`, 'execution_count'),
+                `output block execution_count,${status}`
+              )
+            );
+            outputs.forEach (output => {
+              // for (var j = 0; outputs.length; j++) {
+              // var output = outputs[j]
 
-                var ecount = cell.execution_count
+              var output_type = output.output_type;
+              if (output_type == 'stream') {
+                var text = output.text.join ('');
+                // append(`#output${count}`, gen(pre, "", text, `output ${output_type}`))
+                append (
+                  `#output${count}`,
+                  gen ('samp', '', text, `samp ${output_type}`)
+                );
+              }
 
-                if (cell_type == "markdown") {
-
-                    var src = cell.source
-                    var md = src.join("\n")
-                    append(blockroot, gen(div, `Markdown${ecount}`, parsemd(md), "markdown block"))
-
+              if (output_type == 'display_data') {
+                var data = output.data;
+                if (data.hasOwnProperty ('text/plain')) {
+                  var text = data['text/plain'];
+                  append (
+                    `#output${count}`,
+                    gen (
+                      p,
+                      '',
+                      gen (code, '', text, `output ${output_type}`),
+                      `output ${output_type}`
+                    )
+                  );
+                  // append(`#output${count}`, gen(p, "", gen(code, "", text, `output ${output_type}`)))
                 }
-                if (cell_type == "code") {
-                    var count = cell.execution_count
 
-                    var src = cell.source
-                    var inputCode = src.join("")   //.replaceAll("<br>", "\r\n")
-                    append(blockroot, gen(div, `input${count}`, "", "input block"))
-                    append(`#input${count}`, gen(span, "", `In [${count}] :`, "execution_count"))
-                    append(`#input${count}`, gen(pre, "", gen(code, "", inputCode, "python language-python code")))
+                if (data.hasOwnProperty ('image/png')) {
+                  var className = '';
 
-
-                    var outputs = cell.outputs
-                    var status = "success"
-                    if (outputs.length > 0) {
-                        var status = (outputs[0].output_type == "execute_result") ? "success" : "fail"
-                        append(blockroot, gen(div, `output${count}`, gen(span, "", `Out [${count}] :`, "execution_count"), `output block execution_count,${status}`))
-                        outputs.forEach(output => {
-                            // for (var j = 0; outputs.length; j++) {
-                            // var output = outputs[j]
-
-                            var output_type = output.output_type
-                            if (output_type == "stream") {
-                                var text = output.text.join("")
-                                // append(`#output${count}`, gen(pre, "", text, `output ${output_type}`))
-                                append(`#output${count}`, gen("samp", "", text, `samp ${output_type}`))
-                            }
-
-
-
-                            if (output_type == "display_data") {
-
-                                var data = output.data
-                                if (data.hasOwnProperty("text/plain")) {
-                                    var text = data["text/plain"]
-                                    append(`#output${count}`, gen(p, "", gen(code, "", text, `output ${output_type}`), `output ${output_type}`))
-                                    // append(`#output${count}`, gen(p, "", gen(code, "", text, `output ${output_type}`)))
-
-                                }
-
-                                if (data.hasOwnProperty("image/png")) {
-                                    var className = '';
-
-                                    var image = data["image/png"]
-                                    var src = `data:image/png;base64,${image}`
-                                    if (output.metadata.hasOwnProperty("needs_background")) {
-                                        className = `needs-background-${output.metadata["needs_background"]}`
-                                    }
-                                    append(`#output${count}`, gen(img, "", "", `output ${output_type} ${className}`, { "src": src }))
-                                }
-
-                            }
-
-                            if (output_type == "execute_result" || output_type == "display_data") {
-                                var data = output.data
-                                if (data.hasOwnProperty("text/plain")) {
-                                    var text = data["text/plain"].join("")
-                                    // append(`#output${count}`, gen(pre, "", gen(code, "", text, `output ${output_type}`)))
-                                    append(`#output${count}`,
-                                        // gen(pre,
-                                        //     "",
-                                        //     gen(code,
-                                        //         "",
-                                        //         text,
-                                        //         `output ${output_type}`
-                                        //     )
-                                        // )
-
-                                        gen("samp",
-                                            "",
-                                            text,
-                                            `samp ${output_type}`
-                                        )
-                                    )
-                                }
-                            }
-                        })
-                    }
+                  var image = data['image/png'];
+                  var src = `data:image/png;base64,${image}`;
+                  if (output.metadata.hasOwnProperty ('needs_background')) {
+                    className = `needs-background-${output.metadata['needs_background']}`;
+                  }
+                  append (
+                    `#output${count}`,
+                    gen (img, '', '', `output ${output_type} ${className}`, {
+                      src: src,
+                    })
+                  );
                 }
-            }
+              }
 
+              if (
+                output_type == 'execute_result' ||
+                output_type == 'display_data'
+              ) {
+                var data = output.data;
+                if (data.hasOwnProperty ('text/plain')) {
+                  var text = data['text/plain'].join ('');
+                  // append(`#output${count}`, gen(pre, "", gen(code, "", text, `output ${output_type}`)))
+                  append (
+                    `#output${count}`,
+                    // gen(pre,
+                    //     "",
+                    //     gen(code,
+                    //         "",
+                    //         text,
+                    //         `output ${output_type}`
+                    //     )
+                    // )
+
+                    gen ('samp', '', text, `samp ${output_type}`)
+                  );
+                }
+              }
+            });
+          }
         }
-
-
-        )
-
-
-        var noOfBlocks = grab(".block").length
-        for (var i = 0; i < noOfBlocks; i++) {
-            append(grab(".block")[i], gen(span, "", `${i + 1}/${noOfBlocks}`, "slideCount hide"))
-            // append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
-            append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `grab(".block")[${i}].scrollIntoView()` })))
-        }
-        // download source file
-        var downloadFileName = `${link.split('/')[link.split('/').length - 2]}_${link.split('/')[link.split('/').length - 1]}`
-        append(slidenavlist, gen(li, "", gen(a, "src", `Source`, "slideNavLink", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": downloadFileName })))
-        append(blockroot, gen(span, "", gen(a, "src", `Download Source`, "button", { "onclick": `viewSourceFile('${link}')`, "href": link, "target": "_blank", "download": downloadFileName })))
-
-
-    })
-    
-    mathjaxHljsCopyIcon()
-    convertLocalLinks()
-}
-
-
-
-
-
-
-
-
-
-
-
-function closeparent(e){
-
-    append(e.parentElement,'','replace')
-}
-
-
-function parsePdf(link) {
-	loadscss(slideScss)
-    // router = New Router()
-    link = link.replaceAll("./", router.dirpath)
-    // log(link)
-
-
-
-    // append(`main`, "", "over")
-    append(`main`, gen(dialog, "pdfdialog", "", 'pdfdialog active'))
-    append(pdfdialog,gen(a,'',"Download PDF","download button",link))
-    append(pdfdialog, gen("object", "mainpdf", "", "mainpdf", { "width": "80%", "height": "80vh", "data": link, "type": "application/pdf" }))
-    pdfdialog.classList.add("showdialog")
-    pdfdialog.showModal()
-    pdfdialog.addEventListener("blur",()=>{
-        log(blur)
-        pdfdialog.classList.remove("showdialog")
-        pdfdialog.close()
-    })
-
-    append(pdfdialog,gen(span,'closedialog',
-    "",
-    "closedialog cross",
-    {"onclick":"closeparent(this)"}
-    ))
-
-    
-}
-
-
-
-$$.init()
-if (window.location.href.includes("Gallery")) {
-    // log("gallery")
-    setTimeout(() => {
-        load("/gallery.js")
-    }, 1000)
-}
-
-
-
-reloadPage()
-
-
-
-
-// 
-function updateFiledropEventListeners() {
-
-
-    // file drop
-    document.addEventListener("dragover", e => {
-        e.preventDefault();
+      }
     });
 
-
-
-    grab("#main")[0].addEventListener("dragenter", ondragenter)
-    grab("#main")[0].addEventListener("drop", ondrop)
-
-}
-
-updateFiledropEventListeners()
-function ondragenter(e) {
-    // console.log(e)
-    e.preventDefault()
-    e.stopPropagation()
-
-
-    grab('#main')[0].classList.add('blur')
-    grab("#main")[0].removeEventListener("dragenter", ondragenter)
-    grab("#main")[0].addEventListener("drop", ondrop)
-    grab("#main")[0].addEventListener("dragleave", ondragleave)
-}
-
-
-function ondragleave(e) {
-    e.preventDefault()
-    e.stopPropagation()
-    grab('#main')[0].classList.remove('blur')
-    grab("#main")[0].addEventListener("dragenter", ondragenter)
-    grab("#main")[0].removeEventListener("drop", ondrop)
-    grab("#main")[0].removeEventListener("dragleave", ondragleave)
-}
-
-function ondrop(e) {
-    e.preventDefault()
-    e.stopPropagation()
-    grab('#main')[0].classList.remove('blur')
-    grab("#main")[0].addEventListener("dragenter", ondragenter)
-    grab("#main")[0].removeEventListener("drop", ondrop)
-    grab("#main")[0].removeEventListener("dropleave", ondragleave)
-    dropfilehandler(e)
-
-}
-
-function dropfilehandler(e) {
-    var files = e.dataTransfer.files
-    for (var i = 0; i < files.length; i++) {
-        var f = files[i]
-        var fileName = f.name
-        var fileType = f.type
-        var fileUrl = URL.createObjectURL(f)
-        var ext = fileName.split(".").pop()
-        if (fileType == "text/markdown" || ext == "md" || ext == "markdown") {
-            parseSlide(fileUrl)
-        }
-        if (fileType == "application/x-ipynb+json" || ext == "ipynb") {
-            parseNotebook(fileUrl)
-        }
-        // getfile(fileUrl, fileName)
-        updateFiledropEventListeners()
-
+    var noOfBlocks = grab ('.block').length;
+    for (var i = 0; i < noOfBlocks; i++) {
+      append (
+        grab ('.block')[i],
+        gen (span, '', `${i + 1}/${noOfBlocks}`, 'slideCount hide')
+      );
+      // append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
+      append (
+        slidenavlist,
+        gen (
+          li,
+          '',
+          gen (a, '', `Block ${i + 1}`, 'slideNavLink', {
+            onclick: `grab(".block")[${i}].scrollIntoView()`,
+          })
+        )
+      );
     }
+    // download source file
+    var downloadFileName = `${link.split ('/')[link.split ('/').length - 2]}_${link.split ('/')[link.split ('/').length - 1]}`;
+    append (
+      slidenavlist,
+      gen (
+        li,
+        '',
+        gen (a, 'src', `Source`, 'slideNavLink', {
+          onclick: `viewSourceFile('${link}')`,
+          href: link,
+          target: '_blank',
+          download: downloadFileName,
+        })
+      )
+    );
+    append (
+      blockroot,
+      gen (
+        span,
+        '',
+        gen (a, 'src', `Download Source`, 'button', {
+          onclick: `viewSourceFile('${link}')`,
+          href: link,
+          target: '_blank',
+          download: downloadFileName,
+        })
+      )
+    );
+  });
+
+  mathjaxHljsCopyIcon ();
+  convertLocalLinks ();
+  updateFiledropEventListeners ();
 }
+
+function closeparent (e) {
+  append (e.parentElement, '', 'replace');
+}
+
+function parsePdf (link) {
+  loadscss (slideScss);
+  // router = New Router()
+  link = link.replaceAll ('./', router.dirpath);
+  // log(link)
+
+  // append(`main`, "", "over")
+  append (`#main`, gen (dialog, 'pdfdialog', '', 'pdfdialog active'));
+  append (pdfdialog, gen (a, '', 'Download PDF', 'download button', link));
+  append (
+    pdfdialog,
+    gen ('object', 'mainpdf', '', 'mainpdf', {
+      width: '80%',
+      height: '80vh',
+      data: link,
+      type: 'application/pdf',
+    })
+  );
+  pdfdialog.classList.add ('showdialog');
+  pdfdialog.showModal ();
+  pdfdialog.addEventListener ('blur', () => {
+    log (blur);
+    pdfdialog.classList.remove ('showdialog');
+    pdfdialog.close ();
+  });
+
+  append (
+    pdfdialog,
+    gen (span, 'closedialog', '', 'closedialog cross', {
+      onclick: 'closeparent(this)',
+    })
+  );
+}
+
+$$.init ();
+if (window.location.href.includes ('Gallery')) {
+  // log("gallery")
+  setTimeout (() => {
+    load ('/gallery.js');
+  }, 1000);
+}
+
+reloadPage ();
+
+//
+function updateFiledropEventListeners (target = grab ('#main')[0]) {
+  // e.preventDefault ();
+  // e.stopPropagation ();
+  // log("updateFiledropEventListeners")
+  target.addEventListener ('dragover', e => {
+    e.preventDefault ();
+  });
+  target.classList.remove ('blur');
+
+  target.removeEventListener ('drop', ondrop);
+  target.removeEventListener ('dragleave', ondragleave);
+  target.removeEventListener ('dragenter', ondragenter);
+
+  target.addEventListener ('dragenter', ondragenter, true);
+  target.addEventListener ('drop', ondrop, true);
+  target.addEventListener ('dragleave', ondragleave, true);
+
+  function ondragenter (e) {
+    e.preventDefault ();
+    e.stopPropagation ();
+    target.classList.add ('blur');
+  }
+
+  function ondragleave (e) {
+    e.preventDefault ();
+    e.stopPropagation ();
+    target.classList.remove ('blur');
+  }
+
+  function ondrop (e) {
+    e.preventDefault ();
+    e.stopPropagation ();
+    target.classList.remove ('blur');
+    dropfilehandler (e);
+  }
+
+  function dropfilehandler (e) {
+    target.classList.remove ('blur');
+    console.log (e);
+    var files = e.dataTransfer.files;
+    for (var i = 0; i < files.length; i++) {
+      var f = files[i];
+      var fileName = f.name;
+      var fileType = f.type;
+      var fileUrl = URL.createObjectURL (f);
+      var ext = fileName.split ('.').pop ();
+      if (fileType == 'text/markdown' || ext == 'md' || ext == 'markdown') {
+        parseSlide (fileUrl);
+      }
+      if (fileType == 'application/x-ipynb+json' || ext == 'ipynb') {
+        parseNotebook (fileUrl);
+      }
+      // getfile(fileUrl, fileName)
+    }
+    updateFiledropEventListeners ();
+  }
+}
+
+// updateFiledropEventListeners()
+
+updateFiledropEventListeners ();

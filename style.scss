@@ -190,6 +190,7 @@ a {
 }
 
 .folderLinks {
+    cursor:pointer;
     position       : relative;
     display        : flex;
     flex-direction : column;
@@ -260,6 +261,8 @@ a {
 
 
 .slideLinks {
+
+    cursor:pointer;
     position        : relative;
     display         : flex;
     flex-direction  : column;
@@ -305,6 +308,8 @@ a {
 
 
 .pdfLinks {
+
+    cursor:pointer;
     position        : relative;
     display         : flex;
     flex-direction  : column;
