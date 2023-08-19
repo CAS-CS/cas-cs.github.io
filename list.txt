@@ -7,4 +7,5 @@
 ./Gallery
 ./.Previous Question Papers
 ./.dist
+./Admission
 ./.git

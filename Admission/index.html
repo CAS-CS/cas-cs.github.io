@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dr. Prateek Raj Gautam at CAS AKTU</title>
+</head>
+
+<body style="background-color:#222;color:#ccc;font-size:.8rem;margin:auto 15vw;">
+  <div id="app" class="app">
+  <h1>
+    Center for Advanced Studies, AKTU
+  </h1>
+  <h2>
+    M.Tech. Admission 2022-23
+  </h2>
+  
+  <p>
+
+    <a href="http://127.0.0.1:5500/#dir=/Notices/Admission/&file=slide.md">
+      Redirect
+    </a> to detailed page in <span id="time">5</span> seconds
+  </p>
+
+  <ul>
+    <li><a href="http://127.0.0.1:5500/#dir=/Notices/Admission/&file=slide.md">
+      Redirect
+    </a>
+  </li>
+    <li><a href="https://cas.res.in/apply-to-M.Tech.html">
+      More info
+    </a></li>
+  </ul>
+  
+  </div>
+ 
+ 
+ <script>
+	var  redirect="http://127.0.0.1:5500/#dir=/Notices/Admission/&file=slide.md"
+  
+  setTimeout(()=>{window.location=redirect},5000)
+
+var updatetime=()=>{
+  setTimeout(()=>{
+    var time=document.getElementById("time")
+    time.innerHTML=parseInt(time.innerHTML)-1 
+    updatetime()},1000)
+
+}
+updatetime()
+  </script>
+</body>
+
+</html>
