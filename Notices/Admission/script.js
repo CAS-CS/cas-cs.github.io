@@ -3,25 +3,23 @@ var data={
     "title":"M.Tech Admission 2022-23",
     "text":"On-Canpus counselling to be held on 22th Aug 2023 at 10:00 AM for GATE and CUET qualified candidates\
     and 23th Aug 2023 at 10:00 AM for Non-GATE and Non-CUET candidates.",
-    // "image":window.location.host+"/Notices/Admission/AdmissionBanner.png",
-    "image":"https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png",
-    "url":window.location.host+"/Admission/"
+    "url":"https://cas-cs.github.io/Notices/Admission/AdmissionBanner.png"
     
 }    
 
 var ShareUrl=[
     "https://www.facebook.com/sharer/sharer.php?"+
-    "u="+data.image+
+    "u="+data.url+
     "&title="+data.title+
     "&description="+data.text+
     "&quote="+data.text,
     "https://api.whatsapp.com/send?text=*"+
-    data.title+"*  "+data.text+"%0A"+data.image,
+    data.title+"*  "+data.text+"%0A"+data.url,
     "https://twitter.com/intent/tweet?url="+
-    data.image+
+    data.url+
     "&text="+data.title+"   "+data.text,
     "https://www.linkedin.com/shareArticle?mini=true&url="+
-    data.image+
+    data.url+
     "&summary="+data.text+
     "&title="+data.title
 ]
