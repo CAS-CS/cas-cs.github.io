@@ -3,7 +3,7 @@
 
 [Registation Link](https://erp.aktu.ac.in/Webpages/Public/EntranceExams/CASPGGATE/Instructions.aspx) Last date 22 Aug 2023
 
-
+<span id="share"> share</span>
 
 
 - GATE/UPCET PG 2023 qualified and 
@@ -20,7 +20,7 @@
 [![](./AdmissionBanner.png)](./AdmissionBanner.pdf)
 
 
-<span id="share"> share</span>
+
 
 <style>
     #share{
@@ -34,24 +34,10 @@
         background-color:hsla(200,50%,50%,1);
         box-shadow:1px 1px 3px white;
     }
-    </style>
+</style>
+
+
 <script>
+alert("HI")
 
-var data={
-    "title":"M.Tech Admission 2022-23",
-    "text":"",
-    "image":"http://127.0.0.1:5500//Notices/Admission/AdmissionBanner.png",
-    "url";"http://127.0.0.1:5500//Notices/Admission/AdmissionBanner.png"
-    
-}    
-async function sharefn(){
-    console.log("share")
-
-    try{
-      await navigator.share()
-    }.catch{}
-  
-}
-
-grab("#share")[0].addEventListener("click",sharefn)
 </script>

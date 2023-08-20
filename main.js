@@ -1451,3 +1451,5 @@ function updateFiledropEventListeners (target = grab ('#main')[0]) {
 // updateFiledropEventListeners()
 
 updateFiledropEventListeners ();
+
+setTimeout (() => {load(`${router.dirpath}script.js`)},2000)
