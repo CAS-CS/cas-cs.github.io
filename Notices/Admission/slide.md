@@ -1,7 +1,7 @@
 # Centre for Advanced Studies AKTU Lucknow
 ## M. Tech Admission 2023-24
 
-[Registation Link](https://erp.aktu.ac.in/Webpages/Public/EntranceExams/CASPGGATE/Instructions.aspx) Last date 22 Aug 2023
+[Registation Link](https://erp.aktu.ac.in/Webpages/Public/EntranceExams/CASPGGATE/Instructions.aspx) Last date 22 Aug 2023. [Details](https://cas.res.in/Apply-to-M.Tech.html)
 
 <span id="share"> share</span>
 
