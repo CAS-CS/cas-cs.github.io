@@ -42,7 +42,7 @@
 
 Bring following documents in orignal with one photocopy to attend counselling. 
 
-1. B.E./ B.Tech, M.Sc. or qualifying examination final semester/Year mark sheet as per the eligibility requirements specified in the information provided on CAS website at [cas.res.in/apply-to-M.Tech.html](https://cas.res.in/apply-to-M.Tech.html)
+1. B.E., B.Tech, M.Sc. or qualifying examination final semester/Year mark sheet as per the eligibility requirements specified in the information provided on CAS website at [ cas.res.in/apply-to-M.Tech.html](https://cas.res.in/apply-to-M.Tech.html)
 1. 10+2 passing certificate/mark sheet
 1. 10th certificate for date of birth
 1. Respective discipline valid GATE score card and admit card
