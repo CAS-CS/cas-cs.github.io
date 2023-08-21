@@ -1,3 +1,11 @@
+var metadict={ 
+    title:"M.Tech Admission 2023-24",
+     image:"https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png",
+    description:"On-Canpus counselling to be held on 22th Aug 2023 at 10:00 AM for GATE and CUET qualified candidates\
+      and 23th Aug 2023 at 10:00 AM for Non-GATE and Non-CUET candidates.",
+    url:"https://cas-cs.github.io/Admission/"
+  }
+
 
 var data={
     "title":"M.Tech Admission 2022-23",
