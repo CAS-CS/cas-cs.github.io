@@ -3,7 +3,7 @@
 
 [Registation Link](https://erp.aktu.ac.in/Webpages/Public/EntranceExams/CASPGGATE/Instructions.aspx) Last date 22 Aug 2023. 
 
-[Detailed instructions](https://cas.res.in/Apply-to-M.Tech.html)
+[Detailed instructions.](https://cas.res.in/Apply-to-M.Tech.html)
 
 <span id="share"> share</span>
 
@@ -62,4 +62,4 @@ and
 
 
 ### Any question
-[whatsapp](https://web.whatsapp.com/send?phone=919151404899&text=*Regarding M.Tech. Admission 23-24*     Please tell me about  https://cas-cs.github.io/Admission/&source=&data=https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png&app_absent=0)
+[Whatsapp us](https://api.whatsapp.com/send?phone=919151404899&text=*Regarding M.Tech. Admission 23-24*     Please tell me about  https://cas-cs.github.io/Admission/&source=&data=https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png&app_absent=0)
