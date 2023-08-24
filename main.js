@@ -482,7 +482,12 @@ function openFile () {
   if (fileType == 'application/x-ipynb+json' || ext == 'ipynb') {
     parseNotebook (fileUrl);
   }
+<<<<<<< HEAD
   // updateFiledropEventListeners()
+=======
+  // getfile(fileUrl, fileName)
+  // updateFiledropEventListeners ();
+>>>>>>> 53f515b (local commit to modify key press event)
 }
 
 function cloneView () {
@@ -819,10 +824,18 @@ function generateView () {
   };
   try {
     route[ext] ();
+<<<<<<< HEAD
     // updateFiledropEventListeners()
   } catch (e) {}
 
   // updateFiledropEventListeners()
+=======
+    // updateFiledropEventListeners ();  
+  } catch (e) {}
+
+  //this is untested edit
+  // updateFiledropEventListeners ();
+>>>>>>> 53f515b (local commit to modify key press event)
 }
 
 async function filedetect () {
@@ -1128,6 +1141,26 @@ function parseSlide (link) {
 
   convertLocalLinks ();
   mathjaxHljsCopyIcon ();
+=======
+    }
+    append (
+      slidenavlist,
+      gen (
+        li,
+        '',
+        gen (a, 'src', `Source`, 'slideNavLink', {
+          onclick: `viewSourceFile('${link}')`,
+          href: link,
+          target: '_blank',
+        })
+      )
+    );
+  });
+
+  convertLocalLinks ();
+  mathjaxHljsCopyIcon ();
+  // updateFiledropEventListeners ();
+>>>>>>> 53f515b (local commit to modify key press event)
 }
 
 function parseNotebook (link) {
@@ -1144,6 +1177,7 @@ function parseNotebook (link) {
         tabindex: 20,
       })
     );
+<<<<<<< HEAD
     if (grab ('#main').length != 0) {
       append ('#main', '', 'over');
 

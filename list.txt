@@ -1,11 +1,11 @@
 ./
+./.dist
+./.git
+./.Previous Question Papers
+./.Syllabus
+./Admission
+./Gallery
 ./Lectures
 ./Notices
 ./TimeTable
 ./Workshops
-./.Syllabus
-./Gallery
-./.Previous Question Papers
-./.dist
-./Admission
-./.git
