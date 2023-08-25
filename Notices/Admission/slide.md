@@ -29,18 +29,29 @@
         background-color:hsla(200,40%,40%,.9);
         text-transform:uppercase;
     }
-    #share:hover{
+    #share:hover {
         cursor:pointer;
         background-color:hsla(200,50%,50%,1);
         box-shadow:1px 1px 3px white;
     }
 
-    #whatsapp{
+    #whatsapp,.whatsapp{
         color:white;
         font-weight:900;
-        padding:1em;
+        padding:.3em 1em ;
+        margin:.5em;
         border-radius:.3em;
         background-color:hsl(142, 70%, 49%);
+    }
+
+    #whatsapp:hover,.whatsapp:hover{
+        cursor:pointer;
+        font-weight:900;
+        padding:.3em 1em ;
+        margin:.5em;
+        border-radius:.3em;
+        background-color:hsl(130, 60%, 30%);
+        box-shadow:1px 1px 3px white;
     }
 </style>
 
@@ -68,5 +79,5 @@ and
 
 
 ### Any question
-[Whatsapp us](https://api.whatsapp.com/send?phone=919151404899&text=*Regarding M.Tech. Admission 23-24*     Please tell me about  https://cas-cs.github.io/Admission/&source=&data=https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png&app_absent=0)
-<a href="https://api.whatsapp.com/send?phone=919151404899&text=*Regarding M.Tech. Admission 23-24*     Please tell me about  https://cas-cs.github.io/Admission/&source=&data=https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png&app_absent=0" id="whatsapp">Whatsapp us</a>
+
+<a href="https://api.whatsapp.com/send?phone=919151404899&text=*Regarding M.Tech. Admission 23-24*     Please tell me about  https://cas-cs.github.io/Admission/&source=&data=&app_absent=0" id="whatsapp" class="whatsapp">Whatsapp us</a>
