@@ -1,7 +1,7 @@
 # Centre for Advanced Studies AKTU Lucknow
 ## M. Tech Admission 2023-24
 
-[Registation Link](https://erp.aktu.ac.in/Webpages/Public/EntranceExams/CASPGGATE/Instructions.aspx) Last date 22 Aug 2023. 
+[Registation Link](https://erp.aktu.ac.in/Webpages/Public/EntranceExams/CASPGGATE/Instructions.aspx) Last date 4 Sept 2023 (before 10:00 AM). 
 
 [Detailed instructions.](https://cas.res.in/Apply-to-M.Tech.html)
 
@@ -34,6 +34,14 @@
         background-color:hsla(200,50%,50%,1);
         box-shadow:1px 1px 3px white;
     }
+
+    #whatsapp{
+        color:white;
+        font-weight:900;
+        padding:1em;
+        border-radius:.3em;
+        background-color:hsl(142, 70%, 49%);
+    }
 </style>
 
 ## Checklist for document verification
@@ -61,3 +69,4 @@ and
 
 ### Any question
 [Whatsapp us](https://api.whatsapp.com/send?phone=919151404899&text=*Regarding M.Tech. Admission 23-24*     Please tell me about  https://cas-cs.github.io/Admission/&source=&data=https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png&app_absent=0)
+<a href="https://api.whatsapp.com/send?phone=919151404899&text=*Regarding M.Tech. Admission 23-24*     Please tell me about  https://cas-cs.github.io/Admission/&source=&data=https://cas-cs.github.io//Notices/Admission/AdmissionBanner.png&app_absent=0" id="whatsapp">Whatsapp us</a>
