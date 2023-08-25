@@ -8,10 +8,8 @@
 <span id="share"> share</span>
 
 
-- GATE/UPCET PG 2023 qualified and 
-- Non-GATE/Non-CUET PG 2023 qualified candidates 
-- Who have registered and paid the counselling fee till 10AM, 22nd August 2023 can participate in this round of counselling 
-- On 22 & 23 August 2023 respectively.
+- GATE/UPCET PG 2023 qualified and Non-GATE/Non-CUET PG 2023 qualified candidates 
+- Who have registered and paid the counselling fee till 10AM, 4th Sept 2023 can participate in this round of counselling 
 
 - GATE qualified candidates with valid score are eligible for admission at Centre for Advanced Studies with a monthly stipend as per AICTE/MHRD/University rules.
 - Non-GATE qualified candidates are also eligible for admission at Centre for Advanced Studies based on the merit of CUET Exam-2023/Institute Level Exam.
