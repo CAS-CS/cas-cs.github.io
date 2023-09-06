@@ -22,7 +22,23 @@
 
 
 
-<style>
+<style>.whatsapp:link{
+        font-weight:900;
+        color:white;
+        padding:.3em 1em ;
+        margin:.5em;
+        border-radius:.3em;
+        background-color:hsl(142, 70%, 49%);
+    }
+    .whatsapp:hover{
+        cursor:pointer;
+        padding:.3em 1em ;
+        margin:.5em;
+        border-radius:.3em;
+        background-color:hsl(130, 60%, 30%);
+        box-shadow:1px 1px 3px white;
+    }
+    
     #share{
         padding:.5em 1em;
         border-radius:5px;
@@ -35,24 +51,7 @@
         box-shadow:1px 1px 3px white;
     }
 
-    #whatsapp,.whatsapp{
-        color:white;
-        font-weight:900;
-        padding:.3em 1em ;
-        margin:.5em;
-        border-radius:.3em;
-        background-color:hsl(142, 70%, 49%);
-    }
-
-    #whatsapp:hover,.whatsapp:hover{
-        cursor:pointer;
-        font-weight:900;
-        padding:.3em 1em ;
-        margin:.5em;
-        border-radius:.3em;
-        background-color:hsl(130, 60%, 30%);
-        box-shadow:1px 1px 3px white;
-    }
+    
 </style>
 
 ## Checklist for document verification
