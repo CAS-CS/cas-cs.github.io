@@ -184,8 +184,8 @@ a {
 .dirGrid {
     display              : grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding              : 5px;
-    grid-gap             : 5px;
+    padding              : 2em 3em;
+    grid-gap             : 2em 1em;
     z-index              : inherit;
 }
 
