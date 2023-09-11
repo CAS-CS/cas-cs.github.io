@@ -1,7 +1,3 @@
-
-
----
-From previous class
 # Stages of research methodology
 
 1. **Interest**:  Narrow area of research 
@@ -21,7 +17,6 @@ From previous class
 
 
 ---
-class: inverse
 
 # Important factors to consider:
 * Avoide researchers bias

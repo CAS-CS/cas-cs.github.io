@@ -1,13 +1,9 @@
 
 
-
----
-
 # Overview
 
 
----
-# Introduction to Course
+## Introduction to Course
 1. What is Research ?
 1. What is Research Methodology (RM) ? 
 1. Why is it important ?
@@ -30,8 +26,4 @@
 
 
 
----
-
-
----
 

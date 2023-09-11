@@ -1,7 +1,3 @@
-
-
----
-
 # What is Research
 
 ## Research is an academic activity and this term should be used in technical sense.
@@ -121,5 +117,5 @@ Having a sound research methodology in place provides the following benefits:
 
 
 
----
+
 
