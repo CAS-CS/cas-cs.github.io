@@ -1,17 +1,16 @@
 # Course Name: Reinforcement Learning
-## Course Code: MMLE-302
-Credit: 3
+### Course Code: MMLE-302
+###### Credit: 3
 
-# Course Content
 
-###### Introduction to Reinforcement Learning,
-###### How to act given know how the world works: Tabular setting, Markov processes, Policy search, Policy iteration, Value iteration,
-###### Learning to evaluate a policy when don't know how the world works,
-###### Model-free learning to make good decisions: Q-learning, SARSA,
-###### Scaling up: RL with function approximation,
-###### Imitation learning in large spaces,
-###### Policy search, Exploration/Exploitation, Meta-Learning,
-###### Batch Reinforcement Learning, Monte Carlo Tree Search
+- Introduction to Reinforcement Learning,
+- How to act given know how the world works: Tabular setting, Markov processes, Policy search, Policy iteration, Value iteration,
+- Learning to evaluate a policy when don't know how the world works,
+- Model-free learning to make good decisions: Q-learning, SARSA,
+- Scaling up: RL with function approximation,
+- Imitation learning in large spaces,
+- Policy search, Exploration/Exploitation, Meta-Learning,
+- Batch Reinforcement Learning, Monte Carlo Tree Search
 
 # Text Books
 
