@@ -1,3 +1,4 @@
 ./
 ./00 Syllabus.md
 ./L01 Introduction to Reinforcement Learining.md
+./L02 Intro. to RL 2.md
