@@ -31,7 +31,7 @@ By interacting with our environment
 - How to map situations to actions 
 - So as to mazimize a numerical reward signal
 
-The learner is not told which actions to take, but instead must discover which cations yields the most rewards by trying them. 
+The learner is not told which actions to take, but instead must discover which actions yields the most rewards by trying them. 
 
 > In the most interesting and challenging cases, actions my affect not only the immediate rewards but alos the next situation and, through that, all subsequent rewards. 
 

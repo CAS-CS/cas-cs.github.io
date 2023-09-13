@@ -1,4 +1,4 @@
-# How is RL different from othere ML Algo.
+# How is RL different from other ML Algo.
 
 Reinforcement learning (RL), supervised learning, and unsupervised learning are three distinct paradigms within machine learning, and they differ in terms of their objectives, data types, and training methodologies:
 
@@ -36,8 +36,7 @@ Reinforcement learning (RL), supervised learning, and unsupervised learning are 
 # Exploration and Exploitation
 One of the challenges that arise in reinforcement learning, and not in other kinds of learning, is the trade-of between exploration and exploitation. To obtain a lot of reward, a reinforcement learning agent must prefer actions that it has tried in the past and found to be ective in producing reward. But to discover such actions, it has to try actions that it has not selected before. 
 The agent has to exploit what it has already experienced in order to obtain reward, but it also has to explore in order to make better action selections in the future.
-> The dilemma is that neither exploration nor exploitation
-can be pursued exclusively without failing at the task. The agent must try a variety of actions and progressively favor those that appear to be best. On a stochastic task, each action must be tried many times to gain a reliable estimate of its expected reward. 
+> The dilemma is that neither exploration nor exploitation can be pursued exclusively without failing at the task. The agent must try a variety of actions and progressively favor those that appear to be best. On a stochastic task, each action must be tried many times to gain a reliable estimate of its expected reward. 
 ###### The entire issue of balancing exploration and exploitation does not even arise in supervised and unsupervised learning
 ---
 # RL considere whole problem
