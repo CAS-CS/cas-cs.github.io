@@ -10,14 +10,15 @@ var slideScss = `
 
 @import url("https://fonts.googleapis.com/css2?family=Cantarell&display=swap");
 :root {
-  --hue: 278;
+  --hue: 235;
   --light: 10%;
   --sat: 55%;
   --hueAscent: 234;
-  --fontFamily: "Cantarell";
+  --lightAscent:67%;
+  --fontFamily: "Roboto";
   --blockCountColor: #fff;
   --fontScale: 1;
-  --fontsize: 1.5rem;
+  --fontsize: 1.3rem;
 }
 ::selection {
   background: hsl(
@@ -126,7 +127,7 @@ var slideScss = `
   ol,
   ul {
     margin-left: 2em;
-    padding-left: 2em;
+    padding-left: 1em;
   }
   li {
     padding-block: 0.2em;
@@ -148,11 +149,11 @@ var slideScss = `
     padding-block: 0.1em;
     padding-inline: 1em;
     font-style: italic;
-    text-shadow: 0.1em 0.1em 0 hsla(0, 0%, 100%, 0.2);
+    text-shadow: 0.05em 0.05em 0 hsla(var(--hueAscent), 70%, 40%, 0.4);
   }
   p {
     padding: 0px;
-    padding-block: 1em;
+    padding-block: .5em;
     &:empty {
       display: none;
     }

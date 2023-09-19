@@ -1,9 +1,9 @@
 //some temp style in nested css/ scss format
 //@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
 :root {
-    --hue         : 200;
-    --sat         : 60%;
-    --light       : 10%;
+    --hue         : 235;
+    --sat         : 35%;
+    --light       : 12%;
     --hueAscent   : 180;
     --satAscent   : 50%;
     --lightAscent : 80%;
@@ -14,7 +14,7 @@
     --testShadow  : black;
     --lightFactor : 1;
     --fontScale   : 1;
-    --fontFamily  : "Finlandica", "Poppins", "Arial";
+    --fontFamily  : "Roboto","Finlandica", "Poppins", "Arial";
     --headerHeight: 60px;
     --bgColor     : hsl(var(--hue), calc(var(--sat) * 1.5), 5%);
     ;
@@ -156,9 +156,9 @@ a {
             background-color: hsl(var(--h), var(--s), var(--l));
         }
 
-        p {
-            margin-block: .5em;
-        }
+        // p {
+        //     margin-block: .5em;
+        // }
 
 
     }
@@ -412,5 +412,5 @@ samp {
 ol,
 ul {
     padding    : 1em;
-    margin-left: 2em;
+    margin-left: 1em;
 }
