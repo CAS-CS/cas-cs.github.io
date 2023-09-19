@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 #find ./lectures -name "*" -type d > list.txt
 ./generateDirectoryList
 clear
