@@ -1041,6 +1041,7 @@ function parselist (
 }
 
 function mathjaxHljsCopyIcon () {
+  console.info("mathjaxHljsCopyIcon")
   load (
     'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css'
   );
@@ -1058,8 +1059,8 @@ function mathjaxHljsCopyIcon () {
       c.innerHTML = c.innerHTML.replaceAll ('<br>', '\n');
     });
     hljs.highlightAll ();
-    // setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
-  }, 1000);
+    setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+  }, 2000);
 }
 
 function parseSlide (link) {
@@ -1129,6 +1130,8 @@ function parseSlide (link) {
 
   convertLocalLinks ();
   mathjaxHljsCopyIcon ();
+
+  setTimeout(mathjaxHljsCopyIcon,1000);
 }
 
 function parseNotebook (link) {
