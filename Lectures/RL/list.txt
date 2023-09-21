@@ -4,3 +4,4 @@
 ./L02 Intro. to RL 2.md
 ./L03 Elements of RL.md
 ./L04 An Extended Example TIc-Tac-Toe.md
+./L05 Multi-armed Bandits.md
