@@ -81,7 +81,7 @@ should be checked carefully.
 
 
 # Flow chart of Research process
-[![Research Process](ResearchProcess.png)](ResearchProcess.png)
+[![Research Process](./L05/ResearchProcess.png)](./L05/ResearchProcess.png)
 
 
 ---
@@ -97,7 +97,7 @@ Same iso file is used to install on windows, mac, or linux systems homepage: htt
 
 It can be downloaded from [https://ctan.org/tex-archive/systems/texlive/Images?lang=en](https://ctan.org/tex-archive/systems/texlive/Images?lang=en)
 
-[![Banner](./DownloadTexlive.gif)](./DownloadTexlive.gif)
+[![Banner](./L05/DownloadTexlive.gif)](./L05/DownloadTexlive.gif)
 
 
 
@@ -151,7 +151,7 @@ double click on install-tl or right click on install-tl and select open in termi
 
 
 
-[![Banner](./MountAndInstall.gif)](./MountAndInstall.gif)
+[![Banner](./L05/MountAndInstall.gif)](./L05/MountAndInstall.gif)
 
 
 
@@ -159,8 +159,8 @@ The script will complete installation in around 20min to 60min
 after installation of all packages
 
 ---
-[![Completed](./1.png)](./1.png)
-[![click close](./2.png)](./2.png)
+[![Completed](./L05/1.png)](./L05/1.png)
+[![click close](./L05/2.png)](./L05/2.png)
 
 On completion click close.
 

@@ -53,7 +53,7 @@ as indexed by [Clarivate's ](https://mjl.clarivate.com/home) [Web of Science](ht
 
 *As a journal-level metric, it is frequently used as a proxy for the relative importance of a journal within its field; journals with higher impact factor values are given the status of being more important, or carry more prestige in their respective fields, than those with lower values.*
 
-[![Impact Factor](./IF.jpg)](https://en.wikipedia.org/wiki/Impact_factor)
+[![Impact Factor](./L014/IF.jpg)](https://en.wikipedia.org/wiki/Impact_factor)
 
 ---
 # Web of Science (WoS)

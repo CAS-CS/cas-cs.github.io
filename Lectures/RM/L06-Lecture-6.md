@@ -16,7 +16,7 @@ Same iso file is used to install on windows, mac, or linux systems homepage: htt
 
 It can be downloaded from [https://ctan.org/tex-archive/systems/texlive/Images?lang=en](https://ctan.org/tex-archive/systems/texlive/Images?lang=en)
 
-[![Banner](./DownloadTexlive.gif)](./DownloadTexlive.gif)
+[![Banner](./L06/DownloadTexlive.gif)](./L06/DownloadTexlive.gif)
 
 
 
@@ -70,7 +70,7 @@ double click on install-tl or right click on install-tl and select open in termi
 
 
 
-[![Banner](./MountAndInstall.gif)](./MountAndInstall.gif)
+[![Banner](./L06/MountAndInstall.gif)](./L06/MountAndInstall.gif)
 
 
 
@@ -78,8 +78,8 @@ The script will complete installation in around 20min to 60min
 after installation of all packages
 
 ---
-[![Completed](./1.png)](./1.png)
-[![click close](./2.png)](./2.png)
+[![Completed](./L06/1.png)](./L06/1.png)
+[![click close](./L06/2.png)](./L06/2.png)
 
 On completion click close.
 
@@ -342,8 +342,7 @@ this is some random text
 # Reference
 
 .image[
-![https://t.me/+pyS3-Wq2NjowYTk1](./
-telegramGroup.png)
+![https://t.me/+pyS3-Wq2NjowYTk1](./telegramGroup.png)
 ]
 
 [https://t.me/+pyS3-Wq2NjowYTk1](https://t.me/+pyS3-Wq2NjowYTk1)
