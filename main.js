@@ -82,9 +82,12 @@ var slideScss = `
   .slideCount {
     display: inline-block;
     position: absolute;
-    top: 2em;
-    right: 5em;
+    top: 1em;
+    right: 4em;
     font-size: calc(0.8rem * var(--fontScale, 1));
+    color:var(--textColor);
+    cursor:pointer;
+    padding:1em;
   }
 
   h1,
@@ -1093,11 +1096,13 @@ function parseSlide (link) {
       if (h.length > 0) {
         var x = parsemd (h, H => {
           append (slideroot, gen (section, `slide${i}`, H, 'slide'));
-          if (i != 0 && i != html.length - 1) {
-            append (
-              grab ('.slide')[i],
-              gen (span, '', `${i + 1}/${html.length}`, 'slideCount')
-            );
+          // if (i != 0 && i != html.length) {
+       if (i!=0){
+        append (
+          grab ('.slide')[i],
+          gen (span, '', `${i + 1}/${html.length}`, 'slideCount',{onclick:"mathjaxHljsCopyIcon()",title:"Re Render Math"})
+        );
+       }
             append (
               slidenavlist,
               gen (
@@ -1108,7 +1113,7 @@ function parseSlide (link) {
                 })
               )
             );
-          }
+          
         });
       }
 
@@ -1296,7 +1301,7 @@ function parseNotebook (link) {
     for (var i = 0; i < noOfBlocks; i++) {
       append (
         grab ('.block')[i],
-        gen (span, '', `${i + 1}/${noOfBlocks}`, 'slideCount hide')
+        gen (span, '', `${i + 1}/${noOfBlocks}`, 'slideCount hide',{onclick:"mathjaxHljsCopyIcon()",title:"Re Render Math"})
       );
       // append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
       append (
