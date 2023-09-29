@@ -1,11 +1,5 @@
 
 
-
-
----
-
----
-
 # LaTeX installation
 
 ---
@@ -18,15 +12,9 @@ It can be downloaded from [https://ctan.org/tex-archive/systems/texlive/Images?l
 
 [![Banner](./L06/DownloadTexlive.gif)](./L06/DownloadTexlive.gif)
 
-
-
-
-
-
-
 ---
-Altough texworks is included in texlive, you may wanna install latest version from https://github.com/TeXworks/texworks/releases
 
+Altough texworks is included in texlive, you may wanna install latest version from https://github.com/TeXworks/texworks/releases
 
 ### Mount downloaded texlive.iso to virtual drive
 
@@ -35,49 +23,32 @@ Double click to mount downloaded texlive.iso image in to virtual drive.
 
 For older versions of windows you might need virtual drive software like:
 
-1.  [wincdemu](https://wincdemu.sysprogs.org/)
-2.  [winarchiver](http://www.winarchiver.com/) these softwares are optional but it saves space. You may directly extract files from texlive.iso using [winrar](http://www.rarlab.com/) or [7-zip](http://7-zip.org/). And install from extracted files.
+1. [wincdemu](https://wincdemu.sysprogs.org/)
+2. [winarchiver](http://www.winarchiver.com/) these softwares are optional but it saves space. You may directly extract files from texlive.iso using [winrar](http://www.rarlab.com/) or [7-zip](http://7-zip.org/). And install from extracted files.
 
 ***
+
 ---
-
-
-
 
 ### Installation
 
-#### On Windows 
+#### On Windows
 
 double click on install-tl-windows.bat and installation will start from command window. Follow the installer instructions. The script will complete installation in around 20min to 60min
 
-#### On Linux 
+#### On Linux
 
 double click on install-tl or right click on install-tl and select open in terminal. Follow.
 
-
-
-
-
-
-
-
-
-
 ---
 
-
-
-
-
-
 [![Banner](./L06/MountAndInstall.gif)](./L06/MountAndInstall.gif)
-
-
 
 The script will complete installation in around 20min to 60min
 after installation of all packages
 
 ---
+
 [![Completed](./L06/1.png)](./L06/1.png)
 [![click close](./L06/2.png)](./L06/2.png)
 
@@ -85,21 +56,17 @@ On completion click close.
 
 Now you are ready to use LaTeX. Find Texworks in installed program and run it.
 
-
 ---
 
-
-
-
-
 # Optional method
+
 ### Direct from internet on linux
+
 -----------------------------
 
-```bash 
+```bash
 sudo apt-get install texlive texworks
 ```
-    
 
 Alternatively, windows users may also try
 ----------------------------------------
@@ -108,16 +75,18 @@ https://miktex.org/
 https://www.tug.org/protext/
 
 ## online compiler with limitations
+
 [latex.js.org](https://latex.js.org/playground.html)
 [Overleaf](https://www.overleaf.com/)
 
-
 ---
-# Introduction to LaTeX
 
-### Introduction to texworks editor and hands on 
+# Topics to be covered
+
+### Introduction to texworks editor and hands on
 
 ### File types basic intro. .tex .aux .log .pdf.
+
 ### Skelton File
 
 ### Sectioning
@@ -126,8 +95,8 @@ https://www.tug.org/protext/
 
 ### Math symbols and equation.
 
-
 ---
+
 # Skelton File
 
 Lesson1.tex
@@ -144,7 +113,9 @@ Hi \LaTeX
 
 \end{document}
 ```
+
 ### Other classes
+
 `\documentclass{letter}`,
 `\documentclass{report}`,
 `\documentclass{book}`,
@@ -153,11 +124,8 @@ Hi \LaTeX
 
 ---
 
-
-
-
-
 # Sectioning of document
+
 ```tex
 \part %work in book and report
 \chapter %work in book and report
@@ -178,11 +146,9 @@ Hi \LaTeX
 \label{} and \ref{}
 ```
 
-
 ---
 
 # Equation and math symbols
-
 
 ```tex
 $EQUATION$
@@ -194,17 +160,15 @@ EQUATION
 \end{equation}
 ```
 
-
 ```tex
 \alpha\beta\delta\Delta\int\sqrt\vec\overrightarrow\hat\frac ..
 ```
 
-
 ---
+
 # CLASS DEMO
 
 ```latex
-
 \documentclass{book}
 %PREAMBLE
 
@@ -335,8 +299,8 @@ this is some random text
 
 
 \end{document}
-
 ```
+
 ---
 
 # Reference
@@ -346,4 +310,3 @@ this is some random text
 ]
 
 [https://t.me/+pyS3-Wq2NjowYTk1](https://t.me/+pyS3-Wq2NjowYTk1)
-
