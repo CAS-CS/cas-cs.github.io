@@ -1,0 +1,17 @@
+{
+  "name": "cas-cs.github.io",
+  "version": "1.0.0",
+  "description": "Repo is used to host notices, timetables, lecture snippets, and other resources for Students of [Centre for Advanced Studies](https://cas.res.in) [AKTU Lucknow](https://aktu.ac.in).",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev":"parcel ./index.html",
+    "build":"parcel build ./index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.9.3"
+  }
+}
