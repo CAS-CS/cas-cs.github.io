@@ -1,10 +1,3 @@
-](mailto:prateekrajgautam@gmail.com)
-
-
-
-
----
-
 # What is Machine Learning ?
 
 ![AI ML and DL](./01.png)

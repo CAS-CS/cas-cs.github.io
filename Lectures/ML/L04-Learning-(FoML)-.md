@@ -1,9 +1,4 @@
-](mailto:prateekrajgautam@gmail.com)
 
-
-
-
----
 # Cross-validation
 
 Cross-validation is a technique in which we train our model using the subset of the data-set and then evaluate using the complementary subset of the data-set.
@@ -19,19 +14,13 @@ The three steps involved in cross-validation are as follows :
 ---
 
 # Common Cross validation Techniques
-1.  **_Leave p out cross-validation_**
-
-2.  **_Leave one out cross-validation_**
-
-3.  **_Holdout cross-validation_**
-
-4.  **_Repeated random subsampling validation_**
-
-5.  **_k-fold cross-validation_**
-
-6.  **_Stratified k-fold cross-validation_**
-
-7.  **_Time Series cross-validation_**
+1.  ***Leave p out cross-validation***
+2.  ***Leave one out cross-validation***
+3.  ***Holdout cross-validation***
+4.  ***Repeated random subsampling validation***
+5.  ***k-fold cross-validation***
+6.  ***Stratified k-fold cross-validation***
+7.  ***Time Series cross-validation***
 
 
 
@@ -41,7 +30,9 @@ The three steps involved in cross-validation are as follows :
 
 We often randomly split the dataset into train data and test data to develop a machine learning model. The training data is used to train the ML model and the same model is tested on independent testing data to evaluate the performance of the model.
 
-With the change in the random state of the split, the accuracy of the model also changes, so we are not able to achieve a fixed accuracy for the model. The testing data should be kept independent of the training data so that no data leakage occurs. During the development of an ML model using the training data, the model performance needs to be evaluated. Here’s the importance of cross-validation data comes into the picture.
+With the change in the random state of the split, the accuracy of the model also changes, so we are not able to achieve a fixed accuracy for the model. 
+The testing data should be kept independent of the training data so that no data leakage occurs. 
+During the development of an ML model using the training data, the model performance needs to be evaluated. Here’s the importance of cross-validation data comes into the picture.
 ---
 # Why Cross-Validation is Important?
 
@@ -59,7 +50,7 @@ In simple terms cross-validation allows us to utilize our data even better. You 
 
 
 ---
-1\. Leave p-out cross-validation (LpOCV):
+1. Leave p-out cross-validation (LpOCV):
 ---------------------------------
 
 Leave p-out cross-validation (LpOCV) is an exhaustive cross-validation technique, that involves using p-observation as validation data, and remaining data is used to train the model. 
@@ -67,7 +58,7 @@ Leave p-out cross-validation (LpOCV) is an exhaustive cross-validation technique
 This is repeated in all ways to cut the original sample on a validation set of _p_ observations and a training set.
 
 ---
-2\. Leave-one-out cross-validation (LOOCV):
+2. Leave-one-out cross-validation (LOOCV):
 -----------------------------------
 
 Leave-one-out cross-validation (LOOCV) is an exhaustive cross-validation technique. It is a category of LpOCV with the case of p=1.
@@ -82,7 +73,7 @@ Both the above two cross-validation techniques are the types of **exhaustive cro
 
 *Exhaustive cross-validation methods are cross-validation methods that learn and test in all possible ways.*
 ---
-2\. Leave-one-out cross-validation (LOOCV):
+2. Leave-one-out cross-validation (LOOCV):
 -----------------------------------
 Pros:
 -----
@@ -96,7 +87,7 @@ Cons:
 
 2.  The computation time required is high.
 ---
-3\. Holdout cross-validation:
+3. Holdout cross-validation:
 -----------------------------
 
 The holdout technique is an exhaustive cross-validation method, that randomly splits the dataset into train and test data depending on data analysis.
@@ -108,7 +99,7 @@ In the case of holdout cross-validation, the dataset is randomly split into trai
 
 The more data is used to train the model, the better the model is. For the holdout cross-validation method, a good amount of data is isolated from training.
 ---
-3\. Holdout cross-validation:
+3. Holdout cross-validation:
 -----------------------------
 
 Cons:
@@ -118,7 +109,7 @@ Cons:
 
 2.  A lot of data is isolated from training the model.
 ---
-4\. k-fold cross-validation:
+4. k-fold cross-validation:
 ----------------------------
 
 In k-fold cross-validation, the original dataset is equally partitioned into k subparts or folds. 
@@ -128,7 +119,7 @@ Out of the k-folds or groups, for each iteration, one group is selected as valid
 ![](https://miro.medium.com/max/350/1*2rRcNnIokzJU_-NXm29IMA.gif)
 
 ---
-4\. k-fold cross-validation:
+4. k-fold cross-validation:
 ----------------------------
 
 The process is repeated for k times until each group is treated as validation and remaining as training data.
@@ -145,7 +136,7 @@ The final accuracy of the model is computed by taking the mean accuracy of the k
 
 
 ---
-4\. k-fold cross-validation:
+4. k-fold cross-validation:
 ----------------------------
 Pros:
 -----
@@ -161,7 +152,7 @@ Cons:
 
 1.  Not suitable for an imbalanced dataset.
 ---
-5\. Repeated random subsampling validation:
+5. Repeated random subsampling validation:
 -------------------------------------------
 
 Repeated random subsampling validation also referred to as Monte Carlo cross-validation splits the dataset randomly into training and validation. Unlikely k-fold cross-validation split of the dataset into not in groups or folds but splits in this case in random.
@@ -175,7 +166,7 @@ The number of iterations is not fixed and decided by analysis. The results are t
 ![](https://miro.medium.com/max/173/1*xUaAYAI_Dql1NtfV-0ycqQ.png)
 
 ---
-5\. Repeated random subsampling validation:
+5. Repeated random subsampling validation:
 -------------------------------------------
 Pros:
 -----
@@ -189,7 +180,7 @@ Cons:
 
 2.  Not suitable for an imbalanced dataset.
 ---
-6\. Stratified k-fold cross-validation:
+6. Stratified k-fold cross-validation:
 ---------------------------------------
 
 **Stratified k-fold cross-validation solved the problem of an imbalanced dataset.**
@@ -202,7 +193,7 @@ In Stratified k-fold cross-validation, the dataset is partitioned into k groups 
 
 The final score is computed by taking the mean of scores of each fold.
 ---
-6\. Stratified k-fold cross-validation:
+6. Stratified k-fold cross-validation:
 ---------------------------------------
 Pros:
 -----
@@ -214,7 +205,7 @@ Cons:
 
 1.  Now suitable for time series dataset.
 ---
-7\. Time Series cross-validation:
+7. Time Series cross-validation:
 ---------------------------------
 
 The order of the data is very important for time-series related problem. For time-related dataset random split or k-fold split of data into train and validation may not yield good results.

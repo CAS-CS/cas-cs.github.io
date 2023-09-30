@@ -1,9 +1,4 @@
-](mailto:prateekrajgautam@gmail.com)
 
-
-
-
----
 
 # What is Machine Learning ?
 
@@ -135,8 +130,9 @@ the data in supervised learning is labelled, where as data in unsupervised learn
 
 Problems where you have a large amount of input data and only some of the data is labeled, are called semi-supervised learning problems. 
 
- These problems sit in between both supervised and unsupervised learning. 
- > a photo archive where only some of the images are labeled, (e.g. dog, cat, person) and the majority are unlabeled.
+These problems sit in between both supervised and unsupervised learning. 
+
+> A photo archive where only some of the images are labeled, (e.g. dog, cat, person) and the majority are unlabeled.
 
 ---
 ## Reinforcement learning: 

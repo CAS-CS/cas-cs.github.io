@@ -10,7 +10,7 @@ Same iso file is used to install on windows, mac, or linux systems homepage: htt
 
 It can be downloaded from [https://ctan.org/tex-archive/systems/texlive/Images?lang=en](https://ctan.org/tex-archive/systems/texlive/Images?lang=en)
 
-[![Banner](./L06/DownloadTexlive.gif)](./L06/DownloadTexlive.gif)
+[![Banner](./.L06/DownloadTexlive.gif)](./.L06/DownloadTexlive.gif)
 
 ---
 
@@ -42,15 +42,15 @@ double click on install-tl or right click on install-tl and select open in termi
 
 ---
 
-[![Banner](./L06/MountAndInstall.gif)](./L06/MountAndInstall.gif)
+[![Banner](./.L06/MountAndInstall.gif)](./.L06/MountAndInstall.gif)
 
 The script will complete installation in around 20min to 60min
 after installation of all packages
 
 ---
 
-[![Completed](./L06/1.png)](./L06/1.png)
-[![click close](./L06/2.png)](./L06/2.png)
+[![Completed](./.L06/1.png)](./.L06/1.png)
+[![click close](./.L06/2.png)](./.L06/2.png)
 
 On completion click close.
 

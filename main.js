@@ -104,6 +104,22 @@ var slideScss = `
     padding-block: 0.4em;
   }
 
+
+  b,strong{
+    color: hsl(
+      var(--hue, 30),
+      calc(var(--satAscent, 70%) * 1.1),
+      calc(var(--lightAscent, 50%) * .8)
+    );
+  }
+
+  i,em{
+    color: hsl(
+      var(--hueAscent, 30),
+      calc(var(--satAscent, 70%) * 1.1),
+      calc(var(--lightAscent, 50%) * .8)
+    );
+  }
   h1 {
     font-size: 1.5em;
     &:first-child {

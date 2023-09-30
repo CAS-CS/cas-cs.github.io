@@ -1,9 +1,4 @@
-](mailto:prateekrajgautam@gmail.com)
 
-
-
-
----
 # Decision Tree Classification Algorithm
 --------------------------------------
 

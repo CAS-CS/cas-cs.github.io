@@ -1,9 +1,4 @@
-](mailto:prateekrajgautam@gmail.com)
 
-
-
-
----
 # Decision Tree Classification Algorithm
 --------------------------------------
 
@@ -195,7 +190,7 @@ Steps are given below:
 
 Below is the code for the pre-processing step: ( `\_ means _ ` in the code)
 ```
-1.  # importing libraries  
+1.  #importing libraries  
 2.  import numpy as nm  
 3.  import matplotlib.pyplot as mtp  
 4.  import pandas as pd  
