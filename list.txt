@@ -1,12 +1,11 @@
 ./
-./Lectures
-./Notices
-./TimeTable
 ./Workshops
 ./.Syllabus
-./Gallery
-./.Previous Question Papers
-./.dist
 ./Admission
-./Misc
+./.dist
+./Lectures
 ./.git
+./.Previous Question Papers
+./Notices
+./TimeTable
+./Misc
