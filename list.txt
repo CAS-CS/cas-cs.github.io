@@ -3,6 +3,7 @@
 ./.Syllabus
 ./Admission
 ./.dist
+./Gallery
 ./Lectures
 ./.git
 ./.Previous Question Papers

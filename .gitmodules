@@ -1,0 +1,3 @@
+[submodule "Gallery"]
+	path = Gallery
+	url = git@github.com:CAS-CS/Gallery.git
