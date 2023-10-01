@@ -653,7 +653,8 @@ const convertLocalLinks = () => {
   setTimeout (() => {
     document.body.innerHTML = document.body.innerHTML.replaceAll (
       './',
-      router.dirpath
+      // router.dirpath
+      this.dir==="/"?this.root:this.root+this.dir
     );
   }, 2000);
 
@@ -746,6 +747,7 @@ class Router {
       this.filepath += this.dir;
     }
 
+    // this.filepath=this.dir==="/"?this.root:this.root+this.dir
     this.dirpath = this.filepath;
     if (this.file.length > 0) {
       this.filepath += this.file;
