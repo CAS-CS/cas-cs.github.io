@@ -2,7 +2,7 @@
 
 ### Download LaTeX (Texlive.iso and texworks)
 
-Same iso file is used to install on windows, mac, or linux systems homepage: https://tug.org/texlive/
+Same iso file is used to install on windows, mac, or linux systems homepage: [https://tug.org/texlive/](https://tug.org/texlive/)
 
 It can be downloaded from [https://ctan.org/tex-archive/systems/texlive/Images?lang=en](https://ctan.org/tex-archive/systems/texlive/Images?lang=en)
 
@@ -10,7 +10,7 @@ It can be downloaded from [https://ctan.org/tex-archive/systems/texlive/Images?l
 
 ---
 
-Altough texworks is included in texlive, you may wanna install latest version from https://github.com/TeXworks/texworks/releases
+Altough texworks is included in texlive, you may wanna install latest version from [Texworks](https://github.com/TeXworks/texworks/releases)
 
 ### Mount downloaded texlive.iso to virtual drive
 
@@ -65,16 +65,17 @@ sudo apt-get install texlive texworks
 ```
 
 ### Install on NixOS with nix package manager 
-```nix
+```sh
 nix-env -i texlive texworks
 ```
 
 #### Alternatively, windows users may also try
 
 [miktex from https://miktex.org/](https://miktex.org/)
+
 [Protext from (https://www.tug.org/protext/](https://www.tug.org/protext/)
 
-## Online compiler with limitations
+## Online playground with limited capabilities
 
 [latex.js.org](https://latex.js.org/playground.html)
 [Overleaf](https://www.overleaf.com/)
@@ -97,7 +98,7 @@ Topics to be covered
 
 Lesson1.tex
 
-```tex
+```TeX
 \documentclass{article}
 %PREAMBLE
 
