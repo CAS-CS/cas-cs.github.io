@@ -6,7 +6,7 @@ Same iso file is used to install on windows, mac, or linux systems homepage: [ht
 
 It can be downloaded from [https://ctan.org/tex-archive/systems/texlive/Images?lang=en](https://ctan.org/tex-archive/systems/texlive/Images?lang=en)
 
-[![Banner](./.L06/DownloadTexlive.gif)](./.L06/DownloadTexlive.gif)
+[![Banner](./L05_DownloadTexlive.gif)](./L05_DownloadTexlive.gif)
 
 ---
 
@@ -14,7 +14,7 @@ Altough texworks is included in texlive, you may wanna install latest version fr
 
 ### Mount downloaded texlive.iso to virtual drive
 
-On Linux, windows 8, or windows 10,  
+On Linux, windows 8, or windows 10, 
 Double click to mount downloaded texlive.iso image in to virtual drive.
 
 For older versions of windows you might need virtual drive software like:
@@ -38,15 +38,15 @@ double click on `install-tl` or right click on install-tl and select open in ter
 
 ---
 
-[![Banner](./.L06/MountAndInstall.gif)](./.L06/MountAndInstall.gif)
+[![Banner](./L05_MountAndInstall.gif)](./L05_MountAndInstall.gif)
 
 The script will complete installation in around 20min to 60min
 after installation of all packages
 
 ---
 
-[![Completed](./.L06/1.png)](./.L06/1.png)
-[![click close](./.L06/2.png)](./.L06/2.png)
+[![Completed](./L05_1.png)](./L05_1.png)
+[![click close](./L05_2.png)](./L05_2.png)
 
 On completion click close.
 

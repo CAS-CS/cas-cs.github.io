@@ -1,7 +1,4 @@
 ./
-./.L05
-./.L14
-./.L06
 ./L01_L02-Lecture-1.md
 ./L03-Lecture-3.md
 ./L04-Lecture-4.md
