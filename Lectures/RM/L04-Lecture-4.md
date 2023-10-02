@@ -170,16 +170,13 @@ This methodology can produce interesting results as it presents exact data while
 
 * [Research_Methodology_by_C_R_Kothari](https://www.academia.edu/43821533/Research_Methodology_by_C_R_Kothari)
 
-
-
----
 ### You may join the telegram channel for subject related updates.
-.image[
-![https://t.me/+pyS3-Wq2NjowYTk1](./
-telegramGroup.png)
-]
 
-[https://t.me/+pyS3-Wq2NjowYTk1](https://t.me/+pyS3-Wq2NjowYTk1)
+![https://t.me/+CgEoOwoKmpgwMzBl](./telegramGroup.png)
+
+
+[https://t.me/+CgEoOwoKmpgwMzBl](https://t.me/+CgEoOwoKmpgwMzBl)
+
 
 
 

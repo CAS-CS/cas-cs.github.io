@@ -1,8 +1,7 @@
 ./
-./L14
-./L05
-./L06
-./beta-L006-Lecture-6.md
+./.L05
+./.L14
+./.L06
 ./L01_L02-Lecture-1.md
 ./L03-Lecture-3.md
 ./L04-Lecture-4.md
@@ -18,3 +17,4 @@
 ./L15-Lecture-15.md
 ./L17-Lecture-17.md
 ./L18-Lecture-18.md
+./beta-L006-Lecture-6.md

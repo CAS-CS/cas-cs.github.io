@@ -1,8 +1,4 @@
-
-
-# LaTeX installation
-
----
+# LaTeX installation and Introduction
 
 ### Download LaTeX (Texlive.iso and texworks)
 
@@ -30,15 +26,15 @@ For older versions of windows you might need virtual drive software like:
 
 ---
 
-### Installation
+# Installation
 
 #### On Windows
 
-double click on install-tl-windows.bat and installation will start from command window. Follow the installer instructions. The script will complete installation in around 20min to 60min
+Double click on `install-tl-windows.bat` and installation will start from command window. Follow the installer instructions. The script will complete installation in around 20min to 60min
 
 #### On Linux
 
-double click on install-tl or right click on install-tl and select open in terminal. Follow.
+double click on `install-tl` or right click on install-tl and select open in terminal. Follow.
 
 ---
 
@@ -60,7 +56,7 @@ Now you are ready to use LaTeX. Find Texworks in installed program and run it.
 
 # Optional method
 
-### Direct from internet on linux
+### Direct from internet on linux (debian)
 
 -----------------------------
 
@@ -68,32 +64,32 @@ Now you are ready to use LaTeX. Find Texworks in installed program and run it.
 sudo apt-get install texlive texworks
 ```
 
-Alternatively, windows users may also try
-----------------------------------------
+### Install on NixOS with nix package manager 
+```nix
+nix-env -i texlive texworks
+```
 
-https://miktex.org/  
-https://www.tug.org/protext/
+#### Alternatively, windows users may also try
 
-## online compiler with limitations
+[miktex from https://miktex.org/](https://miktex.org/)
+[Protext from (https://www.tug.org/protext/](https://www.tug.org/protext/)
+
+## Online compiler with limitations
 
 [latex.js.org](https://latex.js.org/playground.html)
 [Overleaf](https://www.overleaf.com/)
 
 ---
+# Introduction to LaTeX
 
-# Topics to be covered
+Topics to be covered 
 
-### Introduction to texworks editor and hands on
-
-### File types basic intro. .tex .aux .log .pdf.
-
-### Skelton File
-
-### Sectioning
-
-### Label and Reference
-
-### Math symbols and equation.
+1. Introduction to texworks editor and hands on
+1. File types basic intro. .tex .aux .log .pdf.
+1. Skelton File
+1. Sectioning
+1. Label and Reference
+1. Math symbols and equation.
 
 ---
 
@@ -305,8 +301,8 @@ this is some random text
 
 # Reference
 
-.image[
-![https://t.me/+pyS3-Wq2NjowYTk1](./telegramGroup.png)
-]
 
-[https://t.me/+pyS3-Wq2NjowYTk1](https://t.me/+pyS3-Wq2NjowYTk1)
+![https://t.me/+CgEoOwoKmpgwMzBl](./telegramGroup.png)
+
+
+[https://t.me/+CgEoOwoKmpgwMzBl](https://t.me/+CgEoOwoKmpgwMzBl)

@@ -116,6 +116,10 @@ Having a sound research methodology in place provides the following benefits:
 
 
 
+![https://t.me/+CgEoOwoKmpgwMzBl](./telegramGroup.png)
+
+
+[https://t.me/+CgEoOwoKmpgwMzBl](https://t.me/+CgEoOwoKmpgwMzBl)
 
 
 

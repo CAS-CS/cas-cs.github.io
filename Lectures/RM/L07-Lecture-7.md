@@ -344,10 +344,9 @@ this is some random textt
 ---
 # Reference
 
-.image[
-![https://t.me/+pyS3-Wq2NjowYTk1](./
-telegramGroup.png)
-]
 
-[https://t.me/+pyS3-Wq2NjowYTk1](https://t.me/+pyS3-Wq2NjowYTk1)
+![https://t.me/+CgEoOwoKmpgwMzBl](./telegramGroup.png)
+
+
+[https://t.me/+CgEoOwoKmpgwMzBl](https://t.me/+CgEoOwoKmpgwMzBl)
 
