@@ -1,8 +1,8 @@
 window.DEBUT = true;
-window.$ = GeneratorJs ();
-window.$$ = GeneratorWebHelper ();
-$.init ();
-load ('./script.js');
+window.$ = GeneratorJs();
+window.$$ = GeneratorWebHelper();
+$.init();
+load("./script.js");
 
 //STYLE
 var slideScss = `
@@ -484,162 +484,165 @@ table {
     transform: rotate(45deg);
   }
 }
-
+.MathJax{
+  padding:2px 5px;
+  cursor:pointer;
+}
 
 `;
 
 //loadscss(slideScss)
 
-function openFile () {
-  var fileObj = grab ('#open')[0].files[0];
+function openFile() {
+  var fileObj = grab("#open")[0].files[0];
   var fileName = fileObj.name;
   var fileType = fileObj.type;
-  var fileUrl = URL.createObjectURL (fileObj);
-  ext = fileName.split ('.').pop ();
-  if (fileType == 'text/markdown' || ext == 'md' || ext == 'markdown') {
-    parseSlide (fileUrl);
+  var fileUrl = URL.createObjectURL(fileObj);
+  ext = fileName.split(".").pop();
+  if (fileType == "text/markdown" || ext == "md" || ext == "markdown") {
+    parseSlide(fileUrl, mathjaxHljsCopyIcon);
   }
-  if (fileType == 'application/x-ipynb+json' || ext == 'ipynb') {
-    parseNotebook (fileUrl);
+  if (fileType == "application/x-ipynb+json" || ext == "ipynb") {
+    parseNotebook(fileUrl);
   }
   // updateFiledropEventListeners()
 }
 
-function cloneView () {
+function cloneView() {
   var url = window.location.href;
   // window.open(url, '_blank');
-  window.open (url, 'newwindow', 'width=600,height=400');
-  gen (a, 'clone', 'Open Clone Window', 'hide', {
+  window.open(url, "newwindow", "width=600,height=400");
+  gen(a, "clone", "Open Clone Window", "hide", {
     href: window.location.href,
-    target: '_blank',
-  }).click ();
+    target: "_blank",
+  }).click();
 }
 
-function toggleHints () {}
+function toggleHints() {}
 
 // Fullscreen
-function toggleFullscreen () {
+function toggleFullscreen() {
   if (document.fullscreenElement) {
     // append(fullscreenTitle, "", 'replace')
-    document.exitFullscreen ();
+    document.exitFullscreen();
   } else {
     // document.documentElement.requestFullscreen();
-    grab (`#main`)[0].requestFullscreen ();
+    grab(`#main`)[0].requestFullscreen();
     var titlestr =
       document.title +
-      router.pathname.replaceAll ('/', ' | ') +
-      grab ('h1')[0].innerHTML;
+      router.pathname.replaceAll("/", " | ") +
+      grab("h1")[0].innerHTML;
     // append(main, gen(div, "fullscreenTitle", titlestr), 'before')
   }
 }
 
-document.addEventListener ('dblclick', e => {
-  e.preventDefault ();
-  toggleFullscreen ();
+document.addEventListener("dblclick", (e) => {
+  e.preventDefault();
+  toggleFullscreen();
 });
 
 // ScrollControl
 
-function scrollAction (direction = 'down', scrollState) {
+function scrollAction(direction = "down", scrollState) {
   var end =
-    grab (`#slideroot`)[0].scrollHeight - grab (`#slideroot`)[0].offsetHeight;
-  var offsetHeight = grab (`#slideroot`)[0].offsetHeight;
+    grab(`#slideroot`)[0].scrollHeight - grab(`#slideroot`)[0].offsetHeight;
+  var offsetHeight = grab(`#slideroot`)[0].offsetHeight;
 
   if (!scrollState)
-    scrollState = grab (`#slideroot`)[0].scrollTop / offsetHeight;
+    scrollState = grab(`#slideroot`)[0].scrollTop / offsetHeight;
   var endState = end / offsetHeight;
 
-  if (direction == 'home') {
-    grab (`#slideroot`)[0].scrollTop = 0;
+  if (direction == "home") {
+    grab(`#slideroot`)[0].scrollTop = 0;
   }
-  if (direction == 'end') {
-    grab (`#slideroot`)[0].scrollTop = endState * offsetHeight;
+  if (direction == "end") {
+    grab(`#slideroot`)[0].scrollTop = endState * offsetHeight;
   }
-  if (direction == 'up') {
+  if (direction == "up") {
     // grab(`#slideroot`)[0].scrollTop -= offsetHeight
     scrollState += 1;
-    grab (`#slideroot`)[0].scrollTop = scrollState * offsetHeight;
+    grab(`#slideroot`)[0].scrollTop = scrollState * offsetHeight;
   }
-  if (direction == 'down') {
+  if (direction == "down") {
     scrollState -= 1;
-    grab (`#slideroot`)[0].scrollTop = scrollState * offsetHeight;
+    grab(`#slideroot`)[0].scrollTop = scrollState * offsetHeight;
   }
 }
 
 // Keyboard Control
-document.addEventListener ('keydown', e => {
+document.addEventListener("keydown", (e) => {
   // e.preventDefault()
   if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
   } else {
-    var key = e.key.toLowerCase ();
+    var key = e.key.toLowerCase();
     // log(key)
-    if (key == 'arrowdown' || key == 'pagedown' || key == 'arrowright') {
-      e.preventDefault ();
-      scrollAction ('up');
+    if (key == "arrowdown" || key == "pagedown" || key == "arrowright") {
+      e.preventDefault();
+      scrollAction("up");
     }
-    if (key == 'arrowup' || key == 'arrowleft' || key == 'pageup') {
-      e.preventDefault ();
-      scrollAction ('down');
+    if (key == "arrowup" || key == "arrowleft" || key == "pageup") {
+      e.preventDefault();
+      scrollAction("down");
     }
-    if (key == 'home') {
-      e.preventDefault ();
-      scrollAction ('home');
+    if (key == "home") {
+      e.preventDefault();
+      scrollAction("home");
     }
-    if (key == 'end') {
-      e.preventDefault ();
-      scrollAction ('end');
+    if (key == "end") {
+      e.preventDefault();
+      scrollAction("end");
     }
-    if (key == 'f') {
-      e.preventDefault ();
-      toggleFullscreen ();
+    if (key == "f") {
+      e.preventDefault();
+      toggleFullscreen();
     }
-    if (key == 'o') {
-      e.preventDefault ();
-      openFile ();
+    if (key == "o") {
+      e.preventDefault();
+      openFile();
     }
-    if (key == 'c') {
-      e.preventDefault ();
-      cloneView ();
+    if (key == "c") {
+      e.preventDefault();
+      cloneView();
     }
-    if (key == 'h') {
-      e.preventDefault ();
-      toggleHints ();
+    if (key == "h") {
+      e.preventDefault();
+      toggleHints();
     }
-    if (key == 'r') {
-      e.preventDefault ();
-      reloadPage ();
+    if (key == "r") {
+      e.preventDefault();
+      reloadPage();
     }
-    if (key == 'enter') {
-      e.preventDefault ();
+    if (key == "enter") {
+      e.preventDefault();
       if (document.activeElement != document.body) {
-        document.activeElement.click ();
+        document.activeElement.click();
       }
     }
-    if (key == 'backspace') {
-      e.preventDefault ();
-      grab ('.pathNavigator')[grab ('.pathNavigator').length - 1].click ();
+    if (key == "backspace") {
+      e.preventDefault();
+      grab(".pathNavigator")[grab(".pathNavigator").length - 1].click();
     }
-    if (key == 'escape') {
-      e.preventDefault ();
+    if (key == "escape") {
+      e.preventDefault();
       //closeModal may interfere with fullscreenmode
     }
   }
-  if (e.ctrlKey && e.key.toLowerCase () == 'o') {
-    e.preventDefault ();
-    grab ('#open')[0].click ();
+  if (e.ctrlKey && e.key.toLowerCase() == "o") {
+    e.preventDefault();
+    grab("#open")[0].click();
   }
 });
 
-const hashChannel = new BroadcastChannel ('hashChannel');
+const hashChannel = new BroadcastChannel("hashChannel");
 
-window.addEventListener ('hashchange', e => {
-  hashChannel.postMessage ({
-    dir: router.dir.substring (1),
+window.addEventListener("hashchange", (e) => {
+  hashChannel.postMessage({
+    dir: router.dir.substring(1),
     file: router.file,
   });
 });
 
-hashChannel.addEventListener ('message', e => {
+hashChannel.addEventListener("message", (e) => {
   var dir = e.data.dir;
   var file = e.data.file;
   // var router = new Router()
@@ -649,102 +652,108 @@ hashChannel.addEventListener ('message', e => {
 });
 
 const convertLocalLinks = () => {
-  var router = new Router ();
-  setTimeout (() => {
-    document.body.innerHTML = document.body.innerHTML.replaceAll (
-      './',
+  var router = new Router();
+  setTimeout(() => {
+    document.body.innerHTML = document.body.innerHTML.replaceAll(
+      "./",
       router.dirpath
       // this.dir==="/"?this.root:this.root+this.dir
     );
   }, 2000);
 
-  document.title = grab ('h1')[0].innerHTML;
+  document.title = grab("h1")[0].innerHTML;
 };
 
-function loadBasicSkeleton (title = 'Home') {
-  load ('/style.scss');
+function loadBasicSkeleton(title = "Home") {
+  load("/style.scss");
   //your app logic
-  append (app, '', 'over'); /* reset app */
-  append (app, gen (header, 'header', '', 'header'));
-  append (header, gen (h3, 'heading', gen (a, '', title, 'title', '/')));
+  append(app, "", "over"); /* reset app */
+  append(app, gen(header, "header", "", "header"));
+  append(header, gen(h3, "heading", gen(a, "", title, "title", "/")));
   // append(app, gen(main, "main", "", 'main', { "draggable": "true" }));
-  append (app, gen (main, 'main', '', 'main', {tabindex: 20}));
-  append (main, gen (div, 'appmain', '', 'appmain container'));
-  append (app, gen (footer, 'appfooter', '', 'footer'));
-  append (appmain, gen (section, 'hero', '', 'hero'));
+  append(app, gen(main, "main", "", "main", { tabindex: 20 }));
+  append(main, gen(div, "appmain", "", "appmain container"));
+  append(app, gen(footer, "appfooter", "", "footer"));
+  append(appmain, gen(section, "hero", "", "hero"));
 }
 
-function dict2hash (dict) {
-  var hash = '';
-  Object.keys (dict).forEach (key => {
+function dict2hash(dict) {
+  var hash = "";
+  Object.keys(dict).forEach((key) => {
     if (hash.length == 0) {
-      hash = key + '=' + dict[key];
+      hash = key + "=" + dict[key];
     } else {
-      hash += '&' + key + '=' + dict[key];
+      hash += "&" + key + "=" + dict[key];
     }
   });
   return hash;
 }
 
-function hash2dict (hash) {
+function hash2dict(hash) {
   var dict = {};
-  hash.substring (1).split ('&').forEach (row => {
-    // var keyval = ""
-    keyval = row.split ('=');
-    dict[keyval[0]] = keyval[1];
-  });
+  hash
+    .substring(1)
+    .split("&")
+    .forEach((row) => {
+      // var keyval = ""
+      keyval = row.split("=");
+      dict[keyval[0]] = keyval[1];
+    });
   return dict;
 }
 
 class Router {
-  constructor () {
-    this.dir = '';
-    this.file = '';
+  constructor() {
+    this.dir = "";
+    this.file = "";
     this.hashObj = {};
-    this.filepath = '';
-    this.readfromurl ();
-    this.readHash ();
+    this.filepath = "";
+    this.readfromurl();
+    this.readHash();
 
-    this.updateroute ();
+    this.updateroute();
     return this.hash;
   }
 
-  readfromurl () {
+  readfromurl() {
     this.host = window.location.host;
-    this.protocol = window.location.protocol + '//';
+    this.protocol = window.location.protocol + "//";
     this.pathname = window.location.pathname;
     this.root = this.protocol + this.host + this.pathname;
     this.origin = window.location.origin;
   }
 
-  readHash () {
+  readHash() {
     this.hash = window.location.hash;
-    this.hashDict = hash2dict (this.hash);
-    this.hash.substring (1).split ('&').forEach (row => {
-      var keyval = '';
-      keyval = row.split ('=');
+    this.hashDict = hash2dict(this.hash);
+    this.hash
+      .substring(1)
+      .split("&")
+      .forEach((row) => {
+        var keyval = "";
+        keyval = row.split("=");
 
-      if (keyval[0] == 'dir') {
-        this.dir = keyval[1];
-      }
-      if (keyval[0] == 'file') {
-        this.file = keyval[1];
-      }
-      this.hashObj[keyval[0]] = keyval[1];
-    });
-    this.setdirpath (this.dir, this.file);
+        if (keyval[0] == "dir") {
+          this.dir = keyval[1];
+        }
+        if (keyval[0] == "file") {
+          this.file = keyval[1];
+        }
+        this.hashObj[keyval[0]] = keyval[1];
+      });
+    this.setdirpath(this.dir, this.file);
   }
 
-  updateroute () {
+  updateroute() {
     this.filepath = this.root;
     this.hash = `dir=${this.dir}&file=${this.file}`;
     if (this.dir.length == 0) {
-      this.dir += '/';
+      this.dir += "/";
     } else {
-      if (this.dir.substring (this.dir.length - 1) != '/') {
-        this.dir += '/';
+      if (this.dir.substring(this.dir.length - 1) != "/") {
+        this.dir += "/";
       }
-      this.filepath += this.dir.substring(1,);
+      this.filepath += this.dir.substring(1);
     }
 
     // this.filepath=this.dir==="/"?this.root:this.root+this.dir
@@ -761,99 +770,99 @@ class Router {
     // this.setdirpath(this.dir, this.file)
   }
 
-  setdirpath (dir = '', file = '', url = window.location.origin) {
+  setdirpath(dir = "", file = "", url = window.location.origin) {
     // window.location.href = url
     this.dir = dir;
     this.file = file;
-    this.updateroute ();
+    this.updateroute();
   }
-  get view () {
+  get view() {
     return this.filepath;
   }
 
-  set setfile (file) {
+  set setfile(file) {
     this.file = file;
 
-    this.updateroute ();
+    this.updateroute();
   }
 
-  set setdir (dir) {
+  set setdir(dir) {
     this.dir = dir;
 
-    this.updateroute ();
+    this.updateroute();
   }
 }
-const router = new Router ();
+const router = new Router();
 
-function footerButtons () {
-  if (grab (`#footerButtons`).length != 0) {
-    append (`#footerButtons`, '', 'replace');
+function footerButtons() {
+  if (grab(`#footerButtons`).length != 0) {
+    append(`#footerButtons`, "", "replace");
   }
-  append (`#appfooter`, gen (div, 'footerButtons', ''), 'before');
-  append (
+  append(`#appfooter`, gen(div, "footerButtons", ""), "before");
+  append(
     `#footerButtons`,
-    gen (span, 'reload', 'Reload', 'button,reloadPage', {
-      onclick: 'reloadPage()',
+    gen(span, "reload", "Reload", "button,reloadPage", {
+      onclick: "reloadPage()",
     })
   );
-  append (
+  append(
     `#footerButtons`,
-    gen (input, 'open', '', 'hide', {
-      type: 'file',
-      accept: '.md,.markdown,.ipynb,png,jpg,mp4',
-      onchange: 'openFile()',
-      multiple: 'true',
+    gen(input, "open", "", "hide", {
+      type: "file",
+      accept: ".md,.markdown,.ipynb,png,jpg,mp4",
+      onchange: "openFile()",
+      multiple: "true",
     })
   );
   // append(`#footerButtons`, gen(input, "open", "Open", "button,openFile", { "type": "file", "onchange": "openFile()" }))
-  append (
+  append(
     `#footerButtons`,
-    gen (label, 'openbtn', 'Open', 'button,openFile', {for: 'open'})
+    gen(label, "openbtn", "Open", "button,openFile", { for: "open" })
   );
 }
 
-function generateView () {
-  if (grab ('#appmain').length != 0) {
-    append ('#appmain', '', 'over');
+function generateView() {
+  if (grab("#appmain").length != 0) {
+    append("#appmain", "", "over");
   }
   // append(main, gen(main, "main", "", ",main"), "replace")
-  var file = filedetect ();
+  var file = filedetect();
 
   var file = router.file;
   if (file.length == 0) {
-    router.setfile = 'list.txt';
+    router.setfile = "list.txt";
   }
 
-  var ext = file.split ('.').pop ();
+  var ext = file.split(".").pop();
   const route = {
     txt: () => {
-      parselist (router.view);
+      parselist(router.view);
     },
     md: () => {
-      parseSlide (router.view);
+      parseSlide(router.view, mathjaxHljsCopyIcon);
     },
     ipynb: () => {
-      parseNotebook (router.view);
+      parseNotebook(router.view);
     },
     pdf: () => {
-      showPDF (router.view);
+      showPDF(router.view);
     },
   };
   try {
-    route[ext] ();
+    route[ext]();
     // updateFiledropEventListeners()
   } catch (e) {}
 
   // updateFiledropEventListeners()
 }
 
-async function filedetect () {
-  var router = new Router ();
-  var presentfile = '';
-  var files = 'slide.ipynb,slide.md'.split (',');
-  files.forEach (file => {
-    var testpath = router.root + router.dir.substring (1) + file;
-    fetch (testpath).then (res => {
+async function filedetect() {
+  var router = new Router();
+  var presentfile = "";
+  var files = "slide.ipynb,slide.md".split(",");
+  files.forEach((file) => {
+    var testpath = router.root + router.dir.substring(1) + file;
+    fetch(testpath).then((res) => {
       if (res.status == 200) {
         router.setfile = file;
       }
@@ -862,73 +871,71 @@ async function filedetect () {
   return presentfile;
 }
 
-function updateOnHashChange () {
-  window.removeEventListener ('hashchange', updateOnHashChange);
-  var router = new Router ();
-  if (router.dir != '/') {
+function updateOnHashChange() {
+  window.removeEventListener("hashchange", updateOnHashChange);
+  var router = new Router();
+  if (router.dir != "/") {
     var oldroot = router.root;
-    var indexpath = router.root + router.dir.substring (1) + 'index.html';
-    var newroot = router.root + router.dir.substring (1);
-    router.dir = '/';
-    fetch (indexpath).then (res => {
+    var indexpath = router.root + router.dir.substring(1) + "index.html";
+    var newroot = router.root + router.dir.substring(1);
+    router.dir = "/";
+    fetch(indexpath).then((res) => {
       if (res.status == 200) {
         window.location.href = newroot;
       }
     });
   }
 
-  reloadPage ();
+  reloadPage();
 }
 
-function reloadPage () {
-  sessionStorage.clear ();
-  localStorage.clear ();
-  paginationUpdate ();
-  generateView ();
-  footerButtons ();
-  window.scrollTo (0, 0);
-  window.addEventListener ('hashchange', updateOnHashChange);
+function reloadPage() {
+  sessionStorage.clear();
+  localStorage.clear();
+  paginationUpdate();
+  generateView();
+  footerButtons();
+  window.scrollTo(0, 0);
+  window.addEventListener("hashchange", updateOnHashChange);
   // convertLocalLinks()
 }
 
-function changepath (thispath) {
+function changepath(thispath) {
   // log(thispath.dataset.path)
   var path = thispath.dataset.path;
   var origin = window.location.origin;
-  pathname = path.replace (origin, '');
+  pathname = path.replace(origin, "");
   // log(pathname)
-  var router = new Router ();
+  var router = new Router();
   router.setdir = pathname;
 
-  window.location.pathname = '/';
+  window.location.pathname = "/";
 }
 
-function paginationUpdate (loc = '') {
+function paginationUpdate(loc = "") {
   // var router = new Router()
-  router.readHash ();
+  router.readHash();
   loc = router.pathname + router.dir;
-  if (grab ('#location').length != 0) {
-    append ('#location', '', 'replace');
+  if (grab("#location").length != 0) {
+    append("#location", "", "replace");
   }
 
   // try { append(`#location`, "", "replace") } catch { }
-  append (`#header`, gen (nav, 'location', ''));
+  append(`#header`, gen(nav, "location", ""));
   var root = router.protocol + router.host;
-  var path = '/';
+  var path = "/";
 
-  var printLocation = loc
-    .replaceAll ('https://', '')
-    .replaceAll ('http://', '');
-  printLocation.split ('/').forEach (l => {
+  var printLocation = loc.replaceAll("https://", "").replaceAll("http://", "");
+  printLocation.split("/").forEach((l) => {
     if (l.length > 0) {
       // log(l)
-      path += l + '/';
+      path += l + "/";
       // append("#location", gen(a, '', l, 'pathNavigator', root + path, { "onclick": "updateOnHashChange()" }))
-      append (
-        '#location',
-        gen (a, '', l, 'pathNavigator', {
-          'data-path': root + path,
-          onclick: 'changepath(this)',
+      append(
+        "#location",
+        gen(a, "", l, "pathNavigator", {
+          "data-path": root + path,
+          onclick: "changepath(this)",
           tabindex: 20,
         })
       );
@@ -938,348 +945,351 @@ function paginationUpdate (loc = '') {
   // generateView()
 }
 
-loadBasicSkeleton ();
+loadBasicSkeleton();
 
-function appendDir (e) {
+function appendDir(e) {
   var newDir = router.dir + e.dataset.dir;
-  newDir = newDir.replaceAll ('//', '/').replaceAll ('\\\\', '\\');
-  router.setdirpath (newDir, '');
+  newDir = newDir.replaceAll("//", "/").replaceAll("\\\\", "\\");
+  router.setdirpath(newDir, "");
 }
-function appendfile (e) {
-  router.setdirpath (router.dir, e.dataset.file);
+function appendfile(e) {
+  router.setdirpath(router.dir, e.dataset.file);
 }
 
-function parselist (
-  fileListUrl = window.location.origin + window.location.pathname + 'list.txt',
-  target = '#main'
+function parselist(
+  fileListUrl = window.location.origin + window.location.pathname + "list.txt",
+  target = "#main"
 ) {
-  var filelist = '';
-  getfile (fileListUrl, filelist => {
-    append (target, '', 'over');
-    append (
+  var filelist = "";
+  getfile(fileListUrl, (filelist) => {
+    append(target, "", "over");
+    append(
       target,
-      gen (div, 'appmain', gen (h1, '', 'File Browser', 'heading'), 'appmain'),
-      'over'
+      gen(div, "appmain", gen(h1, "", "File Browser", "heading"), "appmain"),
+      "over"
     );
 
-    append (appmain, gen (div, 'directoryGrid', '', 'dirGrid'));
+    append(appmain, gen(div, "directoryGrid", "", "dirGrid"));
 
     var currentLocation = router.dirpath;
 
-    filelist.split ('\n').sort ().forEach ((link, i) => {
-      var url = currentLocation + link.replaceAll ('./', '');
-      link = link.replaceAll ('\t', '').replaceAll ('\n', '');
-      //for directories
-      var ext = link.split ('.').pop ();
-      // log(ext)
-      if (
-        link[2] != '.' &&
-        !link.includes ('.md') &&
-        !link.includes ('.ipynb') &&
-        !link.includes ('.pdf')
-      ) {
-        var linkname = link
-          .replaceAll ('./', '')
-          .replaceAll ('/', ' / ')
-          .replaceAll ('-', ' ')
-          .replaceAll ('_', ' ');
-        if (link.length > 0 && link != './') {
-          var redirect = currentLocation + link.replaceAll ('./', '') + '/';
-          var dir = link.replaceAll ('./', '');
-          append (
-            `#directoryGrid`,
-            gen (a, '', linkname, 'folderLinks', {
-              'data-dir': dir,
-              onclick: `appendDir(this)`,
-              tabindex: 10,
-            })
-          );
+    filelist
+      .split("\n")
+      .sort()
+      .forEach((link, i) => {
+        var url = currentLocation + link.replaceAll("./", "");
+        link = link.replaceAll("\t", "").replaceAll("\n", "");
+        //for directories
+        var ext = link.split(".").pop();
+        // log(ext)
+        if (
+          link[2] != "." &&
+          !link.includes(".md") &&
+          !link.includes(".ipynb") &&
+          !link.includes(".pdf")
+        ) {
+          var linkname = link
+            .replaceAll("./", "")
+            .replaceAll("/", " / ")
+            .replaceAll("-", " ")
+            .replaceAll("_", " ");
+          if (link.length > 0 && link != "./") {
+            var redirect = currentLocation + link.replaceAll("./", "") + "/";
+            var dir = link.replaceAll("./", "");
+            append(
+              `#directoryGrid`,
+              gen(a, "", linkname, "folderLinks", {
+                "data-dir": dir,
+                onclick: `appendDir(this)`,
+                tabindex: 10,
+              })
+            );
+          }
         }
-      }
 
-      //for markdown files
-      if (link[2] != '.' && link.includes ('.md')) {
-        var linkname = link
-          .replaceAll ('./', '')
-          .replaceAll ('/', ' / ')
-          .replaceAll ('-', ' ')
-          .replaceAll ('.md', '')
-          .replaceAll ('_', ' ');
-        if (link.length > 0 && link != './') {
-          var file = link.replaceAll ('./', '');
-          append (
-            directoryGrid,
-            gen (a, `${url}`, linkname, 'slideLinks', {
-              'data-file': file,
-              onclick: `appendfile(this)`,
-              tabindex: 10,
-            })
-          );
+        //for markdown files
+        if (link[2] != "." && link.includes(".md")) {
+          var linkname = link
+            .replaceAll("./", "")
+            .replaceAll("/", " / ")
+            .replaceAll("-", " ")
+            .replaceAll(".md", "")
+            .replaceAll("_", " ");
+          if (link.length > 0 && link != "./") {
+            var file = link.replaceAll("./", "");
+            append(
+              directoryGrid,
+              gen(a, `${url}`, linkname, "slideLinks", {
+                "data-file": file,
+                onclick: `appendfile(this)`,
+                tabindex: 10,
+              })
+            );
+          }
         }
-      }
 
-      //for notebook files
-      if (link[2] != '.' && link.includes ('.ipynb')) {
-        var linkname = link
-          .replaceAll ('./', '')
-          .replaceAll ('/', ' / ')
-          .replaceAll ('-', ' ')
-          .replaceAll ('.ipynb', '')
-          .replaceAll ('_', ' ');
-        var file = link.replaceAll ('./', '');
-        if (link.length > 0 && link != './') {
-          append (
-            directoryGrid,
-            gen (a, `${url}`, linkname, 'slideLinks,notebookLinks', {
-              'data-file': file,
-              onclick: `appendfile(this)`,
-              tabindex: 10,
-            })
-          );
+        //for notebook files
+        if (link[2] != "." && link.includes(".ipynb")) {
+          var linkname = link
+            .replaceAll("./", "")
+            .replaceAll("/", " / ")
+            .replaceAll("-", " ")
+            .replaceAll(".ipynb", "")
+            .replaceAll("_", " ");
+          var file = link.replaceAll("./", "");
+          if (link.length > 0 && link != "./") {
+            append(
+              directoryGrid,
+              gen(a, `${url}`, linkname, "slideLinks,notebookLinks", {
+                "data-file": file,
+                onclick: `appendfile(this)`,
+                tabindex: 10,
+              })
+            );
+          }
         }
-      }
-      //for pdf files
-      if (ext == 'pdf') {
-        // log("pdf")
-        var linkname = link
-          .replaceAll ('./', '')
-          .replaceAll ('/', ' / ')
-          .replaceAll ('-', ' ')
-          .replaceAll ('.ipynb', '')
-          .replaceAll ('_', ' ');
-        if (link.length > 0 && link != './') {
-          append (
-            directoryGrid,
-            gen (object, `${url}`, linkname, 'pdfLinks', {
-              onclick: `parsePdf(\`${url}\`)`,
-              tabindex: 10,
-            })
-          );
+        //for pdf files
+        if (ext == "pdf") {
+          // log("pdf")
+          var linkname = link
+            .replaceAll("./", "")
+            .replaceAll("/", " / ")
+            .replaceAll("-", " ")
+            .replaceAll(".ipynb", "")
+            .replaceAll("_", " ");
+          if (link.length > 0 && link != "./") {
+            append(
+              directoryGrid,
+              gen(object, `${url}`, linkname, "pdfLinks", {
+                onclick: `parsePdf(\`${url}\`)`,
+                tabindex: 10,
+              })
+            );
+          }
         }
-      }
-    });
+      });
   });
 }
 
-function mathjaxHljsCopyIcon () {
-  console.info("mathjaxHljsCopyIcon")
-  load (
-    'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css'
+function mathjaxHljsCopyIcon() {
+  console.info("mathjaxHljsCopyIcon");
+  load(
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/default.min.css"
   );
-  load (
-    'https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js'
+  load(
+    "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"
   );
 
-  setTimeout (() => {
-    MathJax.startup.document.state (0);
-    MathJax.texReset ();
-    MathJax.typesetClear ();
-    MathJax.typeset ('slideroot');
-    MathJax.typeset ();
-    grab ('code').forEach (c => {
-      c.innerHTML = c.innerHTML.replaceAll ('<br>', '\n');
+  setTimeout(() => {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typesetClear();
+
+    grab("code").forEach((c) => {
+      c.innerHTML = c.innerHTML.replaceAll("<br>", "\n");
     });
-    hljs.highlightAll ();
-    setTimeout(GeneratorWebHelper().addCopyIcon(), 1000)
+    hljs.highlightAll();
+    setTimeout(GeneratorWebHelper().addCopyIcon(), 1000);
+    MathJax.typesetPromise();
   }, 2000);
 }
 
-function parseSlide (link) {
-  loadscss (slideScss);
-  getfile (link, md => {
-    if (grab ('#back').length != 0) {
-      append ('#back', '', 'replace');
+function parseSlide(link, callback) {
+  console.info("parseslide");
+  loadscss(slideScss);
+  getfile(link, (md) => {
+    if (grab("#back").length != 0) {
+      append("#back", "", "replace");
     }
 
-    append (
+    append(
       `#location`,
-      gen (a, 'back', 'Back', 'pathNavigator', {
-        'data-file': '',
-        onclick: 'appendfile(this)',
+      gen(a, "back", "Back", "pathNavigator", {
+        "data-file": "",
+        onclick: "appendfile(this)",
         tabindex: 20,
       })
     );
 
-    append (`main`, '', 'over');
-    updateFiledropEventListeners ();
-    append (`main`, gen (div, 'slideroot', '', 'slideroot'));
-    append (slideroot, gen ('aside', 'sideBar', ''));
-    append (sideBar, gen (div, 'slidenav', gen (h3, '', 'Navigator')));
-    append (slidenav, gen (ul, 'slidenavlist', '', 'slidenavlist'));
+    append(`main`, "", "over");
+    updateFiledropEventListeners();
+    append(`main`, gen(div, "slideroot", "", "slideroot"));
+    append(slideroot, gen("aside", "sideBar", ""));
+    append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")));
+    append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"));
 
-    var html = md.split (/^---\s*?$/gm);
+    var html = md.split(/^---\s*?$/gm);
 
     for (var i = 0; i < html.length; i++) {
       var h = html[i];
       if (h.length > 0) {
-        var x = parsemd (h, H => {
-          append (slideroot, gen (section, `slide${i}`, H, 'slide'));
+        var x = parsemd(h, (H) => {
+          append(slideroot, gen(section, `slide${i}`, H, "slide"));
           // if (i != 0 && i != html.length) {
-       if (i!=0){
-        append (
-          grab ('.slide')[i],
-          gen (span, '', `${i + 1}/${html.length}`, 'slideCount',{onclick:"mathjaxHljsCopyIcon()",title:"Re Render Math"})
-        );
-       }
-            append (
-              slidenavlist,
-              gen (
-                li,
-                '',
-                gen (a, '', `Slide ${i + 1}`, 'slideNavLink', {
-                  onclick: `slide${i}.scrollIntoView()`,
-                })
-              )
+          if (i != 0) {
+            append(
+              grab(".slide")[i],
+              gen(span, "", `${i + 1}/${html.length}`, "slideCount", {
+                onclick: "mathjaxHljsCopyIcon()",
+                title: "Re Render Math",
+              })
             );
-          
+          }
+          append(
+            slidenavlist,
+            gen(
+              li,
+              "",
+              gen(a, "", `Slide ${i + 1}`, "slideNavLink", {
+                onclick: `slide${i}.scrollIntoView()`,
+              })
+            )
+          );
         });
       }
-
-      
     }
-    append (
+    append(
       slidenavlist,
-      gen (
+      gen(
         li,
-        '',
-        gen (a, 'src', `Source`, 'slideNavLink', {
+        "",
+        gen(a, "src", `Source`, "slideNavLink", {
           onclick: `viewSourceFile('${link}')`,
           href: link,
-          target: '_blank',
+          target: "_blank",
         })
       )
     );
+    convertLocalLinks();
+    if (callback) {
+      console.info("callback");
+      callback();
+    }
   });
-
-  convertLocalLinks ();
-  mathjaxHljsCopyIcon ();
-
-  setTimeout(mathjaxHljsCopyIcon,1000);
 }
 
-function parseNotebook (link) {
-  loadscss (slideScss);
-  getfile (link, nb => {
-    if (grab ('#back').length != 0) {
-      append ('#back', '', 'replace');
+function parseNotebook(link, callback) {
+  loadscss(slideScss);
+  getfile(link, (nb) => {
+    if (grab("#back").length != 0) {
+      append("#back", "", "replace");
     }
-    append (
+    append(
       `#location`,
-      gen (a, 'back', 'Back', 'pathNavigator', {
-        'data-file': '',
-        onclick: 'appendfile(this)',
+      gen(a, "back", "Back", "pathNavigator", {
+        "data-file": "",
+        onclick: "appendfile(this)",
         tabindex: 20,
       })
     );
-    if (grab ('#main').length != 0) {
-      append ('#main', '', 'over');
+    if (grab("#main").length != 0) {
+      append("#main", "", "over");
 
       updateFiledropEventListeners();
     }
 
-    append (main, gen (div, 'blockroot', '', 'blockroot'));
-    append (blockroot, gen ('aside', 'sideBar', ''));
-    append (sideBar, gen (div, 'slidenav', gen (h3, '', 'Navigator')));
-    append (slidenav, gen (ul, 'slidenavlist', '', 'slidenavlist'));
+    append(main, gen(div, "blockroot", "", "blockroot"));
+    append(blockroot, gen("aside", "sideBar", ""));
+    append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")));
+    append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"));
 
-    var PrintFileName = link.split ('/').pop ().replaceAll ('.ipynb', '');
+    var PrintFileName = link.split("/").pop().replaceAll(".ipynb", "");
     var nbmd = ``;
 
-    append (
+    append(
       blockroot,
-      gen (h1, 'Title', `Python Notebook: ${PrintFileName}`, 'title')
+      gen(h1, "Title", `Python Notebook: ${PrintFileName}`, "title")
     );
-    nb = JSON.parse (nb);
+    nb = JSON.parse(nb);
 
-    nb.cells.forEach (cell => {
+    nb.cells.forEach((cell) => {
       if (cell.source.length > 0) {
         var cell_type = cell.cell_type;
 
         var ecount = cell.execution_count;
 
-        if (cell_type == 'markdown') {
+        if (cell_type == "markdown") {
           var src = cell.source;
-          var md = src.join ('\n');
-          append (
+          var md = src.join("\n");
+          append(
             blockroot,
-            gen (div, `Markdown${ecount}`, parsemd (md), 'markdown block')
+            gen(div, `Markdown${ecount}`, parsemd(md), "markdown block")
           );
         }
-        if (cell_type == 'code') {
+        if (cell_type == "code") {
           var count = cell.execution_count;
 
           var src = cell.source;
-          var inputCode = src.join (''); //.replaceAll("<br>", "\r\n")
-          append (blockroot, gen (div, `input${count}`, '', 'input block'));
-          append (
+          var inputCode = src.join(""); //.replaceAll("<br>", "\r\n")
+          append(blockroot, gen(div, `input${count}`, "", "input block"));
+          append(
             `#input${count}`,
-            gen (span, '', `In [${count}] :`, 'execution_count')
+            gen(span, "", `In [${count}] :`, "execution_count")
           );
-          append (
+          append(
             `#input${count}`,
-            gen (
+            gen(
               pre,
-              '',
-              gen (code, '', inputCode, 'python language-python code')
+              "",
+              gen(code, "", inputCode, "python language-python code")
             )
           );
 
           var outputs = cell.outputs;
-          var status = 'success';
+          var status = "success";
           if (outputs.length > 0) {
-            var status = outputs[0].output_type == 'execute_result'
-              ? 'success'
-              : 'fail';
-            append (
+            var status =
+              outputs[0].output_type == "execute_result" ? "success" : "fail";
+            append(
               blockroot,
-              gen (
+              gen(
                 div,
                 `output${count}`,
-                gen (span, '', `Out [${count}] :`, 'execution_count'),
+                gen(span, "", `Out [${count}] :`, "execution_count"),
                 `output block execution_count,${status}`
               )
             );
-            outputs.forEach (output => {
+            outputs.forEach((output) => {
               // for (var j = 0; outputs.length; j++) {
               // var output = outputs[j]
 
               var output_type = output.output_type;
-              if (output_type == 'stream') {
-                var text = output.text.join ('');
+              if (output_type == "stream") {
+                var text = output.text.join("");
                 // append(`#output${count}`, gen(pre, "", text, `output ${output_type}`))
-                append (
+                append(
                   `#output${count}`,
-                  gen ('samp', '', text, `samp ${output_type}`)
+                  gen("samp", "", text, `samp ${output_type}`)
                 );
               }
 
-              if (output_type == 'display_data') {
+              if (output_type == "display_data") {
                 var data = output.data;
-                if (data.hasOwnProperty ('text/plain')) {
-                  var text = data['text/plain'];
-                  append (
+                if (data.hasOwnProperty("text/plain")) {
+                  var text = data["text/plain"];
+                  append(
                     `#output${count}`,
-                    gen (
+                    gen(
                       p,
-                      '',
-                      gen (code, '', text, `output ${output_type}`),
+                      "",
+                      gen(code, "", text, `output ${output_type}`),
                       `output ${output_type}`
                     )
                   );
                   // append(`#output${count}`, gen(p, "", gen(code, "", text, `output ${output_type}`)))
                 }
 
-                if (data.hasOwnProperty ('image/png')) {
-                  var className = '';
+                if (data.hasOwnProperty("image/png")) {
+                  var className = "";
 
-                  var image = data['image/png'];
+                  var image = data["image/png"];
                   var src = `data:image/png;base64,${image}`;
-                  if (output.metadata.hasOwnProperty ('needs_background')) {
-                    className = `needs-background-${output.metadata['needs_background']}`;
+                  if (output.metadata.hasOwnProperty("needs_background")) {
+                    className = `needs-background-${output.metadata["needs_background"]}`;
                   }
-                  append (
+                  append(
                     `#output${count}`,
-                    gen (img, '', '', `output ${output_type} ${className}`, {
+                    gen(img, "", "", `output ${output_type} ${className}`, {
                       src: src,
                     })
                   );
@@ -1287,14 +1297,14 @@ function parseNotebook (link) {
               }
 
               if (
-                output_type == 'execute_result' ||
-                output_type == 'display_data'
+                output_type == "execute_result" ||
+                output_type == "display_data"
               ) {
                 var data = output.data;
-                if (data.hasOwnProperty ('text/plain')) {
-                  var text = data['text/plain'].join ('');
+                if (data.hasOwnProperty("text/plain")) {
+                  var text = data["text/plain"].join("");
                   // append(`#output${count}`, gen(pre, "", gen(code, "", text, `output ${output_type}`)))
-                  append (
+                  append(
                     `#output${count}`,
                     // gen(pre,
                     //     "",
@@ -1305,7 +1315,7 @@ function parseNotebook (link) {
                     //     )
                     // )
 
-                    gen ('samp', '', text, `samp ${output_type}`)
+                    gen("samp", "", text, `samp ${output_type}`)
                   );
                 }
               }
@@ -1315,168 +1325,180 @@ function parseNotebook (link) {
       }
     });
 
-    var noOfBlocks = grab ('.block').length;
+    var noOfBlocks = grab(".block").length;
     for (var i = 0; i < noOfBlocks; i++) {
-      append (
-        grab ('.block')[i],
-        gen (span, '', `${i + 1}/${noOfBlocks}`, 'slideCount hide',{onclick:"mathjaxHljsCopyIcon()",title:"Re Render Math"})
+      append(
+        grab(".block")[i],
+        gen(span, "", `${i + 1}/${noOfBlocks}`, "slideCount hide", {
+          onclick: "mathjaxHljsCopyIcon()",
+          title: "Re Render Math",
+        })
       );
       // append(slidenavlist, gen(li, "", gen(a, "", `Block ${i + 1}`, "slideNavLink", { "onclick": `block${i}.scrollIntoView()` })))
-      append (
+      append(
         slidenavlist,
-        gen (
+        gen(
           li,
-          '',
-          gen (a, '', `Block ${i + 1}`, 'slideNavLink', {
+          "",
+          gen(a, "", `Block ${i + 1}`, "slideNavLink", {
             onclick: `grab(".block")[${i}].scrollIntoView()`,
           })
         )
       );
     }
     // download source file
-    var downloadFileName = `${link.split ('/')[link.split ('/').length - 2]}_${link.split ('/')[link.split ('/').length - 1]}`;
-    append (
+    var downloadFileName = `${link.split("/")[link.split("/").length - 2]}_${
+      link.split("/")[link.split("/").length - 1]
+    }`;
+    append(
       slidenavlist,
-      gen (
+      gen(
         li,
-        '',
-        gen (a, 'src', `Source`, 'slideNavLink', {
+        "",
+        gen(a, "src", `Source`, "slideNavLink", {
           onclick: `viewSourceFile('${link}')`,
           href: link,
-          target: '_blank',
+          target: "_blank",
           download: downloadFileName,
         })
       )
     );
-    append (
+    append(
       blockroot,
-      gen (
+      gen(
         span,
-        '',
-        gen (a, 'src', `Download Source`, 'button', {
+        "",
+        gen(a, "src", `Download Source`, "button", {
           onclick: `viewSourceFile('${link}')`,
           href: link,
-          target: '_blank',
+          target: "_blank",
           download: downloadFileName,
         })
       )
     );
+  
+    if (callback) { 
+      console.info("callback")
+      callback()
+    }
   });
 
-  mathjaxHljsCopyIcon ();
-  convertLocalLinks ();
-  updateFiledropEventListeners ();
+  convertLocalLinks();
+  updateFiledropEventListeners();
+
 }
 
-function closeparent (e) {
-  append (e.parentElement, '', 'replace');
+function closeparent(e) {
+  append(e.parentElement, "", "replace");
 }
 
-function parsePdf (link) {
-  loadscss (slideScss);
+function parsePdf(link) {
+  loadscss(slideScss);
   // router = New Router()
-  link = link.replaceAll ('./', router.dirpath);
+  link = link.replaceAll("./", router.dirpath);
   // log(link)
 
   // append(`main`, "", "over")
-  append (`#main`, gen (dialog, 'pdfdialog', '', 'pdfdialog active'));
-  append (pdfdialog, gen (a, '', 'Download PDF', 'download button', link));
-  append (
+  append(`#main`, gen(dialog, "pdfdialog", "", "pdfdialog active"));
+  append(pdfdialog, gen(a, "", "Download PDF", "download button", link));
+  append(
     pdfdialog,
-    gen ('object', 'mainpdf', '', 'mainpdf', {
-      width: '80%',
-      height: '80vh',
+    gen("object", "mainpdf", "", "mainpdf", {
+      width: "80%",
+      height: "80vh",
       data: link,
-      type: 'application/pdf',
+      type: "application/pdf",
     })
   );
-  pdfdialog.classList.add ('showdialog');
-  pdfdialog.showModal ();
-  pdfdialog.addEventListener ('blur', () => {
-    log (blur);
-    pdfdialog.classList.remove ('showdialog');
-    pdfdialog.close ();
+  pdfdialog.classList.add("showdialog");
+  pdfdialog.showModal();
+  pdfdialog.addEventListener("blur", () => {
+    log(blur);
+    pdfdialog.classList.remove("showdialog");
+    pdfdialog.close();
   });
 
-  append (
+  append(
     pdfdialog,
-    gen (span, 'closedialog', '', 'closedialog cross', {
-      onclick: 'closeparent(this)',
+    gen(span, "closedialog", "", "closedialog cross", {
+      onclick: "closeparent(this)",
     })
   );
 }
 
-$$.init ();
-if (window.location.href.includes ('Gallery')) {
+$$.init();
+if (window.location.href.includes("Gallery")) {
   // log("gallery")
-  setTimeout (() => {
-    load ('/gallery.js');
+  setTimeout(() => {
+    load("/gallery.js");
   }, 1000);
 }
 
-reloadPage ();
+reloadPage();
 
 //
-function updateFiledropEventListeners (target = grab ('#main')[0]) {
+function updateFiledropEventListeners(target = grab("#main")[0]) {
   // e.preventDefault ();
   // e.stopPropagation ();
   // log("updateFiledropEventListeners")
-  target.addEventListener ('dragover', e => {
-    e.preventDefault ();
+  target.addEventListener("dragover", (e) => {
+    e.preventDefault();
   });
-  target.classList.remove ('blur');
+  target.classList.remove("blur");
 
-  target.removeEventListener ('drop', ondrop);
-  target.removeEventListener ('dragleave', ondragleave);
-  target.removeEventListener ('dragenter', ondragenter);
+  target.removeEventListener("drop", ondrop);
+  target.removeEventListener("dragleave", ondragleave);
+  target.removeEventListener("dragenter", ondragenter);
 
-  target.addEventListener ('dragenter', ondragenter, true);
-  target.addEventListener ('drop', ondrop, true);
-  target.addEventListener ('dragleave', ondragleave, true);
+  target.addEventListener("dragenter", ondragenter, true);
+  target.addEventListener("drop", ondrop, true);
+  target.addEventListener("dragleave", ondragleave, true);
 
-  function ondragenter (e) {
-    e.preventDefault ();
-    e.stopPropagation ();
-    target.classList.add ('blur');
+  function ondragenter(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    target.classList.add("blur");
   }
 
-  function ondragleave (e) {
-    e.preventDefault ();
-    e.stopPropagation ();
-    target.classList.remove ('blur');
+  function ondragleave(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    target.classList.remove("blur");
   }
 
-  function ondrop (e) {
-    e.preventDefault ();
-    e.stopPropagation ();
-    target.classList.remove ('blur');
-    dropfilehandler (e);
+  function ondrop(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    target.classList.remove("blur");
+    dropfilehandler(e);
   }
 
-  function dropfilehandler (e) {
-    target.classList.remove ('blur');
-    console.log (e);
+  function dropfilehandler(e) {
+    target.classList.remove("blur");
+    console.log(e);
     var files = e.dataTransfer.files;
     for (var i = 0; i < files.length; i++) {
       var f = files[i];
       var fileName = f.name;
       var fileType = f.type;
-      var fileUrl = URL.createObjectURL (f);
-      var ext = fileName.split ('.').pop ();
-      if (fileType == 'text/markdown' || ext == 'md' || ext == 'markdown') {
-        parseSlide (fileUrl);
+      var fileUrl = URL.createObjectURL(f);
+      var ext = fileName.split(".").pop();
+      if (fileType == "text/markdown" || ext == "md" || ext == "markdown") {
+        parseSlide(fileUrl, mathjaxHljsCopyIcon);
       }
-      if (fileType == 'application/x-ipynb+json' || ext == 'ipynb') {
-        parseNotebook (fileUrl);
+      if (fileType == "application/x-ipynb+json" || ext == "ipynb") {
+        parseNotebook(fileUrl);
       }
       // getfile(fileUrl, fileName)
     }
-    updateFiledropEventListeners ();
+    updateFiledropEventListeners();
   }
 }
 
 // updateFiledropEventListeners()
 
-updateFiledropEventListeners ();
+updateFiledropEventListeners();
 
-setTimeout (() => {load(`${router.dirpath}script.js`)},2000)
+setTimeout(() => {
+  load(`${router.dirpath}script.js`);
+}, 2000);
