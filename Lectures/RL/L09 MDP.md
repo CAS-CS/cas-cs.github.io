@@ -81,3 +81,8 @@ we can compute aboute env. or expected rewards as
 
 $$ p(s'| s,a)= Pr\{S_t=s'|\ S_{t-1}=s,\ A_{t-1}=a\} = \sum_{r\in\mathbf{R}}p(s',r|s,a)$$
 
+
+---
+A Mobile Robot Example
+![](./L09_Example3.3.png)
+
