@@ -44,7 +44,7 @@ S2 , A2 , R3;
 
 ---
 
-In a finite MDP, the sets of states, actions, and rewards \mathbb{(S, A, and R)} all have a finite number of elements.
+In a finite MDP, the sets of states, actions, and rewards $\mathbb{S}$, $\mathbb{A}$, and $\mathbb{R}$ all have a finite number of elements.
 * The random variables $R_t$ and $S_t$ have well defined discrete probability distributions dependent only on the preceding state and action.
 * For particular values of these random variables, $s'\in \mathbb{S}$ and $r'\in \mathbb{R}$, 
 There is a probabilityof those values occurring at time t, given particular values of the preceding state and action
@@ -57,13 +57,13 @@ here for all $s', s\in \mathbb{S}, r \in \mathbb{R}$ and $a\in\mathbb{A}(s)$.
 
 ---
 The dynamics function $p : \mathbb{S}\times \mathbb{R}\times  \mathbb{S}\times \mathbb{A}\rightarrow\left[0, 1\right]$ is an ordinary deterministic function of four arguments. 
-* The $`|'$ in the middle of it comes from the notation for conditional probability, \sum_{s'\in \mathbb{S}}
+* The $`|'$ in the middle of it comes from the notation for conditional probability, 
 
 $$\sum_{s'\in \mathbf{S}}\sum_{r\in \mathbf{R}}p(s', r \ s, a) =1 \text{ for all } s\in\mathbf(S),a\in\mathbf{A}$$
 
 --- 
 
-# Markov decision process
+# Markov Property
 
 The probabilities given by $p$ completely characterize the environment’s dynamics. 
 
