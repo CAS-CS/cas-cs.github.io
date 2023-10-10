@@ -417,20 +417,33 @@ ul {
 
 
 //print css
-@media print{
-
-@page {
-  size: A4 landscape;
-}
-.slide{page-break-after: always;}
-
-  #slideroot{
-  overflow: auto;
-  height: auto;
-}
-
-#sideBar,#appfooter{
-  display:none;
-}
+@media print {
+    @page {
+         size: A4 landscape;
+    }
+    .slideroot,.blockroot {
+         overflow: auto;
+         height: auto;
+    }
+    .slide{
+        page-break-after: always;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+   .block{
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+  
+    img{
+        display: block;
+        page-break-before: auto;
+        page-break-after: auto; 
+		page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    video,#sideBar, #appfooter {
+        display:none;
+    }
 }
 
