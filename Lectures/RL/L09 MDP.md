@@ -31,7 +31,7 @@ The agent and environment interact at each of a sequence of discrete time steps,
 **Onetime step later, in part as a consequence of its action**, the agent receives a numerical reward, $R_{t+1}\in \mathbf{R} \subset \mathbb{R,}$ and finds itself in a new state, $S_{t+1}$. 
 
 > The MDP and agent together thereby give rise to a sequence or trajectory that begins like this:
-`S0 , A0 , R1 , S1 , A1 , R2 , S2 ,A2 , R3 , . . .`
+> S0 , A0 , R1 , S1 , A1 , R2 , S2 ,A2 , R3 , . . .
 
 or 
 
@@ -41,4 +41,43 @@ S1 , A1 , R2;
 S2 , A2 , R3;
 , . . .
 ```
+
+---
+
+In a finite MDP, the sets of states, actions, and rewards \mathbb{(S, A, and R)} all have a finite number of elements.
+* The random variables $R_t$ and $S_t$ have well defined discrete probability distributions dependent only on the preceding state and action.
+* For particular values of these random variables, $s'\in \mathbb{S}$ and $r'\in \mathbb{R}$, 
+There is a probabilityof those values occurring at time t, given particular values of the preceding state and action
+
+$$ p(s',r | s,a)= Pr\{S_t=s',\ R_t=r\ |\ S_{t-1}=s,\ A_{t-1}=a\}$$
+
+here for all $s', s\in \mathbb{S}, r \in \mathbb{R}$ and $a\in\mathbb{A}(s)$. 
+
+
+
+---
+The dynamics function $p : \mathbb{S}\times \mathbb{R}\times  \mathbb{S}\times \mathbb{A}\rightarrow\left[0, 1\right]$ is an ordinary deterministic function of four arguments. 
+* The $`|'$ in the middle of it comes from the notation for conditional probability, \sum_{s'\in \mathbb{S}}
+
+$$\sum_{s'\in \mathbf{S}}\sum_{r\in \mathbf{R}}p(s', r \ s, a) =1 \text{ for all } s\in\mathbf(S),a\in\mathbf{A}$$
+
+--- 
+
+# Markov decision process
+
+The probabilities given by $p$ completely characterize the environment’s dynamics. 
+
+That is, the probability of each possible value for $S_t$ and $R_t$ depends only on the immediately preceding state and action, $S_{t-1}$ and $A_{t-1}$ , and, given them, not at all on earlier states and actions. 
+
+The state must include information about all aspects of the past agent–environment interaction that make a difference for the future. 
+
+If it does, then the state is said to have the *Markov property*.
+
+---
+From the four-argument dynamics function, $p$
+$$ p(s',r | s,a)= Pr\{S_t=s',\ R_t=r\ |\ S_{t-1}=s,\ A_{t-1}=a\}$$
+we can compute aboute env. or expected rewards as
+
+
+$$ p(s'| s,a)= Pr\{S_t=s'|\ S_{t-1}=s,\ A_{t-1}=a\} = \sum_{r\in\mathbf{R}}p(s',r|s,a)$$
 
