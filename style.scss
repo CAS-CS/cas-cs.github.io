@@ -1,22 +1,22 @@
 //some temp style in nested css/ scss format
 //@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
 :root {
-    --hue         : 235;
-    --sat         : 35%;
-    --light       : 12%;
-    --hueAscent   : 180;
-    --satAscent   : 50%;
-    --lightAscent : 80%;
-    --textColor   : white;
-    --linkColor   : hsl(var(--hue),90%,70%);
-    --ascentColor : hsl(var(--hueAscent), calc(var(--sat) * 1.5), calc(var(--light) * 2));
-    --colorScheme : dark;
-    --testShadow  : black;
-    --lightFactor : 1;
-    --fontScale   : 1;
-    --fontFamily  : "Roboto","Finlandica", "Poppins", "Arial";
+    --hue: 235;
+    --sat: 35%;
+    --light: 12%;
+    --hueAscent: 180;
+    --satAscent: 50%;
+    --lightAscent: 80%;
+    --textColor: white;
+    --linkColor: hsl(var(--hue), 90%, 70%);
+    --ascentColor: hsl(var(--hueAscent), calc(var(--sat) * 1.5), calc(var(--light) * 2));
+    --colorScheme: dark;
+    --testShadow: black;
+    --lightFactor: 1;
+    --fontScale: 1;
+    --fontFamily: "Roboto", "Finlandica", "Poppins", "Arial";
     --headerHeight: 60px;
-    --bgColor     : hsl(var(--hue), calc(var(--sat) * 1.5), 5%);
+    --bgColor: hsl(var(--hue), calc(var(--sat) * 1.5), 5%);
     ;
 }
 
@@ -24,8 +24,8 @@
 *::before,
 *::after {
     box-sizing: border-box;
-    margin    : 0px;
-    padding   : 0px;
+    margin: 0px;
+    padding: 0px;
     transition: all 100ms ease-in-out;
 
 }
@@ -43,9 +43,9 @@ html {
 }
 
 body {
-    min-height      : 100vh;
+    min-height: 100vh;
     background-color: var(--bgColor, #222);
-    font-size       : var(--fontSize);
+    font-size: var(--fontSize);
     background-color: var(--bgColor);
 }
 
@@ -53,8 +53,8 @@ img,
 picture,
 svg,
 video {
-    display   : block;
-    max-width : 100%;
+    display: block;
+    max-width: 100%;
     max-height: 100vh;
 }
 
@@ -84,36 +84,36 @@ a {
 
 .heading {
     font-size: clamp(1.2rem, 5vw, 2rem);
-    padding  : 1em !important;
+    padding: 1em !important;
 }
 
 #app {
-    --h                : var(--hue, 200);
-    --s                : var(--sat, 50%);
-    --l                : calc(var(--light, 15%) * var(--lightFactor, 1));
-    display            : flex;
-    flex-direction     : column;
-    min-height         : 100vh;
-    color              : var(--textColor, white);
+    --h: var(--hue, 200);
+    --s: var(--sat, 50%);
+    --l: calc(var(--light, 15%) * var(--lightFactor, 1));
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    color: var(--textColor, white);
     // background-color: hsl(var(--h), var(--s), var(--l));
-    font-size          : calc(1rem * var(--fontScale, 1));
-    font-family        : var(--fontFamily), "arial", "sans";
+    font-size: calc(1rem * var(--fontScale, 1));
+    font-family: var(--fontFamily), "arial", "sans";
 
 
 
     header {
-        display         : flex;
-        flex-wrap       : wrap;
-        justify-content : space-between;
-        align-items     : center;
-        --s             : calc(var(--sat, 50%) * var(--lightFactor, 1) * 1.5);
-        --l             : calc(var(--light, 15%) * var(--lightFactor, 1) * .5);
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        --s: calc(var(--sat, 50%) * var(--lightFactor, 1) * 1.5);
+        --l: calc(var(--light, 15%) * var(--lightFactor, 1) * .5);
         background-color: hsl(var(--h), var(--s), var(--l));
-        position        : sticky;
-        top             : 0px;
-        min-height      : var(--headerHeight, 60px);
-        padding         : 5px;
-        z-index         : 100;
+        position: sticky;
+        top: 0px;
+        min-height: var(--headerHeight, 60px);
+        padding: 5px;
+        z-index: 100;
 
 
         .title {
@@ -121,12 +121,12 @@ a {
         }
 
         .pathNavigator {
-            font-size       : .8em;
-            color           : var(--ascentColor, aqua);
-            padding         : 5px;
-            margin          : 5px;
-            text-decoration : none;
-            text-transform  : uppercase;
+            font-size: .8em;
+            color: var(--ascentColor, aqua);
+            padding: 5px;
+            margin: 5px;
+            text-decoration: none;
+            text-transform: uppercase;
             background-color: rgb(255, 255, 255);
 
 
@@ -146,9 +146,9 @@ a {
     }
 
     main {
-        min-height      : 100vh;
-        font-family     : var(--fontFamily);
-        font-size       : var(--fontSize);
+        min-height: 100vh;
+        font-family: var(--fontFamily);
+        font-size: var(--fontSize);
         background-color: hsl(var(--h), var(--s), var(--l));
 
         &:fullscreen {
@@ -168,7 +168,7 @@ a {
 
 
 
-    
+
 
 
 
@@ -179,143 +179,130 @@ a {
 }
 
 
-.footer{
-    background-color: hsla(var(--hue, 180), 80%, 5%,1);
+.footer {
+    background-color: hsla(var(--hue, 180), 80%, 5%, 1);
     position: fixed;
     display: block;
     width: 100%;
-    left:0px;
-    bottom:calc(100vh - 100%);
+    left: 0px;
+    bottom: calc(100vh - 100%);
     transform: translateY(calc(100% - 2em));
-    transition:all 400ms ease-in-out;
-    border-top : hsla(var(--hue),70%,30%,.1) solid 2em;
+    transition: all 400ms ease-in-out;
+    border-top: hsla(var(--hue), 70%, 30%, .1) solid 2em;
 
 
-    &:hover{
+    &:hover {
         transform: translateY(0);
-        border-top : hsla(var(--hue),30%,30%,0) solid 0em;
+        border-top: hsla(var(--hue), 30%, 30%, 0) solid 0em;
     }
 
-    
+
     #footerButtons {
-        display        : flex;
+        display: flex;
         justify-content: center;
-        align-items    : center;
-        min-height     : 10vh;
-        
+        align-items: center;
+        min-height: 10vh;
+
     }
 }
 
-  
+
 .container {
     padding-inline: 3em;
 }
 
 .dirGrid {
-    display              : grid;
+    display: grid;
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    padding              : 2em 3em;
-    grid-gap             : 2em 1em;
-    z-index              : inherit;
+    padding: 2em 3em;
+    grid-gap: 2em 1em;
+    z-index: inherit;
 }
 
 .folderLinks {
-    cursor:pointer;
-    position       : relative;
-    display        : flex;
-    flex-direction : column;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
     justify-content: flex-end;
-    align-content  : flex-end;
-    align-self     : flex-end;
-    display        : inline-block;
-    padding        : 10px;
-    padding-top    : 7.5em;
-    margin         : 10px;
-    text-transform : uppercase;
-    color          : var(--textColor, white);
-    text-shadow    : #555;
-    font-size      : .7em;
-    border-radius  : 3px;
+    align-content: flex-end;
+    align-self: flex-end;
+    display: inline-block;
+    padding: 10px;
+    padding-top: 7.5em;
+    margin: 10px;
+    text-transform: uppercase;
+    color: var(--textColor, white);
+    text-shadow: #555;
+    font-size: .7em;
+    border-radius: 3px;
     text-decoration: none;
-    min-width      : 6em;
-    min-height     : 8em;
-    margin-top     : auto;
-    z-index        : inherit;
+    min-width: 6em;
+    min-height: 8em;
+    margin-top: auto;
+    z-index: inherit;
 
     &:hover {
-        box-shadow      : 1px 1px 2px white;
+        box-shadow: 1px 1px 2px white;
         background-color: hsla(0, 0%, 100%, 0.404);
 
     }
 
-    // &:before,
-    // &:after {
-    //     content      : "";
-    //     width        : 6em;
-    //     height       : 5em;
-    //     border-radius: 5px;
-    //     position     : absolute;
-    //     bottom       : 0%;
-    //     left         : 0;
-    //     margin       : 5px;
-    // }
 
 
     &:before {
-        content         : "";
-        width           : 6em;
-        height          : 5em;
-        border-radius   : 5px;
-        position        : absolute;
-        top             : 1em;
-        left            : 0;
-        margin          : 1em;
+        content: "";
+        width: 6em;
+        height: 5em;
+        border-radius: 5px;
+        position: absolute;
+        top: 1em;
+        left: 0;
+        margin: 1em;
         background-color: hsla(180, 81%, 39%, 0.6);
-        transform       : skewY(0deg);
+        transform: skewY(0deg);
     }
 
     &:after {
-        content         : "";
-        width           : 5em;
-        height          : 5em;
-        border-radius   : 5px;
-        position        : absolute;
-        top             : 1em;
-        left            : 0;
-        margin          : 1em;
+        content: "";
+        width: 5em;
+        height: 5em;
+        border-radius: 5px;
+        position: absolute;
+        top: 1em;
+        left: 0;
+        margin: 1em;
         background-color: rgba(75, 236, 236, 0.6);
-        transform       : skewY(-20deg) translateY(-10px);
+        transform: skewY(-20deg) translateY(-10px);
     }
 }
 
+.csvLinks{
 
-
-.slideLinks {
-
-    cursor:pointer;
-    position        : relative;
-    display         : flex;
-    flex-direction  : column;
-    justify-content : flex-end;
-    align-content   : flex-end;
-    align-self      : flex-end;
-    display         : inline-block;
-    padding-block   : 10px;
-    padding-inline  : 15px;
-    margin          : 10px;
-    text-transform  : uppercase;
-    color           : var(--textColor, white);
-    font-size       : .7em;
-    border-radius   : 3px;
-    text-decoration : none;
-    width           : 150px;
-    height          : 110px;
-    margin-top      : auto;
-    z-index         : inherit;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-self: flex-end;
+    display: inline-block;
+    padding-block: 10px;
+    padding-inline: 15px;
+    margin: 10px;
+    text-transform: uppercase;
+    color: var(--textColor, white);
+    font-size: .7em;
+    border-radius: 3px;
+    text-decoration: none;
+    width: 150px;
+    height: 110px;
+    margin-top: auto;
+    z-index: inherit;
     background-color: hsla(0, 0%, 100%, 0.104);
 
     &:hover {
-        box-shadow      : 1px 1px 2px white;
+        box-shadow: 1px 1px 2px white;
         background-color: hsla(0, 0%, 100%, 0.404);
 
     }
@@ -323,14 +310,64 @@ a {
 
     &:before {
         background-color: rgb(19, 179, 179);
-        transform       : skewY(0deg);
-        width           : 60px;
+        transform: skewY(0deg);
+        width: 60px;
+
+    }
+
+    &:after {
+        position: absolute;
+        bottom:5px;
+        right:5px;
+        content:"CSV";
+        background-color: hsl(var(--hueAscent), 81%, 21%);
+        padding:5px;
+        border-radius: 4px;
+        font-weight: 900;
+    }
+}
+
+.slideLinks {
+
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-self: flex-end;
+    display: inline-block;
+    padding-block: 10px;
+    padding-inline: 15px;
+    margin: 10px;
+    text-transform: uppercase;
+    color: var(--textColor, white);
+    font-size: .7em;
+    border-radius: 3px;
+    text-decoration: none;
+    width: 150px;
+    height: 110px;
+    margin-top: auto;
+    z-index: inherit;
+    background-color: hsla(0, 0%, 100%, 0.104);
+
+    &:hover {
+        box-shadow: 1px 1px 2px white;
+        background-color: hsla(0, 0%, 100%, 0.404);
+
+    }
+
+
+    &:before {
+        background-color: rgb(19, 179, 179);
+        transform: skewY(0deg);
+        width: 60px;
 
     }
 
     &:after {
         background-color: rgb(76, 236, 236);
-        transform       : skewY(-20deg) translateY(-10px);
+        transform: skewY(-20deg) translateY(-10px);
 
     }
 }
@@ -339,81 +376,93 @@ a {
 
 .pdfLinks {
 
-    cursor:pointer;
-    position        : relative;
-    display         : flex;
-    flex-direction  : column;
-    justify-content : flex-end;
-    align-content   : flex-end;
-    align-self      : flex-end;
-    display         : inline-block;
-    padding-block   : 10px;
-    padding-inline  : 15px;
-    margin          : 10px;
-    text-transform  : uppercase;
-    color           : var(--textColor, white);
-    font-size       : .7em;
-    border-radius   : 3px;
-    text-decoration : none;
-    min-width       : 150px;
-    height          : 110px;
-    margin-top      : auto;
-    z-index         : inherit;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-content: flex-end;
+    align-self: flex-end;
+    display: inline-block;
+    padding-block: 10px;
+    padding-inline: 15px;
+    margin: 10px;
+    text-transform: uppercase;
+    color: var(--textColor, white);
+    font-size: .7em;
+    border-radius: 3px;
+    text-decoration: none;
+    min-width: 150px;
+    height: 110px;
+    margin-top: auto;
+    z-index: inherit;
     background-color: hsla(0, 0%, 100%, 0.104);
 
     &:hover {
-        box-shadow      : 1px 1px 2px white;
+        box-shadow: 1px 1px 2px white;
         background-color: hsla(0, 0%, 100%, 0.404);
 
     }
 
 
-    &:after {
-        display               : flex;
-        justify-content       : end;
-        align-items           : flex-end;
-        border-radius         : 3px;
-        font-size             : 2em;
-        font-style            : italic;
-        position              : absolute;
-        bottom                : 0;
-        right                 : 0;
-        // width              : 100%;
-        // height             : 100%;
-        content               : "PDF";
-        padding               : 1px;
-        background-color      : rgba(76, 236, 236, .6);
-
-
-    }
-
     // &:after {
-    //     background-color: rgb(76, 236, 236);
-    //     transform       : skewY(-20deg) translateY(-10px);
+    //     display: flex;
+    //     justify-content: end;
+    //     align-items: flex-end;
+    //     border-radius: 3px;
+    //     font-size: 2em;
+    //     font-style: italic;
+    //     position: absolute;
+    //     bottom: 0;
+    //     right: 0;
+    //     // width              : 100%;
+    //     // height             : 100%;
+    //     content: "PDF";
+    //     padding: 1px;
+    //     background-color: rgba(76, 236, 236, .6);
+
 
     // }
+
+    // // &:after {
+    // //     background-color: rgb(76, 236, 236);
+    // //     transform       : skewY(-20deg) translateY(-10px);
+
+    // // }
+
+
+    &:after {
+        position: absolute;
+        bottom:5px;
+        right:5px;
+        content:"PDF";
+        background-color: hsl(var(--hueAscent), 81%, 21%);
+        padding:5px;
+        border-radius: 4px;
+        font-weight: 900;
+    }
 }
 
 .button {
-    display         : inline-block;
-    position        : relative;
-    padding         : .5em;
-    cursor          : pointer;
-    font-weight     : bold;
-    text-transform  : uppercase;
-    color           : white;
+    display: inline-block;
+    position: relative;
+    padding: .5em;
+    cursor: pointer;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
     background-color: hsla(var(--hueAscent), 80%, 30%, 0.4);
-    border          : none;
-    border-radius   : .5em;
-    transition      : all 0.2s ease-in-out;
-    margin          : 1em;
-    perspective     : 0em;
-    transform       : translateZ(1em);
+    border: none;
+    border-radius: .5em;
+    transition: all 0.2s ease-in-out;
+    margin: 1em;
+    perspective: 0em;
+    transform: translateZ(1em);
 
 
 
     &:hover {
-        --hueAscent     : var(--hue);
+        --hueAscent: var(--hue);
         background-color: hsla(var(--hueAscent), 80%, 30%, 0.4);
 
 
@@ -424,13 +473,13 @@ a {
 
 pre,
 samp {
-    display     : block;
+    display: block;
     margin-block: 1em;
 }
 
 .samp {
-    font-size  : .7em;
-    overflow-x : auto;
+    font-size: .7em;
+    overflow-x: auto;
     white-space: pre-wrap;
 }
 
@@ -441,7 +490,7 @@ samp {
 
 ol,
 ul {
-    padding    : 1em;
+    padding: 1em;
     margin-left: 1em;
 }
 
@@ -449,31 +498,37 @@ ul {
 //print css
 @media print {
     @page {
-         size: A4 landscape;
+        size: A4 landscape;
     }
-    .slideroot,.blockroot {
-         overflow: auto;
-         height: auto;
+
+    .slideroot,
+    .blockroot {
+        overflow: auto;
+        height: auto;
     }
-    .slide{
+
+    .slide {
         page-break-after: always;
         break-inside: avoid;
         page-break-inside: avoid;
     }
-   .block{
+
+    .block {
         break-inside: avoid;
         page-break-inside: avoid;
     }
-  
-    img{
+
+    img {
         display: block;
         page-break-before: auto;
-        page-break-after: auto; 
-		page-break-inside: avoid;
+        page-break-after: auto;
+        page-break-inside: avoid;
         break-inside: avoid;
     }
-    video,#sideBar, #appfooter {
-        display:none;
+
+    video,
+    #sideBar,
+    #appfooter {
+        display: none;
     }
 }
-
