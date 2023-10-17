@@ -1,14 +1,13 @@
 ./
-./Workshops
-./.Syllabus
-./Admission
-./.dist
-./Gallery
 ./Lectures
-./List
-./.git
-./.Previous Question Papers
 ./Notices
 ./TimeTable
+./Workshops
+./.Syllabus
+./Gallery
+./.Previous Question Papers
 ./node_modules
+./List
+./Admission
 ./Misc
+./.git

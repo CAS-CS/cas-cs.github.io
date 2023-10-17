@@ -1,4 +1,6 @@
 # Time Table
+### M.Tech I Sem 2022-23
+![](./CSE I 2023-24 Time Table.png)
 
 ### M.Tech III Sem 2022-23
 
