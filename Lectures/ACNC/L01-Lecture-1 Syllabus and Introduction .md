@@ -1,4 +1,16 @@
-](mailto:prateekrajgautam@gmail.com)
+# ADVANCED COMPUTER NETWORKS AND COMMUNICATION
+### MCSC -103
+
+Lectures: 3
+
+Practical: 2
+
+Credits: 4
+
+
+[Dr. Prateek Raj Gautam](mailto:prateek@cas.res.in) 
+Assitant Professor CSED
+
 ---
 # Course Outlines
 
@@ -6,8 +18,7 @@
 2. Telecommunications media (conducted and radiated);
 3. Transmission characteristics (including an introduction to coding and modulation techniques);
 4. Error characteristics, detection, and correction;
-5. Local and wide area networking applications,
-hardware, and software; 
+5. Local and wide area networking applications, hardware, and software; 
 6. The OSI model;
 7. Industry standards;
 8. Topologies;
@@ -20,27 +31,31 @@ hardware, and software;
 
 ---
 # Other important topics
-
 * Digital signatures, authentication protocols. 
-
 * WLAN, Mobile IP. SNMP (V1 and V2)-Organizational model-System Overview, 
-
 * The information model, communication model-Functional model, 
-
 * SNMP proxy server. 
-
 * Broadband networks and services, ATM Technology, Configuration management, Fault management, performance management. 
-
 * Network Management Tools, Network Statistics Measurement Systems
-
 * WebBased Management, XML Based Network Management
 
 ---
+## Text Books
+1. Computer Networking: A Top-Down Approach, James F. Kuros and Keith W. Ross, Pearson, 6th Edition,2012
+2. A Practical Guide to Advanced Networking , Jeffrey S. Beasley and Piyasat Nilkaew, Pearson, 3rd Edition,2012
+3. Computer Networks , Andrew S. Tanenbaum, David J. Wetherall, Prentice, 5th Edition,2010
 
+## Reference Book
+1. Data Communication and Computer Networks, by Prakash C.Gupta, PHI.
+2. Networking Ali-in-one Desk Reference by Doug Lowe, Wiley Dreamtech
+3. Computer Network by Godbole, Tata McGraw Hill.
+4. Computer Networking, by Stanford H. Rowe, Marsha L. Schu
+
+
+---
 # LAB Sessions
 
 1. Programming protocol USING C/C++, PYTHON, and MATLAB and practicing theory.
-
 2. Cisco Packet Tracer / GNS3
 
 
