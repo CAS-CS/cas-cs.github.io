@@ -1,13 +1,12 @@
 ./
-./.dist
-./.git
-./.Obsolute
-./.Previous Question Papers
-./.Syllabus
-./Gallery
 ./Lectures
-./Misc
-./node_modules
 ./Notices
 ./TimeTable
 ./Workshops
+./.Syllabus
+./Gallery
+./.Previous Question Papers
+./.Obsolute
+./node_modules
+./Misc
+./.git
