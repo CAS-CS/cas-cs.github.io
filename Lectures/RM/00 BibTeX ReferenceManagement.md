@@ -43,6 +43,75 @@ The exact commands may vary depending on your LaTeX editor or the command line. 
 After completing the compilation steps, you should have a PDF document with properly formatted references and citations.
 
 
+
+
+
+---
+
+LaTeX provides a variety of bibliography styles (often referred to as .bst files) that determine how your citations and references are formatted in your document. Here are some common bibliography styles in LaTeX:
+
+1. **plain**: This style provides numerical citations and lists references in the order in which they appear in the document. It is one of the most commonly used styles.
+
+   ```latex
+   \bibliographystyle{plain}
+   ```
+
+2. **alpha**: This style uses author-year labels (e.g., [Doe92]) and arranges references alphabetically by author's last name.
+
+   ```latex
+   \bibliographystyle{alpha}
+   ```
+
+3. **abbrv**: Similar to the plain style, but with abbreviated author names and journal titles.
+
+   ```latex
+   \bibliographystyle{abbrv}
+   ```
+
+4. **unsrt**: This style is similar to plain but does not sort the references. Instead, they appear in the order they are cited.
+
+   ```latex
+   \bibliographystyle{unsrt}
+   ```
+
+5. **apalike**: This style uses author-year citations and is based on the APA (American Psychological Association) citation style.
+
+   ```latex
+   \bibliographystyle{apalike}
+   ```
+
+6. **ieeetr**: This style is often used for documents in the field of electrical engineering and computer science.
+
+   ```latex
+   \bibliographystyle{ieeetr}
+   ```
+
+7. **acm**: This style is suitable for documents in the field of computer science and information technology. It is based on the ACM (Association for Computing Machinery) style.
+
+   ```latex
+   \bibliographystyle{acm}
+   ```
+
+8. **siam**: This style is commonly used in documents related to mathematics and engineering. It follows the SIAM (Society for Industrial and Applied Mathematics) citation style.
+
+   ```latex
+   \bibliographystyle{siam}
+   ```
+
+9. **chicago**: The Chicago Manual of Style has several variations for author-date citations. You can choose from `chicago`, `chicagoa`, `chicagob`, and others.
+
+   ```latex
+   \bibliographystyle{chicago}
+   ```
+
+10. **nature**: This style is inspired by the formatting used in the journal Nature.
+
+   ```latex
+   \bibliographystyle{nature}
+   ```
+
+These are just a few examples of the common bibliography styles available in LaTeX. The choice of style depends on your document's requirements and the publication or citation style you want to follow. If none of these styles suit your needs, you can also create or customize your own .bst file for a more tailored citation format.
+
 ---
 
 In LaTeX, when citing references from a BibTeX file, you can use various citation commands depending on the information you want to include in the citation. Here are some commonly used citation commands:
