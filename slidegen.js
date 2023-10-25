@@ -514,6 +514,9 @@ table {
     cursor: pointer;
 }
 
+[data-dir="node_modules"]{
+  display:none;
+}
 
 `;
 
