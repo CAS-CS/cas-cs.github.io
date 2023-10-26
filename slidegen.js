@@ -4,6 +4,8 @@ window.$$ = GeneratorWebHelper();
 $.init();
 load("./script.js");
 
+
+
 //STYLE
 var slideScss = `
 
@@ -514,9 +516,7 @@ table {
     cursor: pointer;
 }
 
-[data-dir="node_modules"]{
-  display:none;
-}
+
 
 `;
 
@@ -1707,3 +1707,15 @@ setTimeout(() => {
     console.log(error)    
   };
 }, 2000);
+
+
+
+
+var hidenodescss=`
+[data-dir*="node_modules"]{
+  display:none !important;
+}
+`
+setTimeout(loadscss(hidenodescss),2000)
+
+
