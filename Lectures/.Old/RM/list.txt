@@ -1,13 +1,19 @@
 ./
-./007 LaTeX Drawing tikz.md
-./008 LaTeX Drawing pdfplots.md
 ./00 BeamerPresentation.md
 ./00 BibTeX ReferenceManagement.md
+./beta-L006-Lecture-6.md
 ./L01_L02-Lecture-1.md
+./L03-Lecture-3.md
+./L04-Lecture-4.md
 ./L05-Lecture-5.md
 ./L06-Lecture-6-LaTeX-Installation-and-Introduction.md
 ./L07-Lecture-7.md
 ./L08-Lecture-8.md
 ./L09_L10-Lecture-9,10.md
 ./L11-Lecture-11.md
+./L12-Lecture-12.md
+./L13-Lecture-13.md
 ./L14-Lecture-14.md
+./L15-Lecture-15.md
+./L17-Lecture-17.md
+./L18-Lecture-18.md
