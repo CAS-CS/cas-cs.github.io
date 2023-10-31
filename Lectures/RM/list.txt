@@ -3,6 +3,7 @@
 ./006 BibTeX Reference Management.md
 ./007 LaTeX Drawing tikz.md
 ./008 LaTeX Drawing pdfplots.md
+./009 Author and Journal level metric idexing and identity Lecture-009.md
 ./L01_L02-Lecture-1.md
 ./L05-Lecture-5.md
 ./L06-Lecture-6-LaTeX-Installation-and-Introduction.md
@@ -10,4 +11,3 @@
 ./L08-Lecture-8.md
 ./L09_L10-Lecture-9,10.md
 ./L11-Lecture-11.md
-./L14-Lecture-14.md
