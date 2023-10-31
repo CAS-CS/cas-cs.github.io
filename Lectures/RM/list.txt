@@ -1,13 +1,11 @@
 ./
-./000 LaTeX Installation and Introduction.md
-./001 Beamer Presentation.md
-./006 BibTeX Reference Management.md
-./007 LaTeX Drawing tikz.md
-./008 LaTeX Drawing pdfplots.md
-./009 Author and Journal level metric idexing and identity Lecture-009.md
-./L01_L02-Lecture-1.md
-./L05-Lecture-5.md
-./L07-Lecture-7.md
-./L08-Lecture-8.md
-./L09_L10-Lecture-9,10.md
-./L11-Lecture-11.md
+./L000 Syllabus and overview.md
+./L001 LaTeX Installation and Introduction.md
+./L002 Lecture-7.md
+./L003 Multi line equation.md
+./L004 BibTeX Reference Management.md
+./L005 LaTeX Drawing tikz.md
+./L006 LaTeX Drawing pdfplots.md
+./L007 Beamer Presentation.md
+./L009 Author and Journal level metric idexing and identity Lecture-009.md
+./L010 markdown.md
