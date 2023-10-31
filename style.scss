@@ -1,5 +1,8 @@
+/*
 //some temp style in nested css/ scss format
 //@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
+*/
+
 :root {
     --hue: 235;
     --sat: 35%;
@@ -95,7 +98,6 @@ a {
     flex-direction: column;
     min-height: 100vh;
     color: var(--textColor, white);
-    // background-color: hsl(var(--h), var(--s), var(--l));
     font-size: calc(1rem * var(--fontScale, 1));
     font-family: var(--fontFamily), "arial", "sans";
 
@@ -156,9 +158,6 @@ a {
             background-color: hsl(var(--h), var(--s), var(--l));
         }
 
-        // p {
-        //     margin-block: .5em;
-        // }
 
 
     }
@@ -405,31 +404,6 @@ a {
     }
 
 
-    // &:after {
-    //     display: flex;
-    //     justify-content: end;
-    //     align-items: flex-end;
-    //     border-radius: 3px;
-    //     font-size: 2em;
-    //     font-style: italic;
-    //     position: absolute;
-    //     bottom: 0;
-    //     right: 0;
-    //     // width              : 100%;
-    //     // height             : 100%;
-    //     content: "PDF";
-    //     padding: 1px;
-    //     background-color: rgba(76, 236, 236, .6);
-
-
-    // }
-
-    // // &:after {
-    // //     background-color: rgb(76, 236, 236);
-    // //     transform       : skewY(-20deg) translateY(-10px);
-
-    // // }
-
 
     &:after {
         position: absolute;
@@ -482,11 +456,11 @@ samp {
     overflow-x: auto;
     white-space: pre-wrap;
 }
-
+/*
 // code {
 //     white-space: pre-wrap;
 // }
-
+*/
 
 ol,
 ul {
@@ -495,7 +469,7 @@ ul {
 }
 
 
-//print css
+/* print css */
 @media print {
     @page {
         size: A4 landscape;
