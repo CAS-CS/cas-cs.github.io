@@ -2,64 +2,63 @@ PGFPlots is a package in LaTeX that builds on top of TikZ and is designed for cr
 
 ---
 When using the `pgfplots` package in LaTeX to create plots with the `\addplot` command, there are numerous options and settings available to customize your plots. Here's a list of some of the common options you can use with `\addplot`:
+#### Data Source:
+- `\addplot table {datafile.csv};`: Use data from an external CSV file.
+- `\addplot coordinates {(x1, y1) (x2, y2) ...};`: Manually specify data points.
 
-1. **Data Source**:
-   - `\addplot table {datafile.csv};`: Use data from an external CSV file.
-   - `\addplot coordinates {(x1, y1) (x2, y2) ...};`: Manually specify data points.
+#### Plot Styles:
+- `\addplot [style] ...;`: Apply various plot styles, such as `solid`, `dashed`, `dotted`, `only marks`, `mark=*, mark=square`, etc.
 
-2. **Plot Styles**:
-   - `\addplot [style] ...;`: Apply various plot styles, such as `solid`, `dashed`, `dotted`, `only marks`, `mark=*, mark=square`, etc.
+#### Line and Marker Colors:
+- `\addplot [color=red] ...;`: Set the color of the line or markers.
 
-3. **Line and Marker Colors**:
-   - `\addplot [color=red] ...;`: Set the color of the line or markers.
+#### Line Width:
+- `\addplot [ultra thick] ...;`: Adjust the line width.
 
-4. **Line Width**:
-   - `\addplot [ultra thick] ...;`: Adjust the line width.
+#### Markers:
+- `\addplot [mark=o] ...;`: Define marker symbols like circles, squares, etc.
 
-5. **Markers**:
-   - `\addplot [mark=o] ...;`: Define marker symbols like circles, squares, etc.
+#### Legend Entries:
+- `\addplot [...] coordinates {...} node[pos] {Legend Entry};`: Label the plot in the legend.
 
-6. **Legend Entries**:
-   - `\addplot [...] coordinates {...} node[pos] {Legend Entry};`: Label the plot in the legend.
+#### Error Bars:
+- `\addplot+ [error bars/.cd, x dir=both, x explicit, y dir=both, y explicit] ...;`: Add error bars to your plot.
 
-7. **Error Bars**:
-   - `\addplot+ [error bars/.cd, x dir=both, x explicit, y dir=both, y explicit] ...;`: Add error bars to your plot.
+#### Filling and Shading:
+- `\addplot [fill opacity=0.2, fill=blue] ...;`: Fill the area under or between curves.
 
-8. **Filling and Shading**:
-   - `\addplot [fill opacity=0.2, fill=blue] ...;`: Fill the area under or between curves.
+#### Domain and Samples:
+- `\addplot [domain=xmin:xmax, samples=n] ...;`: Specify the domain and number of samples for the plot.
 
-9. **Domain and Samples**:
-   - `\addplot [domain=xmin:xmax, samples=n] ...;`: Specify the domain and number of samples for the plot.
+#### Restrict Data Range:
+- `\addplot [restrict x to domain=xmin:xmax, restrict y to domain=ymin:ymax] ...;`: Limit the plotted data to a specific range.
 
-10. **Restrict Data Range**:
-    - `\addplot [restrict x to domain=xmin:xmax, restrict y to domain=ymin:ymax] ...;`: Limit the plotted data to a specific range.
+#### Interpolation:
+- `\addplot [smooth] ...;`: Apply curve smoothing.
 
-11. **Interpolation**:
-    - `\addplot [smooth] ...;`: Apply curve smoothing.
+#### Scaling:
+- `\addplot [x=scale, y=scale] ...;`: Scale the x and y coordinates.
 
-12. **Scaling**:
-    - `\addplot [x=scale, y=scale] ...;`: Scale the x and y coordinates.
+#### Stacking:
+- `\addplot [stack plots=y] ...;`: Stack plots on top of each other.
 
-13. **Stacking**:
-    - `\addplot [stack plots=y] ...;`: Stack plots on top of each other.
+#### Axis Scaling:
+- `\addplot [xmode=log, ymode=log] ...;`: Use logarithmic scaling for the axes.
 
-14. **Axis Scaling**:
-    - `\addplot [xmode=log, ymode=log] ...;`: Use logarithmic scaling for the axes.
+#### Clip Plots:
+- `\addplot [clip] ...;`: Clip the plot to the axis boundaries.
 
-15. **Clip Plots**:
-    - `\addplot [clip] ...;`: Clip the plot to the axis boundaries.
+#### Meta Information:
+- `\addplot [meta=color] table {datafile.csv};`: Use a separate column in the data file to assign colors or other meta information to points.
 
-16. **Meta Information**:
-    - `\addplot [meta=color] table {datafile.csv};`: Use a separate column in the data file to assign colors or other meta information to points.
+#### Custom Functions:
+- `\addplot {f(x)};`: Plot custom mathematical functions.
 
-17. **Custom Functions**:
-    - `\addplot {f(x)};`: Plot custom mathematical functions.
+#### Coordinate Transformations:
+- `\addplot [x filter/.code={\pgfmathparse{\pgfmathresult - shiftX}}, y filter/.code={\pgfmathparse{\pgfmathresult - shiftY}}] ...;`: Apply custom transformations to coordinates.
 
-18. **Coordinate Transformations**:
-    - `\addplot [x filter/.code={\pgfmathparse{\pgfmathresult - shiftX}}, y filter/.code={\pgfmathparse{\pgfmathresult - shiftY}}] ...;`: Apply custom transformations to coordinates.
-
-19. **External TikZ Code**:
-    - `\addplot+ [draw=none, mark=none] {%
+#### External TikZ Code:
+- `\addplot+ [draw=none, mark=none] {%
     \begin{scope}[on layer=axis foreground]
         \draw (axis cs:x1,y1) -- (axis cs:x2,y2);
     \end{scope}
@@ -122,7 +121,6 @@ This code creates a scatter plot using data from a CSV file named `data.csv`.
 
 ### Loading Data from CSV:
    You can load data from a CSV file using the `\addplot table` command as shown in the examples above. The CSV file should have columns separated by commas (`,`). Here's an example of a simple `data.csv` file:
-
    ```csv
    X, Y
    1, 2
