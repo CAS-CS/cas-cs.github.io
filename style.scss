@@ -466,11 +466,7 @@ pre{
     overflow-x: auto;
     white-space: pre-wrap;
 }
-/*
-// code {
-//     white-space: pre-wrap;
-// }
-*/
+
 
 ol,
 ul {
@@ -479,7 +475,6 @@ ul {
 }
 
 
-/* print css */
 @media print {
     @page {
         size: A4 landscape;
