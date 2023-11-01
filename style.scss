@@ -451,6 +451,16 @@ samp {
     margin-block: 1em;
 }
 
+pre{
+  padding:1em;
+  box-shadow:2px 2px 5px hsla(var(--hueAscent),50%,40%,.8);
+  border-radius: 1em;
+  font-size:.7em;
+  font-family: monospace;
+  display: block;
+  background-color:hsla(0,10%,10%,.2);
+}
+
 .samp {
     font-size: .7em;
     overflow-x: auto;
@@ -501,7 +511,7 @@ ul {
         page-break-inside: avoid;
         break-inside: avoid;
     }
-
+    
     video,
     #sideBar,
     #appfooter {
