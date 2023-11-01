@@ -326,4 +326,5 @@ Beamer provides a wide range of advanced features for creating animated and inte
 
 These are just a few examples of how you can customize frames in Beamer. You can further fine-tune the appearance of your presentation by exploring Beamer's extensive customization options and packages.
 
+[Download beamer class manual](https://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf) https://tug.ctan.org/macros/latex/contrib/beamer/doc/beameruserguide.pdf
 

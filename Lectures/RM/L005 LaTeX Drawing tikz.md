@@ -98,3 +98,5 @@ To use TikZ, you need to include the `\usepackage{tikz}` command in your LaTeX d
 ---
 
 TikZ offers a wide range of options for customizing the appearance of your diagrams, and it's highly flexible and extensible, making it a versatile tool for creating high-quality graphics within LaTeX documents. You can refer to the TikZ documentation for more advanced features and examples: [TikZ and PGF Manual](https://ctan.org/pkg/pgf).
+
+[Download tiks & pgf manual](https://mirror.niser.ac.in/ctan/graphics/pgf/base/doc/pgfmanual.pdf) https://mirror.niser.ac.in/ctan/graphics/pgf/base/doc/pgfmanual.pdf

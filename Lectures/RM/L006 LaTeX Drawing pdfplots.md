@@ -230,9 +230,9 @@ Index,Sine,Cosine
 \end{filecontents}
 
 
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{pgfplots}
-\pgfplotsset{compat=1.18}
+\pgfplotsset{width=10cm,compat=1.18}
 
 \begin{document}
 \begin{tikzpicture}
@@ -258,3 +258,5 @@ Index,Sine,Cosine
 To use PGFPlots, you should include `\usepackage{pgfplots}` in your LaTeX document's preamble. The `\pgfplotsset{compat=1.17}` line is used to specify the compatibility version; you can adjust it according to your needs.
 
 PGFPlots provides extensive customization options for your plots, including axis labels, titles, legends, and much more. You can refer to the [PGFPlots documentation](https://ctan.org/pkg/pgfplots) for detailed information and examples on customizing and enhancing your plots.
+
+[download manual from](https://in.mirrors.cicku.me/ctan/graphics/pgf/contrib/pgfplots/doc/pgfplots.pdf) https://in.mirrors.cicku.me/ctan/graphics/pgf/contrib/pgfplots/doc/pgfplots.pdf
