@@ -1,3 +1,4 @@
 ./
 ./L01 Syllabus and Introduction .md
-./L02.md
+./L02-05.md
+./L06-.md
