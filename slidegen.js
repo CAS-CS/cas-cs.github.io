@@ -700,6 +700,7 @@ const convertLocalLinks = () => {
 
 function loadBasicSkeleton(title = "Home") {
   load("/style.scss");
+  load("/printstyle.scss");
   //your app logic
   append(app, "", "over"); /* reset app */
   append(app, gen(header, "header", "", "header"));
