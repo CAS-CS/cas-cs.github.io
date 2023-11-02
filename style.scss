@@ -453,7 +453,7 @@ samp {
 
 
 
-.code-block{
+pre code,code-block{
   padding:1em;
   box-shadow:2px 2px 5px hsla(var(--hueAscent),50%,40%,.8);
   border-radius: 1em;
@@ -469,11 +469,19 @@ box-shadow:2px 2px 5px hsla(var(--hueAscent),50%,40%,.2);
   font-size: .8em;
   font-family:monospace !important;
   background-color:hsla(0,10%,10%,.2);
-  padding-right: 2em;
+  padding-inline: 1.5em;
   border-radius: .2em;
   display: inline !important;
   .copyIcon{
     transform:scale(.7) translateY(-.8em);
+    display:none;
+    transition:1s ease-in;
+  }
+
+  &:hover{
+  .copyIcon{
+    display:block;
+    }
   }
 }
 
