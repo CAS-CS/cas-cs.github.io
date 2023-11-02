@@ -90,7 +90,7 @@ When using the `pgfplots` package in LaTeX to create plots with the `\addplot` c
 ---
 ### Simple Line Plot:
 ```latex
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 \begin{document}
@@ -106,7 +106,7 @@ This code creates a basic line plot of the sine function.
 ---
 ### Scatter Plot:
 ```latex
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 \begin{document}
@@ -122,7 +122,7 @@ This code creates a scatter plot using data from a CSV file named `data.csv`.
 ---
 ### Bar Chart:
 ```latex
-\documentclass{article}
+\documentclass{standalone}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.17}
 \begin{document}
