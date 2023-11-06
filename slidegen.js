@@ -445,6 +445,12 @@ table {
     padding: 1em;
 }
 
+
+code::selection{
+  user-select: auto;
+  color:var(--linkColor);
+  background: gray;
+}
 #titleheading {
     a {
         link-style: none;
