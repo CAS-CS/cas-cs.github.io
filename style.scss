@@ -10,11 +10,13 @@
     --hueAscent: 180;
     --satAscent: 50%;
     --lightAscent: 80%;
-    --textColor: white;
-    --linkColor: hsl(var(--hue), 90%, 70%);
+    --lightText:98%;
+    --textColor: hsl(var(--hue),100%,var(--lightText));
+    --primaryColor: hsl(var(--hue), 90%, 50%);
+    --linkColor: hsl(var(--hue), 50%, 60%);
     --ascentColor: hsl(var(--hueAscent), calc(var(--sat) * 1.5), calc(var(--light) * 2));
     --colorScheme: dark;
-    --testShadow: black;
+    --testShadow: hsl(var(--hue),100%,calc(100% - var(--lightText)));
     --lightFactor: 1;
     --fontScale: 1;
     --fontFamily: "Roboto", "Finlandica", "Poppins", "Arial";
@@ -63,6 +65,7 @@ video {
 
 a {
     text-decoration: none;
+    color:var(--linkColor);
 }
 
 ::-webkit-scrollbar {
@@ -124,7 +127,7 @@ a {
 
         .pathNavigator {
             font-size: .8em;
-            color: var(--ascentColor, aqua);
+            color: var(--primaryColor, aqua);
             padding: 5px;
             margin: 5px;
             text-decoration: none;
@@ -157,7 +160,9 @@ a {
 
             background-color: hsl(var(--h), var(--s), var(--l));
         }
-
+        a{
+            border-bottom: 1px solid var(--linkColor,aqua);
+        }
 
 
     }

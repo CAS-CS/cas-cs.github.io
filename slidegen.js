@@ -110,14 +110,14 @@ var slideScss = `
     b,
     strong {
         color: hsl(var(--hue, 30),
-                calc(var(--satAscent, 70%) * 1.1),
+                calc(var(--satAscent, 70%) * .9),
                 calc(var(--lightAscent, 50%) * .8));
     }
 
     i,
     em {
         color: hsl(var(--hueAscent, 30),
-                calc(var(--satAscent, 70%) * 1.1),
+                calc(var(--satAscent, 70%) * .9),
                 calc(var(--lightAscent, 50%) * .8));
     }
 
