@@ -700,7 +700,6 @@ const convertLocalLinks = () => {
 
 function loadBasicSkeleton(title = "Home") {
   load("/style.scss");
-  load("/printstyle.scss");
   //your app logic
   append(app, "", "over"); /* reset app */
   append(app, gen(header, "header", "", "header"));
@@ -1719,4 +1718,45 @@ var hidenodescss=`
 `
 setTimeout(loadscss(hidenodescss),2000)
 
+var printstyle=`
 
+@media print {
+    @page {
+        size: A4 landscape;
+    }
+
+    .slideroot,
+    .blockroot {
+        overflow: auto;
+        height: auto;
+        background-color: var(--bgColor);
+    
+    }
+
+    .slide {
+        page-break-after: always;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .block {
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    img {
+        display: block;
+        page-break-before: auto;
+        page-break-after: auto;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    video,
+    #sideBar,
+    #appfooter {
+        display: none;
+    }
+}`
+
+loadscss(printstyle,"printsytle")
