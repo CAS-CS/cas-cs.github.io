@@ -893,7 +893,7 @@ function generateView() {
   };
   try {
     route[ext]();
-    // updateFiledropEventListeners()
+    updateFiledropEventListeners()
   } catch (e) { }
 
   // updateFiledropEventListeners()
