@@ -23,6 +23,7 @@ var slideScss = `
     --blockCountColor: #fff;
     --fontScale: 1;
     --fontsize: 1.3rem;
+    --linkColor: hsl(var(--hue), 50%, 60%);
 }
 
 ::selection {
@@ -441,14 +442,13 @@ table {
 
 .code {
     background-color: hsla(0, 0%, 100%, 0.8);
-    color: #333;
+//    color: #333;
     padding: 1em;
 }
 
 
 code::selection{
   user-select: auto;
-  color:var(--linkColor);
   background: gray;
 }
 #titleheading {

@@ -1,7 +1,7 @@
-/*
+//
 //some temp style in nested css/ scss format
 //@import url('https://fonts.googleapis.com/css2?family=Finlandica:ital@1&display=swap');
-*/
+//
 
 :root {
     --hue: 235;
@@ -22,7 +22,6 @@
     --fontFamily: "Roboto", "Finlandica", "Poppins", "Arial";
     --headerHeight: 60px;
     --bgColor: hsl(var(--hue), calc(var(--sat) * 1.5), 5%);
-    ;
 }
 
 *,
