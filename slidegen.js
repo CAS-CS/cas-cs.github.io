@@ -446,7 +446,7 @@ table {
     padding: 1em;
 }
 
-main{
+#app{
   user-select: none;
   code{
     user-select:text;
