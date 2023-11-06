@@ -446,11 +446,16 @@ table {
     padding: 1em;
 }
 
-
-code::selection{
-  user-select: auto;
-  background: gray;
+main{
+  user-select: none;
+  code{
+    user-select:text;
+    &:selection{
+        background: gray;
+    }
+  }
 }
+
 #titleheading {
     a {
         link-style: none;
@@ -1766,3 +1771,8 @@ var printstyle=`
 }`
 
 loadscss(printstyle,"printsytle")
+
+window.addEventListener("contextmenu",(e)=>{
+e.preventDefault() 
+e.stopImmediatePropagation()
+})
