@@ -1768,9 +1768,14 @@ var printstyle=`
     #appfooter {
         display: none;
     }
+    a::after{
+      font-style: italic;
+      font-size:.8em;
+      content: " (" attr(href) ") ";
+   }
 }`
 
-loadscss(printstyle,"printsytle")
+loadscss(printstyle,"printstyle")
 
 window.addEventListener("contextmenu",(e)=>{
 e.preventDefault() 
