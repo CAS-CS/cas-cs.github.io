@@ -852,6 +852,12 @@ function footerButtons() {
   );
   append(
     `#footerButtons`,
+    gen(span, "print", "Print", "button,printSlides", {
+      onclick: "printSlides()",
+    })
+  );
+  append(
+    `#footerButtons`,
     gen(input, "open", "", "hide", {
       type: "file",
       accept: ".md,.markdown,.ipynb,png,jpg,mp4",
@@ -936,6 +942,7 @@ function updateOnHashChange() {
   }
 
   reloadPage();
+  
 }
 
 function reloadPage() {
@@ -949,6 +956,11 @@ function reloadPage() {
   // convertLocalLinks()
 }
 
+
+function printSlides(){
+  loadscss(printstyle,"printstyle");
+  window.print()
+}
 function changepath(thispath) {
   // log(thispath.dataset.path)
   var path = thispath.dataset.path;
