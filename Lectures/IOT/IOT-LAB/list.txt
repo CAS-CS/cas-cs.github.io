@@ -1,4 +1,0 @@
-./
-./00 List of Experiments.md
-./How to upload bootloader to one board using another over SPI communication interface.md
-./Programm FTDI boards without FTDI programmer.md
