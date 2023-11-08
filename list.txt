@@ -1,4 +1,5 @@
 ./
+./Lectures
 ./Notices
 ./TimeTable
 ./Workshops

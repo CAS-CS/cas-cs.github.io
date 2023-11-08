@@ -1,3 +1,6 @@
 [submodule "Gallery"]
 	path = Gallery
 	url = git@github.com:CAS-CS/Gallery.git
+[submodule "Lectures"]
+	path = Lectures
+	url = git@github.com:CAS-CS/Lectures.git
