@@ -5,7 +5,7 @@
 ./L003 Multi line equation.md
 ./L004 BibTeX Reference Management.md
 ./L005 LaTeX Drawing tikz.md
-./L006 LaTeX Drawing pdfplots.md
+./L006 LaTeX Drawing pgfplots.md
 ./L007 Beamer Presentation.md
 ./L009 Author and Journal level metric idexing and identity Lecture-009.md
 ./L010 markdown.md
