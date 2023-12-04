@@ -7,7 +7,6 @@
 ./Gallery
 ./.Previous Question Papers
 ./.Obsolute
-./node_modules
 ./.github
 ./Misc
 ./.git
