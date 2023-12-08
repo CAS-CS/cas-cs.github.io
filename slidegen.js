@@ -1808,18 +1808,21 @@ var printNotesStyle=`
     body{
     font-size:12px;
     --fontsize:12px;
+    
     }
 :root{
   --fontsize:12px;
   --fontScale:.7;
+
+
 }
 
     .slideroot,
     .blockroot {
         overflow: auto;
         height: min-content;
-        background-color: var(--bgColor);
-    
+        background-color: white;
+padding:.5em;
     }
 
     .slide {
