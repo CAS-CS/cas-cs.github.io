@@ -1806,8 +1806,14 @@ var printNotesStyle=`
         size: A4 portrait;
     }
     body{
-    font-size:.8rem;
+    font-size:12px;
+    --fontsize:12px;
+    }
+:root{
+  --fontsize:12px;
+  --fontScale:.7;
 }
+
     .slideroot,
     .blockroot {
         overflow: auto;
