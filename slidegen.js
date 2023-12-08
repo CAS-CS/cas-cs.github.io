@@ -852,8 +852,14 @@ function footerButtons() {
   );
   append(
     `#footerButtons`,
-    gen(span, "print", "Print", "button,printSlides", {
+    gen(span, "print", "Print Slides", "button,printSlides", {
       onclick: "printSlides()",
+    })
+  );
+  append(
+    `#footerButtons`,
+    gen(span, "print", "Print Notes", "button,printSlides", {
+      onclick: "printNotes()",
     })
   );
   append(
@@ -958,7 +964,12 @@ function reloadPage() {
 
 
 function printSlides(){
-  loadscss(printstyle,"printstyle");
+  loadscss(printSlideStyle,"printSlideStyle");
+  window.print()
+}
+
+function printNotes(){
+  loadscss(printNotesStyle,"printNotesStyle");
   window.print()
 }
 function changepath(thispath) {
@@ -1741,7 +1752,7 @@ var hidenodescss=`
 `
 setTimeout(loadscss(hidenodescss),2000)
 
-var printstyle=`
+var printSlideStyle=`
 
 @media print {
     @page {
@@ -1787,7 +1798,55 @@ var printstyle=`
    }
 }`
 
-loadscss(printstyle,"printstyle")
+
+var printNotesStyle=`
+
+@media print {
+    @page {
+        size: A4 portrait;
+    }
+    body{
+    font-size:.8rem;
+}
+    .slideroot,
+    .blockroot {
+        overflow: auto;
+        height: min-content;
+        background-color: var(--bgColor);
+    
+    }
+
+    .slide {
+//        page-break-after: always;
+//        break-inside: avoid;
+//        page-break-inside: avoid;
+    }
+
+    .block {
+//        break-inside: avoid;
+//        page-break-inside: avoid;
+    }
+
+    img {
+        display: block;
+//        page-break-before: auto;
+//        page-break-after: auto;
+        page-break-inside: avoid;
+        break-inside: avoid;
+    }
+    
+    video,
+    #sideBar,
+    #appfooter {
+        display: none;
+    }
+    a::after{
+      font-style: italic;
+      font-size:.8em;
+      content: " (" attr(href) ") ";
+   }
+}`
+//loadscss(printSlideStyle,"printSlideStyle")
 
 window.addEventListener("contextmenu",(e)=>{
 e.preventDefault() 
