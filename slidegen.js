@@ -852,6 +852,10 @@ function footerButtons() {
   );
   append(
     `#footerButtons`,
+    gen(label, "openbtn", "Open", "button,openFile", { for: "open" })
+  );
+  append(
+    `#footerButtons`,
     gen(span, "print", "Print Slides", "button,printSlides", {
       onclick: "printSlides()",
     })
@@ -860,6 +864,13 @@ function footerButtons() {
     `#footerButtons`,
     gen(span, "print", "Print Notes", "button,printSlides", {
       onclick: "printNotes()",
+    })
+  );
+
+    append(
+    `#footerButtons`,
+    gen(span, "fullscreenMode", "FullScreen", "button, fullscreen", {
+      onclick: "toggleFullscreen",
     })
   );
   append(
@@ -871,11 +882,7 @@ function footerButtons() {
       multiple: "true",
     })
   );
-  // append(`#footerButtons`, gen(input, "open", "Open", "button,openFile", { "type": "file", "onchange": "openFile()" }))
-  append(
-    `#footerButtons`,
-    gen(label, "openbtn", "Open", "button,openFile", { for: "open" })
-  );
+
 }
 
 function generateView() {
@@ -964,12 +971,12 @@ function reloadPage() {
 
 
 function printSlides(){
-  loadscss(printSlideStyle,"printSlideStyle");
+  loadscss(printSlideStyle,"printStyle");
   window.print()
 }
 
 function printNotes(){
-  loadscss(printNotesStyle,"printNotesStyle");
+  loadscss(printNotesStyle,"printStyle");
   window.print()
 }
 function changepath(thispath) {
@@ -1855,7 +1862,7 @@ padding:.5em;
       content: " (" attr(href) ") ";
    }
 }`
-//loadscss(printSlideStyle,"printSlideStyle")
+loadscss(printSlideStyle,"printStyle")
 
 window.addEventListener("contextmenu",(e)=>{
 e.preventDefault() 
