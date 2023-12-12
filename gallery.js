@@ -2,7 +2,8 @@ var galleryData = []
 append("#main", gen(div, 'gallery', gen(h1, "", "Gallery"), 'section,gallery'), "over")
 
 
-var currentLocation = window.location.origin + window.location.pathname
+//var currentLocation = window.location.origin + window.location.pathname
+var  currentLocation = router.dirpath
 var subGalleryUrllist = currentLocation + 'listDir.txt'
 // log(subGalleryUrllist)
 getfile(subGalleryUrllist, f => {
