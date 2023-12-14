@@ -522,6 +522,11 @@ table {
     }
 }
 
+
+
+
+
+
 .MathJax {
     padding: 2px 5px;
     cursor: pointer;
@@ -561,10 +566,12 @@ function cloneView() {
 function toggleHints() { }
 
 // Fullscreen
-function toggleFullscreen() {
+function toggleFullscreen(e) {
   if (document.fullscreenElement) {
     // append(fullscreenTitle, "", 'replace')
     document.exitFullscreen();
+    footerButtons('#appfooter',"b");
+
   } else {
     // document.documentElement.requestFullscreen();
     grab(`#main`)[0].requestFullscreen();
@@ -573,6 +580,7 @@ function toggleFullscreen() {
       router.pathname.replaceAll("/", " | ") +
       grab("h1")[0].innerHTML;
     // append(main, gen(div, "fullscreenTitle", titlestr), 'before')
+    footerButtons('#main',"a");
   }
 }
 
@@ -839,11 +847,33 @@ class Router {
 }
 const router = new Router();
 
-function footerButtons() {
+
+function printSlideorNotes() {
+  console.log("printSlideorNotes")
+  append(`#printButton`,gen(div,"printButton","","printButtonContainer"),"r")
+
+  append(
+    `#printButton`,
+    gen(span, "print", "Slides", "button,printSlides", {
+      onclick: "printSlides()",
+    })
+  );
+  
+  append(
+    `#printButton`,
+    gen(span, "print", "Notes", "button,printSlides", {
+      onclick: "printNotes()",
+    })
+  );
+}
+
+
+
+function footerButtons(target=`#appfooter`,pos="before") {
   if (grab(`#footerButtons`).length != 0) {
     append(`#footerButtons`, "", "replace");
   }
-  append(`#appfooter`, gen(div, "footerButtons", ""), "before");
+  append(target, gen(div, "footerButtons", ""), pos);
   append(
     `#footerButtons`,
     gen(span, "reload", "Reload", "button,reloadPage", {
@@ -854,23 +884,34 @@ function footerButtons() {
     `#footerButtons`,
     gen(label, "openbtn", "Open", "button,openFile", { for: "open" })
   );
+
+ 
+
+
+
   append(
     `#footerButtons`,
-    gen(span, "print", "Print Slides", "button,printSlides", {
-      onclick: "printSlides()",
+    gen(span, "printButton", "Print", "button,printButton", {
+      onclick: "printSlideorNotes()",
     })
   );
-  append(
-    `#footerButtons`,
-    gen(span, "print", "Print Notes", "button,printSlides", {
-      onclick: "printNotes()",
-    })
-  );
+
+
+
+
+
+
+
+
+
+
+
+
 
     append(
     `#footerButtons`,
     gen(span, "fullscreenMode", "FullScreen", "button, fullscreen", {
-      onclick: "toggleFullscreen",
+      onclick: "toggleFullscreen()",
     })
   );
   append(
@@ -963,7 +1004,7 @@ function reloadPage() {
   localStorage.clear();
   paginationUpdate();
   generateView();
-  footerButtons();
+  footerButtons('#appfooter');
   window.scrollTo(0, 0);
   window.addEventListener("hashchange", updateOnHashChange);
   // convertLocalLinks()

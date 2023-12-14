@@ -149,7 +149,8 @@ a {
         }
     }
 
-    main {
+    .main {
+        position: relative;
         min-height: 100vh;
         font-family: var(--fontFamily);
         font-size: var(--fontSize);
@@ -163,6 +164,33 @@ a {
             border-bottom: 1px solid var(--linkColor,aqua);
         }
 
+
+        #footerButtons{
+            position: absolute !important;
+            bottom:0px;
+    
+            display: flex;
+            flex-direction: row;
+            flex-wrap:wrap;
+            align-items: center;
+            justify-content: center;
+    
+            background-color: rgba(0,0,0,0);
+            width:100%;
+            --paddingTop:4em;
+            padding-top:var(--paddingTop);
+            transform: translateY(calc(100% - var(--paddingTop)));
+            transition: all 400ms ease-in;
+            
+            &:hover{
+              transform:translateY(0);
+              padding:1em;
+              background-color: hsla(var(--hue),10%,10%,.8);
+    
+            }
+            
+    
+          }
 
     }
 
@@ -206,10 +234,34 @@ a {
         align-items: center;
         min-height: 10vh;
 
+
+
+          
+          
     }
 }
 
+.printButtonContainer{
+    margin:.7em;
+    border-radius: .7em;
+    box-shadow: 1px 1px 4px inset hsla(0,0%,50%,.5);
+    position: relative;
+    .button{
+      box-shadow: 1px 1px 4px inset hsla(var(--hue),50%,50%,.6);
+    }
+    
+    &:before{
+      position: absolute;
+      top:.1em;
+      transform: translateX(-50%);
+      left:calc(50%);
+      content: "Print";
+      font-style: italic;
+      font-size:.8em;
+    }
+  }
 
+  
 .container {
     padding-inline: 3em;
 }
@@ -502,4 +554,6 @@ ul {
     margin-left: 1em;
 }
 
+
+// fullscreen footer buttons
 
