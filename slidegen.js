@@ -277,7 +277,31 @@ table {
 
     transform: translateX(calc(-100% + 2em));
 
-    &:hover {
+
+
+     .sideBarSearchInput{
+        width: 100%;
+        overflow: auto;
+        border-radius: .2em;
+        padding:.2em;
+        outline:none;
+        border:none;
+        background-color: var(--ascentColor);
+        position:relative;  
+        color:var(--textColor,white);
+          
+        &:before{
+            position:absolute;
+            top:.2em;
+            left:.2em;
+            content: "Search";
+            width: 100%;
+            
+        }
+      }
+
+      
+    &:hover,&:focus {
         opacity: 1;
         border-right: 1px solid hsla(var(--hueAscent), 50%, 10%, 1);
         box-shadow: 1em 0 0.5em hsla(0, 0%, 0%, 0.2);
@@ -323,6 +347,12 @@ table {
                     min-height: 2em;
                     text-decoration: none;
                     font-weight: bold;
+                    display: flex;
+                    flex-direction: column;
+                    p{
+                    font-weight: 300;   
+                    padding: .2em .4em;
+                    }
 
                     &:hover,
                     .active {
@@ -532,7 +562,9 @@ table {
     cursor: pointer;
 }
 
-
+.hide {
+  display: none !important;
+}
 
 `;
 
@@ -619,6 +651,9 @@ function scrollAction(direction = "down", scrollState) {
 
 // Keyboard Control
 function keyPressHandler(e) {
+  if (e.target.tagName.toLowerCase() === 'input') {
+    return;
+  }
   // e.preventDefault()
   if (e.ctrlKey || e.metaKey || e.altKey || e.shiftKey) {
   } else {
@@ -1281,12 +1316,8 @@ function parseCsv(link, callback) {
         padding-block:1em;
       }
 
-      .search{
-        padding:.5em;
-        border-radius:.2em;
-        outline:none;
-        border:none;
-      }
+      
+
     }
     
     `
@@ -1384,6 +1415,26 @@ function parseCsv(link, callback) {
 
 
 
+function handleSidebarSearch(){
+  var allSlides=grab(".slide")
+  var allSlidesNav=grab(".slideNavLink")
+  var searchTerm=grab("#sideBarSearchInput")[0].value
+  console.log(searchTerm)
+
+
+  for(var i=0;i<allSlides.length;i++){
+    allSlidesNav[i].parentElement.classList.add("hide")
+    var s=allSlides[i]
+    if (s.innerText.includes(searchTerm)){
+      allSlidesNav[i].parentElement.classList.remove("hide")
+    }
+  }
+
+  loadscss(`.hide{
+    display: none !important;;
+  }`,"hide")
+}
+
 
 function parseSlide(link, callback) {
   console.info("parseslide");
@@ -1402,11 +1453,15 @@ function parseSlide(link, callback) {
       })
     );
 
+
+
     append(`main`, "", "over");
     updateFiledropEventListeners();
     append(`main`, gen(div, "slideroot", "", "slideroot"));
     append(slideroot, gen("aside", "sideBar", ""));
     append(sideBar, gen(div, "slidenav", gen(h3, "", "Navigator")));
+      append(slidenav,gen(input,"sideBarSearchInput","","sideBarSearchInput",  {oninput:"handleSidebarSearch()"}))
+
     append(slidenav, gen(ul, "slidenavlist", "", "slidenavlist"));
 
     var html = md.split(/^---\s*?$/gm);
@@ -1433,11 +1488,16 @@ function parseSlide(link, callback) {
               "",
               gen(a, "", `Slide ${i + 1}`, "slideNavLink", {
                 onclick: `slide${i}.scrollIntoView()`,
-              })
+              }),
+              "sideNavLi"
             )
           );
         });
       }
+
+      var slideHeading=grab(".slide")[i].querySelectorAll("h1,h2,h3,h4,h5,h6,p")[0].innerText
+      grab(".slideNavLink")[i].innerHTML+=`: ${gens(p,"",slideHeading,"sideNavLinkSummary")}`
+      
     }
     append(
       slidenavlist,

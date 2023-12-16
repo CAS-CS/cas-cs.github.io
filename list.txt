@@ -5,7 +5,6 @@
 ./Workshops
 ./.Syllabus
 ./Gallery
-./fff
 ./.Previous Question Papers
 ./.Obsolute
 ./node_modules
