@@ -1852,6 +1852,7 @@ var printNotesStyle=`
 @media print {
     @page {
         size: A4 portrait;
+        margin: 1cm;
     }
     body{
     font-size:12px;
@@ -1870,7 +1871,9 @@ var printNotesStyle=`
         overflow: auto;
         height: min-content;
         background-color: white;
-padding:.5em;
+        color:black;
+        text-shadow: none;
+        padding:.5em;
     }
 
     .slide {
